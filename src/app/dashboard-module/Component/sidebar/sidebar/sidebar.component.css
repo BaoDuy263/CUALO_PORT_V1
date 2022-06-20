@@ -1,0 +1,38 @@
+.example-tree{
+    padding-top: 20px;
+    background-color: #244177 !important;
+    color: #fff;
+}
+
+.example-tree-invisible {
+    display: none;
+}
+  
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+  
+
+.example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 0px;
+}
+  
+ 
+.example-tree div[role=group] > .mat-tree-node {
+    padding-left: 0px;
+}
+
+.mat-tree-node {
+    cursor: pointer;
+    color: #fff;
+}
+
+.mat-tree-node-child {
+    cursor: pointer;
+    padding-left: 25px;
+    color: #fff;
+}
+
