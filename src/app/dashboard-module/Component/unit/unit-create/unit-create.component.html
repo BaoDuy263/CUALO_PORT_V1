@@ -1,4 +1,4 @@
-<div class="container-lg" style="background-color: #e6e8ea;">
+<div class="container-lg">
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <h1>Thêm mới đơn vị</h1>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
-                    <input formControlName="status" type="checkbox" class="mr-2">
+                    <input formControlName="status" type="checkbox" class="mr-2" style="margin-right: 5px;">
                     <label for="txtStatus">Sử dụng</label>
                 </div>
             </div>

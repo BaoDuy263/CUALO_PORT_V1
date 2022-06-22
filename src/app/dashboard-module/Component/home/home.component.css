@@ -36,8 +36,13 @@ mat-sidenav a:hover ,a:active{
 /* conten */
 mat-toolbar{
     margin: -16px;
-    width: 102%;
-    box-shadow: 0px -3px 17px 9px rgba(0,0,0,0.1);
+    width: 103%;
+    /* box-shadow: 0px -3px 17px 9px rgba(0,0,0,0.1); */
+    background-color: white;
+}
+
+.mat-sidenav-content{
+    background-color: #e6e8ea;
 }
 
 mat-toolbar .circle
@@ -65,7 +70,7 @@ mat-toolbar .toolbar-right
 
 
 mat-sidenav-content .content{
-    padding: 50px 20px;
+    padding: 30px 0px;
 }
 
 
