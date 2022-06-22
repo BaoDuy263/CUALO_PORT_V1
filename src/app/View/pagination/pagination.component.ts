@@ -43,7 +43,6 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) :void {
-    console.log('this.pageInput',this.pageInput);
     if (changes['pageInput']) {
         if(this.pageInput.totalPage > 5){
           this.ArrayPage = Array(5).fill(0).map((x,i)=>i);
