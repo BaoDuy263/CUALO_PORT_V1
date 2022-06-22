@@ -20,6 +20,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 // import { ToastrModule } from 'ngx-toastr';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { UnitCreateComponent } from './Component/unit/unit-create/unit-create.component';
+import { UnitDeleteComponent } from './Component/unit/unit-delete/unit-delete.component';
+import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
     KhachhangDeleteComponent,
     SidebarComponent,
     //view
-    PaginationComponent  
+    PaginationComponent,
+    UnitCreateComponent,
+    UnitDeleteComponent,
+    UnitIndexComponent  
   ],
   imports: [
     CommonModule,

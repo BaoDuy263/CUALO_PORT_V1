@@ -21,6 +21,10 @@ export const ROUTE_DATA: TypeRoute[] = [
             {
                 name :'Phương tiện',
                 url:'khachhang'
+            },
+            {
+                name :'Đơn vị',
+                url:'don-vi'
             }
         ]
     },
