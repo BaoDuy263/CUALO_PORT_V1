@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KhachhangEditComponent } from './khachhang-edit.component';
+import { PaginationComponent } from './pagination.component';
 
-describe('KhachhangEditComponent', () => {
-  let component: KhachhangEditComponent;
-  let fixture: ComponentFixture<KhachhangEditComponent>;
+describe('PaginationComponent', () => {
+  let component: PaginationComponent;
+  let fixture: ComponentFixture<PaginationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KhachhangEditComponent ]
+      declarations: [ PaginationComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(KhachhangEditComponent);
+    fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

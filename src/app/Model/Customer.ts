@@ -21,3 +21,28 @@ export interface lstCutomer
     totalPage: number
     data : Customer[]
 }
+
+
+export interface CustomerCreate
+{
+   
+    name: string,
+    fullName: string,
+    phoneNumber: string,
+    address : string,
+    userId: string,
+    description: string
+}
+
+
+
+export interface CustomerEdit
+{
+    id: number,
+    name: string,
+    fullName: string,
+    phoneNumber: string,
+    address : string,
+    userId: string,
+    description: string
+}``

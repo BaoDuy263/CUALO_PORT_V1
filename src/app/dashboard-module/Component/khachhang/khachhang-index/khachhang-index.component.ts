@@ -1,8 +1,11 @@
 
-import { Component, OnInit } from '@angular/core';
-import { lstCutomer,Customer } from '../../../../Model/Customer'
+import { Component, OnInit  } from '@angular/core';
+import { lstCutomer,CustomerCreate } from '../../../../Model/Customer'
 import { CustomerService } from '../../../../Service/Customer/customer.service'
-
+import {MatDialog} from '@angular/material/dialog';
+import {KhachhangCreateComponent} from '../khachhang-create/khachhang-create.component';
+import { KhachhangDeleteComponent } from '../khachhang-delete/khachhang-delete.component';
+import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
 @Component({
   selector: 'app-khachhang-index',
   templateUrl: './khachhang-index.component.html',
@@ -10,22 +13,114 @@ import { CustomerService } from '../../../../Service/Customer/customer.service'
 })
 export class KhachhangIndexComponent implements OnInit {
 
+  isCreate : boolean = true;
+  customerId : number = 0;
+
+
+  lstdata : lstCutomer = {
+    currentPage : 0,
+    pageSize : 0,
+    totalRecord : 0,
+    totalPage : 0,
+    data : []
+  };
+
   PageInfo = {
     page : 1,
     Keyword : '',
-    pageSize : 50
+    pageSize : 10
   }  
 
-  constructor(private customerService : CustomerService) { }
+  constructor(private customerService : CustomerService,public dialog: MatDialog,private toastr : ToastrcustomService) { }
 
-  lstdata : Customer[] = [];
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
   }
 
   Pagingdata(PageInfo : any)  {
      this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-        this.lstdata = data.data;
+        this.lstdata = data;
      })
   }
+
+  handlePage(event:any) {
+    this.PageInfo.page = event.page;
+    this.PageInfo.pageSize = event.pageSize;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  onSearch(e:any)
+  {
+    this.PageInfo.Keyword = e;
+    this.Pagingdata(this.PageInfo);
+  }
+
+
+  //Create
+  customerCreate : CustomerCreate = {
+    name: '',
+    fullName: '',
+    phoneNumber: '',
+    address: '',
+    userId : '',
+    description:'',
+  }
+
+  openEdit(id: number){
+    this.isCreate = false;
+    this.customerId = id;
+    const dialogRef = this.dialog.open(KhachhangCreateComponent);
+    dialogRef.componentInstance.customerId = this.customerId;
+    dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+          if(result.statusCode === 200){
+            this.toastr.showSuccess(result.message);
+          }
+          else
+          {
+            this.toastr.showError(result.message);
+          }
+      } 
+      this.Pagingdata(this.PageInfo);
+    })
+    
+  }
+
+  openCreate() {
+    const dialogRef = this.dialog.open(KhachhangCreateComponent);
+    dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          if(result.statusCode === 200){
+            this.toastr.showSuccess(result.message);
+          }
+          else
+          {
+            this.toastr.showError(result.message);
+          }
+        }
+        this.Pagingdata(this.PageInfo);
+    });
+    
+  }
+
+
+  openDelete(id: number){
+    this.customerId = id;
+    const dialogRef = this.dialog.open(KhachhangDeleteComponent);
+    dialogRef.componentInstance.customerId = this.customerId;
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        if(result.statusCode === 200){
+          this.toastr.showSuccess(result.message);
+        }
+        else
+        {
+          this.toastr.showError(result.message);
+        }
+      }
+      this.Pagingdata(this.PageInfo);
+  });
+  }
+
 }

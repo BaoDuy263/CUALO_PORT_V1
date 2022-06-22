@@ -1,0 +1,57 @@
+.Pagination{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+  }
+
+  .Pagination .show{
+    height: 20px;
+    padding-top: 10px;
+  }
+  .Pagination .Perpage{
+    display: flex;
+    align-items: center;
+    height: 20px;
+    justify-content: space-around;
+  }
+
+
+  .Pagination .Perpage .icon{
+    height: 30px;
+    width: 30px;
+    margin-top: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2px;
+  }
+
+  .Pagination .Perpage .icon:hover {
+    z-index: 1;
+    color: #fff;
+    background-color: #03A9F4;
+    border-color: #03A9F4;
+    cursor: pointer;
+  }
+
+
+
+  .Pagination .Pagesize{
+    height: 20px;
+  }
+
+.isDisableMinus{
+  pointer-events:none;
+}
+
+.isDisablePlus {
+  pointer-events:none;
+}
+.isActive{
+  z-index: 1;
+  color: #fff;
+  background-color: #03A9F4;
+  border-color: #03A9F4;
+}

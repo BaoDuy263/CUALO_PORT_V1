@@ -6,16 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
-import {HttpClientInterceptor} from './Interceptor/http.client.interceptor'
+import {HttpClientInterceptor} from './Interceptor/http.client.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AsyncPipe,
