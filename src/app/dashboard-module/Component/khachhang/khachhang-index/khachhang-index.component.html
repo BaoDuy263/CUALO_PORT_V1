@@ -33,8 +33,8 @@
                 </tbody>
               </table>
         </div>
-        <ng-container *ngIf="lstdata">
-           <app-pagination [pageInput] ="lstdata"  (pageEvent)="handlePage($event)" (pageSizeEvent) = "handlePage($event)"></app-pagination>
+        <ng-container *ngIf="Pagination.totalPage > 0">
+           <app-pagination [pageInput] ="Pagination"  (pageEvent)="handlePage($event)" (pageSizeEvent) = "handlePage($event)"></app-pagination>
         </ng-container>
         
     </div>
