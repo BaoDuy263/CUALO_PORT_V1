@@ -1,1 +1,71 @@
-<p>vehicle-create works!</p>
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <h1>Thêm mới hàng hóa</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">licensePlates</label>
+                    <input type="text" class="form-control" formControlName="licensePlates">
+                    <div *ngIf="submited && licensePlates?.errors?.['required']">
+                        <span *ngIf="licensePlates?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">rfidcode</label>
+                    <input type="text" class="form-control" formControlName="rfidcode">
+                    <div *ngIf="submited && rfidcode?.errors?.['required']">
+                        <span *ngIf="rfidcode?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">nameDriver</label>
+                    <input type="text" class="form-control" formControlName="nameDriver">
+                    <div *ngIf="submited && nameDriver?.errors?.['required']">
+                        <span *ngIf="nameDriver?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">tonnageDefault</label>
+                    <input type="number" class="form-control" formControlName="tonnageDefault">
+                    <div *ngIf="submited && tonnageDefault?.errors?.['required']">
+                        <span *ngIf="tonnageDefault?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">idCardNumber</label>
+                    <input type="text" class="form-control" formControlName="idCardNumber">
+                    <div *ngIf="submited && idCardNumber?.errors?.['required']">
+                        <span *ngIf="idCardNumber?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">mediumUnladenWeight</label>
+                    <input type="number" class="form-control" formControlName="mediumUnladenWeight">
+                    <div *ngIf="submited && mediumUnladenWeight?.errors?.['required']">
+                        <span *ngIf="mediumUnladenWeight?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" type="submit">Thêm mới</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+                bỏ</button>
+        </div>
+    </form>
+</div>
