@@ -30,6 +30,7 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Đơn vị',
                 url:'don-vi'
             },
+          
            
         ]
     },
@@ -84,6 +85,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         name :'Quản lý lịch tàu',
         url:'khachhang'
     },
+  
     {
         name :'Quản trị hệ thống',
         children : [
@@ -96,6 +98,10 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url:'khachhang'
             }
         ]
+    },
+    {
+        name :'Setting',
+        url:'setting'
     },
   ]
   
