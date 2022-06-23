@@ -1,0 +1,196 @@
+<div class="container-lg" style="height: 500px">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <h1>Thêm mới hàng hóa</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">commandNo</label>
+                    <input type="text" class="form-control" formControlName="commandNo">
+                   
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                 
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="txtPHone">customerId  <span class="text-red">(*)</span></label>
+                    <select formControlName="customerId" name="customerId" class="form-control" style="width: 100%;" required>
+                        <option value=0 >Chọn khách hàng</option>
+                        <option *ngFor="let item of listCustomer" [value]="item.id">{{item.name}}
+                        </option>
+
+                    </select>
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">bookingContent</label>
+                    <input type="text" class="form-control" formControlName="bookingContent">
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">sumNumber20Dc</label>
+                    <input type="number" class="form-control" formControlName="sumNumber20Dc">
+                    <div *ngIf="submited && sumNumber20Dc?.errors?.['required']">
+                        <span *ngIf="sumNumber20Dc?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">sumNumber20Ot</label>
+                    <input type="number" class="form-control" formControlName="sumNumber20Ot">
+                    <div *ngIf="submited && sumNumber20Ot?.errors?.['required']">
+                        <span *ngIf="sumNumber20Ot?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">sumNumber40Dc</label>
+                    <input type="number" class="form-control" formControlName="sumNumber40Dc">
+                    <div *ngIf="submited && sumNumber40Dc?.errors?.['required']">
+                        <span *ngIf="sumNumber40Dc?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">sumNumber40Hc</label>
+                    <input type="number" class="form-control" formControlName="sumNumber40Hc">
+                    <div *ngIf="submited && sumNumber40Hc?.errors?.['required']">
+                        <span *ngIf="sumNumber40Hc?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">shipName</label>
+                    <input type="number" class="form-control" formControlName="shipName">
+                   
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">registerDate</label>
+                    <input type="datetime-local" class="form-control" formControlName="registerDate">
+                    <div *ngIf="submited && registerDate?.errors?.['required']">
+                        <span *ngIf="registerDate?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">loadingPort</label>
+                    <input type="number" class="form-control" formControlName="loadingPort">
+               
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">tripNo</label>
+                    <input type="number" class="form-control" formControlName="tripNo">
+                  
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">productName</label>
+                    <input type="number" class="form-control" formControlName="productName">
+               
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">unLoadingPort</label>
+                    <input type="text" class="form-control" formControlName="unLoadingPort">
+                  
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">expiredDate</label>
+                    <input type="datetime-local" class="form-control" formControlName="expiredDate">
+                    <div *ngIf="submited && expiredDate?.errors?.['required']">
+                        <span *ngIf="expiredDate?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">requestDescription</label>
+                    <input type="text" class="form-control" formControlName="requestDescription">
+              
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">depot1Note</label>
+                    <input type="text" class="form-control" formControlName="depot1Note">
+                  
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">step</label>
+                    <input type="number" class="form-control" formControlName="step">
+                    <div *ngIf="submited && step?.errors?.['required']">
+                        <span *ngIf="step?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">depot1ConfirmedDate</label>
+                    <input type="datetime-local" class="form-control" formControlName="depot1ConfirmedDate">
+                    <div *ngIf="submited && depot1ConfirmedDate?.errors?.['required']">
+                        <span *ngIf="depot1ConfirmedDate?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">customerConfirmedDate</label>
+                    <input type="datetime-local" class="form-control" formControlName="customerConfirmedDate">
+                    <div *ngIf="submited && customerConfirmedDate?.errors?.['required']">
+                        <span *ngIf="customerConfirmedDate?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">customerNote</label>
+                    <input type="text" class="form-control" formControlName="customerNote">
+                
+                </div>
+            </div>
+      
+            <div class="col-md-4">
+                <div class="form-group" style="margin-top: 29px;">
+                    <input formControlName="depot1Confimed" type="checkbox" class="mr-2">
+                    <label for="txtStatus">depot1Confimed</label>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="d-flex justify-content-end" style="padding-bottom: 30px;">
+            <button type="button" class="btn btn-primary" type="submit">Thêm mới</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+                bỏ</button>
+        </div>
+    </form>
+</div>

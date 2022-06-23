@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookingContEmptyIndexComponent } from './Component/booking-cont-empty/booking-cont-empty-index/booking-cont-empty-index.component';
+import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
 import { HomeComponent } from './Component/home/home.component';
 import { KhachhangIndexComponent } from './Component/khachhang/khachhang-index/khachhang-index.component';
 import { ProductGroupIndexComponent } from './Component/product-group/product-group-index/product-group-index.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
     { path: 'nhom-san-pham', component: ProductGroupIndexComponent },
     { path: 'san-pham', component: ProductIndexComponent },
     { path: 'setting', component: SettingIndexComponent },
+    { path: 'booking-cont-rong', component: BookingContEmptyIndexComponent },
+    { path: 'booking-nhap-cont', component: BookingImportContIndexComponent },
     // { path: 'don-vi', component: UnitIndexComponent }
   ]
   },

@@ -28,14 +28,18 @@ import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehic
 import { VehicleDeleteComponent } from './Component/vehicle/vehicle-delete/vehicle-delete.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
-import { SettingDeleteComponent } from './Component/setting/setting-delete/setting-delete.component';
-import { SettingCreateComponent } from './Component/setting/setting-create/setting-create.component';
 import { ProductGroupCreateComponent } from './Component/product-group/product-group-create/product-group-create.component';
 import { ProductGroupDeleteComponent } from './Component/product-group/product-group-delete/product-group-delete.component';
 import { ProductGroupIndexComponent } from './Component/product-group/product-group-index/product-group-index.component';
 import { ProductIndexComponent } from './Component/product/product-index/product-index.component';
 import { ProductCreateComponent } from './Component/product/product-create/product-create.component';
 import { ProductDeleteComponent } from './Component/product/product-delete/product-delete.component';
+import { BookingContEmptyIndexComponent } from './Component/booking-cont-empty/booking-cont-empty-index/booking-cont-empty-index.component';
+import { BookingContEmptyCreateComponent } from './Component/booking-cont-empty/booking-cont-empty-create/booking-cont-empty-create.component';
+import { BookingContEmptyDeleteComponent } from './Component/booking-cont-empty/booking-cont-empty-delete/booking-cont-empty-delete.component';
+import { BookingImportContCreateComponent } from './Component/booking-import-cont/booking-import-cont-create/booking-import-cont-create.component';
+import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
+import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
 
 @NgModule({
   declarations: [
@@ -54,14 +58,18 @@ import { ProductDeleteComponent } from './Component/product/product-delete/produ
     VehicleDeleteComponent,
     VehicleIndexComponent,
     SettingIndexComponent,
-    SettingDeleteComponent,
-    SettingCreateComponent,
     ProductGroupCreateComponent,
     ProductGroupDeleteComponent,
     ProductGroupIndexComponent,
     ProductIndexComponent,
     ProductCreateComponent,
-    ProductDeleteComponent 
+    ProductDeleteComponent,
+    BookingContEmptyIndexComponent,
+    BookingContEmptyCreateComponent,
+    BookingContEmptyDeleteComponent,
+    BookingImportContCreateComponent,
+    BookingImportContDeleteComponent,
+    BookingImportContIndexComponent 
   ],
   imports: [
     CommonModule,

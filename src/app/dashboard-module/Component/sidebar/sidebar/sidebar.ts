@@ -30,7 +30,14 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Đơn vị',
                 url:'don-vi'
             },
-          
+            {
+                name :'Booking Cont E rỗng',
+                url:'booking-cont-rong'
+            },
+            {
+                name :'Booking nhập Cont',
+                url:'booking-nhap-cont'
+            },
            
         ]
     },
