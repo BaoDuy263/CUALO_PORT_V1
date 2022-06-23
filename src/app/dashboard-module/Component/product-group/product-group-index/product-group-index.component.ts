@@ -31,7 +31,7 @@ export class ProductGroupIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
-     this.productGroupService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+     this.productGroupService.Paging().subscribe(data => {
         this.lstdata = data;
         console.log(data)
      })

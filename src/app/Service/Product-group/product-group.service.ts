@@ -12,7 +12,7 @@ export class ProductGroupService {
   constructor(private httpService: CommonserviceService) { }
 
 
-  Paging(page:number, searchText:string,numberDis:number) {
+  Paging() {
     return this.httpService.getRequest('ProductGroup/GetProductGroup')
       .pipe(map((data) => {
           return data;

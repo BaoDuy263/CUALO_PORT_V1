@@ -12,8 +12,8 @@ export class UnitService {
   constructor(private httpService: CommonserviceService) { }
 
 
-  Paging(page:number, searchText:string,numberDis:number) {
-    return this.httpService.getRequest('Unit/GetProductUnit' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
+  Paging() {
+    return this.httpService.getRequest('Unit/GetProductUnit')
       .pipe(map((data) => {
           return data;
       }))

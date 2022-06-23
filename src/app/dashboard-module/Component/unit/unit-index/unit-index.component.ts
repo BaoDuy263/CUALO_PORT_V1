@@ -31,7 +31,7 @@ export class UnitIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
-     this.unitService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+     this.unitService.Paging().subscribe(data => {
         this.lstdata = data;
         console.log(data)
      })
