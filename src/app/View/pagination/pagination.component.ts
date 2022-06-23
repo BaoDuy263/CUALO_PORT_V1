@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { lstCutomer } from '../../Model/Customer'
+import { Pagination } from '../../Model/Table'
 interface PageData  {
   page: number,
   pageSize: number
@@ -22,7 +22,7 @@ export class PaginationComponent implements OnInit {
   isDisablePlus : boolean = false;
   isDisableMinus : boolean = false;
   
-  @Input() pageInput: lstCutomer;//Đầu vào
+  @Input() pageInput: Pagination;//Đầu vào
 
   @Output() pageEvent : EventEmitter<PageData>
   @Output() pageSizeEvent : EventEmitter<PageData>
@@ -35,7 +35,7 @@ export class PaginationComponent implements OnInit {
   constructor() {
     this.pageEvent = new EventEmitter<PageData>();
     this.pageSizeEvent = new EventEmitter<PageData>();
-    this.pageInput = {} as lstCutomer;
+    this.pageInput = {} as Pagination;
   }
 
   ngOnInit(): void {

@@ -30,9 +30,20 @@
     color: #fff;
 }
 
+.mat-tree-node:hover {
+    background-color: #feffff70;
+    border-radius: 5px;
+    color: black !important;
+}
+
 .mat-tree-node-child {
     cursor: pointer;
     padding-left: 25px;
     color: #fff;
+}
+
+
+.mat-tree-node:hover a{
+    color: black !important;
 }
 

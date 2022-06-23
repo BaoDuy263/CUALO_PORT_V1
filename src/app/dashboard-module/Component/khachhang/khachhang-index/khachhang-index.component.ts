@@ -1,7 +1,8 @@
 
 import { Component, OnInit  } from '@angular/core';
-import { lstCutomer,CustomerCreate } from '../../../../Model/Customer'
-import { CustomerService } from '../../../../Service/Customer/customer.service'
+import { lstCutomer,CustomerCreate } from '../../../../Model/Customer';
+import { Pagination } from '../../../../Model/Table';
+import { CustomerService } from '../../../../Service/Customer/customer.service';
 import {MatDialog} from '@angular/material/dialog';
 import {KhachhangCreateComponent} from '../khachhang-create/khachhang-create.component';
 import { KhachhangDeleteComponent } from '../khachhang-delete/khachhang-delete.component';
@@ -15,7 +16,13 @@ export class KhachhangIndexComponent implements OnInit {
 
   isCreate : boolean = true;
   customerId : number = 0;
-
+  
+  Pagination: Pagination = {
+    currentPage : 0,
+    pageSize : 0,
+    totalRecord : 0,
+    totalPage : 0,
+  }
 
   lstdata : lstCutomer = {
     currentPage : 0,
@@ -40,6 +47,11 @@ export class KhachhangIndexComponent implements OnInit {
   Pagingdata(PageInfo : any)  {
      this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
         this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+        this.Pagination.pageSize = data.pageSize,
+        this.Pagination.totalPage = data.totalPage,
+        this.Pagination.totalRecord = data.totalRecord
+        console.log('this.Pagination',this.Pagination);
      })
   }
 

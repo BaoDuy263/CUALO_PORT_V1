@@ -1,6 +1,6 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-        <div class="mat-tree-node-child">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle (click)="ChangeUrl(node.url)">
+        <div class="mat-tree-node-child" >
             <a style="text-decoration: none; color: #fff" routerLink={{node.url}}> {{node.name}}</a>
         </div>
     </mat-tree-node>

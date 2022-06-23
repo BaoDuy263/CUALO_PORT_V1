@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
   hasChild = (_: number, node: TypeRoute) => !!node.children && node.children.length > 0;
 
   ChangeUrl (url : string) {
-    this.router.navigate(['/' + url]);
+    this.router.navigate(['/Home/' + url]);
   }
 
 }
