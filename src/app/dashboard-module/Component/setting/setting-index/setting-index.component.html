@@ -1,0 +1,104 @@
+<div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+
+        <div class="row">
+            <h2 class="col-md-6" style="font-weight: 500;">Setting</h2>
+            <div class="mb-3 col-md-6" style="text-align: right;">
+                <!-- <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)"> -->
+                <button (click)="checkEdit()" type="button" class="btn btn-primary" type="submit"><i
+                        class="bi bi-pencil-square"
+                        style="font-size:15px;cursor: pointer; margin-right: 5px;"></i>Sửa</button>
+            </div>
+        </div>
+
+
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <!-- <h1>Thêm mới hàng hóa</h1> -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailSupport</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="emailSupport">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailOrder</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="emailOrder">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailSenderSmtp</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="emailSenderSmtp">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailSenderPort</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="emailSenderPort">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailSender</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="emailSender">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">emailSenderPassword</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control"
+                        formControlName="emailSenderPassword">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">telephone</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="telephone">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">websiteName</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="websiteName">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">domain</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="domain">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">adminName</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="adminName">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" style="margin-top: 29px;">
+                    <input formControlName="emailSenderSsl" type="checkbox" class="mr-2">
+                    <label for="txtStatus" v style=" margin-left: 5px;">emailSenderSsl</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" type="submit">Cập nhật</button>
+
+        </div>
+    </form>
+</div>

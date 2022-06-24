@@ -11,8 +11,12 @@ export const ROUTE_DATA: TypeRoute[] = [
         name :'Quản lý danh mục',
         children : [
             {
+                name :'Nhóm hàng hóa',
+                url:'nhom-san-pham'
+            },
+            {
                 name :'Hàng hóa',
-                url:'khachhang'
+                url:'san-pham'
             },
             {
                 name :'Container',
@@ -20,8 +24,21 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Phương tiện',
-                url:'khachhang'
-            }
+                url:'phuong-tien'
+            },
+            {
+                name :'Đơn vị',
+                url:'don-vi'
+            },
+            {
+                name :'Booking Cont E rỗng',
+                url:'booking-cont-rong'
+            },
+            {
+                name :'Booking nhập Cont',
+                url:'booking-nhap-cont'
+            },
+           
         ]
     },
     {
@@ -75,6 +92,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         name :'Quản lý lịch tàu',
         url:'khachhang'
     },
+  
     {
         name :'Quản trị hệ thống',
         children : [
@@ -87,6 +105,10 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url:'khachhang'
             }
         ]
+    },
+    {
+        name :'Setting',
+        url:'setting'
     },
   ]
   

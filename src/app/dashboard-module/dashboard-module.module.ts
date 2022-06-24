@@ -24,6 +24,26 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { ExampleComponent } from './Component/example/example.component';
 
 
+import { UnitCreateComponent } from './Component/unit/unit-create/unit-create.component';
+import { UnitDeleteComponent } from './Component/unit/unit-delete/unit-delete.component';
+import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
+import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
+// import { VehicleCreateComponent } from './Component/vehicle-create/vehicle-create.component';
+import { VehicleDeleteComponent } from './Component/vehicle/vehicle-delete/vehicle-delete.component';
+import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
+import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
+import { ProductGroupCreateComponent } from './Component/product-group/product-group-create/product-group-create.component';
+import { ProductGroupDeleteComponent } from './Component/product-group/product-group-delete/product-group-delete.component';
+import { ProductGroupIndexComponent } from './Component/product-group/product-group-index/product-group-index.component';
+import { ProductIndexComponent } from './Component/product/product-index/product-index.component';
+import { ProductCreateComponent } from './Component/product/product-create/product-create.component';
+import { ProductDeleteComponent } from './Component/product/product-delete/product-delete.component';
+import { BookingContEmptyIndexComponent } from './Component/booking-cont-empty/booking-cont-empty-index/booking-cont-empty-index.component';
+import { BookingContEmptyCreateComponent } from './Component/booking-cont-empty/booking-cont-empty-create/booking-cont-empty-create.component';
+import { BookingContEmptyDeleteComponent } from './Component/booking-cont-empty/booking-cont-empty-delete/booking-cont-empty-delete.component';
+import { BookingImportContCreateComponent } from './Component/booking-import-cont/booking-import-cont-create/booking-import-cont-create.component';
+import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
+import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +58,25 @@ import { ExampleComponent } from './Component/example/example.component';
     MultidropdownComponent,
     SidebarComponent,
     ExampleComponent,
+    UnitCreateComponent,
+    UnitDeleteComponent,
+    UnitIndexComponent,
+    VehicleCreateComponent,
+    VehicleDeleteComponent,
+    VehicleIndexComponent,
+    SettingIndexComponent,
+    ProductGroupCreateComponent,
+    ProductGroupDeleteComponent,
+    ProductGroupIndexComponent,
+    ProductIndexComponent,
+    ProductCreateComponent,
+    ProductDeleteComponent,
+    BookingContEmptyIndexComponent,
+    BookingContEmptyCreateComponent,
+    BookingContEmptyDeleteComponent,
+    BookingImportContCreateComponent,
+    BookingImportContDeleteComponent,
+    BookingImportContIndexComponent 
   ],
   imports: [
     CommonModule,
