@@ -65,4 +65,8 @@ export class AccountService {
         } as Item)) as Item[];
     }))
   }
+
+  refreshToken(data : any){
+    return this.httpService.postRequest('Account/RefreshToken',data)
+  }
 }

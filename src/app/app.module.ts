@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
-import {HttpClientInterceptor} from './Interceptor/http.client.interceptor';
+import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
+import { RoleGuardService } from './Interceptor/rolo.guard.service'
 import { ToastrModule } from 'ngx-toastr';
 
 import { FormsModule  } from '@angular/forms';
@@ -23,6 +24,7 @@ import { FormsModule  } from '@angular/forms';
     ToastrModule.forRoot()
   ],
   providers: [
+    RoleGuardService,
     AsyncPipe,
     {
       provide: HTTP_INTERCEPTORS,

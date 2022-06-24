@@ -12,14 +12,35 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
 import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
 import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
-
+import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 const routes: Routes = [
   { path: '', component: HomeComponent,
   children: [
-    { path: 'khachhang', component: KhachhangIndexComponent },
+    { 
+      path: 'khachhang',
+      component: KhachhangIndexComponent,
+      canActivate: [RoleGuardService],
+      data: {
+        roles: ["Admin"]
+      }
+    },
     { path: 'taikhoan', component : TaikhoanComponent},
-    { path: 'example', component : ExampleComponent},
-    { path: 'don-vi', component: UnitIndexComponent },
+    { 
+      path: 'example',
+      component : ExampleComponent,
+      canActivate: [RoleGuardService],
+      data: {
+        roles: ["test"]
+      }
+    },
+    { 
+      path: 'don-vi', 
+      component: UnitIndexComponent,
+      canActivate: [RoleGuardService],
+      data: {
+        roles: ["test"]
+      }
+    },
     { path: 'phuong-tien', component: VehicleIndexComponent },
     { path: 'nhom-san-pham', component: ProductGroupIndexComponent },
     { path: 'san-pham', component: ProductIndexComponent },
