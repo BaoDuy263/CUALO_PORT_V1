@@ -1,18 +1,22 @@
 
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnDestroy, OnInit  } from '@angular/core';
 import { lstCutomer,CustomerCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
 import { CustomerService } from '../../../../Service/Customer/customer.service';
 import {MatDialog} from '@angular/material/dialog';
 import {KhachhangCreateComponent} from '../khachhang-create/khachhang-create.component';
 import { KhachhangDeleteComponent } from '../khachhang-delete/khachhang-delete.component';
-import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
+import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
+
+
+
 @Component({
   selector: 'app-khachhang-index',
   templateUrl: './khachhang-index.component.html',
   styleUrls: ['./khachhang-index.component.css']
 })
-export class KhachhangIndexComponent implements OnInit {
+export class KhachhangIndexComponent implements OnInit,OnDestroy {
+
 
   isCreate : boolean = true;
   customerId : number = 0;
@@ -44,15 +48,21 @@ export class KhachhangIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
+
+  ngOnDestroy() {
+		// this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).un
+  }
+
   Pagingdata(PageInfo : any)  {
-     this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+    this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize)
+    .subscribe(
+      data => {
         this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-        console.log('this.Pagination',this.Pagination);
-     })
+      });
   }
 
   handlePage(event:any) {
@@ -81,7 +91,7 @@ export class KhachhangIndexComponent implements OnInit {
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(KhachhangCreateComponent);
+    const dialogRef = this.dialog.open(KhachhangCreateComponent,{width:'50%'});
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -96,7 +106,6 @@ export class KhachhangIndexComponent implements OnInit {
       } 
       this.Pagingdata(this.PageInfo);
     })
-    
   }
 
   openCreate() {
@@ -113,7 +122,6 @@ export class KhachhangIndexComponent implements OnInit {
         }
         this.Pagingdata(this.PageInfo);
     });
-    
   }
 
 
@@ -132,7 +140,6 @@ export class KhachhangIndexComponent implements OnInit {
         }
       }
       this.Pagingdata(this.PageInfo);
-  });
+    });
   }
-
 }

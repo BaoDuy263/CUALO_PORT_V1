@@ -9,6 +9,8 @@ import { KhachhangCreateComponent } from './Component/khachhang/khachhang-create
 import { KhachhangDeleteComponent } from './Component/khachhang/khachhang-delete/khachhang-delete.component';
 import { PaginationComponent } from '../View/pagination/pagination.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
+import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
+import {  MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 //Thư viện
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,9 +19,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatDialogModule} from '@angular/material/dialog';
-// import { ToastrModule } from 'ngx-toastr';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { ExampleComponent } from './Component/example/example.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,9 +32,12 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
     KhachhangIndexComponent,
     KhachhangCreateComponent,
     KhachhangDeleteComponent,
-    SidebarComponent,
+    TaikhoanComponent ,
     //view
-    PaginationComponent  
+    PaginationComponent,
+    MultidropdownComponent,
+    SidebarComponent,
+    ExampleComponent,
   ],
   imports: [
     CommonModule,
