@@ -25,8 +25,17 @@ export class HttpClientInterceptor implements HttpInterceptor {
           catchError((error) => {
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
-            if (!isUnauthorizedError && !isUnknownError) {
-              console.log('error',error)
+            if (isUnauthorizedError) {
+              let UserInfo = this.accountService.getUserInfo();
+              if(UserInfo.refreshToken && UserInfo.jwt){
+                  let obj = {
+                    accessToken: UserInfo.jwt,
+                    refreshToken : UserInfo.refreshToken
+                  }
+                  this.accountService.refreshToken(obj).subscribe(res => {
+                    console.log('res',res);
+                  })
+              }
               return throwError(error);
             }
     

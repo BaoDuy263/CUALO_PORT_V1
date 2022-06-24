@@ -23,6 +23,9 @@ import {MatMenuModule} from '@angular/material/menu';
 
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+
+import { ExampleComponent } from './Component/example/example.component';
+
 import { UnitCreateComponent } from './Component/unit/unit-create/unit-create.component';
 import { UnitDeleteComponent } from './Component/unit/unit-delete/unit-delete.component';
 import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
@@ -43,8 +46,6 @@ import { BookingContEmptyDeleteComponent } from './Component/booking-cont-empty/
 import { BookingImportContCreateComponent } from './Component/booking-import-cont/booking-import-cont-create/booking-import-cont-create.component';
 import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
 import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
-import { ExampleComponent } from './Component/example/example.component';
-
 
 
 @NgModule({
@@ -57,6 +58,10 @@ import { ExampleComponent } from './Component/example/example.component';
     TaikhoanComponent ,
     //view
     PaginationComponent,
+
+    MultidropdownComponent,
+    SidebarComponent,
+    ExampleComponent,
     UnitCreateComponent,
     UnitDeleteComponent,
     UnitIndexComponent,
@@ -79,6 +84,7 @@ import { ExampleComponent } from './Component/example/example.component';
     MultidropdownComponent,
     SidebarComponent,
     ExampleComponent,
+     
   ],
   imports: [
     CommonModule,
