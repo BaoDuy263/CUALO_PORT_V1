@@ -9,6 +9,8 @@ import { KhachhangCreateComponent } from './Component/khachhang/khachhang-create
 import { KhachhangDeleteComponent } from './Component/khachhang/khachhang-delete/khachhang-delete.component';
 import { PaginationComponent } from '../View/pagination/pagination.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
+import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
+import {  MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 //Thư viện
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,7 +19,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatDialogModule} from '@angular/material/dialog';
-// import { ToastrModule } from 'ngx-toastr';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { UnitCreateComponent } from './Component/unit/unit-create/unit-create.component';
@@ -40,6 +41,9 @@ import { BookingContEmptyDeleteComponent } from './Component/booking-cont-empty/
 import { BookingImportContCreateComponent } from './Component/booking-import-cont/booking-import-cont-create/booking-import-cont-create.component';
 import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
 import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
+import { ExampleComponent } from './Component/example/example.component';
+
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     KhachhangIndexComponent,
     KhachhangCreateComponent,
     KhachhangDeleteComponent,
-    SidebarComponent,
+    TaikhoanComponent ,
     //view
     PaginationComponent,
     UnitCreateComponent,
@@ -69,7 +73,10 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     BookingContEmptyDeleteComponent,
     BookingImportContCreateComponent,
     BookingImportContDeleteComponent,
-    BookingImportContIndexComponent 
+    BookingImportContIndexComponent,
+    MultidropdownComponent,
+    SidebarComponent,
+    ExampleComponent,
   ],
   imports: [
     CommonModule,

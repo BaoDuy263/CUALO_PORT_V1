@@ -8,16 +8,18 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import {HttpClientInterceptor} from './Interceptor/http.client.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+
+import { FormsModule  } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ToastrModule.forRoot()
   ],
   providers: [

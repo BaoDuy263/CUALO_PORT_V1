@@ -13,10 +13,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
+import { VerifycodeComponent } from './Component/verifycode/verifycode.component'
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ForgotpasswordComponent,
+    VerifycodeComponent
   ],
   imports: [
     CommonModule,

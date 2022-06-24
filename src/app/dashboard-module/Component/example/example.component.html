@@ -1,0 +1,12 @@
+
+<div class="row">
+    <app-multidropdown 
+        [items]="items" 
+        [showSearch]="showSearch" 
+        [showAll]="showAll" 
+        [showStatus]="showStatus"
+        [showError]="showError" 
+        placeholder="Select User" 
+        (itemChange)="onItemChange($event)">
+    </app-multidropdown>
+</div>
