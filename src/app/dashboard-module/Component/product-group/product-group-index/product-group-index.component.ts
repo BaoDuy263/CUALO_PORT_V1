@@ -33,7 +33,6 @@ export class ProductGroupIndexComponent implements OnInit {
   Pagingdata(PageInfo : any)  {
      this.productGroupService.Paging().subscribe(data => {
         this.lstdata = data;
-        console.log(data)
      })
   }
 
@@ -61,7 +60,6 @@ export class ProductGroupIndexComponent implements OnInit {
     this.isCreate = false;
     this.unitId = id;
     const dialogRef = this.dialog.open(ProductGroupCreateComponent);
-    console.log(dialogRef)
     dialogRef.componentInstance.customerId = this.unitId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -100,7 +98,6 @@ export class ProductGroupIndexComponent implements OnInit {
   openDelete(id: number){
     this.unitId = id;
     const dialogRef = this.dialog.open(ProductGroupDeleteComponent);
-    console.log(dialogRef)
     dialogRef.componentInstance.customerId = this.unitId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){

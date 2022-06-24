@@ -10,6 +10,7 @@ export const ROUTE_DATA: TypeRoute[] = [
     {
         name :'Quản lý danh mục',
         children : [
+
             {
                 name :'Nhóm hàng hóa',
                 url:'nhom-san-pham'
@@ -19,9 +20,13 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url:'san-pham'
             },
             {
-                name :'Container',
+                name :'Khách hàng',
                 url:'khachhang'
             },
+            // {
+            //     name :'Container',
+            //     url:'khachhang'
+            // },
             {
                 name :'Phương tiện',
                 url:'phuong-tien'
@@ -30,6 +35,23 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Đơn vị',
                 url:'don-vi'
             },
+           
+           
+        ]
+    },
+    // {
+    //     name :'Quản lý khách hàng',
+    //     children : [
+           
+    //         {
+    //             name :'Booking',
+    //             url:'khachhang'
+    //         }
+    //     ]
+    // },
+    {
+        name :'Quản lý booking',
+        children : [
             {
                 name :'Booking Cont E rỗng',
                 url:'booking-cont-rong'
@@ -38,20 +60,6 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Booking nhập Cont',
                 url:'booking-nhap-cont'
             },
-           
-        ]
-    },
-    {
-        name :'Quản lý khách hàng',
-        children : [
-            {
-                name :'Khách hàng',
-                url:'khachhang'
-            },
-            {
-                name :'Booking',
-                url:'khachhang'
-            }
         ]
     },
     {

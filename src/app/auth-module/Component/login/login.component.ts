@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   onLogin(UserInfo : UserLogin) {
     this.AccountService.Login(UserInfo).subscribe(response => {
         if(response){
-          this.router.navigate(['/Home']);
+          this.router.navigate(['/Home/nhom-san-pham']);
         }
     })
   }
