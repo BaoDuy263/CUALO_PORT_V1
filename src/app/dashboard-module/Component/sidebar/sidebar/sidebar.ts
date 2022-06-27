@@ -38,7 +38,6 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Booking nhập Cont',
                 url:'booking-nhap-cont'
             },
-           
         ]
     },
     {

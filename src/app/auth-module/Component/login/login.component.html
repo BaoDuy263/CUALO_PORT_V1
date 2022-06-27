@@ -1,9 +1,9 @@
 <div class="main-login">
-    <div class="box-login">
+    <div class="box-login" *ngIf="!isLoading">
         <div class="Logo">
             <img src="../../../../assets/img/logo-cualo-3.jpg" style="width: 150px" alt="">
         </div>
-        <div class="form">
+        <div class="form" >
             <div class="form-input">
                 <mat-form-field class="example-full-width">
                   <mat-label>Tên đăng nhập</mat-label>
@@ -24,6 +24,14 @@
             </div>
             <div class="form-action">
                 <a routerLink="forgotPassword">Quên mật khẩu</a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="form" *ngIf="isLoading">
+        <div class="d-flex justify-content-center align-items-center"  *ngIf="isLoading">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
             </div>
         </div>
     </div>

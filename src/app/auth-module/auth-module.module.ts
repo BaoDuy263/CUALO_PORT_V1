@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AuthModuleRoutingModule } from './auth-module-routing.module';
 //Component
 import { LoginComponent } from './Component/login/login.component';
@@ -15,12 +14,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
-import { VerifycodeComponent } from './Component/verifycode/verifycode.component'
+import { VerifycodeComponent } from './Component/verifycode/verifycode.component';
 @NgModule({
   declarations: [
     LoginComponent,
     ForgotpasswordComponent,
-    VerifycodeComponent
+    VerifycodeComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +32,7 @@ import { VerifycodeComponent } from './Component/verifycode/verifycode.component
     MatButtonModule,
     MatCheckboxModule,
     //
-    FormsModule
+    FormsModule,
   ]
 })
 export class AuthModuleModule { }

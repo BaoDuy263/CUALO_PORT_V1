@@ -5,7 +5,6 @@ import { ROUTE_DATA , TypeRoute} from './sidebar'
 import { Router} from '@angular/router';
 
 
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -22,9 +21,15 @@ export class SidebarComponent implements OnInit {
     this.dataSource.data = ROUTE_DATA;
   }
 
+  LoadSideBar() // hàm sau để load sibar theo role;
+  {
+    const UserInfo =  JSON.parse(localStorage.getItem('UserInfo')|| '{}');
+    const lstRole = UserInfo.listRole;
+  }
 
   hasChild = (_: number, node: TypeRoute) => !!node.children && node.children.length > 0;
 
+  
   ChangeUrl (url : string) {
     this.router.navigate(['/Home/' + url]);
   }

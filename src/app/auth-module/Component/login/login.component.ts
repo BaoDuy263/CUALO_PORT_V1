@@ -13,13 +13,17 @@ export class LoginComponent implements OnInit {
       userName : '',
       password : '',
    }
+
+  isLoading : boolean = false;
   constructor(private AccountService: AccountService,private router: Router, private toatr : ToastrcustomService) { }
 
   ngOnInit(): void {
   }
   
   onLogin(UserInfo : UserLogin) {
+    this.isLoading = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
+        this.isLoading = false;
         if(response.errorCode == "00"){
           this.toatr.showSuccess("Đăng nhập thành công")
           this.router.navigate(['/Home']);

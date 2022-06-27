@@ -28,10 +28,6 @@ const routes: Routes = [
     { 
       path: 'example',
       component : ExampleComponent,
-      canActivate: [RoleGuardService],
-      data: {
-        roles: ["test"]
-      }
     },
     { 
       path: 'don-vi', 
