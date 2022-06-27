@@ -1,5 +1,9 @@
 
+<div style="position: absolute; top: 40%; left: 40%;">
+  <mat-spinner *ngIf="loadding == true" ></mat-spinner>
+</div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+  
   <div class="row">
         <h2 style="font-weight: 500;">Danh sách khách hàng</h2>
     </div>
@@ -45,6 +49,6 @@
         <ng-container *ngIf="Pagination.totalPage > 0">
            <app-pagination [pageInput] ="Pagination"  (pageEvent)="handlePage($event)" (pageSizeEvent) = "handlePage($event)"></app-pagination>
         </ng-container>
-        
     </div>
+   
 </div>

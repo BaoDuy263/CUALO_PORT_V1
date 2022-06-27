@@ -1,5 +1,5 @@
 
-import { Component, OnDestroy, OnInit  } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit  } from '@angular/core';
 import { lstCutomer,CustomerCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
 import { CustomerService } from '../../../../Service/Customer/customer.service';
@@ -17,10 +17,9 @@ import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 })
 export class KhachhangIndexComponent implements OnInit,OnDestroy {
 
-
   isCreate : boolean = true;
   customerId : number = 0;
-  
+  loadding: boolean = false;
   Pagination: Pagination = {
     currentPage : 0,
     pageSize : 0,
@@ -54,9 +53,12 @@ export class KhachhangIndexComponent implements OnInit,OnDestroy {
   }
 
   Pagingdata(PageInfo : any)  {
+    this.loadding = true;
+
     this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize)
     .subscribe(
       data => {
+        this.loadding = false;
         this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,

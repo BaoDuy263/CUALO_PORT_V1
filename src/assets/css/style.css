@@ -8,79 +8,22 @@
 @media (max-width: 768px) {
     /* .mat-drawer {
         transform: translate3d(-100%, 0, 0) !important;
+    }
+    .mat-sidenav-content{
+      margin-left:  0px !important;
     } */
+    .box-login{
+        box-shadow: 0 5px 45px rgb(0 0 0 / 0%) !important;
+    }
+}
+.ng-star-inserted{
+    stroke-width: 4% !important;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #00afdd !important;
 }
 
-
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 200px; /* Full width */
-    height: 200px; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    
-    -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    position: fixed;
-    bottom: 0;
-    background-color: #fefefe;
-    width: 200px;
-    -webkit-animation-name: slideIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: slideIn;
-    animation-duration: 0.4s
-  }
-  
-  /* The Close Button */
-  .close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .modal-header {
-    padding: 2px 16px;
-    background-color: red;
-    color: black;
-  }
-  
- 
-  
-  /* Add Animation */
-  @-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0} 
-    to {bottom: 0; opacity: 1}
-  }
-  
-  @keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
-  }
-  
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
-  }
+.mat-progress-spinner svg {
+    width: 80px !important;
+    height: 80px !important;
+}

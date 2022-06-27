@@ -20,6 +20,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
@@ -97,6 +98,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     MatTreeModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     //
     FormsModule,
     ReactiveFormsModule,

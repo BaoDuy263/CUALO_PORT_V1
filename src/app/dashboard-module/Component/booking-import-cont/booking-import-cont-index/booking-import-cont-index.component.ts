@@ -1,17 +1,12 @@
 
 import { Component, OnInit  } from '@angular/core';
-// import { lstCutomer,productCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
-// import { productService } from '../../../../Service/Customer/customer.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
-import { ProductService } from 'src/app/Service/Product/product.service';
-import { lstProduct, ProductCreate } from 'src/app/Model/Product';
 import { BookingImportContService } from 'src/app/Service/booking-import-cont/booking-import-cont.service';
-import { ProductCreateComponent } from '../../product/product-create/product-create.component';
 import { BookingImportContCreateComponent } from '../booking-import-cont-create/booking-import-cont-create.component';
 import { BookingImportContDeleteComponent } from '../booking-import-cont-delete/booking-import-cont-delete.component';
-import { lstBookingImportContService } from 'src/app/Model/Booking-import-cont';
+import { BookingImportContServiceCreate, lstBookingImportContService } from 'src/app/Model/Booking-import-cont';
 
 @Component({
   selector: 'app-booking-import-cont-index',
@@ -20,6 +15,7 @@ import { lstBookingImportContService } from 'src/app/Model/Booking-import-cont';
 export class BookingImportContIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
+  loadding: boolean = false;
   
   Pagination: Pagination = {
     currentPage : 0,
@@ -49,8 +45,10 @@ export class BookingImportContIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
+    this.loadding = true;
+
      this.BookingImportContService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      // console.log(data)  
+      this.loadding = false;
       this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
@@ -74,22 +72,21 @@ export class BookingImportContIndexComponent implements OnInit {
 
 
   //Create
-  productCreate : ProductCreate = {
-    code: '',
-    name: '',
-    typeProduct: '',
-    groupId : '',
-    unitId: '',
-    quantity:'' ,
-    status: true,
-    isDeleted: true,
-    price: '',
+  BookingImportContServiceCreate : BookingImportContServiceCreate = {
+    title: '',
+    customerId: '',
+    bookingContent: '',
+    registerDate : new Date,
+    step: '',
+    sumNumberConts: '',
+    stavoyagetus: '',
+    vessel: '',
   }
 
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(BookingImportContIndexComponent);
+    const dialogRef = this.dialog.open(BookingImportContCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {

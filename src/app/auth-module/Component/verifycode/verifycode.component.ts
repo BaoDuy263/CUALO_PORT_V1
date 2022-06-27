@@ -10,6 +10,8 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom';
 })
 export class VerifycodeComponent implements OnInit {
   code : string = "";
+  loadding: boolean = false;
+
   constructor(private accountservice : AccountService,private router : Router,private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
@@ -17,12 +19,16 @@ export class VerifycodeComponent implements OnInit {
 
 
   sendCode() {
+    this.loadding = true;
+
     var stringToObj = JSON.parse(String(sessionStorage.getItem('emailInfo')));
     var obj = {
       email : stringToObj,
       code : this.code
     }
     this.accountservice.sendCode(obj).subscribe(response => {
+    this.loadding = false;
+
       if(response.jwt != null){
         sessionStorage.setItem("accInfo", JSON.stringify(response));
         this.router.navigate(['/Home/taikhoan']);

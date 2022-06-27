@@ -1,10 +1,10 @@
 
 
-      <div class="container-fluid">
-        <div class="row">
+<div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+  <div class="row">
           <div class="col-12">
   
-            <div class="invoice p-3 mb-3 mt-3">
+            <div class="">
               <div class="row mb-2">
                 <div class="col-6 ">
                   <h4 style="font-weight: bold;font-size: 1.3rem !important;">
@@ -91,7 +91,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="txtFullName">Mật khẩu mới</label>
-                        <input type="password" formControlName="newPassword"  class="form-control ">
+                        <input type="password" formControlName="newPassword" [readonly]="isChangePass" class="form-control ">
                         <div *ngIf="submited && newPassword?.errors?.['minlength']">
                           <span *ngIf="submited && newPassword?.errors?.['minlength']" style="color: red;">Mật khẩu phải 6 ký tự trở lên</span>
                         </div>
@@ -100,7 +100,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="txtFullName">Nhập lại mật khẩu</label>
-                        <input type="password" formControlName="confirmPassword" class="form-control ">
+                        <input type="password" formControlName="confirmPassword" [readonly]="isChangePass" class="form-control ">
                         <div *ngIf="submited && confirmPassword?.errors?.['minlength']">
                           <span *ngIf="submited && confirmPassword?.errors?.['minlength']" style="color: red;">Mật khẩu phải 6 ký tự trở lên</span>
                         </div>
@@ -112,8 +112,8 @@
                     <div class="row no-print">
                         <div class="col-12">
                           <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" type="submit" >Lưu</button>
-                            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button>
+                            <button type="button" class="btn btn-primary" type="submit" >Lưu thông tin</button>
+                            <!-- <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button> -->
                        </div>
                         </div>
                     </div>

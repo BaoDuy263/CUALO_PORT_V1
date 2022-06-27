@@ -18,6 +18,7 @@ import { VehicleDeleteComponent } from '../vehicle-delete/vehicle-delete.compone
 export class VehicleIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
+  loadding: boolean = false;
   
   Pagination: Pagination = {
     currentPage : 0,
@@ -46,14 +47,15 @@ export class VehicleIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
+    this.loadding = true;
      this.VehicleService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      // console.log(data)  
+      this.loadding = false;
       this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-        // console.log('this.Pagination',this.Pagination);
+        // console.log('this.Pagination',this.Pagination);  
      })
   }
 

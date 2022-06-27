@@ -28,13 +28,14 @@ export const ROUTE_DATA: TypeRoute[] = [
             //     url:'khachhang'
             // },
             {
-                name :'Phương tiện',
-                url:'phuong-tien'
-            },
-            {
                 name :'Đơn vị',
                 url:'don-vi'
             },
+            {
+                name :'Phương tiện',
+                url:'phuong-tien'
+            },
+          
            
            
         ]

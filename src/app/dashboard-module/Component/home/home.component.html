@@ -20,27 +20,24 @@
           
           <div class="">
               <div  [matMenuTriggerFor]="menu" >
-                <img *ngIf="urlAvartar == null" id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%;"/>
-                <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%;"/>
+                <img *ngIf="urlAvartar == null" id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
             
               </div>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <a routerLink="taikhoan" mat-menu-item>
+
                   <mat-icon>edit</mat-icon>
                   <span>
-                    <a routerLink="taikhoan" style="color: black;  text-decoration: none;">
                           Thay đổi thông tin
-                    </a>
                   </span>
-                </button>
-                <button mat-menu-item>
+                </a>
+                <a routerLink="/Login" mat-menu-item>
                   <mat-icon>logout</mat-icon>
                   <span>
-                    <a routerLink="/Login" style="color: black;  text-decoration: none;">
                           Đăng xuất
-                    </a>
                   </span>
-                </button>
+                </a>
                
               </mat-menu>
             </div>
@@ -61,7 +58,9 @@
       </div> -->
       <div class="content">
         <ng-container>
-          <router-outlet></router-outlet>
+          <div style="position: relative;">
+            <router-outlet></router-outlet>
+          </div>
       </ng-container>
       </div>
     </mat-sidenav-content>
