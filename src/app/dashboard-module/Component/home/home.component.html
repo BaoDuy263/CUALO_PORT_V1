@@ -10,10 +10,14 @@
           <span style="padding-left: 10px;">Trang chủ</span>
         </div>
         <div class="toolbar-right">
-          <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
-          <div class="circle">
+          <mat-icon class="mat-icon-rtl-mirror" style="margin-right: 15px;">notifications_none</mat-icon>
+          <div class="circle" style="cursor: pointer;"  (click)="show=!show">
               <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;"/>
           </div>
+        </div>
+        <div class="infomationLoad nonActive" [ngClass]="show ? 'active' : 'nonActive'">
+            <p (click)="loadInformation()">Thông tin tài khoản</p>
+            <p (click)="LogOut()">Đăng xuất</p>
         </div>
       </mat-toolbar>
       <div class="content">
