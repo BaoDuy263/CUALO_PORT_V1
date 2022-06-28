@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
@@ -10,17 +10,20 @@ import { KhachhangDeleteComponent } from './Component/khachhang/khachhang-delete
 import { PaginationComponent } from '../View/pagination/pagination.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
-import {  MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
+import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
+import { LoadingComponent } from '../View/loading/loading.component'
 //Thư viện
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+// import {MatMenuModule} from '@angular/material/menu';
+
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatIconModule} from '@angular/material/icon';
+import { MatCardModule} from '@angular/material/card';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatListModule} from '@angular/material/list';
+import { MatTreeModule} from '@angular/material/tree';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
@@ -62,6 +65,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
 
     MultidropdownComponent,
     SidebarComponent,
+    LoadingComponent,
     ExampleComponent,
     UnitCreateComponent,
     UnitDeleteComponent,
@@ -96,7 +100,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     MatToolbarModule,
     MatListModule,
     MatTreeModule,
-    MatMenuModule,
+    // MatMenuModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     //
@@ -104,6 +108,6 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     ReactiveFormsModule,
     //
     // ToastrModule.forRoot()
-  ]
+  ],
 })
 export class DashboardModuleModule { }

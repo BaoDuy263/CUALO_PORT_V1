@@ -64,6 +64,19 @@ export const ROUTE_DATA: TypeRoute[] = [
         ]
     },
     {
+        name :'Quản lý khách hàng',
+        children : [
+            {
+                name :'Khách hàng',
+                url:'khachhang'
+            },
+            {
+                name :'Booking',
+                url:'khachhang'
+            }
+        ]
+    },
+    {
         name :'Quản lý giao nhận cont',
         children : [
             {

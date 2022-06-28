@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
       userName : '',
       password : '',
    }
+
+  isLoading : boolean = false;
   constructor(private AccountService: AccountService,private router: Router, private toatr : ToastrcustomService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
     this.AccountService.Login(UserInfo).subscribe(response => {
 
       // this.loadding = false;
+
 
         if(response.errorCode == "00"){
           this.toatr.showSuccess("Đăng nhập thành công")

@@ -20,6 +20,7 @@ export class KhachhangIndexComponent implements OnInit,OnDestroy {
   isCreate : boolean = true;
   customerId : number = 0;
   loadding: boolean = false;
+
   Pagination: Pagination = {
     currentPage : 0,
     pageSize : 0,
@@ -59,6 +60,7 @@ export class KhachhangIndexComponent implements OnInit,OnDestroy {
     .subscribe(
       data => {
         this.loadding = false;
+
         this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,

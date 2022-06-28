@@ -19,6 +19,8 @@ export class ExampleComponent implements OnInit {
 
   constructor(private accountservice : AccountService) { }
 
+  showLoading : boolean = false;
+
   ngOnInit(): void {
     this.accountservice.getListSelectMulti().subscribe(res => {
        this.items = res;
@@ -29,5 +31,12 @@ export class ExampleComponent implements OnInit {
   onItemChange(item: Item): void {
     this.currentSelectedItem = item;
   }
+
+  abc() {
+      this.showLoading = !this.showLoading;
+      console.log('this.showLoading',this.showLoading);
+  }
+
+
 
 }

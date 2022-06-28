@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CommonserviceService {
   _urlApi: string = 'http://45.124.94.191:8019/api/';
+  // _urlApi: string = 'https://localhost:44310/api/';
   constructor( 
     private http: HttpClient
   ) {}

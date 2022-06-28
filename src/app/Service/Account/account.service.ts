@@ -56,6 +56,10 @@ export class AccountService {
     return this.httpService.postRequest('Account/SetPassword',data);
   }
 
+  logOut(){
+    localStorage.removeItem('UserInfo');
+  }
+
   getListSelectMulti(){
     return this.httpService.getRequest('admin/ManageAccount')
     .pipe(map((data : any) => {

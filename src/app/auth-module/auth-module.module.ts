@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AuthModuleRoutingModule } from './auth-module-routing.module';
 //Component
 import { LoginComponent } from './Component/login/login.component';
@@ -22,7 +21,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   declarations: [
     LoginComponent,
     ForgotpasswordComponent,
-    VerifycodeComponent
+    VerifycodeComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     //
-    FormsModule
+    FormsModule,
   ]
 })
 export class AuthModuleModule { }

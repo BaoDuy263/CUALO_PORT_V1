@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,14 +10,14 @@ import { AsyncPipe } from '@angular/common';
 import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
 import { RoleGuardService } from './Interceptor/rolo.guard.service'
 import { ToastrModule } from 'ngx-toastr';
-
 import { FormsModule  } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
+    
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -38,6 +37,9 @@ import { FormsModule  } from '@angular/forms';
       multi: true
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }
