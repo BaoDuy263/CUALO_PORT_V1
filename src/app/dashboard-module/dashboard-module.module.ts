@@ -13,6 +13,9 @@ import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 import { LoadingComponent } from '../View/loading/loading.component'
 //Thư viện
+
+// import {MatMenuModule} from '@angular/material/menu';
+
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatIconModule} from '@angular/material/icon';
 import { MatCardModule} from '@angular/material/card';
@@ -21,10 +24,11 @@ import { MatListModule} from '@angular/material/list';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
-import { ExampleComponent } from './Component/example/example.component';
 
+import { ExampleComponent } from './Component/example/example.component';
 
 import { UnitCreateComponent } from './Component/unit/unit-create/unit-create.component';
 import { UnitDeleteComponent } from './Component/unit/unit-delete/unit-delete.component';
@@ -47,6 +51,7 @@ import { BookingImportContCreateComponent } from './Component/booking-import-con
 import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
 import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -57,6 +62,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     TaikhoanComponent ,
     //view
     PaginationComponent,
+
     MultidropdownComponent,
     SidebarComponent,
     LoadingComponent,
@@ -79,7 +85,11 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     BookingContEmptyDeleteComponent,
     BookingImportContCreateComponent,
     BookingImportContDeleteComponent,
-    BookingImportContIndexComponent 
+    BookingImportContIndexComponent,
+    MultidropdownComponent,
+    SidebarComponent,
+    ExampleComponent,
+     
   ],
   imports: [
     CommonModule,
@@ -90,6 +100,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     MatToolbarModule,
     MatListModule,
     MatTreeModule,
+    // MatMenuModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     //

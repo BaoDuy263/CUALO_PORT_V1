@@ -1,15 +1,49 @@
-<mat-sidenav-container>
-    <mat-sidenav  mode="side" [(opened)]="opened">
+<mat-sidenav-container >
+    <mat-sidenav mode="side" [(opened)]="opened">
       <p>LOGO CẢNG</p>
       <app-sidebar></app-sidebar>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar>
-        <div class="toolbar-left">
+    <mat-sidenav-content >
+      <mat-toolbar >
+        <div  class="toolbar-left">
           <mat-icon  (click)="opened=!opened">menu</mat-icon>
-          <span style="padding-left: 10px;">Trang chủ</span>
+          <span  style="padding-left: 10px;">Trang chủ</span>
+          
         </div>
+
+
+        
+        
         <div class="toolbar-right">
+          <!-- <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
+          
+          
+          <div class="">
+              <div  [matMenuTriggerFor]="menu" >
+                <img *ngIf="urlAvartar == null" id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+            
+              </div>
+              <mat-menu #menu="matMenu">
+                <a routerLink="taikhoan" mat-menu-item>
+
+                  <mat-icon>edit</mat-icon>
+                  <span>
+                          Thay đổi thông tin
+                  </span>
+                </a>
+                <a routerLink="/Login" mat-menu-item>
+                  <mat-icon>logout</mat-icon>
+                  <span>
+                          Đăng xuất
+                  </span>
+                </a>
+               
+              </mat-menu>
+            </div>
+        </div> -->
+
+
           <mat-icon class="mat-icon-rtl-mirror" style="margin-right: 15px;">notifications_none</mat-icon>
           <div class="circle" style="cursor: pointer;"  (click)="show=!show">
               <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;"/>
@@ -20,9 +54,12 @@
             <p (click)="LogOut()">Đăng xuất</p>
         </div>
       </mat-toolbar>
+   
       <div class="content">
         <ng-container>
-          <router-outlet></router-outlet>
+          <div class="" style="position: relative; padding: 20px;">
+            <router-outlet></router-outlet>
+          </div>
       </ng-container>
       </div>
     </mat-sidenav-content>

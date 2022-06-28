@@ -1,5 +1,9 @@
 
+<div style="position: absolute; top: 40%; left: 40%;">
+  <mat-spinner *ngIf="loadding == true" ></mat-spinner>
+</div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+  
   <div class="row">
         <h2 style="font-weight: 500;">Danh sách khách hàng</h2>
     </div>
@@ -19,9 +23,8 @@
       </div>
   </div>
     <div class="row" >
-        <div *ngIf="isLoading">
-          <!-- <app-loading  [isLoading]="isLoading"></app-loading> -->
-        </div>
+        <!-- <div *ngIf="isLoading">
+        </div> -->
         <div class="table-responsive" >
             <table class="table table-striped table-hover">
                 <thead >
@@ -34,11 +37,11 @@
                   </tr>
                 </thead>
                 <tbody style="border-top: none;" >
-                  <tr *ngIf="isLoading">
+                  <!-- <tr *ngIf="isLoading">
                       <td colspan="5">
                         <app-loading [isLoading]="isLoading"></app-loading>
                       </td>
-                  </tr>
+                  </tr> -->
                   <tr *ngFor="let item of lstdata.data; index as i" class="align-middle" >
                     <td style="text-align: center;">{{i + 1}}</td>
                     <td >{{item.name}}</td>
@@ -52,6 +55,6 @@
         <ng-container *ngIf="Pagination.totalPage > 0">
            <app-pagination [pageInput] ="Pagination"  (pageEvent)="handlePage($event)" (pageSizeEvent) = "handlePage($event)"></app-pagination>
         </ng-container>
-        
     </div>
+   
 </div>

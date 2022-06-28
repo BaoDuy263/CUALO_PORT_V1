@@ -1,6 +1,29 @@
-.btn-outline-secondary{
+.btn-outline-secondary {
     color: #fff !important;
-    background-color: #00afdd !important ;
+    background-color: #00afdd !important;
     border-color: #00afdd !important;
-    font-weight: 500!important;
+    font-weight: 500 !important;
+}
+
+@media (max-width: 768px) {
+    /* .mat-drawer {
+        transform: translate3d(-100%, 0, 0) !important;
+    }
+    .mat-sidenav-content{
+      margin-left:  0px !important;
+    } */
+    .box-login{
+        box-shadow: 0 5px 45px rgb(0 0 0 / 0%) !important;
+    }
+}
+.ng-star-inserted{
+    stroke-width: 4% !important;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #00afdd !important;
+}
+
+.mat-progress-spinner svg {
+    width: 80px !important;
+    height: 80px !important;
 }

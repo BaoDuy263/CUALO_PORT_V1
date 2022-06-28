@@ -17,6 +17,7 @@ import { lstProduct, ProductCreate } from 'src/app/Model/Product';
 export class ProductIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
+  loadding: boolean = false;
   
   Pagination: Pagination = {
     currentPage : 0,
@@ -46,8 +47,12 @@ export class ProductIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
+    this.loadding = true;
+
      this.productService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
       // console.log(data)  
+    this.loadding = false;
+
       this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,

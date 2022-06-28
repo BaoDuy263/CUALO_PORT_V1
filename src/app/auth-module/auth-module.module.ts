@@ -14,7 +14,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
-import { VerifycodeComponent } from './Component/verifycode/verifycode.component';
+import { VerifycodeComponent } from './Component/verifycode/verifycode.component'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -31,6 +33,7 @@ import { VerifycodeComponent } from './Component/verifycode/verifycode.component
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
     //
     FormsModule,
   ]

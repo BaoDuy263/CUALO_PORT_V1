@@ -31,6 +31,8 @@ export class TaikhoanComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isChangePass = true;
+
     this.accountservice.getAccountInfo().subscribe(response => {
        this.urlAvartar = response.avatar;
        this.InfoAccount = new FormGroup({
@@ -50,7 +52,7 @@ export class TaikhoanComponent implements OnInit {
   checkChangePass() {
     this.isChangePass = !this.isChangePass;
   }
-
+ 
 
 
   get newPassword() { return this.InfoAccount.get('newPassword'); }

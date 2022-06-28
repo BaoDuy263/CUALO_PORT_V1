@@ -1,63 +1,64 @@
 
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { lstUnit,unitCreate } from '../../../../Model/unit'
 // import { UnitService } from '../../../../Service/unit/unit.service'
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
 import { UnitCreateComponent } from '../unit-create/unit-create.component';
 import { UnitDeleteComponent } from '../unit-delete/unit-delete.component';
-import {  UnitCreate } from '../../../../Model/Unit';
+import { UnitCreate } from '../../../../Model/Unit';
 import { UnitService } from 'src/app/Service/Unit/unit.service';
 @Component({
   selector: 'app-unit-index',
   templateUrl: './unit-index.component.html',
 })
 export class UnitIndexComponent implements OnInit {
-  isCreate : boolean = true;
-  unitId : number = 0;
+  isCreate: boolean = true;
+  unitId: number = 0;
+  loadding: boolean = false;
 
 
-  lstdata: any=[];
+  lstdata: any = [];
 
   PageInfo = {
-    page : 1,
-    Keyword : '',
-    pageSize : 10
+    page: 1,
+    Keyword: '',
+    pageSize: 10
   }
-  constructor(private unitService : UnitService,public dialog: MatDialog,private toastr : ToastrcustomService) { }
+  constructor(private unitService: UnitService, public dialog: MatDialog, private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
   }
 
-  Pagingdata(PageInfo : any)  {
-     this.unitService.Paging().subscribe(data => {
-        this.lstdata = data;
-        console.log(data)
-     })
+  Pagingdata(PageInfo: any) {
+    this.loadding = true;
+    this.unitService.Paging().subscribe(data => {
+      this.loadding = false;
+      this.lstdata = data;
+    })
   }
 
-  handlePage(event:any) {
+  handlePage(event: any) {
     this.PageInfo.page = event.page;
     this.PageInfo.pageSize = event.pageSize;
     this.Pagingdata(this.PageInfo);
   }
 
-  onSearch(e:any)
-  {
+  onSearch(e: any) {
     this.PageInfo.Keyword = e;
     this.Pagingdata(this.PageInfo);
   }
 
 
   //Create
-  unitCreate : UnitCreate = {
+  unitCreate: UnitCreate = {
     name: '',
     note: '',
     status: true,
   }
 
-  openEdit(id: number){
+  openEdit(id: number) {
     this.isCreate = false;
     this.unitId = id;
     const dialogRef = this.dialog.open(UnitCreateComponent);
@@ -65,55 +66,52 @@ export class UnitIndexComponent implements OnInit {
     dialogRef.componentInstance.customerId = this.unitId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-          if(result.statusCode === 200){
-            this.toastr.showSuccess(result.message);
-          }
-          else
-          {
-            this.toastr.showError(result.message);
-          }
-      } 
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
       this.Pagingdata(this.PageInfo);
     })
-    
+
   }
 
   openCreate() {
     const dialogRef = this.dialog.open(UnitCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
-        if(result){
-          if(result.statusCode === 200){
-            this.toastr.showSuccess(result.message);
-          }
-          else
-          {
-            this.toastr.showError(result.message);
-          }
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
         }
-        this.Pagingdata(this.PageInfo);
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+      this.Pagingdata(this.PageInfo);
     });
-    
+
   }
 
 
-  openDelete(id: number){
+  openDelete(id: number) {
     this.unitId = id;
     const dialogRef = this.dialog.open(UnitDeleteComponent);
     console.log(dialogRef)
     dialogRef.componentInstance.customerId = this.unitId;
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        if(result.statusCode === 200){
+      if (result) {
+        if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
         }
-        else
-        {
+        else {
           this.toastr.showError(result.message);
         }
       }
       this.Pagingdata(this.PageInfo);
-  });
+    });
   }
 
 }

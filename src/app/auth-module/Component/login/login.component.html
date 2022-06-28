@@ -1,3 +1,6 @@
+<div style="position: absolute; top: 47%; left: 47%; z-index: 1;">
+    <mat-spinner *ngIf="loadding == true" ></mat-spinner>
+  </div>
 <div class="main-login">
     <div class="box-login" *ngIf="!isLoading">
         <div class="Logo">
@@ -20,7 +23,8 @@
                 <mat-checkbox class="example-margin">Remember me!</mat-checkbox>
             </div>
             <div class="form-action">
-                <button mat-raised-button color="primary" (click)="onLogin(User)">Đăng Nhập</button>
+                <button (click)="onLogin(User)" mat-raised-button color="primary" >Đăng Nhập</button>
+                <!-- <button (click)="onLogin(User)">Đăng Nhập</button> -->
             </div>
             <div class="form-action">
                 <a routerLink="forgotPassword">Quên mật khẩu</a>
