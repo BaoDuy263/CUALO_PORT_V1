@@ -1,13 +1,13 @@
-<mat-sidenav-container>
-    <mat-sidenav  mode="side" [(opened)]="opened">
+<mat-sidenav-container >
+    <mat-sidenav mode="side" [(opened)]="opened">
       <p>LOGO CẢNG</p>
       <app-sidebar></app-sidebar>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar>
-        <div class="toolbar-left">
+    <mat-sidenav-content >
+      <mat-toolbar >
+        <div  class="toolbar-left">
           <mat-icon  (click)="opened=!opened">menu</mat-icon>
-          <span style="padding-left: 10px;">Trang chủ</span>
+          <span  style="padding-left: 10px;">Trang chủ</span>
           
         </div>
 
@@ -54,20 +54,10 @@
             <p (click)="LogOut()">Đăng xuất</p>
         </div>
       </mat-toolbar>
-      <!-- <div id="myModal" class="modal">
-
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Modal Header</h2>
-          </div>
-          
-        </div>
-      
-      </div> -->
+   
       <div class="content">
         <ng-container>
-          <div style="position: relative;">
+          <div class="" style="position: relative; padding: 20px;">
             <router-outlet></router-outlet>
           </div>
       </ng-container>
