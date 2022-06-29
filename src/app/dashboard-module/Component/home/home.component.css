@@ -80,7 +80,7 @@ mat-toolbar .infomationLoad{
     border-radius: 6px;
     box-shadow: 0 5px 45px rgba(0,0,0,0.15);
     width:150px;
-    
+    z-index: 10000;
 }
 
 mat-toolbar .infomationLoad p{

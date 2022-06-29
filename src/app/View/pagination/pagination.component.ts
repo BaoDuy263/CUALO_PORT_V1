@@ -45,11 +45,11 @@ export class PaginationComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) :void {
     if (changes['pageInput']) {
         if(this.pageInput.totalPage > 5){
-          this.ArrayPage = Array(5).fill(0).map((x,i)=>i);
+          this.ArrayPage = Array(5).fill(1).map((x,i)=>i + 1);
         }
         else
         {
-          this.ArrayPage = Array(this.pageInput.totalPage).fill(0).map((x,i)=>i);
+          this.ArrayPage = Array(this.pageInput.totalPage).fill(0).map((x,i)=>i + 1);
         }
        
     }
@@ -66,47 +66,60 @@ export class PaginationComponent implements OnInit {
     if(type === 'nextplus' && this.pagedata.page < this.pageInput.totalPage)
     {
       this.pagedata.page = this.pagedata.page + 1;
-      this.isDisableMinus = false;
-      if((this.pagedata.page == this.pageInput.totalPage - 1)){
-        this.isDisablePlus = true
-      } 
+      // 
       if(this.pagedata.page == (this.ArrayPage[this.ArrayPage.length - 1] + 1) && this.pageInput.totalPage > 5)
       {
-        let PageNumber = this.pagedata.page + 6 > this.pageInput.totalPage ? this.pageInput.totalPage : this.pagedata.page + 6
-        this.ArrayPage = Array(PageNumber - 1).fill(this.pagedata.page).map((x,i)=>i).slice(this.pagedata.page - 1,PageNumber - 1);
+        let PageNumber = this.pagedata.page + 5 > this.pageInput.totalPage ? this.pageInput.totalPage : this.pagedata.page + 5
+        this.ArrayPage = Array(PageNumber).fill(this.pagedata.page).map((x,i)=>i  + 1).slice(this.pagedata.page - 1,PageNumber + 1);
       }
+      
     }
 
     if(type === 'nextall')
     {
-      this.pagedata.page = this.pageInput.totalPage
+      this.pagedata.page = this.pageInput.totalPage;
+      if(this.pageInput.totalPage > 5){
+        this.ArrayPage = Array(this.pageInput.totalPage).fill(this.pagedata.page).map((x,i)=>i  + 1).slice(this.pageInput.totalPage - 5,this.pageInput.totalPage + 1);
+      }else
+      {
+        this.ArrayPage = Array(this.pageInput.totalPage).fill(this.pagedata.page).map((x,i)=>i  + 1)
+      }
     }
 
     if(type === 'minus')
     {
       this.pagedata.page = this.pagedata.page - 1;
-      this.isDisablePlus = false;
-      if(this.pagedata.page == 1)
+      if(this.pagedata.page == this.ArrayPage[0] - 1 && this.ArrayPage[0] + 1 >= 5)
       {
-        this.isDisableMinus = true
-      }
-      if(this.pagedata.page == (this.ArrayPage[0]) && this.ArrayPage[0] + 1 >= 5)
-      {
-        let PageNumber = this.ArrayPage[0] + 1;
-        this.ArrayPage = Array(PageNumber).fill(this.pagedata.page).map((x,i)=>i).slice(this.ArrayPage[0] - 4,PageNumber);
+        let PageNumber = this.ArrayPage[0];
+        this.ArrayPage = Array(PageNumber).fill(this.pagedata.page).map((x,i)=>i).slice(PageNumber - 5,PageNumber);
       }
     }
 
     if(type === 'minusall')
     {
       this.pagedata.page = 1;
+      if(this.pageInput.totalPage > 5){
+        this.ArrayPage = Array(5).fill(1).map((x,i)=>i + 1);
+      }
+      else
+      {
+        this.ArrayPage = Array(this.pageInput.totalPage).fill(0).map((x,i)=>i + 1);
+      }
     }
+    this.setStatus();
     this.pageEvent.emit(this.pagedata)
   }
 
   ChangePageNumber(event:any) {
     this.pagedata.pageSize = event.target.value.substr(0,2)
     this.pageEvent.emit(this.pagedata)
+  }
+
+
+  setStatus(){
+      this.pagedata.page === 1 ? this.isDisableMinus = true : this.isDisableMinus = false;
+      this.pagedata.page === this.pageInput.totalPage ? this.isDisablePlus = true : this.isDisablePlus = false;
   }
 
 }
