@@ -8,7 +8,7 @@ mat-sidenav-container {
 } */
 
 mat-sidenav {
-    background-color: #244177 !important;
+    background-color: #0277bd !important;
     width: 250px;
     
 }
@@ -80,6 +80,7 @@ mat-toolbar .infomationLoad{
     border-radius: 6px;
     box-shadow: 0 5px 45px rgba(0,0,0,0.15);
     width:150px;
+    z-index: 1;
     
 }
 
@@ -100,6 +101,9 @@ mat-toolbar .infomationLoad.active {
     visibility: visible;
 }
 
+.mat-drawer-inner-container{
+
+}
 /* /////////// */
 /* mat-toolbar {
     background: #004a9f;

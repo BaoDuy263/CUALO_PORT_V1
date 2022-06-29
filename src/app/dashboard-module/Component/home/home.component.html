@@ -1,21 +1,24 @@
-<mat-sidenav-container >
-    <mat-sidenav mode="side" [(opened)]="opened">
-      <p>LOGO CẢNG</p>
-      <app-sidebar></app-sidebar>
-    </mat-sidenav>
-    <mat-sidenav-content >
-      <mat-toolbar >
-        <div  class="toolbar-left">
-          <mat-icon  (click)="opened=!opened">menu</mat-icon>
-          <span  style="padding-left: 10px;">Trang chủ</span>
-          
-        </div>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <a rounterLink="/main" class="brand-link">
+      <img src="../assets/img/logo-cualo.png" alt="" class="brand-image img-circle elevation-3"
+        style=" width: 45px; border-radius: 50%; margin: 9px;">
+      <span class=" font-weight-light text-white pt-2 h6">CUALO PORT</span>
+    </a>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <div class="toolbar-left">
+        <mat-icon (click)="opened=!opened">menu</mat-icon>
+        <span style="padding-left: 10px;">Trang chủ</span>
+      </div>
 
 
-        
-        
-        <div class="toolbar-right">
-          <!-- <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
+
+
+      <div class="toolbar-right">
+        <!-- <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
           
           
           <div class="">
@@ -44,23 +47,23 @@
         </div> -->
 
 
-          <mat-icon class="mat-icon-rtl-mirror" style="margin-right: 15px;">notifications_none</mat-icon>
-          <div class="circle" style="cursor: pointer;"  (click)="show=!show">
-              <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;"/>
-          </div>
+        <mat-icon class="mat-icon-rtl-mirror" style="margin-right: 15px;">notifications_none</mat-icon>
+        <div class="circle" style="cursor: pointer;" (click)="show=!show">
+          <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;" />
         </div>
-        <div class="infomationLoad nonActive" [ngClass]="show ? 'active' : 'nonActive'">
-            <p (click)="loadInformation()">Thông tin tài khoản</p>
-            <p (click)="LogOut()">Đăng xuất</p>
-        </div>
-      </mat-toolbar>
-   
-      <div class="content">
-        <ng-container>
-          <div class="" style="position: relative; padding: 20px;">
-            <router-outlet></router-outlet>
-          </div>
-      </ng-container>
       </div>
-    </mat-sidenav-content>
+      <div class="infomationLoad nonActive" [ngClass]="show ? 'active' : 'nonActive'">
+        <p (click)="loadInformation()">Thông tin tài khoản</p>
+        <p (click)="LogOut()">Đăng xuất</p>
+      </div>
+    </mat-toolbar>
+
+    <div class="content">
+      <ng-container>
+        <div class="" style="position: relative; padding: 20px;">
+          <router-outlet></router-outlet>
+        </div>
+      </ng-container>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
