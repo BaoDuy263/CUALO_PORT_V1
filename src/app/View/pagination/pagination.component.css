@@ -1,19 +1,20 @@
 .Pagination{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    width: 50%;
+    width: 100%;
   }
 
   .Pagination .show{
     height: 20px;
-    padding-top: 10px;
+    padding-top: 7px;
   }
   .Pagination .Perpage{
     display: flex;
     align-items: center;
     height: 20px;
     justify-content: space-around;
+    padding-left: 5px;
   }
 
 
@@ -38,8 +39,9 @@
 
 
 
-  .Pagination .Pagesize{
+.Pagination .Pagesize{
     height: 20px;
+    padding-left: 5px;
   }
 
 .isDisableMinus{
