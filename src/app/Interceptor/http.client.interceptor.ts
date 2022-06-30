@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import {AccountService } from '../Service/Account/account.service'
 
@@ -11,10 +12,9 @@ import {AccountService } from '../Service/Account/account.service'
 
 export class HttpClientInterceptor implements HttpInterceptor {
 
-    constructor(private accountService: AccountService) {}
+    constructor(private accountService: AccountService,private router: Router) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       
         if (!request.headers.has('Content-Type')) {
             request = request.clone({
               headers: request.headers.set('Content-Type', 'application/json')
@@ -33,8 +33,10 @@ export class HttpClientInterceptor implements HttpInterceptor {
                     refreshToken : UserInfo.refreshToken
                   }
                   this.accountService.refreshToken(obj).subscribe(res => {
-                    console.log('res',res);
+                    // console.log('res',res);
                   })
+              }else {
+                this.router.navigateByUrl('/Login');
               }
               return throwError(error);
             }
@@ -46,11 +48,10 @@ export class HttpClientInterceptor implements HttpInterceptor {
 
       private addAccessToken(request: HttpRequest<any>): HttpRequest<any> {
         const userInfo = this.accountService.getUserInfo();
-    
+        
         if (!userInfo) {
           return request;
         }
-    
         return request.clone({
           setHeaders: {
             Authorization: "Bearer " + userInfo.jwt

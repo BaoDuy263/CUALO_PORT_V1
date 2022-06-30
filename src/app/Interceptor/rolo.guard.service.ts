@@ -14,7 +14,7 @@ export class RoleGuardService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         let isCanActivate = false;
         const UserInfo = this.accountservice.getUserInfo()
-
+        // console.log(UserInfo)
         //errCode = 00 là đã đăng nhập
         if(UserInfo.errorCode === "00"){
             isCanActivate = this.CheckPermisson(route,UserInfo.listRole);

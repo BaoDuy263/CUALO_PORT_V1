@@ -14,11 +14,12 @@ import { NavigationEnd } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit   { 
+export class HomeComponent implements OnInit    { 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   opened : boolean;
   show : boolean
+  urlAvartar: string = '';
   constructor(private router: Router,private cdr: ChangeDetectorRef,private accountService : AccountService, private observer: BreakpointObserver) {
     this.opened = true;
     this.show = false;
@@ -41,6 +42,10 @@ export class HomeComponent implements OnInit   {
   ngOnInit(): void {
       if(!localStorage.getItem('UserInfo')){
         this.router.navigate(['/Login']);
+      }else{
+        this.accountService.getAccountInfo().subscribe(response => {
+          this.urlAvartar = response.avatar;
+         });
       }
   }
 
@@ -48,9 +53,6 @@ export class HomeComponent implements OnInit   {
     location.reload();
   }
 
-  loadInformation() {
-    this.router.navigate(['/Home/taikhoan']);
-  }
 
   LogOut(){
       this.accountService.logOut();
