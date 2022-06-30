@@ -92,13 +92,13 @@ export class VehicleIndexComponent implements OnInit {
       if(result){
           if(result.statusCode === 200){
             this.toastr.showSuccess(result.message);
+            this.Pagingdata(this.PageInfo);
           }
           else
           {
             this.toastr.showError(result.message);
           }
       } 
-      this.Pagingdata(this.PageInfo);
     })
     
   }
@@ -109,13 +109,13 @@ export class VehicleIndexComponent implements OnInit {
         if(result){
           if(result.statusCode === 200){
             this.toastr.showSuccess(result.message);
+            this.Pagingdata(this.PageInfo);
           }
           else
           {
             this.toastr.showError(result.message);
           }
         }
-        this.Pagingdata(this.PageInfo);
     });
     
   }
@@ -129,13 +129,13 @@ export class VehicleIndexComponent implements OnInit {
       if(result){
         if(result.statusCode === 200){
           this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
         }
         else
         {
           this.toastr.showError(result.message);
         }
       }
-      this.Pagingdata(this.PageInfo);
   });
   }
 
