@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
 
   treeControl = new NestedTreeControl<TypeRoute>(node => node.children);
   dataSource = new MatTreeNestedDataSource<TypeRoute>();
-
+  activeNode:any;
   constructor(private router: Router) { }
 
   ngOnInit(): void {

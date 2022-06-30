@@ -33,9 +33,9 @@
 }
 
 .mat-tree-node:hover {
-    background-color: #feffff70;
+    background-color: #1e9fed;
     /* border-radius: 5px; */
-    color: black !important;
+    color: white !important;
 }
 
 .mat-tree-node-child {
@@ -46,13 +46,19 @@
 
 
 .mat-tree-node:hover a{
-    color: black !important;
+    color: white !important;
 }
 
 .example-tree ul {
     overflow: hidden;
   }
 
-  mat-tree-node:active {
-    background-color: yellow;
-  }
+
+.txtColor:hover{
+color: red;
+cursor: pointer;
+}
+
+.background-highlight{
+background: #1e9fed;
+}

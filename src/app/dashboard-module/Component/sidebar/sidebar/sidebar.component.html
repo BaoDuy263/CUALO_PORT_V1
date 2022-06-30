@@ -20,9 +20,10 @@
 </mat-tree> -->
 
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle (click)="ChangeUrl(node.url)" >
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle (click)="ChangeUrl(node.url)"  (click)="activeNode = node" [ngClass]="{ 'background-highlight': activeNode === node }">
+
     <li class="mat-tree-node" style="padding-left: 10px;">
-      <a style="text-decoration: none; color: #fff" routerLink={{node.url}}> {{node.name}}</a>
+      <a style="text-decoration: none; color: #fff" class="txtColor" routerLink={{node.url}}> {{node.name}}</a>
 
     </li>
   </mat-tree-node>
