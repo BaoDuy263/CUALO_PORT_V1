@@ -14,6 +14,7 @@
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
+    /* padding: 0 10px; */
 }
   
 
@@ -33,7 +34,7 @@
 
 .mat-tree-node:hover {
     background-color: #feffff70;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color: black !important;
 }
 
@@ -48,3 +49,10 @@
     color: black !important;
 }
 
+.example-tree ul {
+    overflow: hidden;
+  }
+
+  mat-tree-node:active {
+    background-color: yellow;
+  }
