@@ -4,3 +4,5 @@
 @import '~ngx-toastr/toastr';
 html, body { height: 100vh; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;padding: 0; }
+.mat-drawer-inner-container::-webkit-scrollbar {
+    display: none;}
