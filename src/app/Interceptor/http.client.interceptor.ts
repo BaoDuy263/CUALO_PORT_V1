@@ -35,8 +35,6 @@ export class HttpClientInterceptor implements HttpInterceptor {
                   this.accountService.refreshToken(obj).subscribe(res => {
                     // console.log('res',res);
                   })
-              }else {
-                this.router.navigateByUrl('/Login');
               }
               return throwError(error);
             }

@@ -23,8 +23,8 @@
           
           <div class="">
               <div  [matMenuTriggerFor]="menu" >
-                <img *ngIf="urlAvartar == null" id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
-                <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <img id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <!-- <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/> -->
             
               </div>
               <mat-menu #menu="matMenu">
