@@ -1,0 +1,125 @@
+
+
+<div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+  <div class="row">
+          <div class="col-12">
+  
+            <div class="">
+              <div class="row mb-2">
+                <div class="col-6 ">
+                  <h4 style="font-weight: bold;font-size: 1.3rem !important;">
+                    <i class="fas fa-globe"></i> Chỉnh sửa thông tin.
+                  </h4>
+                </div>
+              </div>
+  
+              <hr>
+              <form [formGroup]="InfoAccount" action="" method="POST"  (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div>
+                        <img *ngIf="urlAvartar == null" onclick="document.getElementById('filePicker').click();" alt=""  style="height: 150px; width: 150px; border-radius: 50%; border: 1px solid; padding: 6px;"><br>
+                        <img *ngIf="urlAvartar != null" [src]="'http://45.124.94.191:8019'+ urlAvartar" onclick="document.getElementById('filePicker').click();" alt=""  style="height: 150px; width: 150px; border-radius: 50%; border: 1px solid; padding: 6px;"><br>
+                        <input type="file" style="display:none;" id="filePicker" (change)="handleFileSelect($event)">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 15px;">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtUserName">Họ và tên</label>
+                        <input formControlName="fullName" type="text" id="txtUserName" class="form-control">
+                        <div *ngIf="submited && fullName?.errors?.['required']">
+                          <span *ngIf="fullName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtFullName">Tên hiển thị</label>
+                        <input type="text" formControlName="displayName" class="form-control">
+                        <div *ngIf="submited && displayName?.errors?.['required']">
+                          <span *ngIf="displayName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtPassword">Email</label>
+                        <input formControlName="email" type="text" id="txtPassword" class="form-control">
+                      </div>
+                    </div>
+    
+                  </div>
+                  <div class="row" style="padding-top: 15px;">
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtPHone">Số điện thoại</label>
+                        <input type="text" formControlName="phoneNumber" id="txtPHone" class="form-control">
+    
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtEmail">Ngày sinh</label>
+                        <input type="date" formControlName="address" id="txtEmail" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtFullName">Tên công ty</label>
+                        <input type="text" formControlName="company" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+  
+                <div class="row" style="padding-top: 15px;">
+                  <div class="col-md-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="checkChangePass()">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Thay đổi mật khẩu
+                    </label>
+                  </div>
+                </div>
+                </div>
+  
+                <div class="row" style="padding-top: 15px;">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtFullName">Mật khẩu mới</label>
+                        <input type="password" formControlName="newPassword" [readonly]="isChangePass" class="form-control ">
+                        <div *ngIf="submited && newPassword?.errors?.['minlength']">
+                          <span *ngIf="submited && newPassword?.errors?.['minlength']" style="color: red;">Mật khẩu phải 6 ký tự trở lên</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="txtFullName">Nhập lại mật khẩu</label>
+                        <input type="password" formControlName="confirmPassword" [readonly]="isChangePass" class="form-control ">
+                        <div *ngIf="submited && confirmPassword?.errors?.['minlength']">
+                          <span *ngIf="submited && confirmPassword?.errors?.['minlength']" style="color: red;">Mật khẩu phải 6 ký tự trở lên</span>
+                        </div>
+                      </div>
+                    </div>
+    
+                  </div>
+                <div class="d-flex justify-content-end">
+                    <div class="row no-print">
+                        <div class="col-12">
+                          <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" type="submit" >Lưu thông tin</button>
+                            <!-- <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button> -->
+                       </div>
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>

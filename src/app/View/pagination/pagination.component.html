@@ -1,0 +1,27 @@
+<div class="Pagination">
+    <div class="show">
+        <p>{{pageInput.pageSize*pagedata.page - pageInput.pageSize + 1  }} - {{pageInput.pageSize*pagedata.page}}/{{pageInput.totalRecord}}</p>
+    </div>
+    <div class="Perpage">
+        <div class="icon" (click)="ChangPage(1,'minusall')">
+          <i class="bi bi-chevron-double-left"></i>
+        </div>
+        <div class="icon" (click)="ChangPage(1,'minus')" [class.isDisableMinus]="isDisableMinus">
+          <i class="bi bi-chevron-left"></i>
+        </div>
+        <div class="icon" *ngFor="let item of ArrayPage; let i = index" (click)="ChangPage(item,'default')" [class.isActive] = "item === pagedata.page">
+            {{item}}
+        </div>
+        <div class="icon" (click)="ChangPage(1,'nextplus')"[class.isDisablePlus]="isDisablePlus" >
+          <i class="bi bi-chevron-right" ></i>
+        </div>
+        <div class="icon">
+          <i class="bi bi-chevron-double-right" (click)="ChangPage(1,'nextall')"></i>
+        </div>
+    </div>
+    <div class="Pagesize">
+        <select class="form-select form-select-sm" aria-label="Default select example" (change)="ChangePageNumber($event)">
+            <option *ngFor="let i of ArrayPageNumber">{{i}} dòng/trang</option>
+          </select>
+    </div>
+</div>

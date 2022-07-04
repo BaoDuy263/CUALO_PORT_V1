@@ -1,0 +1,17 @@
+
+<div class="row">
+    <app-multidropdown 
+        [items]="items" 
+        [showSearch]="showSearch" 
+        [showAll]="showAll" 
+        [showStatus]="showStatus"
+        [showError]="showError" 
+        placeholder="Select User" 
+        (itemChange)="onItemChange($event)">
+    </app-multidropdown>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+    <app-loading  [isLoading]="showLoading"></app-loading>
+</div>
+<button (click)="abc()" >set false</button>

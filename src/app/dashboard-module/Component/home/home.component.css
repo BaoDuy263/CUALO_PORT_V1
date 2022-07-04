@@ -3,13 +3,12 @@ mat-sidenav-container {
     height: 100vh;
 }
 
-mat-sidenav, mat-sidenav-content {
+/* mat-sidenav, mat-sidenav-content {
     padding: 16px;
-}
+} */
 
-/* sidebar */
 mat-sidenav {
-    background-color: #244177 !important;
+    background-color: #0277bd !important;
     width: 250px;
     
 }
@@ -33,11 +32,14 @@ mat-sidenav a:hover ,a:active{
 
 }
 
-/* conten */
 mat-toolbar{
-    margin: -16px;
-    width: 102%;
-    box-shadow: 0px -3px 17px 9px rgba(0,0,0,0.1);
+    /* margin: -16px;
+    width: 103%; */
+    background-color: white;
+}
+
+.mat-sidenav-content{
+    background-color: #e6e8ea;
 }
 
 mat-toolbar .circle
@@ -53,6 +55,7 @@ mat-toolbar .toolbar-left
    display: flex;
    align-items: center;
    justify-content: flex-start;
+  
 }
 
 mat-toolbar .toolbar-right
@@ -61,11 +64,106 @@ mat-toolbar .toolbar-right
    display: flex;
    align-items: center;
    justify-content: flex-end;
+   
 }
 
 
-mat-sidenav-content .content{
-    padding: 50px 20px;
+/* mat-sidenav-content .content{
+    padding: 30px 0px;
+} */
+
+mat-toolbar .infomationLoad{
+    position: absolute;
+    top:66px;
+    right: 5px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+    width:150px;
+    z-index: 10000;
+}
+
+mat-toolbar .infomationLoad p{
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+mat-toolbar .infomationLoad.nonActive {
+    visibility: hidden;
 }
 
 
+mat-toolbar .infomationLoad.active {
+    visibility: visible;
+}
+
+.mat-drawer-inner-container{
+
+}
+/* /////////// */
+/* mat-toolbar {
+    background: #004a9f;
+    color: white;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: #002b5c;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+
+    padding: 16px;
+
+    overflow: auto;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+}
+
+.avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+} */

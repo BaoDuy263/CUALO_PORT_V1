@@ -1,0 +1,85 @@
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <h1>Thêm mới  booking nhập container</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <div *ngIf="submited && title?.errors?.['required']">
+                        <span *ngIf="title?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="txtPHone">customerId</label>
+                    <select (change)="getCustomerId($event)" formControlName="customerId" class="form-control" style="width: 100%;">
+                        <option value=0 >Chọn khách hàng</option>
+                        <option *ngFor="let item of listCustomer" [value]="item.id">{{item.name}}
+                        </option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">bookingContent</label>
+                    <input type="text" class="form-control" formControlName="bookingContent">
+                   
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">registerDate</label>
+                    <input type="datetime-local" class="form-control" formControlName="registerDate">
+                    <div *ngIf="submited && registerDate?.errors?.['required']">
+                        <span *ngIf="registerDate?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">step</label>
+                    <input type="number" class="form-control" formControlName="step">
+                    <div *ngIf="submited && step?.errors?.['required']">
+                        <span *ngIf="step?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">sumNumberConts</label>
+                    <input type="number" class="form-control" formControlName="sumNumberConts">
+                    <div *ngIf="submited && sumNumberConts?.errors?.['required']">
+                        <span *ngIf="sumNumberConts?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">voyage</label>
+                    <input type="text" class="form-control" formControlName="voyage">
+                   
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">vessel</label>
+                    <input type="text" class="form-control" formControlName="vessel">
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" type="submit">Thêm mới</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+                bỏ</button>
+        </div>
+    </form>
+</div>

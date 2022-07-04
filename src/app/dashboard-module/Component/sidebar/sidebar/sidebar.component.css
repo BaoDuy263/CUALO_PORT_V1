@@ -1,7 +1,8 @@
 .example-tree{
     padding-top: 20px;
-    background-color: #244177 !important;
+    background-color: #0277bd !important;
     color: #fff;
+    border-top: 1px solid white;
 }
 
 .example-tree-invisible {
@@ -13,6 +14,7 @@
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
+    /* padding: 0 10px; */
 }
   
 
@@ -30,9 +32,33 @@
     color: #fff;
 }
 
+.mat-tree-node:hover {
+    background-color: #1e9fed;
+    /* border-radius: 5px; */
+    color: white !important;
+}
+
 .mat-tree-node-child {
     cursor: pointer;
     padding-left: 25px;
     color: #fff;
 }
 
+
+.mat-tree-node:hover a{
+    color: white !important;
+}
+
+.example-tree ul {
+    overflow: hidden;
+  }
+
+
+.txtColor:hover{
+color: red;
+cursor: pointer;
+}
+
+.background-highlight{
+background: #1e9fed;
+}

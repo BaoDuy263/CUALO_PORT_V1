@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KhachhangEditComponent } from './khachhang-edit.component';
+import { TaikhoanComponent } from './taikhoan.component';
 
-describe('KhachhangEditComponent', () => {
-  let component: KhachhangEditComponent;
-  let fixture: ComponentFixture<KhachhangEditComponent>;
+describe('TaikhoanComponent', () => {
+  let component: TaikhoanComponent;
+  let fixture: ComponentFixture<TaikhoanComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KhachhangEditComponent ]
+      declarations: [ TaikhoanComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(KhachhangEditComponent);
+    fixture = TestBed.createComponent(TaikhoanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

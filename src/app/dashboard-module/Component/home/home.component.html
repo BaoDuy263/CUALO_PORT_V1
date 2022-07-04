@@ -1,23 +1,69 @@
 <mat-sidenav-container>
-    <mat-sidenav  mode="side" [(opened)]="opened">
-      <p>LOGO CẢNG</p>
-      <app-sidebar></app-sidebar>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar>
-        <div class="toolbar-left">
-          <mat-icon  (click)="opened=!opened">menu</mat-icon>
-          <span style="padding-left: 10px;">Trang chủ</span>
-        </div>
-        <div class="toolbar-right">
-          <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
-          <div class="circle">
-              <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;"/>
-          </div>
-        </div>
-      </mat-toolbar>
-      <div class="content">
-        <router-outlet></router-outlet>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <div>
+      <img src="../assets/img/logo-cualo.png" alt="" class="brand-image img-circle elevation-3"
+        style=" width: 45px; border-radius: 50%; margin: 9px;">
+      <span class=" font-weight-light text-white pt-2 h6">CUALO PORT</span>
+    </div>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <div class="toolbar-left">
+        <mat-icon style="cursor: pointer;" (click)="opened=!opened">menu</mat-icon>
+        <span style="padding-left: 10px;">Trang chủ</span>
       </div>
-    </mat-sidenav-content>
+
+
+
+
+      <div class="toolbar-right">
+        <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
+          
+          
+          <div class="">
+              <div  [matMenuTriggerFor]="menu" >
+                <img id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <!-- <img *ngIf="urlAvartar != null" id="myBtn" [src]="'http://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/> -->
+            
+              </div>
+              <mat-menu #menu="matMenu">
+                <a routerLink="taikhoan" mat-menu-item>
+
+                  <mat-icon>edit</mat-icon>
+                  <span>
+                          Thay đổi thông tin
+                  </span>
+                </a>
+                <a (click)="LogOut()" mat-menu-item>
+                  <mat-icon>logout</mat-icon>
+                  <span>
+                          Đăng xuất
+                  </span>
+                </a>
+               
+              </mat-menu>
+            </div>
+        </div>
+
+
+        <!-- <mat-icon class="mat-icon-rtl-mirror" style="margin-right: 15px;">notifications_none</mat-icon>
+        <div class="circle" style="cursor: pointer;" (click)="show=!show">
+          <img src="../../../../assets/img/avatar5.png" style="width: 50px;height: 50px;border-radius: 50%;" />
+        </div>
+      </div>
+      <div class="infomationLoad nonActive" [ngClass]="show ? 'active' : 'nonActive'">
+        <p (click)="loadInformation()">Thông tin tài khoản</p>
+        <p (click)="LogOut()">Đăng xuất</p>
+      </div> -->
+    </mat-toolbar>
+
+    <div class="content">
+      <ng-container>
+        <div class="" style="position: relative; padding: 20px;">
+          <router-outlet></router-outlet>
+        </div>
+      </ng-container>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

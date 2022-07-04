@@ -1,1 +1,56 @@
-<p>khachhang-create works!</p>
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <h1>Thêm mới khách hàng</h1>
+         </div>
+         <div class="row">
+           <div class="col-lg-6">
+                 <div class="mb-3">
+                     <label for="exampleFormControlInput1" class="form-label">UserName</label>
+                     <input type="text" class="form-control" formControlName="name">
+                     <div *ngIf="submited && name?.errors?.['required']">
+                        <span *ngIf="name?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    </div>
+                 </div>  
+           </div>
+           <div class="col-lg-6">
+                 <div class="mb-3">
+                     <label for="exampleFormControlInput1" class="form-label">Họ Và Tên</label>
+                     <input type="text" class="form-control" formControlName="fullName">
+                     <div *ngIf="submited && fullName?.errors?.['required']">
+                        <span *ngIf="fullName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    </div>
+                 </div>  
+           </div>
+         </div>
+         <div class="row">
+             <div class="col-lg-6">
+                   <div class="mb-3">
+                       <label for="exampleFormControlInput1" class="form-label">Điện thoại</label>
+                       <input type="text" class="form-control" formControlName="phoneNumber">
+                       <div *ngIf="submited && phoneNumber?.errors?.['pattern']">
+                            <span *ngIf="phoneNumber?.errors?.['pattern']" style="color: red;">Số điện thoại không hợp lệ</span>  
+                      </div>
+                   </div>  
+             </div>
+             <div class="col-lg-6">
+                   <div class="mb-3">
+                       <label for="exampleFormControlInput1" class="form-label">Địa chỉ</label>
+                       <input type="text" class="form-control" formControlName="address">
+                   </div>  
+             </div>
+           </div>
+           <div class="row">
+             <div class="col-lg-12">
+                   <div class="mb-3">
+                       <label for="exampleFormControlInput1 form-control-lg" class="form-label">Mô tả</label>
+                       <textarea class="form-control "  rows="3" formControlName="description"></textarea>
+                   </div>  
+             </div>
+           </div>
+           <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" type="submit" >Thêm mới</button>
+                <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button>
+           </div>
+    </form>
+  </div>

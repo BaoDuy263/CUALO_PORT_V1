@@ -1,0 +1,24 @@
+<div style="position: absolute; top: 47%; left: 47%; z-index: 1;">
+    <mat-spinner *ngIf="loadding == true" ></mat-spinner>
+  </div>
+<div class="main-login">
+    <div class="box-login">
+        <div class="Logo">
+            <img src="../../../../assets/img/logo-cualo-3.jpg" style="width: 150px" alt="">
+        </div>
+        <div class="form">
+            <div class="form-input">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Nhập Code</mat-label>
+                  <input matInput [(ngModel)] = "code">
+                </mat-form-field>
+            </div>
+            <div class="form-action">
+                <button mat-raised-button color="primary" (click)="sendCode()">Xác nhận</button>
+            </div>
+            <div class="form-action" style="text-align:center">
+                <a routerLink="" style="text-decoration: none;">Quay lại trang đăng nhập</a>
+            </div>
+        </div>
+    </div>
+</div>
