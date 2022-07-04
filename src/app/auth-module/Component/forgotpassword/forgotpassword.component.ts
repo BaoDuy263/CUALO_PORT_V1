@@ -23,7 +23,7 @@ export class ForgotpasswordComponent implements OnInit {
     this.loadding = false;
 
         if(response.errorCode === "00"){
-            sessionStorage.setItem("emailInfo", JSON.stringify(this.emailorphone));
+          localStorage.setItem("emailInfo", JSON.stringify(this.emailorphone));
             this.router.navigate(['/Login/verify']);
         }else
         {

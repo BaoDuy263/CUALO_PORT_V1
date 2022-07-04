@@ -28,9 +28,6 @@ export class TaikhoanComponent implements OnInit {
       newPassword: new FormControl(),
       confirmPassword: new FormControl(),
     });
-   }
-
-  ngOnInit(): void {
     this.isChangePass = true;
 
     this.accountservice.getAccountInfo().subscribe(response => {
@@ -47,6 +44,11 @@ export class TaikhoanComponent implements OnInit {
         confirmPassword: new FormControl('', [Validators.minLength(6)]),
       });
     })
+   }
+
+  ngOnInit(): void {
+    // console.log(JSON.parse(String(sessionStorage.getItem('UserInfo'))))
+    
   }
 
   checkChangePass() {

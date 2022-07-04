@@ -21,16 +21,16 @@ export class VerifycodeComponent implements OnInit {
   sendCode() {
     this.loadding = true;
 
-    var stringToObj = JSON.parse(String(sessionStorage.getItem('emailInfo')));
+    var stringToObj = JSON.parse(String(localStorage.getItem('emailInfo')));
     var obj = {
       email : stringToObj,
       code : this.code
     }
     this.accountservice.sendCode(obj).subscribe(response => {
     this.loadding = false;
-
+    console.log(response)
       if(response.jwt != null){
-        sessionStorage.setItem("accInfo", JSON.stringify(response));
+        localStorage.setItem("UserInfo", JSON.stringify(response));
         this.router.navigate(['/Home/taikhoan']);
       }else{
         this.toastr.showError('Code không chính xác !!!');
