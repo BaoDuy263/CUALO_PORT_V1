@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/Service/Account/account.service';
 import { lstCutomer,Customer } from '../../../../Model/Customer'
 import { CustomerService } from '../../../../Service/Customer/customer.service'
 
@@ -14,13 +15,23 @@ export class KhachhangIndexComponent implements OnInit {
     page : 1,
     Keyword : '',
     pageSize : 50
-  }  
+  }
 
-  constructor(private customerService : CustomerService) { }
+  constructor(private customerService : CustomerService,private accountService : AccountService) { }
 
   lstdata : Customer[] = [];
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
+    let UserInfo = this.accountService.getUserInfo();
+    if(UserInfo.refreshToken && UserInfo.jwt){
+        let obj = {
+          accessToken: UserInfo.jwt,
+          refreshToken : UserInfo.refreshToken
+        }
+        this.accountService.refreshToken(obj).subscribe(res => {
+          console.log('res',res);
+        })
+    }
   }
 
   Pagingdata(PageInfo : any)  {
