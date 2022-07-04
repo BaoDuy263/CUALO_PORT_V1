@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -23,22 +23,27 @@ export class HttpClientInterceptor implements HttpInterceptor {
         request = this.addAccessToken(request);
         return next.handle(request).pipe(
           catchError((error) => {
+            console.log('request',request);
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
             if (isUnauthorizedError) {
+              
               let UserInfo = this.accountService.getUserInfo();
+            
               if(UserInfo.refreshToken && UserInfo.jwt){
                   let obj = {
                     accessToken: UserInfo.jwt,
                     refreshToken : UserInfo.refreshToken
                   }
+                  localStorage.removeItem('UserInfo');
                   this.accountService.refreshToken(obj).subscribe(res => {
-                    console.log('res',res);
+                    if(res.errorCode == "00") {
+                      localStorage.setItem('UserInfo', JSON.stringify(res));
+                      location.reload();
+                    }
                   })
               }
-              return throwError(error);
             }
-    
             return throwError(error);
           })
         );
@@ -50,7 +55,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
         if (!userInfo) {
           return request;
         }
-    
+      
         return request.clone({
           setHeaders: {
             Authorization: "Bearer " + userInfo.jwt
