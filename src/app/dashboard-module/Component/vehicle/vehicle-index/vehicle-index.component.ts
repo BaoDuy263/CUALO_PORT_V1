@@ -59,15 +59,17 @@ export class VehicleIndexComponent implements OnInit {
      })
   }
 
-  handlePage(event:any) {
-    this.PageInfo.page = event.page;
-    this.PageInfo.pageSize = event.pageSize;
-    this.Pagingdata(this.PageInfo);
-  }
 
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    this.PageInfo = pageOfItems
+    this.Pagingdata(pageOfItems)
+  }
   onSearch(e:any)
   {
     this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
+
     this.Pagingdata(this.PageInfo);
   }
 

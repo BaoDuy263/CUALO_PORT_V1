@@ -15,7 +15,7 @@ import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
   templateUrl: './khachhang-index.component.html',
   styleUrls: ['./khachhang-index.component.css']
 })
-export class KhachhangIndexComponent implements OnInit, OnDestroy {
+export class KhachhangIndexComponent implements OnInit {
 
   isCreate: boolean = true;
   customerId: number = 0;
@@ -48,15 +48,9 @@ export class KhachhangIndexComponent implements OnInit, OnDestroy {
     this.Pagingdata(this.PageInfo);
   }
 
-
-  ngOnDestroy() {
-    // this.customerService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).un
-  }
-
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-
-    this.customerService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize)
+    this.customerService.Paging(PageInfo.page, PageInfo.Keyword, PageInfo.pageSize)
       .subscribe(
         data => {
           this.loadding = false;
@@ -69,14 +63,16 @@ export class KhachhangIndexComponent implements OnInit, OnDestroy {
         });
   }
 
-  handlePage(event: any) {
-    this.PageInfo.page = event.page;
-    this.PageInfo.pageSize = event.pageSize;
-    this.Pagingdata(this.PageInfo);
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    this.PageInfo = pageOfItems
+    this.Pagingdata(pageOfItems)
   }
+
 
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
   }
 
