@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
         if(response.errorCode == "00"){
           this.toatr.showSuccess("Đăng nhập thành công")
-          this.router.navigate(['/Home/nhom-san-pham']);
+          this.router.navigate(['/Home']);
         }
         else
         {
