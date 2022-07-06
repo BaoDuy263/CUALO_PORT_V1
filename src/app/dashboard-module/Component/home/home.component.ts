@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit    {
       this.router.navigate(['/Login']);    
     }
     this.accountService.getAccountInfo().subscribe(response => {
-      this.urlAvartar = "http://45.124.94.191:5001"+response.avatar;
+      this.urlAvartar = "https://45.124.94.191:5001"+response.avatar;
     });
 
    }

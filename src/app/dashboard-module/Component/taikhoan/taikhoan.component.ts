@@ -31,7 +31,7 @@ export class TaikhoanComponent implements OnInit {
     this.isChangePass = true;
 
     this.accountservice.getAccountInfo().subscribe(response => {
-       this.urlAvartar = 'http://45.124.94.191:5001'+response.avatar;
+       this.urlAvartar = 'https://45.124.94.191:5001'+response.avatar;
        this.InfoAccount = new FormGroup({
         fullName: new FormControl(response.fullName),
         email: new FormControl(response.email),
@@ -47,7 +47,6 @@ export class TaikhoanComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // console.log(JSON.parse(String(sessionStorage.getItem('UserInfo'))))
     
   }
 
@@ -85,8 +84,7 @@ export class TaikhoanComponent implements OnInit {
     this.avatarInfo.base64 = btoa(binaryString);
 
     this.accountservice.updateAvatar(this.avatarInfo).subscribe(data => {
-      this.urlAvartar = 'http://45.124.94.191:5001'+data.avatarUrl;
-      console.log(data.avatarUrl)
+      this.urlAvartar = 'https://45.124.94.191:5001'+data.avatarUrl;
       if(data.errorCode == '00'){
         this.toastr.showSuccess('Cập nhật thành công !!!');
       }
