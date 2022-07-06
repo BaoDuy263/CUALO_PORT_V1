@@ -1,6 +1,7 @@
 export interface TypeRoute {
     name : string
     url?: string
+    roles?: any
     children?: TypeRoute[] 
 }
 
@@ -9,31 +10,39 @@ export interface TypeRoute {
 export const ROUTE_DATA: TypeRoute[] = [
     {
         name :'Quản lý danh mục',
+        roles: ["Admin"],
         children : [
 
             {
                 name :'Nhóm hàng hóa',
-                url:'nhom-san-pham'
+                url:'nhom-san-pham',
+                roles: ["Admin"],
+
             },
             {
                 name :'Hàng hóa',
-                url:'san-pham'
+                url:'san-pham',
+                roles: ["Admin"],
+
             },
             {
                 name :'Khách hàng',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
+
             },
-            // {
-            //     name :'Container',
-            //     url:'khachhang'
-            // },
+           
             {
                 name :'Đơn vị',
-                url:'don-vi'
+                url:'don-vi',
+                roles: ["Admin"],
+                
             },
             {
                 name :'Phương tiện',
-                url:'phuong-tien'
+                url:'phuong-tien',
+                roles: ["Admin"],
+
             },
           
            
@@ -52,85 +61,111 @@ export const ROUTE_DATA: TypeRoute[] = [
     // },
     {
         name :'Quản lý booking',
+        roles: ["Admin", "ds"],
+
         children : [
             {
                 name :'Booking Cont E rỗng',
-                url:'booking-cont-rong'
+                url:'booking-cont-rong',
+                roles: ["Admin", "ds"],
+
             },
             {
                 name :'Booking nhập Cont',
-                url:'booking-nhap-cont'
+                url:'booking-nhap-cont',
+                roles: ["Admin", "ds"],
+
             },
         ]
     },
     {
         name :'Quản lý khách hàng',
+        roles: ["Admin"],
+
         children : [
             {
                 name :'Khách hàng',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
+
             },
             {
                 name :'Booking',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
+
             }
         ]
     },
     {
         name :'Quản lý giao nhận cont',
+        roles: ["Admin"],
         children : [
             {
                 name :'Thời gian nhập, xuất',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             },
             {
                 name :'Danh sách, bản đồ cont',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             }
         ]
     },
     {
         name :'Quản lý vị trí cont',
-        url:'khachhang'
+        url:'khachhang',
+        roles: ["Admin"],
     },
     {
         name :'Quản lý ra vào',
+        roles: ["Admin"],
         children : [
             {
                 name :'Ra vào của cont',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             },
             {
                 name :'Ra vào của các shipper theo booking',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             }
         ]
     },
     {
         name :'Quản lý công nợ',
-        url:'khachhang'
+        url:'khachhang',
+        roles: ["Admin"],
     },
     {
         name :'Quản lý lịch tàu',
+        
+        roles: ["Admin"],
         url:'khachhang'
     },
   
     {
         name :'Quản trị hệ thống',
+        roles: ["Admin"],
         children : [
             {
                 name :'Quản lý tài khoản',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             },
             {
                 name :'Thống kê truy cập',
-                url:'khachhang'
+                url:'khachhang',
+                roles: ["Admin"],
             }
         ]
     },
     {
         name :'Setting',
-        url:'setting'
+        url:'setting',
+        roles: ["Admin"],
     },
   ]
   
