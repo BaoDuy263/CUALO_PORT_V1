@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
     this.AccountService.Login(UserInfo).subscribe(response => {
 
-      // this.loadding = false;
+      this.loadding = false;
 
 
         if(response.errorCode == "00"){
