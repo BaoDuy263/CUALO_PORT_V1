@@ -36,7 +36,7 @@ const routes: Routes = [
       component: UnitIndexComponent,
       canActivate: [RoleGuardService],
       data: {
-        roles: ["Admin", "test"]
+        roles: ["Admin", "ds"]
       }
     },
     { path: 'phuong-tien', component: VehicleIndexComponent },

@@ -20,7 +20,7 @@
                     <div class="form-group">
                       <div>
                         <img *ngIf="urlAvartar == null" onclick="document.getElementById('filePicker').click();" alt=""  style="height: 150px; width: 150px; border-radius: 50%; border: 1px solid; padding: 6px;"><br>
-                        <img *ngIf="urlAvartar != null" [src]="'http://45.124.94.191:8019'+ urlAvartar" onclick="document.getElementById('filePicker').click();" alt=""  style="height: 150px; width: 150px; border-radius: 50%; border: 1px solid; padding: 6px;"><br>
+                        <img *ngIf="urlAvartar != null" [src]=" urlAvartar" onclick="document.getElementById('filePicker').click();" alt=""  style="height: 150px; width: 150px; border-radius: 50%; border: 1px solid; padding: 6px;"><br>
                         <input type="file" style="display:none;" id="filePicker" (change)="handleFileSelect($event)">
                       </div>
                     </div>

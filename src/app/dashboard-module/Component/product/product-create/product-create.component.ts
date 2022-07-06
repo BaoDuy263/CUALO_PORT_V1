@@ -26,9 +26,7 @@ export class ProductCreateComponent implements OnInit {
       groupId: new FormControl(0),
       unitId: new FormControl(0),
       price: new FormControl(),
-      status: new FormControl(true),
       quantity: new FormControl(),
-      isDeleted: new FormControl(true),
     })
   }
 
@@ -44,9 +42,7 @@ export class ProductCreateComponent implements OnInit {
           groupId: new FormControl(response.groupId),
           unitId: new FormControl(response.unitId),
           price: new FormControl(response.price),
-          status: new FormControl(response.status),
           quantity: new FormControl(response.quantity),
-          isDeleted: new FormControl(response.isDeleted),
         })
       })
     }
@@ -80,7 +76,9 @@ export class ProductCreateComponent implements OnInit {
 
   onSubmit() {
     this.submited = true;
-    // console.log(this.CreateEditForm.value)
+    this.CreateEditForm.value.status = true;
+    this.CreateEditForm.value.isDeleted = true;
+    
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.productService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
@@ -91,10 +89,5 @@ export class ProductCreateComponent implements OnInit {
         this.dialogRef.close(response);
       })
     }
-
   }
-
-
-
-
 }

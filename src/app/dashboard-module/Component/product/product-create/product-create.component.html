@@ -29,14 +29,14 @@
                    
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Giá</label>
                     <input type="text" class="form-control" formControlName="price">
                     
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
                     <input type="text" class="form-control" formControlName="quantity">
@@ -54,7 +54,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label >Đơn vị</label>
                     <select (change)="getUnitId($event)" formControlName="unitId" class="form-control select2" style="width: 100%;">
@@ -64,21 +64,10 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group" style="margin-top: 29px;">
-                    <input formControlName="isDeleted" type="checkbox" class="mr-2">
-                    <label for="txtStatus">isDeleted</label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group" style="margin-top: 29px;">
-                    <input formControlName="status" type="checkbox" class="mr-2">
-                    <label for="txtStatus">status</label>
-                </div>
-            </div>
+        
         </div>
 
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mt-4">
             <button type="button" class="btn btn-primary" type="submit">Thêm mới</button>
             <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
                 bỏ</button>

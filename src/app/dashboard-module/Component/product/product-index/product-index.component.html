@@ -41,9 +41,9 @@
                 </tbody>
               </table>
         </div>
-        <ng-container *ngIf="Pagination.totalPage > 0">
-           <app-pagination [pageInput] ="Pagination"  (pageEvent)="handlePage($event)" (pageSizeEvent) = "handlePage($event)"></app-pagination>
-        </ng-container>
+        <div>
+          <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
+        </div>
         
     </div>
 </div>
