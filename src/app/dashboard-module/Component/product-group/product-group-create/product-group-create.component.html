@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Tên đơn vị</label>
+                    <label for="exampleFormControlInput1" class="form-label">Tên nhóm hàng hóa</label>
                     <input type="text" class="form-control" formControlName="name">
                     <div *ngIf="submited && name?.errors?.['required']">
                         <span *ngIf="name?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" type="submit">Thêm mới</button>
+                <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
                 <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
                     bỏ</button>
             </div>

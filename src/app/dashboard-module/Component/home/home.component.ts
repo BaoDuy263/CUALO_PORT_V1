@@ -23,9 +23,13 @@ export class HomeComponent implements OnInit    {
   constructor(private router: Router,private cdr: ChangeDetectorRef,private accountService : AccountService, private observer: BreakpointObserver) {
     this.opened = true;
     this.show = false;
-  
+    
+    const UserInfo = this.accountService.getUserInfo();
+    if(UserInfo == null){
+      this.router.navigate(['/Login']);    
+    }
     this.accountService.getAccountInfo().subscribe(response => {
-      this.urlAvartar = "http://45.124.94.191:8019"+response.avatar;
+      this.urlAvartar = "https://45.124.94.191:5001"+response.avatar;
     });
 
    }

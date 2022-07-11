@@ -44,7 +44,7 @@ export class AccountService {
 
 
   getUserInfo() {
-    const UserInfo =  JSON.parse(localStorage.getItem('UserInfo')|| '{}');
+    const UserInfo =  JSON.parse(localStorage.getItem('UserInfo')|| 'null');
     return UserInfo;
   }
 

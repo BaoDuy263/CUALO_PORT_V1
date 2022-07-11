@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
 
     this.AccountService.Login(UserInfo).subscribe(response => {
 
-      // this.loadding = false;
+      this.loadding = false;
 
 
         if(response.errorCode == "00"){
           this.toatr.showSuccess("Đăng nhập thành công")
-          this.router.navigate(['/Home/nhom-san-pham']);
+          this.router.navigate(['/Home']);
         }
         else
         {
