@@ -54,6 +54,7 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+import { NotfoundComponent } from './Component/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoa
     ExampleComponent,
     QLTaiKhoanCreateComponent,
     QLTaiKhoanDeleteComponent,
-    QLTaiKhoanIndexComponent
+    QLTaiKhoanIndexComponent,
+    NotfoundComponent
   ],
   imports: [
     CommonModule,

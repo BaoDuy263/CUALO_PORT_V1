@@ -91,7 +91,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Booking',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
 
             }
@@ -103,19 +103,19 @@ export const ROUTE_DATA: TypeRoute[] = [
         children : [
             {
                 name :'Thời gian nhập, xuất',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
             },
             {
                 name :'Danh sách, bản đồ cont',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
             }
         ]
     },
     {
         name :'Quản lý vị trí cont',
-        url:'khachhang',
+        url:'404-not-found',
         roles: ["Admin"],
     },
     {
@@ -124,26 +124,26 @@ export const ROUTE_DATA: TypeRoute[] = [
         children : [
             {
                 name :'Ra vào của cont',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
             },
             {
                 name :'Ra vào của các shipper theo booking',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
             }
         ]
     },
     {
         name :'Quản lý công nợ',
-        url:'khachhang',
+        url:'404-not-found',
         roles: ["Admin"],
     },
     {
         name :'Quản lý lịch tàu',
         
         roles: ["Admin"],
-        url:'khachhang'
+        url:'404-not-found'
     },
   
     {
@@ -157,7 +157,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Thống kê truy cập',
-                url:'khachhang',
+                url:'404-not-found',
                 roles: ["Admin"],
             }
         ]

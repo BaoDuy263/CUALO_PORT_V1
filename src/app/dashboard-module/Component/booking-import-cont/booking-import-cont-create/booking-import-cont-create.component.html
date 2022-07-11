@@ -1,8 +1,13 @@
 <div class="container-lg">
     <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <h1>Thêm mới  booking nhập container</h1>
-        </div>
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới booking nhập cont </div >
+                <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                    <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                        Sửa booking nhập cont
+                    </div> 
+                </ng-template>        
+            </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
