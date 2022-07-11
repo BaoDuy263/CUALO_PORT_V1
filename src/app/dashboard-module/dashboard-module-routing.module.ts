@@ -14,11 +14,14 @@ import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.compo
 import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 
+import { QLTaiKhoanIndexComponent} from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+
+
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 const routes: Routes = [
   { path: '', component: HomeComponent,
   children: [
-    { 
+    {
       path: 'khachhang',
       component: KhachhangIndexComponent,
       canActivate: [RoleGuardService],
@@ -27,12 +30,12 @@ const routes: Routes = [
       }
     },
     { path: 'taikhoan', component : TaikhoanComponent},
-    { 
+    {
       path: 'example',
       component : ExampleComponent,
     },
-    { 
-      path: 'don-vi', 
+    {
+      path: 'don-vi',
       component: UnitIndexComponent,
       canActivate: [RoleGuardService],
       data: {
@@ -45,11 +48,14 @@ const routes: Routes = [
     { path: 'setting', component: SettingIndexComponent },
     { path: 'booking-cont-rong', component: BookingContEmptyIndexComponent },
     { path: 'booking-nhap-cont', component: BookingImportContIndexComponent },
+
+    // Quản trị hệ thống
+    { path: 'quan-ly-tai-khoan', component :QLTaiKhoanIndexComponent},
     // { path: 'don-vi', component: UnitIndexComponent }
 
   ]
   },
-  
+
 ];
 
 @NgModule({

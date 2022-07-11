@@ -1,7 +1,7 @@
 export interface TypeRoute {
     name : string
     url?: string
-    children?: TypeRoute[] 
+    children?: TypeRoute[]
 }
 
 
@@ -35,15 +35,15 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Phương tiện',
                 url:'phuong-tien'
             },
-          
-           
-           
+
+
+
         ]
     },
     // {
     //     name :'Quản lý khách hàng',
     //     children : [
-           
+
     //         {
     //             name :'Booking',
     //             url:'khachhang'
@@ -114,13 +114,13 @@ export const ROUTE_DATA: TypeRoute[] = [
         name :'Quản lý lịch tàu',
         url:'khachhang'
     },
-  
+
     {
         name :'Quản trị hệ thống',
         children : [
             {
                 name :'Quản lý tài khoản',
-                url:'khachhang'
+                url:'quan-ly-tai-khoan'
             },
             {
                 name :'Thống kê truy cập',
@@ -133,4 +133,3 @@ export const ROUTE_DATA: TypeRoute[] = [
         url:'setting'
     },
   ]
-  

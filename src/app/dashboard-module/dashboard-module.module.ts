@@ -51,6 +51,9 @@ import { BookingContEmptyDeleteComponent } from './Component/booking-cont-empty/
 import { BookingImportContCreateComponent } from './Component/booking-import-cont/booking-import-cont-create/booking-import-cont-create.component';
 import { BookingImportContDeleteComponent } from './Component/booking-import-cont/booking-import-cont-delete/booking-import-cont-delete.component';
 import { BookingImportContIndexComponent } from './Component/booking-import-cont/booking-import-cont-index/booking-import-cont-index.component';
+import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
+import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
+import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,9 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
     MultidropdownComponent,
     SidebarComponent,
     ExampleComponent,
-     
+    QLTaiKhoanCreateComponent,
+    QLTaiKhoanDeleteComponent,
+    QLTaiKhoanIndexComponent
   ],
   imports: [
     CommonModule,
