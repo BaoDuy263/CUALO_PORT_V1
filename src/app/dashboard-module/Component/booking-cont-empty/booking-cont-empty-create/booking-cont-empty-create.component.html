@@ -1,24 +1,31 @@
-<div class="container-lg" style="height: 500px">
+<div class="container-lg hight_modal">
     <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <h1>Thêm mới hàng hóa</h1>
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới cont rỗng từ khách hàng</div >
+            <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Sửa cont rỗng từ khách hàng
+                </div> 
+            </ng-template>
+
+            <!-- <p v-if="" class="">Thêm mới hàng hóa</p> -->
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">commandNo</label>
                     <input type="text" class="form-control" formControlName="commandNo">
                    
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">title</label>
                     <input type="text" class="form-control" formControlName="title">
                  
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="txtPHone">customerId  <span class="text-red">(*)</span></label>
                     <select formControlName="customerId" name="customerId" class="form-control" style="width: 100%;" required>
@@ -30,14 +37,14 @@
                     
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">bookingContent</label>
                     <input type="text" class="form-control" formControlName="bookingContent">
                     
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">sumNumber20Dc</label>
                     <input type="number" class="form-control" formControlName="sumNumber20Dc">
@@ -49,7 +56,7 @@
 
 
 
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">sumNumber20Ot</label>
                     <input type="number" class="form-control" formControlName="sumNumber20Ot">
@@ -58,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">sumNumber40Dc</label>
                     <input type="number" class="form-control" formControlName="sumNumber40Dc">
@@ -67,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">sumNumber40Hc</label>
                     <input type="number" class="form-control" formControlName="sumNumber40Hc">
@@ -76,14 +83,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">shipName</label>
                     <input type="number" class="form-control" formControlName="shipName">
                    
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">registerDate</label>
                     <input type="datetime-local" class="form-control" formControlName="registerDate">
@@ -92,35 +99,35 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">loadingPort</label>
                     <input type="number" class="form-control" formControlName="loadingPort">
                
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">tripNo</label>
                     <input type="number" class="form-control" formControlName="tripNo">
                   
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">productName</label>
                     <input type="number" class="form-control" formControlName="productName">
                
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">unLoadingPort</label>
                     <input type="text" class="form-control" formControlName="unLoadingPort">
                   
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">expiredDate</label>
                     <input type="datetime-local" class="form-control" formControlName="expiredDate">
@@ -129,21 +136,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">requestDescription</label>
                     <input type="text" class="form-control" formControlName="requestDescription">
               
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">depot1Note</label>
                     <input type="text" class="form-control" formControlName="depot1Note">
                   
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">step</label>
                     <input type="number" class="form-control" formControlName="step">
@@ -152,7 +159,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">depot1ConfirmedDate</label>
                     <input type="datetime-local" class="form-control" formControlName="depot1ConfirmedDate">
@@ -161,7 +168,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">customerConfirmedDate</label>
                     <input type="datetime-local" class="form-control" formControlName="customerConfirmedDate">
@@ -170,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">customerNote</label>
                     <input type="text" class="form-control" formControlName="customerNote">
@@ -179,7 +186,7 @@
             </div>
       
             <div class="col-md-4">
-                <div class="form-group" style="margin-top: 29px;">
+                <div class="form-group mt_checkbox">
                     <input formControlName="depot1Confimed" type="checkbox" class="mr-2">
                     <label for="txtStatus">depot1Confimed</label>
                 </div>
