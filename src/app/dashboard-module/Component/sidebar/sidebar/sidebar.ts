@@ -152,7 +152,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         children : [
             {
                 name :'Quản lý tài khoản',
-                url:'khachhang',
+                url:'quan-ly-tai-khoan',
                 roles: ["Admin"],
             },
             {

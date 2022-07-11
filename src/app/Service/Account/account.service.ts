@@ -3,6 +3,7 @@ import  { CommonserviceService } from  '../CommonService/commonservice.service';
 import { UserLogin,UserReponse } from '../../Model/User'
 import { map, Observable } from 'rxjs';
 import {Item} from '../../Model/multidropdown'
+import { Account, lstAccount, AccountEdit, AccountCreate } from 'src/app/Model/Account';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +73,43 @@ export class AccountService {
 
   refreshToken(data : any){
     return this.httpService.postRequest('Account/RefreshToken',data)
+  }
+
+
+  
+  Paging(page:number, searchText:string,numberDis:number) {
+    return this.httpService.getRequest('admin/ManageAccount' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
+      .pipe(map((data : lstAccount) => {
+          return data;
+      }))
+  }
+
+  Insert(AccountCreate: AccountCreate) {
+    return this.httpService.postRequest('admin/ManageAccount',AccountCreate)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  GetDetail(id: any) {
+    return this.httpService.getRequest('admin/ManageAccount/'+id)
+      .pipe(map((data:Account ) => {
+          return data;
+      }))
+  }
+
+  Update(AccountEdit : AccountEdit)
+  {
+    return this.httpService.putRequest('admin/ManageAccount',AccountEdit)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  Delete(id: any) {
+    return this.httpService.deleteRequest('admin/ManageAccount/'+id)
+      .pipe(map((data:any ) => {
+          return data;
+      }))
   }
 }
