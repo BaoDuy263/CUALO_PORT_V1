@@ -19,13 +19,13 @@
 
       <div class="toolbar-right">
         <mat-icon class="mat-icon-rtl-mirror" style="padding-right: 10px;">notifications_none</mat-icon>
-
-
+          
+          
           <div class="">
               <div  [matMenuTriggerFor]="menu" >
-                <img id="myBtn" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
-                <!-- <img *ngIf="urlAvartar != null" id="myBtn" [src]="'https://45.124.94.191:8019'+ urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/> -->
-
+                <img id="myBtn" *ngIf="urlAvartar == null" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <img *ngIf="urlAvartar != null" id="myBtn" [src]="urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+            
               </div>
               <mat-menu #menu="matMenu">
                 <a routerLink="taikhoan" mat-menu-item>
@@ -41,7 +41,7 @@
                           Đăng xuất
                   </span>
                 </a>
-
+               
               </mat-menu>
             </div>
         </div>

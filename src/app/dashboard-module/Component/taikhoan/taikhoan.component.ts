@@ -31,7 +31,7 @@ export class TaikhoanComponent implements OnInit {
     this.isChangePass = true;
 
     this.accountservice.getAccountInfo().subscribe(response => {
-       this.urlAvartar = response.avatar;
+       this.urlAvartar = 'http://45.124.94.191:8019'+response.avatar;
        this.InfoAccount = new FormGroup({
         fullName: new FormControl(response.fullName),
         email: new FormControl(response.email),
@@ -85,7 +85,8 @@ export class TaikhoanComponent implements OnInit {
     this.avatarInfo.base64 = btoa(binaryString);
 
     this.accountservice.updateAvatar(this.avatarInfo).subscribe(data => {
-      this.urlAvartar = data.avatarUrl;
+      this.urlAvartar = 'http://45.124.94.191:8019'+data.avatarUrl;
+      console.log(data.avatarUrl)
       if(data.errorCode == '00'){
         this.toastr.showSuccess('Cập nhật thành công !!!');
       }
