@@ -13,9 +13,9 @@
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Tên đăng nhập</label>
-                    <input type="text" class="form-control" formControlName="userName">
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="userName">
                     <div *ngIf="submited && userName?.errors?.['required']">
-                        <span *ngIf="userName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                        <span *ngIf="userName?.errors?.['required']"  style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>

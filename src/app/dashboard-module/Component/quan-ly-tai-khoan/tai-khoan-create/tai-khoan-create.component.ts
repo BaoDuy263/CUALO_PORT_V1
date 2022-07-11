@@ -12,6 +12,8 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   submited: boolean = false;
   listProductGroup: any=[];
   listUnit: any=[];
+  lockOrOpen: boolean = false;
+
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
   constructor(private AccountService: AccountService, public dialogRef: MatDialogRef<QLTaiKhoanCreateComponent>) {
@@ -29,7 +31,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
     //Edit
 
     if (this.customerId && this.isCreate === false) {
-    console.log('jkkkkkkkkkkkkkkk')
+      this.lockOrOpen = true;
 
       this.AccountService.GetDetail(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
@@ -66,6 +68,11 @@ export class QLTaiKhoanCreateComponent implements OnInit {
       this.AccountService.Update(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       })
+      console.log('hi')
+      if(this.CreateEditForm.value.password){
+        console.log('hiii')
+
+      }
     }
   }
 }
