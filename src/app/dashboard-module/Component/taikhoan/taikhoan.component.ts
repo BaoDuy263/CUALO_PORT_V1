@@ -15,7 +15,7 @@ export class TaikhoanComponent implements OnInit {
   avatarInfo: any = {};
   urlAvartar: string = '';
   submited : boolean = false;
-
+  check: number = 1;
   constructor(private accountservice : AccountService,private toastr: ToastrcustomService) {
     this.InfoAccount = new FormGroup({
       fullName : new FormControl('', Validators.required),
@@ -111,10 +111,11 @@ export class TaikhoanComponent implements OnInit {
             newPassword: new FormControl('', [Validators.minLength(6)]),
             confirmPassword: new FormControl('', [Validators.minLength(6)]),
           });
-          this.toastr.showSuccess(response.message);
+          this.check = 1;
         }
         else
         {
+          this.check = 2;
           this.toastr.showError("Cập nhật thất bại");
         }
     })
@@ -122,18 +123,21 @@ export class TaikhoanComponent implements OnInit {
 
 
   ChangPass(data:any) {
+    console.log(data)
       if (this.InfoAccount.value.newPassword === this.InfoAccount.value.confirmPassword) {
         this.accountservice.changPassword(this.InfoAccount.value).subscribe(data => {
             if(data.errorCode == "00"){
-              this.toastr.showSuccess("Thay đổi mật khẩu Thành Công")
+              this.check = 1;
             }
             else
             {
+              this.check = 2;
               this.toastr.showError('Thay đổi mật khẩu thất bại !!!');
             }
             
         })
       } else {
+          this.check = 2;
           this.toastr.showError('Mật khẩu không trùng khớp !!!');
       }
   }
@@ -144,8 +148,11 @@ export class TaikhoanComponent implements OnInit {
   onSubmit() {
     this.submited = true;
     this.updateUser(this.InfoAccount.value);
-    if(this.isChangePass){
+    if(this.isChangePass == false ){
       this.ChangPass(this.InfoAccount.value);
+    }
+    if (this.check == 1) {
+      this.toastr.showSuccess('Cập nhật thành công !!!');
     }
   }
 
