@@ -18,6 +18,12 @@ export class ExampleComponent implements OnInit {
   showAll = true;
   showStatus = true;
 
+  PageInfo = {
+    page: 1,
+    Keyword: '',
+    pageSize: 10
+  }
+
   constructor(private accountservice : AccountService,private customerService: CustomerService ) { }
 
   showLoading : boolean = false;
@@ -26,9 +32,11 @@ export class ExampleComponent implements OnInit {
     this.accountservice.getListSelectMulti().subscribe(res => {
        this.items = res;
     })
-    this.customerService.GetSelectList().subscribe(res => {
-      console.log('res',res);
-    })
+    this.customerService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize)
+      .subscribe(
+        data => {
+          console.log('data',data);
+        });
   }
 
   onItemChange(item: Item): void {
