@@ -20,6 +20,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
               headers: request.headers.set('Content-Type', 'application/json')
             });
         }
+        console.log('hiiiiiiiiiiiiiiiiiiii')
         request = this.addAccessToken(request);
         return next.handle(request).pipe(
           catchError((error) => {
