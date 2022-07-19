@@ -46,7 +46,7 @@ export class KhachhangIndexComponent implements OnInit {
 
   ngOnInit(): void  {
     this.Pagingdata(this.PageInfo);
-    this.GetListSelectCustomer();
+   
   }
 
   Pagingdata(PageInfo: any) {
@@ -64,11 +64,7 @@ export class KhachhangIndexComponent implements OnInit {
   }
 
 
-  GetListSelectCustomer() {
-    this.customerService.GetSelectList().subscribe(data => {
-      console.log('data',data);
-    })
-  }
+  
 
  
 
