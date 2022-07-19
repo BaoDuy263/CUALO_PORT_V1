@@ -19,7 +19,6 @@ export class ProductService {
   }
 
   Insert(ProductCreate: ProductCreate) {
-    console.log(ProductCreate)
     return this.httpService.postRequest('Product/Create',ProductCreate)
       .pipe(map((data: any) => {
         return data;

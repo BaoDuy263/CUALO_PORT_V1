@@ -23,7 +23,6 @@ export class HttpClientInterceptor implements HttpInterceptor {
         request = this.addAccessToken(request);
         return next.handle(request).pipe(
           catchError((error) => {
-            console.log('request',request);
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
             if (isUnauthorizedError) {
