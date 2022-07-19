@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../../Service/Account/account.service';
 import { Item } from '../../../Model/multidropdown';
+import { CustomerService } from 'src/app/Service/Customer/customer.service';
 @Component({
   selector: 'app-example',
   templateUrl: './example.component.html',
@@ -17,7 +18,7 @@ export class ExampleComponent implements OnInit {
   showAll = true;
   showStatus = true;
 
-  constructor(private accountservice : AccountService) { }
+  constructor(private accountservice : AccountService,private customerService: CustomerService ) { }
 
   showLoading : boolean = false;
 
@@ -25,7 +26,9 @@ export class ExampleComponent implements OnInit {
     this.accountservice.getListSelectMulti().subscribe(res => {
        this.items = res;
     })
-    
+    this.customerService.GetSelectList().subscribe(res => {
+      console.log('res',res);
+    })
   }
 
   onItemChange(item: Item): void {
