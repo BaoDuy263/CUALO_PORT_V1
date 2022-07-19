@@ -44,8 +44,9 @@ export class KhachhangIndexComponent implements OnInit {
 
   constructor(private customerService: CustomerService, public dialog: MatDialog, private toastr: ToastrcustomService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void  {
     this.Pagingdata(this.PageInfo);
+    this.GetListSelectCustomer();
   }
 
   Pagingdata(PageInfo: any) {
@@ -54,7 +55,6 @@ export class KhachhangIndexComponent implements OnInit {
       .subscribe(
         data => {
           this.loadding = false;
-
           this.lstdata = data;
           this.Pagination.currentPage = data.currentPage,
             this.Pagination.pageSize = data.pageSize,
@@ -62,6 +62,15 @@ export class KhachhangIndexComponent implements OnInit {
             this.Pagination.totalRecord = data.totalRecord
         });
   }
+
+
+  GetListSelectCustomer() {
+    this.customerService.GetSelectList().subscribe(data => {
+      console.log('data',data);
+    })
+  }
+
+ 
 
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;

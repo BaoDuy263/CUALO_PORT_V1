@@ -47,4 +47,11 @@ export class CustomerService {
       }))
   }
 
+  GetSelectList() {
+    return this.httpService.getRequest('Customer/getCustomerSelect')
+      // .pipe(map((data : any) => {
+      //   return data;
+      // }))
+  }
+
 }
