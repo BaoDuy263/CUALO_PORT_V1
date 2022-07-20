@@ -11,10 +11,9 @@ import { ProductGroupIndexComponent } from './Component/product-group/product-gr
 import { ProductIndexComponent } from './Component/product/product-index/product-index.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
-import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
-
 import { QLTaiKhoanIndexComponent} from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+import { BookingCustomerIndexComponent } from './Component/booking-customer/booking-customer-index/booking-customer-index.component'
 
 
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
@@ -53,6 +52,7 @@ const routes: Routes = [
 
     // Quản trị hệ thống
     { path: 'quan-ly-tai-khoan', component :QLTaiKhoanIndexComponent},
+    { path: 'booking-customer', component :BookingCustomerIndexComponent},
     // { path: 'don-vi', component: UnitIndexComponent }
 
   ]

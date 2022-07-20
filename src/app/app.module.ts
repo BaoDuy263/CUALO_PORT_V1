@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
 import { AsyncPipe } from '@angular/common';
 import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
 import { RoleGuardService } from './Interceptor/rolo.guard.service'
@@ -17,15 +16,12 @@ import { FormsModule  } from '@angular/forms';
     AppComponent,
   ],
   imports: [
-    
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
-
     BrowserAnimationsModule,
     FormsModule,
-
     ToastrModule.forRoot()
   ],
   providers: [

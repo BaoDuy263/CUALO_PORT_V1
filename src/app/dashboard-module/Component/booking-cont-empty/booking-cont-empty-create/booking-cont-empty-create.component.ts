@@ -84,7 +84,6 @@ export class BookingContEmptyCreateComponent implements OnInit {
     this.CustomerService.Paging(1,'',10).subscribe(data => {
       this.listCustomer = data.data;
     })
-
   }
 
   // get customerId() { return this.CreateEditForm.get('customerId') }

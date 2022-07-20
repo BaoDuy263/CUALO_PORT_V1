@@ -50,6 +50,11 @@ export const ROUTE_DATA: TypeRoute[] = [
         ]
     },
     // {
+    //     name :'Tạo booking',
+    //     url:'booking',
+    //     roles: ["Admin"],
+    // },
+    // {
     //     name :'Quản lý khách hàng',
     //     children : [
            
@@ -64,6 +69,12 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin", "ds"],
 
         children : [
+            {
+                name :'Booking từ khách hàng',
+                url:'booking-customer',
+                roles: ["Admin", "ds"],
+
+            },
             {
                 name :'Booking Cont E rỗng',
                 url:'booking-cont-rong',

@@ -1,0 +1,91 @@
+<div class="container-lg" style="width: 700px" >
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới khách hàng</div >
+                <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                    <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                        Sửa khách hàng
+                    </div> 
+                </ng-template>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+                    <label for="exampleFormControlInput1" class="form-label">Khách hàng</label>
+                    <select   class="form-select" formControlName="customerId"  >
+                        <option *ngFor="let item of lstCustomer;" value={{item.id}}>{{item.name}}</option>
+                    </select>
+                    <div *ngIf="submited && customerId?.errors?.['required']">
+                        <span *ngIf="customerId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    </div>
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" formControlName="phoneNumber">
+                    <div *ngIf="submited && phoneNumber?.errors?.['pattern']">
+                        <span *ngIf="phoneNumber?.errors?.['pattern']" style="color: red;">Số điện thoại không hợp lệ</span>  
+                  </div>
+                </div>  
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Loại hàng hóa</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="typeMerchandise">
+                        <option *ngFor="let item of lsttypeMerchandise;" value={{item.id}}>{{item.name}}</option>
+                    </select>
+                    <div *ngIf="submited && typeMerchandise?.errors?.['required']">
+                        <span *ngIf="typeMerchandise?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    </div>
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Loại container</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="typeContainer">
+                        <option *ngFor="let item of lstContainer;" value={{item.id}}>{{item.name}}</option>
+                    </select>
+                    <div *ngIf="submited && typeContainer?.errors?.['required']">
+                        <span *ngIf="typeContainer?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    </div>
+                </div>  
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
+                    <input type="text" class="form-control" formControlName="shipName">
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
+                    <input type="text" class="form-control" formControlName="noVehicle">
+                </div>  
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Cân nặng hàng</label>
+                    <input type="text" class="form-control" formControlName="weight">   
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Ngày xuất bến</label>
+                    <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
+                </div>  
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button>
+        </div>
+    </form>
+</div>

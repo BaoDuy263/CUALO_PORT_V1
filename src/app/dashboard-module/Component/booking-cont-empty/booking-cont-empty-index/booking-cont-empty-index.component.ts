@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
+import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 // import { BookingContEmptyService } from 'src/app/Service/Product/product.service';
 import { BookingContEmptyService } from 'src/app/Service/booking-cont-empty/booking-cont-emtpy.service';
 import { BookingContEmptyDeleteComponent } from '../booking-cont-empty-delete/booking-cont-empty-delete.component';
@@ -45,7 +45,6 @@ export class BookingContEmptyIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-
     this.BookingContEmptyService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
@@ -66,7 +65,6 @@ export class BookingContEmptyIndexComponent implements OnInit {
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
-
     this.Pagingdata(this.PageInfo);
   }
 
@@ -82,7 +80,6 @@ export class BookingContEmptyIndexComponent implements OnInit {
     sumNumber40Dc: '',
     sumNumber40Hc: '',
     shipName: '',
-
     registerDate: new Date(),
     loadingPort: '',
     tripNo: '',
@@ -109,7 +106,6 @@ export class BookingContEmptyIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -126,14 +122,12 @@ export class BookingContEmptyIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
         }
       }
     });
-
   }
 
 
@@ -146,7 +140,6 @@ export class BookingContEmptyIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -154,6 +147,5 @@ export class BookingContEmptyIndexComponent implements OnInit {
       }
     });
   }
-
 }
 

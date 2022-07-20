@@ -8,8 +8,6 @@ import { KhachhangCreateComponent } from '../khachhang-create/khachhang-create.c
 import { KhachhangDeleteComponent } from '../khachhang-delete/khachhang-delete.component';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 
-
-
 @Component({
   selector: 'app-khachhang-index',
   templateUrl: './khachhang-index.component.html',
@@ -46,7 +44,6 @@ export class KhachhangIndexComponent implements OnInit {
 
   ngOnInit(): void  {
     this.Pagingdata(this.PageInfo);
-   
   }
 
   Pagingdata(PageInfo: any) {
@@ -62,11 +59,6 @@ export class KhachhangIndexComponent implements OnInit {
             this.Pagination.totalRecord = data.totalRecord
         });
   }
-
-
-  
-
- 
 
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;

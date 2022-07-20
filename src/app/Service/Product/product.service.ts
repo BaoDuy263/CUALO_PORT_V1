@@ -47,4 +47,8 @@ export class ProductService {
       }))
   }
 
+  GetSelectList() {
+    return this.httpService.getRequest('Product/getProductSelect')
+  }
+
 }

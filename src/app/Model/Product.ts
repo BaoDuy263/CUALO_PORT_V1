@@ -58,4 +58,10 @@ export interface ProductEdit
     isDeleted: boolean,
     price: string,
 
-}``
+}
+
+export interface ProductSelect 
+{
+    id: number,
+    name: string,
+}

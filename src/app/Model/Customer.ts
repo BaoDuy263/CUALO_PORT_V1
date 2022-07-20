@@ -45,4 +45,10 @@ export interface CustomerEdit
     address : string,
     userId: string,
     description: string
-}``
+}
+
+export interface CustomerSelect 
+{
+    id: number,
+    name: string,
+}
