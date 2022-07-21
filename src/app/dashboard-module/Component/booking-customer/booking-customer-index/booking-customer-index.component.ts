@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
-import { BookingCustomer, lstBookingCustomer } from '../../../../Model/Booking-customer'
+import {  lstBookingCustomer } from '../../../../Model/Booking-customer'
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -129,7 +129,6 @@ export class BookingCustomerIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
