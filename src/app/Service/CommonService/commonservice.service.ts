@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonserviceService {
-   _urlApi: string = 'https://45.124.94.191:5001/api/';
-   //_urlApi: string = 'http://localhost:7611/api/';
+  //  _urlApi: string = 'https://45.124.94.191:5001/api/';
+  _urlApi: string = 'https://localhost:44310/api/';
   constructor(
     private http: HttpClient
   ) {}
@@ -32,5 +32,9 @@ export class CommonserviceService {
 
   deleteRequest(url: string) : Observable<any> {
     return this.http.delete(this._urlApi + url);
+  }
+
+  createBookings(url: string, data: any): Observable<any> {
+    return this.http.post(this._urlApi + url, data);
   }
 }

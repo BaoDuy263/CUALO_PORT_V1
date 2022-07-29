@@ -8,7 +8,15 @@ export interface BookingCustomer
     weight : number,
     noVehicle: string,
     shipName: string,
-    status : number
+    status : number,
+    dateCheckout: Date,
+    typeBooking: number,
+    company: string,
+    container: string,
+    containerStatus: string,
+    note: string,
+    seaportEnd: string,
+    brandName: string
 }
 
 
@@ -25,26 +33,40 @@ export interface lstBookingCustomer
 
 export interface BookingCustomerCreate
 {
-    customerId: number,
-    typeContainer: number,
-    phoneNumber: string,
-    typeMerchandise : number,
-    noVehicle: string,
-    weight: string,
-    shipName: string,
-    dateCheckOut : Date
+  customerId :string,
+  phoneNumber : string,
+  typeContainer: string,
+  typeMerchandise: string,
+  weight : number,
+  noVehicle: string,
+  shipName: string,
+  status : number,
+  dateCheckout: Date,
+  typeBooking: number,
+  company: string,
+  container: string,
+  containerStatus: string,
+  note: string,
+  seaportEnd: string,
+  brandName: string
 }
 
 
 export interface BookingCustomerEdit
 {
-    id : number,
-    customerId: number,
-    typeContainer: number,
-    phoneNumber: string,
-    typeMerchandise : number,
-    noVehicle: string,
-    weight: string,
-    shipName: string,
-    dateCheckOut : Date
+  customerId :string,
+  phoneNumber : string,
+  typeContainer: string,
+  typeMerchandise: string,
+  weight : number,
+  noVehicle: string,
+  shipName: string,
+  status : number,
+  dateCheckout: Date,
+  typeBooking: number,
+  company: string,
+  container: string,
+  containerStatus: string,
+  note: string,
+  seaportEnd: string
 }
