@@ -10,7 +10,19 @@
         <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username"
           aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
       </div>
-      <div class="col-sm-8" style="text-align: right;">
+      <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
+        <div class="file-input">
+          <input
+            type="file"
+            name="file-input"
+            id="file-input"
+            class="file-input__input"
+            (change)="fileUpload($event)"
+          />
+          <label class="file-input__label btn btn-success" for="file-input">
+            <span>Upload file</span></label
+          >
+        </div>
         <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
           mới</button>
       </div>
@@ -25,7 +37,9 @@
                       <th>SĐT</th>
                       <th>Loại container</th>
                       <th>Loại Hành hóa</th>
-                      <th>Tên lái xe</th>
+                      <th>Container</th>
+                      <th>Cảng cuối</th>
+                      <th>Biển số xe</th>
                       <!-- <th>Trạng thái</th> -->
                       <th  style="text-align: center;">Hành động</th>
                     </tr>
@@ -33,11 +47,13 @@
                   <tbody style="border-top: none;">
                     <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
                       <td style="text-align: center;">{{i + 1}}</td>
-                      <td>{{getCustomerName(item.customerId)}}</td>
+                      <td>{{item.company}}</td>
                       <td>{{item.phoneNumber}}</td>
                       <td>{{item.typeContainer}}</td>
-                      <td>{{getProductName(item.typeMerchandise)}}</td>
-                      <td>{{item.shipName}}</td> 
+                      <td>{{item.typeMerchandise}}</td>
+                      <td>{{item.container}}</td>
+                      <td>{{item.seaportEnd}}</td>
+                      <td>{{item.noVehicle}}</td>
                       <!-- <td>{{item.status}}</td>  -->
                       <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i><i class="bi bi-trash3"  style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>
                     </tr>
@@ -49,4 +65,3 @@
           </div>
       </div>
   </div>
-  

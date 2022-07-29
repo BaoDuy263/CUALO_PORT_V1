@@ -5,7 +5,7 @@
                 <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
                     <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
                         Sửa khách hàng
-                    </div> 
+                    </div>
                 </ng-template>
         </div>
         <div class="row">
@@ -17,18 +17,18 @@
                         <option *ngFor="let item of lstCustomer;" value={{item.id}}>{{item.name}}</option>
                     </select>
                     <div *ngIf="submited && customerId?.errors?.['required']">
-                        <span *ngIf="customerId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                        <span *ngIf="customerId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
-                </div>  
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Số điện thoại</label>
                     <input type="text" class="form-control" formControlName="phoneNumber">
                     <div *ngIf="submited && phoneNumber?.errors?.['pattern']">
-                        <span *ngIf="phoneNumber?.errors?.['pattern']" style="color: red;">Số điện thoại không hợp lệ</span>  
+                        <span *ngIf="phoneNumber?.errors?.['pattern']" style="color: red;">Số điện thoại không hợp lệ</span>
                   </div>
-                </div>  
+                </div>
           </div>
         </div>
         <div class="row">
@@ -39,9 +39,9 @@
                         <option *ngFor="let item of lsttypeMerchandise;" value={{item.id}}>{{item.name}}</option>
                     </select>
                     <div *ngIf="submited && typeMerchandise?.errors?.['required']">
-                        <span *ngIf="typeMerchandise?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                        <span *ngIf="typeMerchandise?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
-                </div>  
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
@@ -50,9 +50,9 @@
                         <option *ngFor="let item of lstContainer;" value={{item.id}}>{{item.name}}</option>
                     </select>
                     <div *ngIf="submited && typeContainer?.errors?.['required']">
-                        <span *ngIf="typeContainer?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                        <span *ngIf="typeContainer?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
-                </div>  
+                </div>
           </div>
         </div>
         <div class="row">
@@ -60,32 +60,64 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
                     <input type="text" class="form-control" formControlName="shipName">
-                </div>  
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
                     <input type="text" class="form-control" formControlName="noVehicle">
-                </div>  
+                </div>
           </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Cân nặng hàng</label>
-                    <input type="text" class="form-control" formControlName="weight">   
-                </div>  
+                    <input type="text" class="form-control" formControlName="weight">
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Ngày xuất bến</label>
                     <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
-                </div>  
+                </div>
           </div>
         </div>
+        <div class="col-lg-6">
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Loại booking</label>
+              <select class="form-select" aria-label="Default select example" formControlName="typeBooking">
+                  <option *ngFor="let item of bookingTypes;" value={{item.value}}>{{item.name}}</option>
+              </select>
+              <div *ngIf="submited && typeContainer?.errors?.['required']">
+                  <span *ngIf="typeContainer?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+              </div>
+          </div>
+    </div>
         <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn btn-success" (click)="print()">In phiếu</button>
             <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
             <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button>
         </div>
     </form>
+
+    <div *ngIf="bookingCustomer" #bill id="dvContainer" hidden>
+      <h1>Phiếu {{getTypeBooking(bookingCustomer.typeBooking)}}</h1>
+      <table>
+          <tr>
+            <th>STT</th>
+            <th>Loại Container</th>
+            <th>Tên khách hàng</th>
+            <th>Biển số xe</th>
+            <th>Cân nặng hàng hoá</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>{{bookingCustomer.typeContainer}}</td>
+            <td>{{getNameCustomer(bookingCustomer.customerId)}}</td>
+            <td>{{bookingCustomer.noVehicle}}</td>
+            <td>{{bookingCustomer.weight}}</td>
+          </tr>
+      </table>
+    </div>
 </div>
