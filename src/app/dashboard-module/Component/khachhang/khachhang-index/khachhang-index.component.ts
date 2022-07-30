@@ -8,8 +8,6 @@ import { KhachhangCreateComponent } from '../khachhang-create/khachhang-create.c
 import { KhachhangDeleteComponent } from '../khachhang-delete/khachhang-delete.component';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 
-
-
 @Component({
   selector: 'app-khachhang-index',
   templateUrl: './khachhang-index.component.html',
@@ -44,7 +42,7 @@ export class KhachhangIndexComponent implements OnInit {
 
   constructor(private customerService: CustomerService, public dialog: MatDialog, private toastr: ToastrcustomService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void  {
     this.Pagingdata(this.PageInfo);
   }
 
@@ -54,12 +52,12 @@ export class KhachhangIndexComponent implements OnInit {
       .subscribe(
         data => {
           this.loadding = false;
-
           this.lstdata = data;
           this.Pagination.currentPage = data.currentPage,
             this.Pagination.pageSize = data.pageSize,
             this.Pagination.totalPage = data.totalPage,
             this.Pagination.totalRecord = data.totalRecord
+            console.log('this.Pagination',this.Pagination);
         });
   }
 

@@ -54,6 +54,15 @@ import { BookingImportContIndexComponent } from './Component/booking-import-cont
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+import { NotfoundComponent } from './Component/notfound/notfound.component';
+import { BookingCustomerIndexComponent } from './Component/booking-customer/booking-customer-index/booking-customer-index.component';
+import { BookingCustomerCreateComponent } from './Component/booking-customer/booking-customer-create/booking-customer-create.component';
+import { BookingCustomerDeleteComponent } from './Component/booking-customer/booking-customer-delete/booking-customer-delete.component';
+import { IndeximportContfromShipComponent } from './Component/importContFromShip/indeximport-contfrom-ship/indeximport-contfrom-ship.component';
+import { CreateimportContfromShipComponent } from './Component/importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
+import { DeleteimportContfromShipComponent } from './Component/importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
+
+
 
 @NgModule({
   declarations: [
@@ -94,7 +103,14 @@ import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoa
     ExampleComponent,
     QLTaiKhoanCreateComponent,
     QLTaiKhoanDeleteComponent,
-    QLTaiKhoanIndexComponent
+    QLTaiKhoanIndexComponent,
+    NotfoundComponent,
+    BookingCustomerIndexComponent,
+    BookingCustomerCreateComponent,
+    BookingCustomerDeleteComponent,
+    IndeximportContfromShipComponent,
+    CreateimportContfromShipComponent,
+    DeleteimportContfromShipComponent,
   ],
   imports: [
     CommonModule,

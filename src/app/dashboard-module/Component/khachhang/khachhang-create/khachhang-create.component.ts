@@ -62,8 +62,4 @@ export class KhachhangCreateComponent implements OnInit {
       }
 
     }
-
-
-
-
 }

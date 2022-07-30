@@ -50,7 +50,6 @@ export class ProductIndexComponent implements OnInit {
     this.loadding = true;
 
     this.productService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-      // console.log(data)  
       this.loadding = false;
 
       this.lstdata = data;
@@ -58,7 +57,6 @@ export class ProductIndexComponent implements OnInit {
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-      // console.log('this.Pagination',this.Pagination);
     })
   }
 

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaiKhoanCreateComponent } from './tai-khoan-create.component';
+import { NotfoundComponent } from './notfound.component';
 
-describe('TaiKhoanCreateComponent', () => {
-  let component: TaiKhoanCreateComponent;
-  let fixture: ComponentFixture<TaiKhoanCreateComponent>;
+describe('NotfoundComponent', () => {
+  let component: NotfoundComponent;
+  let fixture: ComponentFixture<NotfoundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaiKhoanCreateComponent ]
+      declarations: [ NotfoundComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TaiKhoanCreateComponent);
+    fixture = TestBed.createComponent(NotfoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

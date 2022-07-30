@@ -15,7 +15,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
     constructor(private accountService: AccountService,private router: Router) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!request.headers.has('Content-Type')) {
+        if (!request.headers.has('Content-Type') && request.url.search('Upload') < 0) {
             request = request.clone({
               headers: request.headers.set('Content-Type', 'application/json')
             });
@@ -23,7 +23,6 @@ export class HttpClientInterceptor implements HttpInterceptor {
         request = this.addAccessToken(request);
         return next.handle(request).pipe(
           catchError((error) => {
-            console.log('request',request);
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
             if (isUnauthorizedError) {

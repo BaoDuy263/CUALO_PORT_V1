@@ -1,45 +1,33 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { lstCutomer, CustomerCreate } from '../../../../Model/Customer';
+import { CustomerCreate, lstCutomer } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
 import { CustomerService } from '../../../../Service/Customer/customer.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { QLTaiKhoanCreateComponent } from '../tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from '../tai-khoan-delete/tai-khoan-delete.component';
+import { AccountService } from 'src/app/Service/Account/account.service';
+import { AccountCreate, lstAccount } from 'src/app/Model/Account';
 
 @Component({
   selector: 'app-tai-khoan-index',
   templateUrl: './tai-khoan-index.component.html',
-  styleUrls: ['./tai-khoan-index.component.css'],
 })
 export class QLTaiKhoanIndexComponent implements OnInit {
   isCreate: boolean = true;
   customerId: number = 0;
   loadding: boolean = false;
 
-  Pagination: Pagination = {
-    currentPage: 0,
-    pageSize: 0,
-    totalRecord: 0,
-    totalPage: 0,
-  };
-
-  lstdata: lstCutomer = {
-    currentPage: 0,
-    pageSize: 0,
-    totalRecord: 0,
-    totalPage: 0,
-    data: [],
-  };
+  
+  lstdata: any = [];
 
   PageInfo = {
     page: 1,
     Keyword: '',
-    pageSize: 10,
-  };
-
+    pageSize: 10
+  }
   constructor(
-    private customerService: CustomerService,
+    private AccountService: AccountService,
     public dialog: MatDialog,
     private toastr: ToastrcustomService
   ) {}
@@ -50,16 +38,11 @@ export class QLTaiKhoanIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.customerService
+    this.AccountService
       .Paging(PageInfo.page, PageInfo.Keyword, PageInfo.pageSize)
       .subscribe((data) => {
         this.loadding = false;
-
         this.lstdata = data;
-        (this.Pagination.currentPage = data.currentPage),
-          (this.Pagination.pageSize = data.pageSize),
-          (this.Pagination.totalPage = data.totalPage),
-          (this.Pagination.totalRecord = data.totalRecord);
       });
   }
 
@@ -76,13 +59,12 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   }
 
   //Create
-  customerCreate: CustomerCreate = {
-    name: '',
+  AccountCreate: AccountCreate = {
+    userName: '',
     fullName: '',
+    email: '',
     phoneNumber: '',
-    address: '',
-    userId: '',
-    description: '',
+    password: '',
   };
 
   openEdit(id: number) {
@@ -91,8 +73,8 @@ export class QLTaiKhoanIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(QLTaiKhoanCreateComponent, {
       width: '50%',
     });
-    // dialogRef.componentInstance.customerId = this.customerId;
-    // dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.componentInstance.customerId = this.customerId;
+    dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -122,16 +104,17 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   openDelete(id: number) {
     this.customerId = id;
     const dialogRef = this.dialog.open(QLTaiKhoanDeleteComponent);
-    //dialogRef.componentInstance.customerId = this.customerId;
+    dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
+      // if (result) {
+        // if (result.statusCode === 200) {
+          // console.log("jhiiiiiiiii")
+          this.toastr.showSuccess("Xóa tài khoản thành công !!!");
           this.Pagingdata(this.PageInfo);
-        } else {
-          this.toastr.showError(result.message);
-        }
-      }
+      //   } else {
+      //     this.toastr.showError(result.message);
+      //   }
+      // }
     });
   }
 }

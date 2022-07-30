@@ -11,13 +11,14 @@ import { ProductGroupIndexComponent } from './Component/product-group/product-gr
 import { ProductIndexComponent } from './Component/product/product-index/product-index.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { UnitIndexComponent } from './Component/unit/unit-index/unit-index.component';
-import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
-
 import { QLTaiKhoanIndexComponent} from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+import { BookingCustomerIndexComponent } from './Component/booking-customer/booking-customer-index/booking-customer-index.component'
 
 
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
+import { NotfoundComponent } from './Component/notfound/notfound.component';
+import { IndeximportContfromShipComponent } from './Component/importContFromShip/indeximport-contfrom-ship/indeximport-contfrom-ship.component';
 const routes: Routes = [
   { path: '', component: HomeComponent,
   children: [
@@ -35,6 +36,10 @@ const routes: Routes = [
       component : ExampleComponent,
     },
     {
+      path: 'nhapcont',
+      component : IndeximportContfromShipComponent,
+    },
+    {
       path: 'don-vi',
       component: UnitIndexComponent,
       canActivate: [RoleGuardService],
@@ -48,9 +53,11 @@ const routes: Routes = [
     { path: 'setting', component: SettingIndexComponent },
     { path: 'booking-cont-rong', component: BookingContEmptyIndexComponent },
     { path: 'booking-nhap-cont', component: BookingImportContIndexComponent },
+    { path: '404-not-found', component: NotfoundComponent },
 
     // Quản trị hệ thống
     { path: 'quan-ly-tai-khoan', component :QLTaiKhoanIndexComponent},
+    { path: 'booking-customer', component :BookingCustomerIndexComponent},
     // { path: 'don-vi', component: UnitIndexComponent }
 
   ]

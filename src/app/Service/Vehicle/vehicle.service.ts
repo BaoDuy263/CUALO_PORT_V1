@@ -19,7 +19,6 @@ export class VehicleService {
   }
 
   Insert(VehicleCreate: VehicleCreate) {
-    console.log(VehicleCreate)
     return this.httpService.postRequest('Vehicle/Create',VehicleCreate)
       .pipe(map((data: any) => {
         return data;

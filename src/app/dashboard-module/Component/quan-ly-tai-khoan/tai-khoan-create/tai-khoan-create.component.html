@@ -1,1 +1,69 @@
-<p>tai-khoan-create works!</p>
+<div class="container-lg hight_modal">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                Thêm mới tài khoản</div>
+            <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Sửa tài khoản
+                </div>
+            </ng-template>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Tên đăng nhập</label>
+                    <input type="text" [readonly]="lockOrOpen" class="form-control" formControlName="userName">
+                    <div *ngIf="submited && userName?.errors?.['required']">
+                        <span *ngIf="userName?.errors?.['required']"  style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Họ và tên</label>
+                    <input type="text" class="form-control" formControlName="fullName">
+                    <div *ngIf="submited && fullName?.errors?.['required']">
+                        <span *ngIf="fullName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <div *ngIf="submited && email?.errors?.['required']">
+                        <span *ngIf="email?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Điện thoại</label>
+                    <input type="text" class="form-control" formControlName="phoneNumber">
+                    <div *ngIf="submited && phoneNumber?.errors?.['required']">
+                        <span *ngIf="phoneNumber?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Mật khẩu</label>
+                    <input type="text" class="form-control" formControlName="password">
+                    <div *ngIf="submited && password?.errors?.['required']">
+                        <span *ngIf="password?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+           
+           
+        
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+                bỏ</button>
+        </div>
+    </form>
+</div>
