@@ -33,4 +33,8 @@ export class BookingServiceService {
     return this.httpService.deleteRequest('Booking/Delete?id='+id);
   }
 
+  CreateBookings(data : any) {
+    return this.httpService.postRequest("Booking/Upload",data);
+  }
+
 }

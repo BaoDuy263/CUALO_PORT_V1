@@ -2,7 +2,7 @@ export interface TypeRoute {
     name : string
     url?: string
     roles?: any
-    children?: TypeRoute[] 
+    children?: TypeRoute[]
 }
 
 
@@ -31,12 +31,12 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
 
             },
-           
+
             {
                 name :'Đơn vị',
                 url:'don-vi',
                 roles: ["Admin"],
-                
+
             },
             {
                 name :'Phương tiện',
@@ -44,9 +44,9 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
 
             },
-          
-           
-           
+
+
+
         ]
     },
     // {
@@ -57,7 +57,7 @@ export const ROUTE_DATA: TypeRoute[] = [
     // {
     //     name :'Quản lý khách hàng',
     //     children : [
-           
+
     //         {
     //             name :'Booking',
     //             url:'khachhang'
@@ -70,7 +70,7 @@ export const ROUTE_DATA: TypeRoute[] = [
 
         children : [
             {
-                name :'Booking từ khách hàng',
+                name :'Đóng/rút hàng',
                 url:'booking-customer',
                 roles: ["Admin", "ds"],
 
@@ -157,11 +157,11 @@ export const ROUTE_DATA: TypeRoute[] = [
     },
     {
         name :'Quản lý lịch tàu',
-        
+
         roles: ["Admin"],
         url:'404-not-found'
     },
-  
+
     {
         name :'Quản trị hệ thống',
         roles: ["Admin"],
@@ -184,4 +184,3 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin"],
     },
   ]
-  
