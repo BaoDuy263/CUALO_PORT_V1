@@ -8,7 +8,6 @@ import { CustomerService } from 'src/app/Service/Customer/customer.service';
 import { ProductService } from 'src/app/Service/Product/product.service';
 import { BookingCustomerCreateComponent } from '../booking-customer-create/booking-customer-create.component'
 import { BookingCustomerDeleteComponent } from '../booking-customer-delete/booking-customer-delete.component'
-import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-booking-customer-index',
   templateUrl: './booking-customer-index.component.html',
