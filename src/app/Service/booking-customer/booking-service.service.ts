@@ -16,25 +16,25 @@ export class BookingServiceService {
   }
 
   Insert(data : BookingCustomerCreate) {
-    return this.httpService.postRequest("Booking/Create",data);
+    return this.httpService.postRequest("BookingDetail/Create",data);
   }
 
   Detail(id: number)
   {
-    return this.httpService.getRequest("Booking/GetDetail?id="+id)
+    return this.httpService.getRequest("BookingDetail/GetDetail?id="+id)
   }
 
   Update(data : BookingCustomerEdit)
   {
-    return this.httpService.putRequest("Booking/Update" , data);
+    return this.httpService.putRequest("BookingDetail/Update" , data);
   }
 
   Delete(id: number) {
-    return this.httpService.deleteRequest('Booking/Delete?id='+id);
+    return this.httpService.deleteRequest('BookingDetail/Delete?id='+id);
   }
 
   CreateBookings(data : any) {
-    return this.httpService.postRequest("Booking/Upload",data);
+    return this.httpService.postRequest("BookingDetail/Upload",data);
   }
 
 }
