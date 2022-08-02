@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
-import {  lstBookingCustomer } from '../../../../Model/Booking-customer'
+import { lstBookingCustomer } from '../../../../Model/Booking-customer'
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -44,33 +44,33 @@ export class BookingCustomerIndexComponent implements OnInit {
   }
 
 
-  constructor(private bookingServiceService: BookingServiceService, public dialog: MatDialog, private toastr: ToastrcustomService,private customerService: CustomerService,private productService: ProductService) { }
+  constructor(private bookingServiceService: BookingServiceService, public dialog: MatDialog, private toastr: ToastrcustomService, private customerService: CustomerService, private productService: ProductService) { }
 
-   ngOnInit(): void  {
-     this.Pagingdata(this.PageInfo);
-     this.GetListSelectCustomer();
-     this.GetListSelectProduct();
+  ngOnInit(): void {
+    this.Pagingdata(this.PageInfo);
+    this.GetListSelectCustomer();
+    this.GetListSelectProduct();
+  }
+
+
+  getCustomerName(id: string) {
+    if (this.lstCustomer) {
+      let customer = this.lstCustomer.find((x: any) => x.id == id);
+      return customer ? customer.name : "";
     }
+  }
 
-
-    getCustomerName(id: string ) {
-      if(this.lstCustomer){
-        let customer =   this.lstCustomer.find((x :any) => x.id == id);
-        return customer ? customer.name : "";
-      }
+  getProductName(id: string) {
+    if (this.lstProduct) {
+      let product = this.lstProduct.find((x: any) => x.id == id);
+      return product ? product.name : "";
     }
-
-    getProductName(id: string ) {
-      if(this.lstProduct){
-        let product =   this.lstProduct.find((x :any) => x.id == id);
-        return product ? product.name : "";
-      }
-    }
+  }
 
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-     this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+    this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -81,15 +81,15 @@ export class BookingCustomerIndexComponent implements OnInit {
   }
 
   GetListSelectCustomer() {
-    this.customerService.GetSelectList().subscribe(data => {
-      this.lstCustomer = data.data;
-    })
+    // this.customerService.GetSelectList().subscribe(data => {
+    //   this.lstCustomer = data.data;
+    // })
   }
 
   GetListSelectProduct() {
-    this.productService.GetSelectList().subscribe(data => {
-      this.lstProduct = data.data;
-    })
+    // this.productService.GetSelectList().subscribe(data => {
+    //   this.lstProduct = data.data;
+    // })
   }
 
 
@@ -101,8 +101,6 @@ export class BookingCustomerIndexComponent implements OnInit {
 
   openCreate() {
     const dialogRef = this.dialog.open(BookingCustomerCreateComponent);
-    dialogRef.componentInstance.lstCustomer = this.lstCustomer;
-    dialogRef.componentInstance.lsttypeMerchandise = this.lstProduct;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -122,8 +120,6 @@ export class BookingCustomerIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(BookingCustomerCreateComponent, { width: '50%' });
     dialogRef.componentInstance.bookCutomerId = this.bookCutomerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
-    dialogRef.componentInstance.lstCustomer = this.lstCustomer;
-    dialogRef.componentInstance.lsttypeMerchandise = this.lstProduct;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -161,5 +157,17 @@ export class BookingCustomerIndexComponent implements OnInit {
     this.Pagingdata(pageOfItems)
   }
 
-
+  fileUpload(event: any) {
+    const selectedFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    try {
+      this.loadding = true;
+      this.bookingServiceService.CreateBookings(formData).subscribe(res => this.Pagingdata(this.PageInfo))
+      this.loadding = false;
+    } catch (error) {
+      this.loadding = false;
+      throw new Error("error 500");
+    }
+  }
 }
