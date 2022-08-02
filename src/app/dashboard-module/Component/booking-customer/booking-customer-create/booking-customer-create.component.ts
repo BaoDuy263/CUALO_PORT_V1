@@ -45,7 +45,6 @@ export class BookingCustomerCreateComponent implements OnInit {
           id: new FormControl(response.id),
           customer: new FormControl(response.customer),
           typeContainer: new FormControl(response.typeContainer),
-          typeMerchandise: new FormControl(response.typeContainer),
           shipperName: new FormControl(response.shipperName),
           shipName: new FormControl(response.shipName),
           company: new FormControl(response.company),
