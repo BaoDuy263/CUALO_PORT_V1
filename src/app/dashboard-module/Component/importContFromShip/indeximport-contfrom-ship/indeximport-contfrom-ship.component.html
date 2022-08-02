@@ -6,23 +6,24 @@
       <h2 style="font-weight: 500;">Danh sách nhập Container từ tàu</h2>
     </div>
     <div class="row" style=" margin-bottom: 25px;">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="row">
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Chuyến" aria-label="Recipient's username"
-                  aria-describedby="button-addon2">
-              </div>
               <div class="col-sm-4">
-                <input type="datetime-local" class="form-control">
-              </div>
-              <div class="col-sm-4">
-                <input type="datetime-local" class="form-control">
-              </div>
+                  <input type="text" class="form-control" placeholder="Chuyến nhập xuất" >
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" placeholder="Mã container" >
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" placeholder="Chủ hàng">
+                </div>
             </div>
         </div>
-        <div class="col-sm-2" style="text-align: right;">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
-            mới</button>
+        <div class="col-sm-3" >
+          <div class="row" style="justify-content: space-around;">
+              <button class="btn btn-outline-secondary" type="button" (click)="openImport()"  style="width: 110px; ">Import</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="openCreate()"  style="width: 110px; ">Thêm mới</button>
+          </div>
         </div>
     </div>
       <div class="row" >
@@ -31,20 +32,34 @@
                   <thead >
                     <tr >
                       <th  style="text-align: center;">STT</th>
-                      <th>Tên Tàu</th>
-                      <th>Chuyến</th>
-                      <th>Thời gian dự kiến</th>
+                      <th>Chuyến nhập xuất</th>
+                      <th>Chủ Hàng</th>
+                      <th>Hàng Hóa</th>
+                      <th>Mã Container</th>
+                      <th>Cảng cuối</th>
+                      <th>Khối Lượng</th>
                       <th  style="text-align: center;">Hành động</th>
                     </tr>
                   </thead>
                   <tbody style="border-top: none;">
-                  
+                    <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
+                      <td style="text-align: center;">{{i + 1}}</td>
+                      <td>{{item.chuyenNhapXuat}}</td>
+                      <td>{{item.chuHang}}</td>
+                      <td>{{item.hangHoa}}</td>
+                      <td>{{item.contNo}}</td>
+                      <td>{{item.cangCuoi}}</td>
+                      <td>{{item.wg}}</td>
+                      <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
+                        (click)="openEdit(item.id)"></i><i class="bi bi-trash3" 
+                        style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>
+                    </tr>
                   </tbody>
                 </table>
           </div>
-         <!-- <div>
+          <div>
             <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
-          </div> -->
+          </div>
       </div>
   </div>
   

@@ -61,6 +61,7 @@ import { BookingCustomerDeleteComponent } from './Component/booking-customer/boo
 import { IndeximportContfromShipComponent } from './Component/importContFromShip/indeximport-contfrom-ship/indeximport-contfrom-ship.component';
 import { CreateimportContfromShipComponent } from './Component/importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from './Component/importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
+import { ImportContComponent } from './Component/importContFromShip/import-cont/import-cont.component';
 
 
 
@@ -111,6 +112,7 @@ import { DeleteimportContfromShipComponent } from './Component/importContFromShi
     IndeximportContfromShipComponent,
     CreateimportContfromShipComponent,
     DeleteimportContfromShipComponent,
+    ImportContComponent,
   ],
   imports: [
     CommonModule,

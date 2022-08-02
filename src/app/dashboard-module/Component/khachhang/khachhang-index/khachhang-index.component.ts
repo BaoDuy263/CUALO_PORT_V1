@@ -112,7 +112,6 @@ export class KhachhangIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);

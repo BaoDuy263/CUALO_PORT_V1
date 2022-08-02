@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
 
 @Component({
   selector: 'app-deleteimport-contfrom-ship',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteimportContfromShipComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() Id : number = 0;
+  constructor(private service: ImportContFromShipService,public dialogRef: MatDialogRef<DeleteimportContfromShipComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  onDelete()
+  {
+      this.service.Delete(this.Id).subscribe(response => {
+          this.dialogRef.close(response);
+      })
   }
 
 }
