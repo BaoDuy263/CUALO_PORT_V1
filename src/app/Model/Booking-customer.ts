@@ -10,10 +10,11 @@ export interface BookingCustomer
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,
-
+    createdOn: Date
 }
 
 
@@ -39,10 +40,10 @@ export interface BookingCustomerCreate
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,
-
 }
 
 
@@ -58,6 +59,7 @@ export interface BookingCustomerEdit
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,

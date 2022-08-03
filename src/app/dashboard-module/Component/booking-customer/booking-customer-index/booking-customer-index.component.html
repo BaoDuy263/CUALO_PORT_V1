@@ -27,11 +27,11 @@
               <th style="text-align: center;">STT</th>
               <th>Tên Khách hàng</th>
               <th>Loại container</th>
-              <th>Loại hàng hoá</th>
               <th>Tên lái xe</th>
               <th>Tên tàu</th>
               <th>Vị trí trả hàng</th>
               <th>Ghi chú</th>
+              <th>Ngày tạo</th>
               <!-- <th>Trạng thái</th> -->
               <th style="text-align: center;">Hành động</th>
             </tr>
@@ -41,11 +41,11 @@
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.customer}}</td>
               <td>{{item.typeContainer}}</td>
-              <td>{{item.typeMerchandise}}</td>
               <td>{{item.shipperName}}</td>
               <td>{{item.shipName}}</td>
               <td>{{item.positionReturn}}</td>
               <td>{{item.note}}</td>
+              <td>{{item.createdOn | date:'short'}}</td>
               <!-- <td>{{item.status}}</td>  -->
               <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                   (click)="openEdit(item.id)"></i><i class="bi bi-trash3"
