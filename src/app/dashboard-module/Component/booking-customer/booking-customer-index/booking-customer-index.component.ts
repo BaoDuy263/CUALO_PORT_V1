@@ -163,8 +163,12 @@ export class BookingCustomerIndexComponent implements OnInit {
         formData.append("file", selectedFile);
         try {
             this.loadding = true;
-            this.bookingServiceService.CreateBookings(formData).subscribe(res => this.Pagingdata(this.PageInfo))
-            this.loadding = false;
+            this.bookingServiceService.CreateBookings(formData).subscribe(res => {
+              if(res.statusCode === 200)
+              {
+                this.Pagingdata(this.PageInfo)
+              }
+            })
         } catch (error) {
             this.loadding = false;
             throw new Error("error 500");
