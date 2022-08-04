@@ -62,6 +62,10 @@ import { IndeximportContfromShipComponent } from './Component/importContFromShip
 import { CreateimportContfromShipComponent } from './Component/importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from './Component/importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
 import { ImportContComponent } from './Component/importContFromShip/import-cont/import-cont.component';
+import { IndexImportContFromPortComponent } from './Component/importContFromPort/index-import-cont-from-port/index-import-cont-from-port.component';
+import { ImportContFromPortComponent } from './Component/importContFromPort/import-cont-from-port/import-cont-from-port.component';
+import { CreateImportContFromPortComponent } from './Component/importContFromPort/create-import-cont-from-port/create-import-cont-from-port.component';
+import { DeleteImportContFromPortComponent } from './Component/importContFromPort/delete-import-cont-from-port/delete-import-cont-from-port.component';
 
 
 
@@ -113,6 +117,10 @@ import { ImportContComponent } from './Component/importContFromShip/import-cont/
     CreateimportContfromShipComponent,
     DeleteimportContfromShipComponent,
     ImportContComponent,
+    IndexImportContFromPortComponent,
+    ImportContFromPortComponent,
+    CreateImportContFromPortComponent,
+    DeleteImportContFromPortComponent,
   ],
   imports: [
     CommonModule,

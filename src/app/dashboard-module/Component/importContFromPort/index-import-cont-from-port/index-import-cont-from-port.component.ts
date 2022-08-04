@@ -1,22 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateimportContfromShipComponent } from '../createimport-contfrom-ship/createimport-contfrom-ship.component';
-import { DeleteimportContfromShipComponent } from '../deleteimport-contfrom-ship/deleteimport-contfrom-ship.component'
-import { ImportContComponent } from '../import-cont/import-cont.component'
-import { BayPlanPaging,BayPlanIndex} from '../../../../Model/BayPlanDetail'
-import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
-import { Pagination } from '../../../../Model/Table';
+import { ImportContFromPortComponent } from "../import-cont-from-port/import-cont-from-port.component" 
+import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service'
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
+import { PortToShipIndex, PortToShipPaging } from 'src/app/Model/BayPlanDetail';
+import { Pagination } from 'src/app/Model/Table';
+import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component'
+import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component'
 @Component({
-  selector: 'app-indeximport-contfrom-ship',
-  templateUrl: './indeximport-contfrom-ship.component.html',
-  styleUrls: ['./indeximport-contfrom-ship.component.css']
+  selector: 'app-index-import-cont-from-port',
+  templateUrl: './index-import-cont-from-port.component.html',
+  styleUrls: ['./index-import-cont-from-port.component.css']
 })
-export class IndeximportContfromShipComponent implements OnInit {
+export class IndexImportContFromPortComponent implements OnInit {
 
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
+
+  PageInfo : PortToShipPaging = {
+    Page: 1,
+    PageSize: 10,
+    Voyace : '',
+    ContNo: '',
+  }
+
+  lstdata : PortToShipIndex = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -25,31 +40,16 @@ export class IndeximportContfromShipComponent implements OnInit {
     totalPage: 0,
   }
 
-  lstdata : BayPlanIndex = {
-    currentPage : 0,
-    pageSize: 0,
-    totalPage : 0,
-    totalRecord : 0,
-    data : []
-  }
-
-  PageInfo : BayPlanPaging = {
-    Page: 1,
-    PageSize: 10,
-    Voyace : '',
-    ContNo: '',
-    BillNo : '',
-  }
-  constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService) { }
+  constructor(public dialog: MatDialog,private service : ImportContFromShipService,private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
     this.Paging();
   }
 
   Paging() {
-    this.service.Paging(this.PageInfo).subscribe(
+    this.service.PagingPorttoShip(this.PageInfo).subscribe(
       data => {
-        console.log('data',data);
+       
         this.loadding = false;
           this.lstdata = data.data;
           this.Pagination.currentPage = data.data.currentPage,
@@ -59,6 +59,11 @@ export class IndeximportContfromShipComponent implements OnInit {
       });
   }
 
+  onChangePage(pageOfItems: any) {
+    this.PageInfo.Page = pageOfItems.page;
+    this.PageInfo.PageSize = pageOfItems.pageSize;
+    this.Paging()
+  }
 
   onSearchVoyace(e: any) {
     this.PageInfo.Voyace = e;
@@ -72,14 +77,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
   }
 
-  
-  onChangePage(pageOfItems: BayPlanPaging) {
-    this.PageInfo = pageOfItems
-    this.Paging()
-  }
-
   openImport() {
-    const dialogRef = this.dialog.open(ImportContComponent);
+    const dialogRef = this.dialog.open(ImportContFromPortComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.status === 200) {
@@ -93,15 +92,13 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
-
   openCreate(){
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
+    const dialogRef = this.dialog.open(CreateImportContFromPortComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
-
         }
         else {
           this.toastr.showError(result.message);
@@ -112,7 +109,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   openEdit(id: number){
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
+    const dialogRef = this.dialog.open(CreateImportContFromPortComponent);
     dialogRef.componentInstance.Id = id;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -128,8 +125,16 @@ export class IndeximportContfromShipComponent implements OnInit {
      });
   }
 
+  DowloadTemplate() {
+    this.service.DowloadTemplate().subscribe(data => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
+
   openDelete(id: number) {
-    const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
+    const dialogRef = this.dialog.open(DeleteImportContFromPortComponent);
     dialogRef.componentInstance.Id = id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -141,14 +146,6 @@ export class IndeximportContfromShipComponent implements OnInit {
           this.toastr.showError(result.message);
         }
       }
-    });
-  }
-
-  DowloadTemplate() {
-    this.service.DowloadTemplatePort().subscribe(data => {
-      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      const url= window.URL.createObjectURL(blob);
-      window.open(url);
     });
   }
 

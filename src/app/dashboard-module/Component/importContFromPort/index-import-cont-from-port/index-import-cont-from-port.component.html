@@ -3,10 +3,10 @@
   </div>
   <div class="" style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
     <div class="row">
-      <h2 style="font-weight: 500;">Danh sách nhập Container từ tàu</h2>
+      <h2 style="font-weight: 500;">Danh sách Xuất Container lên tàu</h2>
     </div>
     <div class="row" style=" margin-bottom: 25px;">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="row">
               <div class="col-sm-6">
                   <input type="text" class="form-control" placeholder="Chuyến nhập xuất" [(ngModel)]="PageInfo.Voyace" (ngModelChange)="onSearchVoyace($event)">
@@ -16,17 +16,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-3" >
           <div class="row" >
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Hành động
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" (click)="openCreate()">Thêm mới</a></li>
                 <li><a class="dropdown-item" (click)="DowloadTemplate()">Dowload Template</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Upload</a></li> -->
                 <li><a class="dropdown-item" (click)="openImport()">Import</a></li>
+                <li><a class="dropdown-item" (click)="openCreate()">Thêm mới</a></li>
               </ul>
             </div>
           </div>
@@ -38,25 +37,27 @@
                   <thead >
                     <tr >
                       <th  style="text-align: center;">STT</th>
-                      <th>Chuyến nhập xuất</th>
-                      <th>Người nhận hàng</th>
-                      <th>Hàng Hóa</th>
+                      <th>Chuyến</th>
                       <th>Mã Container</th>
-                      <th>Ngày trả</th>
+                      <th>Hàng Hóa</th>
+                      <th>Khối Lượng</th>
+                      <th>Loại Cont</th>
                       <th  style="text-align: center;">Hành động</th>
                     </tr>
                   </thead>
                   <tbody style="border-top: none;">
                     <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
                       <td style="text-align: center;">{{i + 1}}</td>
-                      <td>{{item.voyace}}</td>
-                      <td>{{item.receiver}}</td>
-                      <td>{{item.commodity}}</td>
+                      <td>{{item.chuyen}}</td>
                       <td>{{item.contNo}}</td>
-                      <td>{{item.returnPlan}}</td>
+                      <td>{{item.hangHoa}}</td>
+                      <td>{{item.gw}}</td>
+                      <td>{{item.loaiCont}}</td>
                       <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                        (click)="openEdit(item.id)"></i><i class="bi bi-trash3" 
-                        style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>
+                        (click)="openEdit(item.id)"></i>
+                        <i class="bi bi-trash3" 
+                        style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

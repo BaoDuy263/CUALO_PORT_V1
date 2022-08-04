@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import * as _ from 'lodash';
 import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 
 @Component({
-  selector: 'app-import-cont',
-  templateUrl: './import-cont.component.html',
-  styleUrls: ['./import-cont.component.css']
+  selector: 'app-import-cont-from-port',
+  templateUrl: './import-cont-from-port.component.html',
+  styleUrls: ['./import-cont-from-port.component.css']
 })
-export class ImportContComponent implements OnInit {
+export class ImportContFromPortComponent implements OnInit {
 
   file : any;
-  constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<ImportContComponent>) { }
+  constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<ImportContFromPortComponent>) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +19,7 @@ export class ImportContComponent implements OnInit {
   onSubmit(){
     const formData = new FormData();
     formData.append('file', this.file,this.file.Name);
-    this.importContFromShipService.ImportFromShoptoPort(formData).subscribe(data => this.dialogRef.close(data));
+    this.importContFromShipService.ImportPorttoShip(formData).subscribe(data => console.log('data',data));
   }
 
   onFileSelect(e : any) {
@@ -28,4 +27,5 @@ export class ImportContComponent implements OnInit {
       this.file = e.target.files[0];
     }
   }
+
 }

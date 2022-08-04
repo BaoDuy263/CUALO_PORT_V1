@@ -3,15 +3,14 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
 
 @Component({
-  selector: 'app-deleteimport-contfrom-ship',
-  templateUrl: './deleteimport-contfrom-ship.component.html',
-  styleUrls: ['./deleteimport-contfrom-ship.component.css']
+  selector: 'app-delete-import-cont-from-port',
+  templateUrl: './delete-import-cont-from-port.component.html',
+  styleUrls: ['./delete-import-cont-from-port.component.css']
 })
-export class DeleteimportContfromShipComponent implements OnInit {
-
+export class DeleteImportContFromPortComponent implements OnInit {
 
   @Input() Id : number = 0;
-  constructor(private service: ImportContFromShipService,public dialogRef: MatDialogRef<DeleteimportContfromShipComponent>) { }
+  constructor(private service: ImportContFromShipService,public dialogRef: MatDialogRef<DeleteImportContFromPortComponent>) { }
 
   ngOnInit(): void {
   }

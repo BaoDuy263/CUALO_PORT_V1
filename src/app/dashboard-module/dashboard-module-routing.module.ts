@@ -19,6 +19,7 @@ import { BookingCustomerIndexComponent } from './Component/booking-customer/book
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { IndeximportContfromShipComponent } from './Component/importContFromShip/indeximport-contfrom-ship/indeximport-contfrom-ship.component';
+import { IndexImportContFromPortComponent } from './Component/importContFromPort/index-import-cont-from-port/index-import-cont-from-port.component'
 const routes: Routes = [
   { path: '', component: HomeComponent,
   children: [
@@ -38,6 +39,10 @@ const routes: Routes = [
     {
       path: 'nhapcont',
       component : IndeximportContfromShipComponent,
+    },
+    {
+      path: 'xuatcont',
+      component : IndexImportContFromPortComponent,
     },
     {
       path: 'don-vi',
