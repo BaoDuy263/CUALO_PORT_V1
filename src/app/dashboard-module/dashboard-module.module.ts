@@ -25,6 +25,7 @@ import { MatTreeModule} from '@angular/material/tree';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import {MatMenuModule} from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs'
 
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
@@ -62,6 +63,10 @@ import { IndeximportContfromShipComponent } from './Component/importContFromShip
 import { CreateimportContfromShipComponent } from './Component/importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from './Component/importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
 import { ImportContComponent } from './Component/importContFromShip/import-cont/import-cont.component';
+import { PackingBoardComponent } from './Component/packing-board/packing-board.component';
+import { PlanPackingIndexComponent } from './Component/plan-packing/plan-packing-index/plan-packing-index.component';
+import { PlanPackingDeleteComponent } from './Component/plan-packing/plan-packing-delete/plan-packing-delete.component';
+import { PlanPackingCreateComponent } from './Component/plan-packing/plan-packing-create/plan-packing-create.component';
 
 
 
@@ -113,6 +118,10 @@ import { ImportContComponent } from './Component/importContFromShip/import-cont/
     CreateimportContfromShipComponent,
     DeleteimportContfromShipComponent,
     ImportContComponent,
+    PackingBoardComponent,
+    PlanPackingIndexComponent,
+    PlanPackingDeleteComponent,
+    PlanPackingCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -126,6 +135,7 @@ import { ImportContComponent } from './Component/importContFromShip/import-cont/
     MatMenuModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
     //
     FormsModule,
     ReactiveFormsModule,

@@ -5,11 +5,11 @@
         </div>
     </mat-tree-node>
     <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-      
+
         <div class="mat-tree-node" matTreeNodeToggle>
             <mat-icon [attr.aria-label]="'Toggle ' + node.name" matTreeNodeToggle>
                 {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>    
+            </mat-icon>
             {{node.name}}
         </div>
         <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"

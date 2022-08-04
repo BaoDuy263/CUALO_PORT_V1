@@ -63,5 +63,28 @@ export interface BookingCustomerEdit
     note : string,
     status : string,
     dateCheckOut: Date,
-
 }
+
+export interface BookingTemplate
+{
+  id: number,
+  pathFile: string,
+  createdOn: Date,
+  createdBy: string
+}
+
+export interface BookingTemplateCreate
+{
+  id: number,
+  pathFile: string
+}
+
+export interface lstBookingTemplate
+{
+    currentPage: number,
+    pageSize : number,
+    totalRecord : number,
+    totalPage: number
+    data : BookingTemplate[]
+}
+
