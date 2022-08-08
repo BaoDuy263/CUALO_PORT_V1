@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import  { CommonserviceService } from  '../CommonService/commonservice.service';
-import { map, of,Observable } from 'rxjs';
 import { BayPlanPaging,BayPlanCreate,BayPlanUpdate, PortToShipPaging, PortToShipCreate, PortToShipUpdate } from '../../Model/BayPlanDetail';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
+import { BookingPlanPaging } from 'src/app/Model/BookingPlan';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +12,36 @@ export class ImportContFromShipService {
 
 
 
+
   // From Ship to port
 
   DowloadTemplatePort() {
     return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DowloadTemplate');
   }
 
-  ImportFromShoptoPort(BayPlan: any) {
+  DownLoadFileShiptoPort(path: string) {
+    return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DownLoadFile/' + path);
+  }
+
+
+ 
+
+  UploadShiptoPort(file: any)
+  {
+    return this.httpService.uploadRequest('PlanImportFromShiptoPort/UploadShiptoPort', file);
+  }
+
+  ImportFromShiptoPort(BayPlan: any) {
     return this.httpService.uploadRequest('PlanImportFromShiptoPort/ImportFromShoptoPort',BayPlan)
   }
 
 
   Paging(data : BayPlanPaging) {
     return this.httpService.postRequest('PlanImportFromShiptoPort/Paging', data);
+  }
+
+  PagingPortShip(data : BookingPlanPaging) {
+    return this.httpService.postRequest('Booking/Paging', data);
   }
 
   Insert(data: BayPlanCreate ){
@@ -47,6 +63,16 @@ export class ImportContFromShipService {
   //From port to ship
 
   
+  DownLoadFile(path: string) {
+    return this.httpService.DowloadRequest('PlanExportFromPorttoShip/DownLoadFile/' + path);
+  }
+  
+  UploadPorttoShip(file: any)
+  {
+    return this.httpService.uploadRequest('PlanExportFromPorttoShip/UploadPorttoShip', file);
+  }
+
+  
   ImportPorttoShip(file: any) {
     
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShip',file);
@@ -59,6 +85,8 @@ export class ImportContFromShipService {
   PagingPorttoShip(data : PortToShipPaging) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/Paging', data);
   }
+
+  
 
   InsertPorttoShip(data: PortToShipCreate) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/CreatePortToShip',data);

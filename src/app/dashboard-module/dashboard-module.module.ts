@@ -24,8 +24,8 @@ import { MatListModule} from '@angular/material/list';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import {MatMenuModule} from '@angular/material/menu';
-
+import { MatMenuModule} from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs'
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
@@ -134,6 +134,7 @@ import { DeleteImportContFromPortComponent } from './Component/importContFromPor
     MatMenuModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
     //
     FormsModule,
     ReactiveFormsModule,

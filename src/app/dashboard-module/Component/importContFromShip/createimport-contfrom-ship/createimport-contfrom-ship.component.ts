@@ -24,6 +24,14 @@ export class CreateimportContfromShipComponent implements OnInit {
     {"id" : "40'OT" , name : "Container Khô 40 feet hở nóc(400C)"}
   ]
 
+  lstDirection = [
+    {"id" : 1 , name : "Lưu vỏ"},
+    {"id" : 2 , name : "Lưu bãi"},
+    {"id" : 3 , name : "Trả Nguyên"},
+    {"id" : 4 , name : "Rút Ruột"},
+    {"id" : 5 , name : "(Ship side)T-X"}
+  ]
+
   constructor( private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateimportContfromShipComponent>) { 
     this.CreateEditForm = new FormGroup({
       Voyace: new FormControl('', Validators.required),

@@ -22,5 +22,4 @@ export class DeleteimportContfromShipComponent implements OnInit {
           this.dialogRef.close(response);
       })
   }
-
 }

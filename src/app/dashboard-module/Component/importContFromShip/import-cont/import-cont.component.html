@@ -10,7 +10,8 @@
            </div>
         </div>
         <div class="d-flex justify-content-end mt-4">
-            <button type="button" class="btn btn-primary" type="submit">Import</button>
+            <button type="button" class="btn btn-primary" type="submit" *ngIf="isImport">Import</button>
+            <button type="button" class="btn btn-primary" type="submit" *ngIf="!isImport">Upload</button>
             <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy bỏ</button>
         </div>
     </form>

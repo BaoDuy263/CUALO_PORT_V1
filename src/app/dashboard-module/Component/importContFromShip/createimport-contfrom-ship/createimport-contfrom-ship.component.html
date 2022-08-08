@@ -112,7 +112,10 @@
           </div>
           <div class="col-lg-4">
             <label for="exampleFormControlInput1" class="form-label">Hướng xử lý</label>
-            <input type="text" class="form-control" formControlName="Direction">
+            <select formControlName="Direction" class="form-control" style="width: 100%;">
+                <option *ngFor="let item of lstDirection" [value]="item.id">{{item.name}}
+                </option>
+            </select> 
           </div>
         </div>
         <div class="d-flex justify-content-end mt-4">

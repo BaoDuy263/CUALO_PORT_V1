@@ -7,6 +7,7 @@ import { BayPlanPaging,BayPlanIndex} from '../../../../Model/BayPlanDetail'
 import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
 import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
+import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
@@ -17,6 +18,31 @@ export class IndeximportContfromShipComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
+
+  //Tab Booking
+  PageInfoBooking : BookingPlanPaging = {
+    Page: 1,
+    PageSize: 10,
+    FileName : '',
+    BookingType : 4
+  } 
+
+  lstdataBooking : BookingPlanIndex = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
+
+  PaginationBooking : Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+  }
+  //
+
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -44,6 +70,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   ngOnInit(): void {
     this.Paging();
+    this.PagingBooking();
   }
 
   Paging() {
@@ -57,6 +84,20 @@ export class IndeximportContfromShipComponent implements OnInit {
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
       });
+  }
+
+  PagingBooking() {
+    this.service.PagingPortShip(this.PageInfoBooking).subscribe(
+      data => {
+        this.loadding = false;
+        this.lstdataBooking = data.data;
+        this.PaginationBooking.currentPage = data.data.currentPage,
+        this.PaginationBooking.pageSize = data.data.pageSize,
+        this.PaginationBooking.totalPage = data.data.totalPage,
+        this.PaginationBooking.totalRecord = data.data.totalRecord
+        console.log('this.PaginationBooking',this.PaginationBooking);
+      }
+    )
   }
 
 
@@ -85,6 +126,21 @@ export class IndeximportContfromShipComponent implements OnInit {
         if (result.status === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
+
+  openUpload() {
+    const dialogRef =this.dialog.open(ImportContComponent);
+    dialogRef.componentInstance.isImport = false;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
         }
         else {
           this.toastr.showError(result.message);
@@ -150,6 +206,14 @@ export class IndeximportContfromShipComponent implements OnInit {
       const url= window.URL.createObjectURL(blob);
       window.open(url);
     });
+  }
+
+  DowloadFile(path: string){
+    this.service.DownLoadFileShiptoPort(path).subscribe(data => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+    })
   }
 
 }

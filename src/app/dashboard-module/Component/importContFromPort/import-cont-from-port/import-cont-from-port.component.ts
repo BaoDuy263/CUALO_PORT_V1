@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 
@@ -10,6 +10,7 @@ import { ImportContFromShipService } from 'src/app/Service/importContFromShip/im
 export class ImportContFromPortComponent implements OnInit {
 
   file : any;
+  @Input() isImport: boolean = true;
   constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<ImportContFromPortComponent>) { }
 
   ngOnInit(): void {
@@ -19,7 +20,13 @@ export class ImportContFromPortComponent implements OnInit {
   onSubmit(){
     const formData = new FormData();
     formData.append('file', this.file,this.file.Name);
-    this.importContFromShipService.ImportPorttoShip(formData).subscribe(data => console.log('data',data));
+    if(this.isImport){
+      this.importContFromShipService.ImportPorttoShip(formData).subscribe(data =>  this.dialogRef.close(data));
+    }
+    else
+    {
+      this.importContFromShipService.UploadPorttoShip(formData).subscribe(data => this.dialogRef.close(data));
+    }
   }
 
   onFileSelect(e : any) {
