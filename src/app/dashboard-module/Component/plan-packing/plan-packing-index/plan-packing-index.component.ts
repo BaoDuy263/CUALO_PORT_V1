@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { PlanPackingCreateComponent } from './../plan-packing-create/plan-packing-create.component';
 import { lstBookingTemplate } from './../../../../Model/Booking-customer';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { CustomerService } from 'src/app/Service/Customer/customer.service';
 import { ProductService } from 'src/app/Service/Product/product.service';
 import { BookingCustomerCreateComponent } from '../../booking-customer/booking-customer-create/booking-customer-create.component';
 import { BookingCustomerDeleteComponent } from '../../booking-customer/booking-customer-delete/booking-customer-delete.component';
+import { PlanPackingDeleteComponent } from '../plan-packing-delete/plan-packing-delete.component';
 
 @Component({
   selector: 'app-plan-packing-index',
@@ -49,7 +51,7 @@ export class PlanPackingIndexComponent implements OnInit {
 
 
   constructor(private bookingTemplateService: BookingTemplateService,
-    public dialog: MatDialog, private toastr: ToastrcustomService, ) { }
+    public dialog: MatDialog, private toastr: ToastrcustomService, private http: HttpClient ) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
@@ -110,8 +112,8 @@ export class PlanPackingIndexComponent implements OnInit {
 
 
   openDelete(id: number) {
-    const dialogRef = this.dialog.open(BookingCustomerDeleteComponent);
-    dialogRef.componentInstance.bookCutomerId = id;
+    const dialogRef = this.dialog.open(PlanPackingDeleteComponent);
+    dialogRef.componentInstance.bookingId = id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -151,4 +153,14 @@ export class PlanPackingIndexComponent implements OnInit {
     }
   }
 
+  downloadFile(id: number)
+  {
+    return this.bookingTemplateService.DownloadFile(id)
+    .subscribe((result: Blob) => {
+      const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+      console.log("Success");
+  });
+  }
 }

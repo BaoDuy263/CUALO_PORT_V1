@@ -7,7 +7,7 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./packing-board.component.css']
 })
 export class PackingBoardComponent implements OnInit {
-  links = [{link:"/Home/packing/list", label: "Danh sách kế hoạch"}, {link:"/Home/packing/template", label: "Booking"}]
+  links = [{link:"/Home/plan-packing/list", label: "Danh sách kế hoạch"}, {link:"/Home/plan-packing/template", label: "Booking"}]
   constructor() { }
 
   ngOnInit(): void {

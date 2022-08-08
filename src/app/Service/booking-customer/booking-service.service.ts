@@ -12,27 +12,27 @@ export class BookingServiceService {
 
 
   Paging(page: number, searchText: string, numberDis: number) {
-    return this.httpService.getRequest('BookingDetail' + '?page=' + page + '&Keyword=' + searchText + '&pageSize=' + numberDis)
+    return this.httpService.getRequest('PlanPacking' + '?page=' + page + '&Keyword=' + searchText + '&pageSize=' + numberDis)
   }
 
   Insert(data: BookingCustomerCreate) {
-    return this.httpService.postRequest("BookingDetail/Create", data);
+    return this.httpService.postRequest("PlanPacking", data);
   }
 
   Detail(id: number) {
-    return this.httpService.getRequest("BookingDetail/GetDetail?id=" + id)
+    return this.httpService.getRequest("PlanPacking/" + id)
   }
 
   Update(data: BookingCustomerEdit) {
-    return this.httpService.putRequest("BookingDetail/Update", data);
+    return this.httpService.putRequest("PlanPacking/Update", data);
   }
 
   Delete(id: number) {
-    return this.httpService.deleteRequest('BookingDetail/Delete?id=' + id);
+    return this.httpService.deleteRequest('PlanPacking/' + id);
   }
 
   CreateBookings(data: any) {
-    return this.httpService.postRequest("BookingDetail/Upload/packing-withraw", data);
+    return this.httpService.postRequest("PlanPacking/Upload", data);
   }
 
 }

@@ -37,4 +37,8 @@ export class CommonserviceService {
   uploadRequest(url: string,data : any) : Observable<any> {
     return this.http.post(this._urlApi + url,data, {reportProgress: true});
   }
+
+  downloadRequest(url: string, id: number) : Observable<any> {
+    return this.http.get(`${this._urlApi + url}/${id}`, {responseType: 'blob'})
+  }
 }

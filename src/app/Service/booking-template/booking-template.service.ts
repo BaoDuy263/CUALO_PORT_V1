@@ -33,7 +33,7 @@ export class BookingTemplateService {
     return this.httpService.postRequest("Booking/template/Upload", data);
   }
 
-  DownloadFile(data: any) {
-    return this.httpService.postRequest("Booking/template/download", data);
+  DownloadFile(id: number) {
+    return this.httpService.downloadRequest("Booking/template/download", id);
   }
 }

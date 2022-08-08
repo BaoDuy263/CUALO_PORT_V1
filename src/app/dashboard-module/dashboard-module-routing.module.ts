@@ -61,7 +61,7 @@ const routes: Routes = [
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       {
-        path: 'packing', component: PackingBoardComponent,
+        path: 'plan-packing', component: PackingBoardComponent,
         children: [
           { path: 'list', component: BookingCustomerIndexComponent },
           { path: 'template', component: PlanPackingIndexComponent },
