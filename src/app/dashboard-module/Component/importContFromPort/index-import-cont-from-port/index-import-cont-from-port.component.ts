@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateimportContfromShipComponent } from '../createimport-contfrom-ship/createimport-contfrom-ship.component';
-import { DeleteimportContfromShipComponent } from '../deleteimport-contfrom-ship/deleteimport-contfrom-ship.component'
-import { ImportContComponent } from '../import-cont/import-cont.component'
-import { BayPlanPaging,BayPlanIndex} from '../../../../Model/BayPlanDetail'
-import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
-import { Pagination } from '../../../../Model/Table';
+import { ImportContFromPortComponent } from "../import-cont-from-port/import-cont-from-port.component" 
+import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service'
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
-import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
+import { PortToShipIndex, PortToShipPaging } from 'src/app/Model/BayPlanDetail';
+import { BookingPlanPaging,BookingPlanIndex } from '../../../../Model/BookingPlan'
+import { Pagination } from 'src/app/Model/Table';
+import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component'
+import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component'
 @Component({
-  selector: 'app-indeximport-contfrom-ship',
-  templateUrl: './indeximport-contfrom-ship.component.html',
-  styleUrls: ['./indeximport-contfrom-ship.component.css']
+  selector: 'app-index-import-cont-from-port',
+  templateUrl: './index-import-cont-from-port.component.html',
+  styleUrls: ['./index-import-cont-from-port.component.css']
 })
-export class IndeximportContfromShipComponent implements OnInit {
+export class IndexImportContFromPortComponent implements OnInit {
 
   loadding: boolean = false;
   isCreate: boolean = true;
@@ -24,7 +24,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     Page: 1,
     PageSize: 10,
     FileName : '',
-    BookingType : 4
+    BookingType : 3
   } 
 
   lstdataBooking : BookingPlanIndex = {
@@ -41,32 +41,34 @@ export class IndeximportContfromShipComponent implements OnInit {
     totalRecord: 0,
     totalPage: 0,
   }
+
   //
-
-
-  Pagination: Pagination = {
-    currentPage: 0,
-    pageSize: 0,
-    totalRecord: 0,
-    totalPage: 0,
+  //Tab Kế hoạch
+  PageInfo : PortToShipPaging = {
+    Page: 1,
+    PageSize: 10,
+    Voyace : '',
+    ContNo: '',
   }
 
-  lstdata : BayPlanIndex = {
+  lstdata : PortToShipIndex = {
     currentPage : 0,
     pageSize: 0,
     totalPage : 0,
     totalRecord : 0,
     data : []
   }
-
-  PageInfo : BayPlanPaging = {
-    Page: 1,
-    PageSize: 10,
-    Voyace : '',
-    ContNo: '',
-    BillNo : '',
+  
+  Pagination: Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
   }
-  constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService) { }
+  //
+
+ 
+  constructor(public dialog: MatDialog,private service : ImportContFromShipService,private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
     this.Paging();
@@ -74,15 +76,15 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   Paging() {
-    this.service.Paging(this.PageInfo).subscribe(
+    this.service.PagingPorttoShip(this.PageInfo).subscribe(
       data => {
-        console.log('data',data);
         this.loadding = false;
           this.lstdata = data.data;
-          this.Pagination.currentPage = data.data.currentPage,
+            this.Pagination.currentPage = data.data.currentPage,
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
+            
       });
   }
 
@@ -101,6 +103,13 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
 
+
+  onChangePage(pageOfItems: any) {
+    this.PageInfo.Page = pageOfItems.page;
+    this.PageInfo.PageSize = pageOfItems.pageSize;
+    this.Paging()
+  }
+
   onSearchVoyace(e: any) {
     this.PageInfo.Voyace = e;
     this.PageInfo.Page = 1;
@@ -113,29 +122,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
   }
 
-  
-  onChangePage(pageOfItems: BayPlanPaging) {
-    this.PageInfo = pageOfItems
-    this.Paging()
-  }
-
-  openImport() {
-    const dialogRef = this.dialog.open(ImportContComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.status === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Paging();
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
-    });
-  }
-
   openUpload() {
-    const dialogRef =this.dialog.open(ImportContComponent);
+    const dialogRef =this.dialog.open(ImportContFromPortComponent);
     dialogRef.componentInstance.isImport = false;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -149,15 +137,28 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
-
-  openCreate(){
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
+  openImport() {
+    const dialogRef = this.dialog.open(ImportContFromPortComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
 
+  openCreate(){
+    const dialogRef = this.dialog.open(CreateImportContFromPortComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Paging();
         }
         else {
           this.toastr.showError(result.message);
@@ -168,7 +169,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   openEdit(id: number){
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
+    const dialogRef = this.dialog.open(CreateImportContFromPortComponent);
     dialogRef.componentInstance.Id = id;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -184,8 +185,24 @@ export class IndeximportContfromShipComponent implements OnInit {
      });
   }
 
+  DowloadTemplate() {
+    this.service.DowloadTemplate().subscribe(data => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
+
+  DowloadFile(path: string){
+    this.service.DownLoadFile(path).subscribe(data => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+    })
+  }
+
   openDelete(id: number) {
-    const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
+    const dialogRef = this.dialog.open(DeleteImportContFromPortComponent);
     dialogRef.componentInstance.Id = id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -199,21 +216,4 @@ export class IndeximportContfromShipComponent implements OnInit {
       }
     });
   }
-
-  DowloadTemplate() {
-    this.service.DowloadTemplatePort().subscribe(data => {
-      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      const url= window.URL.createObjectURL(blob);
-      window.open(url);
-    });
-  }
-
-  DowloadFile(path: string){
-    this.service.DownLoadFileShiptoPort(path).subscribe(data => {
-      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      const url= window.URL.createObjectURL(blob);
-      window.open(url);
-    })
-  }
-
 }

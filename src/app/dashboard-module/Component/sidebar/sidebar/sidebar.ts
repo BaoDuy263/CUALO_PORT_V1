@@ -44,9 +44,6 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
 
             },
-
-
-
         ]
     },
     // {
@@ -57,7 +54,6 @@ export const ROUTE_DATA: TypeRoute[] = [
     // {
     //     name :'Quản lý khách hàng',
     //     children : [
-
     //         {
     //             name :'Booking',
     //             url:'khachhang'
@@ -67,44 +63,37 @@ export const ROUTE_DATA: TypeRoute[] = [
     {
         name :'Quản lý booking',
         roles: ["Admin", "ds"],
-
         children : [
             {
                 name :'Đóng/rút hàng',
                 url:'plan-packing',
                 roles: ["Admin", "ds"],
-
             },
             {
                 name :'Booking Cont E rỗng',
                 url:'booking-cont-rong',
                 roles: ["Admin", "ds"],
-
             },
             {
                 name :'Booking nhập Cont',
                 url:'booking-nhap-cont',
                 roles: ["Admin", "ds"],
-
             },
         ]
     },
     {
         name :'Quản lý khách hàng',
         roles: ["Admin"],
-
         children : [
             {
                 name :'Khách hàng',
                 url:'khachhang',
                 roles: ["Admin"],
-
             },
             {
                 name :'Booking',
                 url:'404-not-found',
                 roles: ["Admin"],
-
             }
         ]
     },
@@ -130,9 +119,20 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin"],
     },
     {
-        name :'Nhập cont từ tàu',
-        url: 'nhapcont',
+        name :'Kế hoạch xuất nhập tàu',
         roles: ["Admin"],
+        children : [
+            {
+                name :'Nhập cont từ tàu',
+                url: 'nhapcont',
+                roles: ["Admin"],
+            },
+            {
+                name :'Xuất cont lên tàu',
+                url: 'xuatcont',
+                roles: ["Admin"],
+            },
+        ]
     },
     {
         name :'Quản lý ra vào',
@@ -183,4 +183,4 @@ export const ROUTE_DATA: TypeRoute[] = [
         url:'setting',
         roles: ["Admin"],
     },
-  ]
+]
