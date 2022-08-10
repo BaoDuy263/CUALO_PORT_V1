@@ -66,7 +66,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         children : [
             {
                 name :'Đóng/rút hàng',
-                url:'booking-customer',
+                url:'plan-packing',
                 roles: ["Admin", "ds"],
             },
             {

@@ -10,10 +10,11 @@ export interface BookingCustomer
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,
-
+    createdOn: Date
 }
 
 
@@ -39,10 +40,10 @@ export interface BookingCustomerCreate
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,
-
 }
 
 
@@ -58,8 +59,32 @@ export interface BookingCustomerEdit
     company : string,
     formality : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
     dateCheckOut: Date,
-
 }
+
+export interface BookingTemplate
+{
+  id: number,
+  pathFile: string,
+  createdOn: Date,
+  createdBy: string
+}
+
+export interface BookingTemplateCreate
+{
+  id: number,
+  pathFile: string
+}
+
+export interface lstBookingTemplate
+{
+    currentPage: number,
+    pageSize : number,
+    totalRecord : number,
+    totalPage: number
+    data : BookingTemplate[]
+}
+

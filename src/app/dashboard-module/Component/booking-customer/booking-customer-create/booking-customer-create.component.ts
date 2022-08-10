@@ -31,7 +31,8 @@ export class BookingCustomerCreateComponent implements OnInit {
       positionReturn : new FormControl(),
       status : new FormControl(),
       note : new FormControl(),
-      dateCheckOut : new FormControl(),
+      time : new FormControl(),
+      dateCheckOut: new FormControl()
     })
   }
 
@@ -45,7 +46,6 @@ export class BookingCustomerCreateComponent implements OnInit {
           id: new FormControl(response.id),
           customer: new FormControl(response.customer),
           typeContainer: new FormControl(response.typeContainer),
-          typeMerchandise: new FormControl(response.typeContainer),
           shipperName: new FormControl(response.shipperName),
           shipName: new FormControl(response.shipName),
           company: new FormControl(response.company),
@@ -53,7 +53,8 @@ export class BookingCustomerCreateComponent implements OnInit {
           positionReturn: new FormControl(response.positionReturn),
           status: new FormControl(response.status),
           note : new FormControl(response.note),
-          dateCheckOut : new FormControl(response.dateCheckOut),
+          time : new FormControl(response.time),
+          dateCheckOut: new FormControl(response.dateCheckOut)
         })
       })
   }

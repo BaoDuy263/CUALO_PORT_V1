@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonserviceService {
-   //_urlApi: string = 'https://45.124.94.191:5001/api/';
-  //  _urlApi: string = 'https://localhost:44310/api/';
-  _urlApi: string = 'http://localhost:7611/api/';
+   _urlApi: string = 'https://45.124.94.191:5001/api/';
+  //  _urlApi: string = 'https://localhost:5001/api/';
+
   constructor(
     private http: HttpClient
   ) {}
@@ -39,6 +39,9 @@ export class CommonserviceService {
     return this.http.post(this._urlApi + url,data, {reportProgress: true});
   }
 
+  downloadRequest(url: string, id: number) : Observable<any> {
+    return this.http.get(`${this._urlApi + url}/${id}`, {responseType: 'blob'})
+  }
   DowloadRequest(url: string) : Observable<any> {
     return this.http.get(this._urlApi + url, {reportProgress: true, responseType: 'blob',});
   }

@@ -70,12 +70,18 @@
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Thời gian</label>
+          <input type="text" class="form-control" formControlName="time">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Ngày check-in</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-12">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
           <textarea type="text" class="form-control" formControlName="note"></textarea>
