@@ -91,6 +91,7 @@ export class CreateimportContfromShipComponent implements OnInit {
 
   onSubmit(){
     this.submited = true;
+    this.CreateEditForm.value.Direction = parseInt(this.CreateEditForm.value.Direction);
     if(this.CreateEditForm.valid && this.isCreate === true){
       this.importContFromShipService.Insert(this.CreateEditForm.value).subscribe(response => {
           this.dialogRef.close(response);
@@ -103,6 +104,4 @@ export class CreateimportContfromShipComponent implements OnInit {
       });
     }
   }
-
- 
 }

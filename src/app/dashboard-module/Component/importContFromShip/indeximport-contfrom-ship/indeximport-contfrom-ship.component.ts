@@ -95,7 +95,6 @@ export class IndeximportContfromShipComponent implements OnInit {
         this.PaginationBooking.pageSize = data.data.pageSize,
         this.PaginationBooking.totalPage = data.data.totalPage,
         this.PaginationBooking.totalRecord = data.data.totalRecord
-        console.log('this.PaginationBooking',this.PaginationBooking);
       }
     )
   }
@@ -157,7 +156,6 @@ export class IndeximportContfromShipComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
-
         }
         else {
           this.toastr.showError(result.message);
@@ -215,5 +213,4 @@ export class IndeximportContfromShipComponent implements OnInit {
       window.open(url);
     })
   }
-
 }
