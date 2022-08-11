@@ -175,7 +175,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         name :'Quản lý lịch tàu',
 
         roles: ["Admin"],
-        url:'404-not-found'
+        url:'quanlylichtau'
     },
 
     {

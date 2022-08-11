@@ -73,6 +73,8 @@ import { CreateImportContFromPortComponent } from './Component/importContFromPor
 import { DeleteImportContFromPortComponent } from './Component/importContFromPort/delete-import-cont-from-port/delete-import-cont-from-port.component';
 import { IndexPerformContFormPortComponent } from './Component/performContFromPort/index-perform-cont-form-port/index-perform-cont-form-port.component';
 import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
+import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component';
+import { ImportbayplanComponent } from './Component/bayPlan/importbayplan/importbayplan.component';
 
 
 
@@ -134,6 +136,8 @@ import { IndexPerformFromShipComponent } from './Component/performContFromShip/i
     DeleteImportContFromPortComponent,
     IndexPerformContFormPortComponent,
     IndexPerformFromShipComponent,
+    IndexbayplanComponent,
+    ImportbayplanComponent,
   ],
   imports: [
     CommonModule,

@@ -24,7 +24,7 @@ import { IndeximportContfromShipComponent } from './Component/importContFromShip
 import { IndexImportContFromPortComponent } from './Component/importContFromPort/index-import-cont-from-port/index-import-cont-from-port.component';
 import { IndexPerformContFormPortComponent } from './Component/performContFromPort/index-perform-cont-form-port/index-perform-cont-form-port.component';
 import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
-
+import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component'
 
 const routes: Routes = [
   {
@@ -58,6 +58,10 @@ const routes: Routes = [
       {
         path: 'thuchienxuatcont',
         component: IndexPerformContFormPortComponent,
+      },
+      {
+        path: 'quanlylichtau',
+        component: IndexbayplanComponent,
       },
       {
         path: 'don-vi',
