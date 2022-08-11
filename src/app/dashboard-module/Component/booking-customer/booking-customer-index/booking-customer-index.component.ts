@@ -1,3 +1,4 @@
+import { ListContanerComponent } from './../list-contaner/list-contaner.component';
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { lstBookingCustomer } from '../../../../Model/Booking-customer'
@@ -40,7 +41,8 @@ export class BookingCustomerIndexComponent implements OnInit {
     PageInfo = {
         page: 1,
         Keyword: '',
-        pageSize: 10
+        pageSize: 10,
+        Date: ''
     }
 
 
@@ -70,7 +72,7 @@ export class BookingCustomerIndexComponent implements OnInit {
 
     Pagingdata(PageInfo: any) {
         this.loadding = true;
-        this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+        this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date.slice(0,10)).subscribe(data => {
             this.loadding = false;
             this.lstdata = data;
             this.Pagination.currentPage = data.currentPage,
@@ -97,6 +99,12 @@ export class BookingCustomerIndexComponent implements OnInit {
         this.PageInfo.Keyword = e;
         this.PageInfo.page = 1;
         this.Pagingdata(this.PageInfo);
+    }
+
+    onSearchDate(e:any) {
+      this.PageInfo.Date = e;
+      this.PageInfo.page = 1;
+      this.Pagingdata(this.PageInfo);
     }
 
     openCreate() {
@@ -173,5 +181,9 @@ export class BookingCustomerIndexComponent implements OnInit {
             this.loadding = false;
             throw new Error("error 500");
         }
+    }
+
+    openListCont() {
+      this.dialog.open(ListContanerComponent);
     }
 }

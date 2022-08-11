@@ -1,0 +1,16 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center;">STT</th>
+        <th>Mã container</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lstData; index as i">
+        <td style="text-align: center;">{{i + 1}}</td>
+        <td>{{item.containerNo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

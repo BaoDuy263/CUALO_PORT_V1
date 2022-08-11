@@ -71,6 +71,7 @@ import { IndexImportContFromPortComponent } from './Component/importContFromPort
 import { ImportContFromPortComponent } from './Component/importContFromPort/import-cont-from-port/import-cont-from-port.component';
 import { CreateImportContFromPortComponent } from './Component/importContFromPort/create-import-cont-from-port/create-import-cont-from-port.component';
 import { DeleteImportContFromPortComponent } from './Component/importContFromPort/delete-import-cont-from-port/delete-import-cont-from-port.component';
+import { ListContanerComponent } from './Component/booking-customer/list-contaner/list-contaner.component';
 
 
 
@@ -130,6 +131,7 @@ import { DeleteImportContFromPortComponent } from './Component/importContFromPor
     ImportContFromPortComponent,
     CreateImportContFromPortComponent,
     DeleteImportContFromPortComponent,
+    ListContanerComponent,
   ],
   imports: [
     CommonModule,

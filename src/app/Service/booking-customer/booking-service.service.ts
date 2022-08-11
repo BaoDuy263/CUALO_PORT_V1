@@ -11,8 +11,8 @@ export class BookingServiceService {
   constructor(private httpService: CommonserviceService) { }
 
 
-  Paging(page: number, searchText: string, numberDis: number) {
-    return this.httpService.getRequest('PlanPacking' + '?page=' + page + '&Keyword=' + searchText + '&pageSize=' + numberDis)
+  Paging(page: number, searchText: string, numberDis: number, date: string) {
+    return this.httpService.getRequest(`PlanPacking?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&Date=${date}`)
   }
 
   Insert(data: BookingCustomerCreate) {
@@ -33,6 +33,10 @@ export class BookingServiceService {
 
   CreateBookings(data: any) {
     return this.httpService.postRequest("PlanPacking/Upload", data);
+  }
+
+  GetAllContainer() {
+    return this.httpService.getRequest("PlanPacking/containers-empty");
   }
 
 }
