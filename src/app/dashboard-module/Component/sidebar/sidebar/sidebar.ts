@@ -135,6 +135,22 @@ export const ROUTE_DATA: TypeRoute[] = [
         ]
     },
     {
+        name :'Thực hiên xuất nhập tàu',
+        roles: ["Admin"],
+        children : [
+            {
+                name :'Nhập cont từ tàu',
+                url: 'thuchiennhapcont',
+                roles: ["Admin"],
+            },
+            {
+                name :'Xuất cont lên tàu',
+                url: 'thuchienxuatcont',
+                roles: ["Admin"],
+            },
+        ]
+    },
+    {
         name :'Quản lý ra vào',
         roles: ["Admin"],
         children : [

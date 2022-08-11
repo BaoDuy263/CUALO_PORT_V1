@@ -21,7 +21,11 @@ import { BookingCustomerIndexComponent } from './Component/booking-customer/book
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { IndeximportContfromShipComponent } from './Component/importContFromShip/indeximport-contfrom-ship/indeximport-contfrom-ship.component';
-import { IndexImportContFromPortComponent } from './Component/importContFromPort/index-import-cont-from-port/index-import-cont-from-port.component'
+import { IndexImportContFromPortComponent } from './Component/importContFromPort/index-import-cont-from-port/index-import-cont-from-port.component';
+import { IndexPerformContFormPortComponent } from './Component/performContFromPort/index-perform-cont-form-port/index-perform-cont-form-port.component';
+import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
+
+
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -42,6 +46,18 @@ const routes: Routes = [
       {
         path: 'nhapcont',
         component: IndeximportContfromShipComponent,
+      },
+      {
+        path: 'xuatcont',
+        component: IndexImportContFromPortComponent,
+      },
+      {
+        path: 'thuchiennhapcont',
+        component: IndexPerformFromShipComponent,
+      },
+      {
+        path: 'thuchienxuatcont',
+        component: IndexPerformContFormPortComponent,
       },
       {
         path: 'don-vi',

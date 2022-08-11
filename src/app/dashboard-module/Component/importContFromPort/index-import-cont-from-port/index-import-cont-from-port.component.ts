@@ -65,6 +65,8 @@ export class IndexImportContFromPortComponent implements OnInit {
     totalRecord: 0,
     totalPage: 0,
   }
+
+  lstCheckAction : Array<number> = [];
   //
 
  
@@ -215,5 +217,28 @@ export class IndexImportContFromPortComponent implements OnInit {
         }
       }
     });
+  }
+
+  addAction(id: number){
+    var index = this.lstCheckAction.indexOf(id);
+    if(index > -1){
+      this.lstCheckAction.splice(index,1);
+    }else
+    {
+      this.lstCheckAction.push(id);
+    }
+  }
+
+  bulkAction()
+  {
+    this.service.bulkAction(this.lstCheckAction).subscribe(data => {
+      if (data.statusCode === 200) {
+        this.toastr.showSuccess(data.message);
+        this.Paging();
+      }
+      else {
+        this.toastr.showError(data.message);
+      }
+    })
   }
 }

@@ -76,9 +76,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3" >
+            <div class="col-sm-3">
               <div class="row" >
-                <div class="row" >
+                <div class="col-sm-6" >
+                  <button type="button" class="btn btn-success" style="width: 100%" [disabled]="lstCheckAction.length <= 0" (click)="bulkAction()">Xác nhận</button>
+                </div>
+                <div class="col-sm-6" >
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Hành động
@@ -89,7 +92,6 @@
                     </ul>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -99,6 +101,7 @@
                       <thead >
                         <tr >
                           <th  style="text-align: center;">STT</th>
+                          <th></th>
                           <th>Chuyến</th>
                           <th>Mã Container</th>
                           <th  style="text-align: center;">Hành động</th>
@@ -107,6 +110,7 @@
                       <tbody style="border-top: none;">
                         <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
                           <td style="text-align: center;">{{i + 1}}</td>
+                          <td ><input type="checkbox" value="" id="flexCheckChecked" (click)="addAction(item.id)"></td>
                           <td>{{item.chuyen}}</td>
                           <td>{{item.contNo}}</td>
                           <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"

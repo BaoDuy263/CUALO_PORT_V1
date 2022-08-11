@@ -66,6 +66,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     ContNo: '',
     BillNo : '',
   }
+
+  lstCheckAction : Array<number> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
@@ -113,8 +115,9 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   
-  onChangePage(pageOfItems: BayPlanPaging) {
-    this.PageInfo = pageOfItems
+  onChangePage(pageOfItems: any) {
+    this.PageInfo.Page = pageOfItems.page;
+    this.PageInfo.PageSize = pageOfItems.pageSize;
     this.Paging()
   }
 
@@ -211,6 +214,29 @@ export class IndeximportContfromShipComponent implements OnInit {
       const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       const url= window.URL.createObjectURL(blob);
       window.open(url);
+    })
+  }
+
+  addAction(id: number){
+    var index = this.lstCheckAction.indexOf(id);
+    if(index > -1){
+      this.lstCheckAction.splice(index,1);
+    }else
+    {
+      this.lstCheckAction.push(id);
+    }
+  }
+
+  bulkAction()
+  {
+    this.service.bulkAction(this.lstCheckAction).subscribe(data => {
+      if (data.statusCode === 200) {
+        this.toastr.showSuccess(data.message);
+        this.Paging();
+      }
+      else {
+        this.toastr.showError(data.message);
+      }
     })
   }
 }
