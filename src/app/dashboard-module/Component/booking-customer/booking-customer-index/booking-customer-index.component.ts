@@ -184,6 +184,6 @@ export class BookingCustomerIndexComponent implements OnInit {
     }
 
     openListCont() {
-      this.dialog.open(ListContanerComponent);
+      this.dialog.open(ListContanerComponent, { width: '25%' });
     }
 }
