@@ -12,7 +12,6 @@ export class PackingBoardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['Home/plan-packing/list']);
   }
 
 }

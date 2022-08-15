@@ -78,6 +78,10 @@ import { IndexPerformContFormPortComponent } from './Component/performContFromPo
 import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
 import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component';
 import { ImportbayplanComponent } from './Component/bayPlan/importbayplan/importbayplan.component';
+import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
+import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
+import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
+
 
 
 
@@ -143,6 +147,9 @@ import { ImportbayplanComponent } from './Component/bayPlan/importbayplan/import
     IndexPerformFromShipComponent,
     IndexbayplanComponent,
     ImportbayplanComponent,
+    ImpContBoardComponent,
+    ImpContListIndexComponent,
+    ImpContTempIndexComponent,
   ],
   imports: [
     CommonModule,
