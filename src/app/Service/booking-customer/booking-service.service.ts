@@ -44,7 +44,7 @@ export class BookingServiceService {
   }
 
   DownloadTemplate(){
-    return this.httpService.downloadRequest("PlanPacking/template/download");
+    return this.httpService.downloadRequest("PlanPacking/template/download-export");
   }
 
 }

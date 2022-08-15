@@ -71,7 +71,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name : 'Trả nguyên/rút ruột',
-                url: '',
+                url: 'import-container',
                 roles: ["Admin", "ds"],
             },
         ]
