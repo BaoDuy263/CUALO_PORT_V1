@@ -183,7 +183,8 @@ export class BookingCustomerIndexComponent implements OnInit {
         }
     }
 
-    openListCont() {
-      this.dialog.open(ListContanerComponent, { width: '25%' });
+    openListCont(id: number) {
+      const dialogRef = this.dialog.open(ListContanerComponent, { width: '25%' });
+      dialogRef.componentInstance.planId = id;
     }
 }

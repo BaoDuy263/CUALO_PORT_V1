@@ -10,6 +10,7 @@ import { BookingServiceService } from 'src/app/Service/booking-customer/booking-
 export class ListContanerComponent implements OnInit {
   lstData: ContainerEmpty[] = [];
   itemSelected = "";
+  planId: number = 0;
   constructor(private bookingService: BookingServiceService,public dialogRef: MatDialogRef<ListContanerComponent>) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class ListContanerComponent implements OnInit {
   }
 
   handleSubmit() {
-    console.log(this.itemSelected,'slect')
+    this.bookingService.CreateEIRFromPlan({id: this.planId, containerNo: this.itemSelected}).subscribe(res => this.dialogRef.close(res))
   }
 }
 
