@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class CommonserviceService {
 
-   _urlApi: string = 'https://45.124.94.191:5001/api/';
-  //  _urlApi: string = 'http://localhost:5000/api/';
+  //  _urlApi: string = 'https://45.124.94.191:5001/api/';
+   _urlApi: string = 'http://localhost:7611/api/';
 
   constructor(
     private http: HttpClient
@@ -40,9 +40,13 @@ export class CommonserviceService {
     return this.http.post(this._urlApi + url,data, {reportProgress: true});
   }
 
-  downloadRequest(url: string, id: number) : Observable<any> {
-    return this.http.get(`${this._urlApi + url}/${id}`, {responseType: 'blob'})
+  downloadRequest(url: string, id?: number) : Observable<any> {
+    if (id) {
+      return this.http.get(`${this._urlApi + url}/${id}`, {responseType: 'blob'})
+    }
+    return this.http.get(`${this._urlApi + url}`, {responseType: 'blob'})
   }
+
   DowloadRequest(url: string) : Observable<any> {
     return this.http.get(this._urlApi + url, {reportProgress: true, responseType: 'blob',});
   }

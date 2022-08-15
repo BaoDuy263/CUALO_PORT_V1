@@ -187,4 +187,16 @@ export class BookingCustomerIndexComponent implements OnInit {
       const dialogRef = this.dialog.open(ListContanerComponent, { width: '25%' });
       dialogRef.componentInstance.planId = id;
     }
+
+    downloadTemp()
+    {
+      return this.bookingServiceService.DownloadTemplate()
+      .subscribe((result: Blob) => {
+        const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
+        const url= window.URL.createObjectURL(blob);
+        console.log(url,'blob')
+        window.open(url);
+        console.log("Success");
+      });
+    }
 }

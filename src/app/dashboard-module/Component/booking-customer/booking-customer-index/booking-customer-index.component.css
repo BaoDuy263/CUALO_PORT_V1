@@ -24,3 +24,7 @@
 .file-input {
   padding-right: 10px;
 }
+
+.file-input button {
+  margin-right: 10px;
+}

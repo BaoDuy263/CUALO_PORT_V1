@@ -83,6 +83,7 @@ const routes: Routes = [
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
+          {path: '', component: BookingCustomerIndexComponent},
           { path: 'list', component: BookingCustomerIndexComponent },
           { path: 'template', component: PlanPackingIndexComponent },
         ]
