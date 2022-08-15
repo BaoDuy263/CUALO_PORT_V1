@@ -1,0 +1,21 @@
+<h2 class="text-center">Chọn container</h2>
+<div class="list-container">
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Mã Container</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.containerNo}" *ngFor="let item of lstData; index as i" (click)="hanldeClickItem(item)">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.containerNo}}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Hủy bỏ</button>
+      <button class="btn btn-success" (click)="handleSubmit()">Xác nhận</button>
+    </div>
+</div>
