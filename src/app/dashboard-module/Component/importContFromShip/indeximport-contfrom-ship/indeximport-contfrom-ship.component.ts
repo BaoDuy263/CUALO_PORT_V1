@@ -66,6 +66,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     ContNo: '',
     BillNo : '',
   }
+
+  lstCheckAction : Array<number> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
@@ -95,7 +97,6 @@ export class IndeximportContfromShipComponent implements OnInit {
         this.PaginationBooking.pageSize = data.data.pageSize,
         this.PaginationBooking.totalPage = data.data.totalPage,
         this.PaginationBooking.totalRecord = data.data.totalRecord
-        console.log('this.PaginationBooking',this.PaginationBooking);
       }
     )
   }
@@ -114,8 +115,9 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   
-  onChangePage(pageOfItems: BayPlanPaging) {
-    this.PageInfo = pageOfItems
+  onChangePage(pageOfItems: any) {
+    this.PageInfo.Page = pageOfItems.page;
+    this.PageInfo.PageSize = pageOfItems.pageSize;
     this.Paging()
   }
 
@@ -157,7 +159,6 @@ export class IndeximportContfromShipComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
-
         }
         else {
           this.toastr.showError(result.message);
@@ -216,4 +217,26 @@ export class IndeximportContfromShipComponent implements OnInit {
     })
   }
 
+  addAction(id: number){
+    var index = this.lstCheckAction.indexOf(id);
+    if(index > -1){
+      this.lstCheckAction.splice(index,1);
+    }else
+    {
+      this.lstCheckAction.push(id);
+    }
+  }
+
+  bulkAction()
+  {
+    this.service.bulkAction(this.lstCheckAction).subscribe(data => {
+      if (data.statusCode === 200) {
+        this.toastr.showSuccess(data.message);
+        this.Paging();
+      }
+      else {
+        this.toastr.showError(data.message);
+      }
+    })
+  }
 }

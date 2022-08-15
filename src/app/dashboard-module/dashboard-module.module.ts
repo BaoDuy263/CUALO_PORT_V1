@@ -71,7 +71,14 @@ import { IndexImportContFromPortComponent } from './Component/importContFromPort
 import { ImportContFromPortComponent } from './Component/importContFromPort/import-cont-from-port/import-cont-from-port.component';
 import { CreateImportContFromPortComponent } from './Component/importContFromPort/create-import-cont-from-port/create-import-cont-from-port.component';
 import { DeleteImportContFromPortComponent } from './Component/importContFromPort/delete-import-cont-from-port/delete-import-cont-from-port.component';
+
 import { ListContanerComponent } from './Component/booking-customer/list-contaner/list-contaner.component';
+
+import { IndexPerformContFormPortComponent } from './Component/performContFromPort/index-perform-cont-form-port/index-perform-cont-form-port.component';
+import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
+import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component';
+import { ImportbayplanComponent } from './Component/bayPlan/importbayplan/importbayplan.component';
+
 
 
 
@@ -132,6 +139,10 @@ import { ListContanerComponent } from './Component/booking-customer/list-contane
     CreateImportContFromPortComponent,
     DeleteImportContFromPortComponent,
     ListContanerComponent,
+    IndexPerformContFormPortComponent,
+    IndexPerformFromShipComponent,
+    IndexbayplanComponent,
+    ImportbayplanComponent,
   ],
   imports: [
     CommonModule,

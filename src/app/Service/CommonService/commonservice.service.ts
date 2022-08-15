@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonserviceService {
+
    _urlApi: string = 'https://45.124.94.191:5001/api/';
   //  _urlApi: string = 'http://localhost:5000/api/';
 
