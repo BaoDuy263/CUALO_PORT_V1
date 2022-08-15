@@ -8,6 +8,7 @@ import { ImportContFromShipService } from '../../../../Service/importContFromShi
 import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
+import { PerformService } from 'src/app/Service/Perform/perform.service';
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
@@ -43,7 +44,7 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
   //
 
-
+  //Tab kế hoạch
   Pagination: Pagination = {
     currentPage: 0,
     pageSize: 0,
@@ -66,13 +67,39 @@ export class IndeximportContfromShipComponent implements OnInit {
     ContNo: '',
     BillNo : '',
   }
+  //
+  //Tab thực hiện
+  Paginationthuchien: Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+  }
+
+  lstdatathuchien : BayPlanIndex = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
+
+  PageInfothuchien : BayPlanPaging = {
+    Page: 1,
+    PageSize: 10,
+    Voyace : '',
+    ContNo: '',
+    BillNo : '',
+  }
+  //
 
   lstCheckAction : Array<number> = [];
-  constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService) { }
+  constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
   ngOnInit(): void {
     this.Paging();
     this.PagingBooking();
+    this.PagingThucHien();
   }
 
   Paging() {
@@ -80,7 +107,7 @@ export class IndeximportContfromShipComponent implements OnInit {
       data => {
         console.log('data',data);
         this.loadding = false;
-          this.lstdata = data.data;
+          this.lstdatathuchien = data.data;
           this.Pagination.currentPage = data.data.currentPage,
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
@@ -99,6 +126,24 @@ export class IndeximportContfromShipComponent implements OnInit {
         this.PaginationBooking.totalRecord = data.data.totalRecord
       }
     )
+  }
+
+  PagingThucHien() {
+    this.servicePerform.PagingShipToPort(this.PageInfothuchien).subscribe(
+      data => {
+        this.loadding = false;
+          this.lstdata = data.data;
+          this.Paginationthuchien.currentPage = data.data.currentPage,
+            this.Paginationthuchien.pageSize = data.data.pageSize,
+            this.Paginationthuchien.totalPage = data.data.totalPage,
+            this.Paginationthuchien.totalRecord = data.data.totalRecord
+      });
+  }
+
+  onChangePageThuchien(pageOfItems: any) {
+    this.PageInfo.Page = pageOfItems.page;
+    this.PageInfo.PageSize = pageOfItems.pageSize;
+    this.PagingThucHien()
   }
 
 
