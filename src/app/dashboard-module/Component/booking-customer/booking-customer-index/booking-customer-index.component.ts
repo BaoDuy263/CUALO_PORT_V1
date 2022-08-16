@@ -190,11 +190,10 @@ export class BookingCustomerIndexComponent implements OnInit {
 
     downloadTemp()
     {
-      return this.bookingServiceService.DownloadTemplate()
+      return this.bookingServiceService.DownloadExport()
       .subscribe((result: Blob) => {
         const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
         const url= window.URL.createObjectURL(blob);
-        console.log(url,'blob')
         window.open(url);
         console.log("Success");
       });

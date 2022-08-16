@@ -86,7 +86,7 @@ PageInfo = {
 
   downloadTemp()
   {
-    return this.bookingServiceService.DownloadTemplate()
+    return this.bookingServiceService.DownloadImport()
     .subscribe((result: Blob) => {
       const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
       const url= window.URL.createObjectURL(blob);
