@@ -81,6 +81,7 @@ import { ImportbayplanComponent } from './Component/bayPlan/importbayplan/import
 import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
 import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
+import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 
 
 
@@ -150,6 +151,7 @@ import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-t
     ImpContBoardComponent,
     ImpContListIndexComponent,
     ImpContTempIndexComponent,
+    ContainerIndexComponent,
   ],
   imports: [
     CommonModule,

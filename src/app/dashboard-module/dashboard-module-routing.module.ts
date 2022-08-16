@@ -1,3 +1,4 @@
+import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
 import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
 import { PlanPackingIndexComponent } from './Component/plan-packing/plan-packing-index/plan-packing-index.component';
@@ -83,6 +84,7 @@ const routes: Routes = [
       { path: '404-not-found', component: NotfoundComponent },
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
+      { path: 'container', component: ContainerIndexComponent},
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
