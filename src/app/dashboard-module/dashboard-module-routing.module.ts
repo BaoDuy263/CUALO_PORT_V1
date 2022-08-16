@@ -1,3 +1,5 @@
+import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
+import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
 import { PlanPackingIndexComponent } from './Component/plan-packing/plan-packing-index/plan-packing-index.component';
 import { PackingBoardComponent } from './Component/packing-board/packing-board.component';
 import { NgModule } from '@angular/core';
@@ -25,6 +27,7 @@ import { IndexImportContFromPortComponent } from './Component/importContFromPort
 import { IndexPerformContFormPortComponent } from './Component/performContFromPort/index-perform-cont-form-port/index-perform-cont-form-port.component';
 import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
 import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component'
+import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
 
 const routes: Routes = [
   {
@@ -83,10 +86,19 @@ const routes: Routes = [
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
+          { path: '', component: BookingCustomerIndexComponent},
           { path: 'list', component: BookingCustomerIndexComponent },
           { path: 'template', component: PlanPackingIndexComponent },
         ]
-      }
+      },
+      {
+        path: 'import-container', component: ImpContBoardComponent,
+        children: [
+          { path: '', component: ImpContListIndexComponent},
+          { path: 'list', component: ImpContListIndexComponent },
+          { path: 'template', component: PlanPackingIndexComponent },
+        ]
+      },
     ]
     }
 ];

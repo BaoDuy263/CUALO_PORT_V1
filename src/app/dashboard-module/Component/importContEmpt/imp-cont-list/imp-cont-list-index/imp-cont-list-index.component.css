@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.file-input__label i {
+  margin-right: 8px;
+}
+
 .file-input__label svg {
   height: 16px;
   margin-right: 4px;
@@ -23,8 +27,4 @@
 
 .file-input {
   padding-right: 10px;
-}
-
-.file-input button {
-  margin-right: 10px;
 }

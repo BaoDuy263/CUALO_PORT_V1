@@ -43,4 +43,8 @@ export class BookingServiceService {
     return this.httpService.postRequest("PlanPacking/create-eir", data)
   }
 
+  DownloadTemplate(){
+    return this.httpService.downloadRequest("PlanPacking/template/download-export");
+  }
+
 }

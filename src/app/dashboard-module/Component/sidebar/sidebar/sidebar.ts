@@ -61,63 +61,58 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     ]
     // },
     {
-        name :'Quản lý booking',
+        name :'Kế hoạch tại cảng',
         roles: ["Admin", "ds"],
         children : [
             {
-                name :'Đóng/rút hàng',
+                name :'Cấp rỗng/đóng rời',
                 url:'plan-packing',
                 roles: ["Admin", "ds"],
             },
             {
-                name :'Booking Cont E rỗng',
-                url:'booking-cont-rong',
-                roles: ["Admin", "ds"],
-            },
-            {
-                name :'Booking nhập Cont',
-                url:'booking-nhap-cont',
+                name : 'Trả nguyên/rút ruột',
+                url: 'import-container',
                 roles: ["Admin", "ds"],
             },
         ]
     },
-    {
-        name :'Quản lý khách hàng',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Khách hàng',
-                url:'khachhang',
-                roles: ["Admin"],
-            },
-            {
-                name :'Booking',
-                url:'404-not-found',
-                roles: ["Admin"],
-            }
-        ]
-    },
-    {
-        name :'Quản lý giao nhận cont',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Thời gian nhập, xuất',
-                url:'404-not-found',
-                roles: ["Admin"],
-            },
-            {
-                name :'Danh sách, bản đồ cont',
-                url:'404-not-found',
-                roles: ["Admin"],
-            }
-        ]
-    },
-    {
-        name :'Quản lý vị trí cont',
-        url:'404-not-found',
-        roles: ["Admin"],
-    },
+    // {
+    //     name :'Quản lý khách hàng',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Khách hàng',
+    //             url:'khachhang',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Booking',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý giao nhận cont',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Thời gian nhập, xuất',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Danh sách, bản đồ cont',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý vị trí cont',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
     {
         name :'Kế hoạch xuất nhập tàu',
         roles: ["Admin"],
@@ -177,6 +172,34 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin"],
     },
    
+
+    //     name :'Quản lý ra vào',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Ra vào của cont',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Ra vào của các shipper theo booking',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý công nợ',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
+    {
+        name :'Quản lý lịch tàu',
+
+        roles: ["Admin"],
+        url:'quanlylichtau'
+    },
+
 
     {
         name :'Quản trị hệ thống',
