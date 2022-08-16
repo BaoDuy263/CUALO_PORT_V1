@@ -8,6 +8,7 @@ import { BookingPlanPaging,BookingPlanIndex } from '../../../../Model/BookingPla
 import { Pagination } from 'src/app/Model/Table';
 import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component'
 import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component'
+import { PerformService } from 'src/app/Service/Perform/perform.service';
 @Component({
   selector: 'app-index-import-cont-from-port',
   templateUrl: './index-import-cont-from-port.component.html',
@@ -68,13 +69,36 @@ export class IndexImportContFromPortComponent implements OnInit {
 
   lstCheckAction : Array<number> = [];
   //
+  //Tab thực hiện
+  PageInfoTH : PortToShipPaging = {
+    Page: 1,
+    PageSize: 10,
+    Voyace : '',
+    ContNo: '',
+  }
 
+  lstdataTH : PortToShipIndex = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
+  
+  PaginationTH: Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+  }
+  //
  
-  constructor(public dialog: MatDialog,private service : ImportContFromShipService,private toastr: ToastrcustomService) { }
+  constructor(public dialog: MatDialog,private service : ImportContFromShipService,private toastr: ToastrcustomService,private serviceTH : PerformService) { }
 
   ngOnInit(): void {
     this.Paging();
     this.PagingBooking();
+    this.PagingTH();
   }
 
   Paging() {
@@ -104,7 +128,23 @@ export class IndexImportContFromPortComponent implements OnInit {
     )
   }
 
+  PagingTH() {
+    this.serviceTH.PagingPorttoShip(this.PageInfoTH).subscribe(
+      data => {
+        this.loadding = false;
+          this.lstdataTH = data.data;
+            this.PaginationTH.currentPage = data.data.currentPage,
+            this.PaginationTH.pageSize = data.data.pageSize,
+            this.PaginationTH.totalPage = data.data.totalPage,
+            this.PaginationTH.totalRecord = data.data.totalRecord
+      });
+  }
 
+  onChangePageTH(pageOfItems: any){
+    this.PageInfoTH.Page = pageOfItems.page;
+    this.PageInfoTH.PageSize = pageOfItems.pageSize;
+    this.PagingTH();
+  }
 
   onChangePage(pageOfItems: any) {
     this.PageInfo.Page = pageOfItems.page;

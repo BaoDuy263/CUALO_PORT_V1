@@ -97,21 +97,23 @@ export class IndeximportContfromShipComponent implements OnInit {
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
   ngOnInit(): void {
+    console.log('1')
     this.Paging();
     this.PagingBooking();
     this.PagingThucHien();
   }
 
   Paging() {
+    console.log('2');
     this.service.Paging(this.PageInfo).subscribe(
       data => {
-        console.log('data',data);
         this.loadding = false;
-          this.lstdatathuchien = data.data;
+          this.lstdata = data.data;
           this.Pagination.currentPage = data.data.currentPage,
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
+            console.log('this.lstdata',this.lstdata);
       });
   }
 
@@ -132,7 +134,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.servicePerform.PagingShipToPort(this.PageInfothuchien).subscribe(
       data => {
         this.loadding = false;
-          this.lstdata = data.data;
+          this.lstdatathuchien = data.data;
           this.Paginationthuchien.currentPage = data.data.currentPage,
             this.Paginationthuchien.pageSize = data.data.pageSize,
             this.Paginationthuchien.totalPage = data.data.totalPage,
@@ -161,9 +163,10 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   
   onChangePage(pageOfItems: any) {
+    console.log('pageOfItems.page',pageOfItems.page);
     this.PageInfo.Page = pageOfItems.page;
     this.PageInfo.PageSize = pageOfItems.pageSize;
-    this.Paging()
+    this.Paging();
   }
 
   openImport() {

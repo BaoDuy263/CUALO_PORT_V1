@@ -132,24 +132,29 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url: 'xuatcont',
                 roles: ["Admin"],
             },
-        ]
-    },
-    {
-        name :'Thực hiên xuất nhập tàu',
-        roles: ["Admin"],
-        children : [
             {
-                name :'Nhập cont từ tàu',
-                url: 'thuchiennhapcont',
+                name :'Quản lý lịch tàu',
                 roles: ["Admin"],
-            },
-            {
-                name :'Xuất cont lên tàu',
-                url: 'thuchienxuatcont',
-                roles: ["Admin"],
+                url:'quanlylichtau'
             },
         ]
     },
+    // {
+    //     name :'Thực hiên xuất nhập tàu',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Nhập cont từ tàu',
+    //             url: 'thuchiennhapcont',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Xuất cont lên tàu',
+    //             url: 'thuchienxuatcont',
+    //             roles: ["Admin"],
+    //         },
+    //     ]
+    // },
     {
         name :'Quản lý ra vào',
         roles: ["Admin"],
@@ -171,12 +176,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         url:'404-not-found',
         roles: ["Admin"],
     },
-    {
-        name :'Quản lý lịch tàu',
-
-        roles: ["Admin"],
-        url:'quanlylichtau'
-    },
+   
 
     {
         name :'Quản trị hệ thống',

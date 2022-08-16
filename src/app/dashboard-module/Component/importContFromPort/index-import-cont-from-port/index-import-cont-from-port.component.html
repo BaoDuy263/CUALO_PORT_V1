@@ -18,15 +18,8 @@
             </div>
             <div class="col-sm-2" >
               <div class="row" >
-                <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Hành động
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" (click)="openUpload()">Upload</a></li>
-                    <li><a class="dropdown-item" (click)="DowloadTemplate()">Dowload Template</a></li>
-                  </ul>
-                </div>
+                  <button type="button" class="btn btn-success" (click)="openUpload()"> <i class="bi bi-cloud-upload"></i>
+                    <span>Upload file</span></button>
               </div>
             </div>
           </div>
@@ -126,6 +119,52 @@
                 <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
               </div>
           </div>
+      </mat-tab>
+      <mat-tab label="Thực hiện">
+        <div class="row">
+          <h2 style="font-weight: 500;">Danh sách Thực hiện Port to ship</h2>
+        </div>
+        <div class="row" style=" margin-bottom: 25px;">
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username"
+              aria-describedby="button-addon2" >
+          </div>
+          <div class="col-sm-8" style="text-align: right;">
+      
+            <button class="btn btn-outline-secondary" type="button" id="button-addon3" >Thêm
+              mới</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead >
+                    <tr >
+                      <th  style="text-align: center;">STT</th>
+                      <th>Chuyến</th>
+                      <th>Mã Container</th>
+                      <th  style="text-align: center;">Hành động</th>
+                    </tr>
+                  </thead>
+              <tbody style="border-top: none;">        
+                <tr *ngFor="let item of lstdataTH.data; index as i" class="align-middle">
+                    <td style="text-align: center;">{{i + 1}}</td>
+                    <td>{{item.chuyen}}</td>
+                    <td>{{item.contNo}}</td>
+                    <!-- <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
+                      (click)="openEdit(item.id)"></i>
+                      <i class="bi bi-trash3" 
+                      style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
+                    </td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+          <div>
+            <app-pagination [Pagination]="PaginationTH" (changePage)="onChangePage($event)"></app-pagination>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
     
