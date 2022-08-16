@@ -174,6 +174,13 @@ export const ROUTE_DATA: TypeRoute[] = [
     },
 
     {
+      name :'Quản lý container',
+
+      roles: ["Admin"],
+      url:'container'
+    },
+
+    {
         name :'Quản trị hệ thống',
         roles: ["Admin"],
         children : [

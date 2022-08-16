@@ -1,3 +1,4 @@
+import { Container, ContainerCreate } from './../../Model/Container';
 import { Injectable } from '@angular/core';
 import { CommonserviceService } from '../CommonService/commonservice.service';
 
@@ -10,6 +11,14 @@ export class ContainerService {
 
   Paging(page: number, searchText: string, numberDis: number) {
     return this.httpService.getRequest(`Container?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+  }
+
+  Insert(data: ContainerCreate) {
+    return this.httpService.postRequest("Container", data);
+  }
+
+  Detail(code: string) {
+    return this.httpService.getRequest("Container", code)
   }
 
 }

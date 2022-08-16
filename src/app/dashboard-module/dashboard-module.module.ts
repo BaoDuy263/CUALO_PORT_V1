@@ -82,6 +82,7 @@ import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board
 import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
 import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
+import { ContainerCreateComponent } from './Component/container/container-create/container-create.component';
 
 
 
@@ -152,6 +153,7 @@ import { ContainerIndexComponent } from './Component/container/container-index/c
     ImpContListIndexComponent,
     ImpContTempIndexComponent,
     ContainerIndexComponent,
+    ContainerCreateComponent,
   ],
   imports: [
     CommonModule,
