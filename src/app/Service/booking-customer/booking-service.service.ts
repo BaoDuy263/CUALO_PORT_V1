@@ -35,6 +35,10 @@ export class BookingServiceService {
     return this.httpService.postRequest("PlanPacking/Upload", data);
   }
 
+  CreateActions(data: any) {
+    return this.httpService.postRequest("PlanPacking/Upload/ContEmpt", data);
+  }
+
   CreateEIRFromPlan(data: any) {
     return this.httpService.postRequest("PlanPacking/create-eir", data)
   }
