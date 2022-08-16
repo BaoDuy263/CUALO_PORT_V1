@@ -10,7 +10,11 @@ export class CommonserviceService {
 
   _urlApi: string = 'https://seaportwebapi.phanmem.one/api/';
   //  _urlApi: string = 'http://localhost:5000/api/';
+<<<<<<< HEAD
   //_urlApi: string = 'http://localhost:7611/api/';
+=======
+  // _urlApi: string = 'http://localhost:7611/api/';
+>>>>>>> fb856b435a598b69ec5d7ea628fb82afb99115a7
 
 
   constructor(
