@@ -1,21 +1,28 @@
 <h2 class="text-center">Chọn container</h2>
 <div class="list-container">
+  <div>
     <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Mã Container</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.containerNo}" *ngFor="let item of lstData; index as i" (click)="hanldeClickItem(item)">
-                <th scope="row">{{i+1}}</th>
-                <td>{{item.containerNo}}}</td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Mã Container</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.code}"
+          *ngFor="let item of lstData; index as i" (click)="hanldeClickItem(item)">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.code}}}</td>
+        </tr>
+      </tbody>
     </table>
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Hủy bỏ</button>
-      <button class="btn btn-success" (click)="handleSubmit()">Xác nhận</button>
-    </div>
+  </div>
+  <div>
+    <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Hủy bỏ</button>
+    <button class="btn btn-success" (click)="handleSubmit()">Xác nhận</button>
+  </div>
 </div>
