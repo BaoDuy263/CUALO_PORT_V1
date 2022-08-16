@@ -193,12 +193,12 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     url:'404-not-found',
     //     roles: ["Admin"],
     // },
-    {
-        name :'Quản lý lịch tàu',
+    // {
+    //     name :'Quản lý lịch tàu',
 
-        roles: ["Admin"],
-        url:'quanlylichtau'
-    },
+    //     roles: ["Admin"],
+    //     url:'quanlylichtau'
+    // },
 
 
     {
