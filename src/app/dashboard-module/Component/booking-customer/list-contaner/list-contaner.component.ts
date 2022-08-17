@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { BookingCustomer } from 'src/app/Model/Booking-customer';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { ContainerService } from 'src/app/Service/container/container.service';
+import { convertHelper } from '../helper/convertHelper';
 
 @Component({
   selector: 'app-list-contaner',
@@ -11,9 +13,9 @@ import { ContainerService } from 'src/app/Service/container/container.service';
 })
 export class ListContanerComponent implements OnInit {
   loading: boolean = false;
-  lstData: ContainerEmpty[] = [];
+  lstData: Container[] = [];
   itemSelected = "";
-  planId: number = 0;
+  planDetail: BookingCustomer | any = null;
   PageInfo = {
     page: 1,
     Keyword: '',
@@ -24,26 +26,29 @@ export class ListContanerComponent implements OnInit {
     pageSize: 0,
     totalRecord: 0,
     totalPage: 0,
-}
-  constructor(private bookingService: BookingServiceService, private containerService: ContainerService,public dialogRef: MatDialogRef<ListContanerComponent>) { }
+  }
+  constructor(private bookingService: BookingServiceService,
+    private containerService: ContainerService,
+    public dialogRef: MatDialogRef<ListContanerComponent>, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
-    this.loadData(this.PageInfo)
+    this.loadData(this.PageInfo);
+    this.itemSelected = this.planDetail?.containerName;
   }
 
   loadData(PageInfo: any) {
     this.loading = true;
-    this.containerService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+    this.containerService.GetAllContEmpt(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
       this.loading = false;
       this.lstData = data.data;
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-    })
+    });
   }
 
-  hanldeClickItem(item: ContainerEmpty) {
+  hanldeClickItem(item: Container) {
     this.itemSelected = item.code;
   }
 
@@ -52,7 +57,11 @@ export class ListContanerComponent implements OnInit {
   }
 
   handleSubmit() {
-    this.bookingService.CreateEIRFromPlan({id: this.planId, containerNo: this.itemSelected}).subscribe(res => this.dialogRef.close(res))
+    this.bookingService.CreateEIRFromPlan({
+      id: this.planDetail.id,
+      containerNo: this.itemSelected,
+      activity: this.planDetail.activity
+    }).subscribe(res => this.dialogRef.close(res))
   }
 
   onChangePage(pageOfItems: any) {
@@ -60,9 +69,10 @@ export class ListContanerComponent implements OnInit {
     this.PageInfo = pageOfItems
     this.loadData(pageOfItems)
   }
+
 }
 
-export interface ContainerEmpty
-{
-  code: string
+export interface Container {
+  code: string,
+  status: number
 }

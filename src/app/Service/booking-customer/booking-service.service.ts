@@ -12,7 +12,11 @@ export class BookingServiceService {
 
 
   Paging(page: number, searchText: string, numberDis: number, date: string) {
-    return this.httpService.getRequest(`PlanPacking?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&Date=${date}`)
+    if (date) {
+      return this.httpService.getRequest(`PlanPacking?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&Date=${date}`)
+    } else {
+      return this.httpService.getRequest(`PlanPacking?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    }
   }
 
   Insert(data: BookingCustomerCreate) {
@@ -49,6 +53,14 @@ export class BookingServiceService {
 
   DownloadImport(){
     return this.httpService.downloadRequest("PlanPacking/template/download-import");
+  }
+
+  GetAllPerform(page: number, searchText: string, numberDis: number, date: string) {
+    if (date) {
+      return this.httpService.getRequest(`PlanPacking/perform?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&Date=${date}`)
+    } else {
+      return this.httpService.getRequest(`PlanPacking/perform?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    }
   }
 
 }
