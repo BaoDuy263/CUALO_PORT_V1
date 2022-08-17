@@ -1,3 +1,4 @@
+import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component';
 import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
 import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-list/imp-cont-list-index/imp-cont-list-index.component';
@@ -91,6 +92,7 @@ const routes: Routes = [
           { path: '', component: BookingCustomerIndexComponent},
           { path: 'list', component: BookingCustomerIndexComponent },
           { path: 'template', component: PlanPackingIndexComponent },
+          { path: 'perform', component: PerformIndexComponent}
         ]
       },
       {

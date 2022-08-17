@@ -1,18 +1,22 @@
 <h2 class="text-center">Chọn container</h2>
 <div class="list-container">
   <div>
+    <h3>Container đang sử dụng: <span style="font-weight: 900;">{{itemSelected}}</span></h3>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">STT</th>
           <th scope="col">Mã Container</th>
+          <th scope="col">Tình trạng</th>
         </tr>
       </thead>
       <tbody>
         <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.code}"
+          [ngClass]="{'classFull' : item.status === 1}"
           *ngFor="let item of lstData; index as i" (click)="hanldeClickItem(item)">
           <th scope="row">{{i+1}}</th>
-          <td>{{item.code}}}</td>
+          <td>{{item.code}}</td>
+          <th>{{convertHelper.showStatus(item.status)}}</th>
         </tr>
       </tbody>
     </table>

@@ -18,6 +18,7 @@ export class BookingCustomerCreateComponent implements OnInit {
   submited: boolean = false;
   bookCutomerId : number = 0;
   isCreate : boolean = true;
+  activities = [{value: 2, name: "Cấp rỗng"}, { value: 9, name: "Đóng rời"}]
 
   constructor(private bookingService : BookingServiceService,public dialogRef: MatDialogRef<BookingCustomerCreateComponent> ) {
     this.CreateEditForm = new FormGroup({
@@ -27,7 +28,7 @@ export class BookingCustomerCreateComponent implements OnInit {
       shipperName: new FormControl(''),
       shipName: new FormControl(),
       company: new FormControl(),
-      formality: new FormControl(),
+      activity: new FormControl(),
       positionReturn : new FormControl(),
       status : new FormControl(),
       note : new FormControl(),
@@ -49,7 +50,7 @@ export class BookingCustomerCreateComponent implements OnInit {
           shipperName: new FormControl(response.shipperName),
           shipName: new FormControl(response.shipName),
           company: new FormControl(response.company),
-          formality: new FormControl(response.formality),
+          activity: new FormControl(response.activity),
           positionReturn: new FormControl(response.positionReturn),
           status: new FormControl(response.status),
           note : new FormControl(response.note),
@@ -61,6 +62,7 @@ export class BookingCustomerCreateComponent implements OnInit {
 
   onSubmit() {
     this.submited = true;
+    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
     if(this.CreateEditForm.valid && this.isCreate === true){
       this.bookingService.Insert(this.CreateEditForm.value).subscribe(response => {
           this.dialogRef.close(response);

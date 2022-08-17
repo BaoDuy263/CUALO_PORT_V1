@@ -32,8 +32,10 @@
               <td>{{item.pathFile}}</td>
               <td>{{item.createdBy}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
-              <td style="text-align: center;"><i class="bi bi-download" style="cursor: pointer;" (click)="downloadFile(item.id)"></i><i class="bi bi-trash3"
-                  style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>
+              <td style="text-align: center;"><i class="bi bi-download" style="cursor: pointer;" data-toggle="tooltip"
+                data-placement="top" title="Tải xuống" (click)="downloadFile(item.id)"></i><i class="bi bi-trash3"
+                  style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
+                  data-placement="top" title="Xóa" (click)="openDelete(item.id)"></i></td>
             </tr>
           </tbody>
         </table>

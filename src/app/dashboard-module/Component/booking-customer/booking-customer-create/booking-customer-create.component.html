@@ -19,8 +19,14 @@
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Hình thức</label>
-          <input type="text" class="form-control" formControlName="formality">
+          <label for="exampleFormControlInput1" class="form-label">Hình thức</label><br />
+          <select
+            class="form-control"
+            formControlName="activity"
+          >
+            <option *ngFor="let activity of activities" [ngValue]="activity.value">{{activity.name}}</option>
+          </select>
+          <!-- <input type="text" class="form-control" > -->
         </div>
       </div>
     </div>
