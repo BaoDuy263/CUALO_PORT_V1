@@ -83,6 +83,7 @@ import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-l
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
 import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 import { ContainerCreateComponent } from './Component/container/container-create/container-create.component';
+import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component';
 
 
 
@@ -154,6 +155,7 @@ import { ContainerCreateComponent } from './Component/container/container-create
     ImpContTempIndexComponent,
     ContainerIndexComponent,
     ContainerCreateComponent,
+    ExportContainerComponent,
   ],
   imports: [
     CommonModule,

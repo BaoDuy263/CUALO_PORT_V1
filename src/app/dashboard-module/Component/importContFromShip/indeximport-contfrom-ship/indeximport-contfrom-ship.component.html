@@ -18,14 +18,13 @@
             </div>
             <div class="col-sm-2" >
               <div class="row" >
-                <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Thao tác
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" (click)="DowloadTemplate()">Dowload Template</a></li>
-                    <li><a class="dropdown-item"(click)="openUpload()">Upload</a></li>
-                  </ul>
+                <div class="col-sm-12 d-flex justify-content-end" style="text-align: right;">
+                  <div class="file-input">
+                    <input type="file" name="file-input" id="file-input" class="file-input__input" (change)="fileUpload($event)" />
+                    <label class="file-input__label btn btn-success" for="file-input">
+                      <i class="bi bi-cloud-upload"></i>
+                      <span>Upload file</span></label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -68,11 +67,17 @@
         <div class="row" style=" margin-bottom: 25px;">
             <div class="col-sm-9">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-3">
                       <input type="text" class="form-control" placeholder="Chuyến nhập xuất" [(ngModel)]="PageInfo.Voyace" (ngModelChange)="onSearchVoyace($event)">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <input type="text" class="form-control" placeholder="Mã container (có thể nhập 4 số cuối của cont)" [(ngModel)]="PageInfo.ContNo" (ngModelChange)="onSearchContainer($event)">
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control" placeholder="Từ ngày"  onfocus="(this.type='date')" [(ngModel)]="PageInfo.FromDate" (ngModelChange)="onSearchFromDate($event)">
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')" [(ngModel)]="PageInfo.ToDate" (ngModelChange)="onSearchToDate($event)">
                     </div>
                 </div>
             </div>
@@ -87,8 +92,9 @@
                         Hành động
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" (click)="openCreate()">Thêm mới</a></li>
                       <li><a class="dropdown-item" (click)="openImport()">Import</a></li>
+                      <li><a class="dropdown-item" (click)="openCreate()">Thêm mới</a></li>
+                      <li><a class="dropdown-item" (click)="DowloadTemplate()">DownLoad Template</a></li>
                     </ul>
                   </div>
                 <!-- </div> -->
@@ -107,6 +113,7 @@
                           <th>Hàng Hóa</th>
                           <th>Mã Container</th>
                           <th>Ngày trả</th>
+                          <th>Hướng xử lý</th>
                           <th  style="text-align: center;">Hành động</th>
                         </tr>
                       </thead>
@@ -119,6 +126,7 @@
                           <td>{{item.commodity}}</td>
                           <td>{{item.contNo}}</td>
                           <td>{{item.returnPlan}}</td>
+                          <td>{{GetDirecttion(item.typeDirection)}}</td>
                           <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                             (click)="openEdit(item.id)"></i><i class="bi bi-trash3" 
                             style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>

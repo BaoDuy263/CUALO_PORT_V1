@@ -16,6 +16,8 @@ export class IndexPerformContFormPortComponent implements OnInit {
     PageSize: 10,
     Voyace : '',
     ContNo: '',
+    FromDate: new Date,
+    ToDate: new Date
   }
 
   lstdata : PortToShipIndex = {

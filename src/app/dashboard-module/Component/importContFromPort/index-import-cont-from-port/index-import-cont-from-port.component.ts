@@ -9,6 +9,7 @@ import { Pagination } from 'src/app/Model/Table';
 import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component'
 import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component'
 import { PerformService } from 'src/app/Service/Perform/perform.service';
+import { ExportContainerComponent } from '../export-container/export-container.component';
 @Component({
   selector: 'app-index-import-cont-from-port',
   templateUrl: './index-import-cont-from-port.component.html',
@@ -50,6 +51,8 @@ export class IndexImportContFromPortComponent implements OnInit {
     PageSize: 10,
     Voyace : '',
     ContNo: '',
+    FromDate: undefined,
+    ToDate : undefined
   }
 
   lstdata : PortToShipIndex = {
@@ -75,6 +78,8 @@ export class IndexImportContFromPortComponent implements OnInit {
     PageSize: 10,
     Voyace : '',
     ContNo: '',
+    FromDate: undefined,
+    ToDate : undefined
   }
 
   lstdataTH : PortToShipIndex = {
@@ -123,7 +128,6 @@ export class IndexImportContFromPortComponent implements OnInit {
         this.PaginationBooking.pageSize = data.data.pageSize,
         this.PaginationBooking.totalPage = data.data.totalPage,
         this.PaginationBooking.totalRecord = data.data.totalRecord
-        console.log('this.PaginationBooking',this.PaginationBooking);
       }
     )
   }
@@ -164,13 +168,42 @@ export class IndexImportContFromPortComponent implements OnInit {
     this.Paging();
   }
 
-  openUpload() {
+  onSearchFromDate(e: any) {
+    this.PageInfo.FromDate = e;
+    this.PageInfo.Page = 1;
+    this.Paging();
+  }
+
+  onSearchToDate(e: any) {
+    this.PageInfo.ToDate = e;
+    this.PageInfo.Page = 1;
+    this.Paging();
+  }
+
+  openImportTH() {
     const dialogRef =this.dialog.open(ImportContFromPortComponent);
-    dialogRef.componentInstance.isImport = false;
+    dialogRef.componentInstance.isImportKH = false;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
+          this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
+
+  ExportCont(ContNo: string) {
+    const dialogRef =this.dialog.open(ExportContainerComponent);
+    dialogRef.componentInstance.ContNo = ContNo;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Paging();
         }
         else {
           this.toastr.showError(result.message);
@@ -269,16 +302,41 @@ export class IndexImportContFromPortComponent implements OnInit {
     }
   }
 
-  bulkAction()
+  
+
+  fileUpload(event: any) {
+    const selectedFile = event.target.files[0];
+    console.log('selectedFile',selectedFile);
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    try
+    {
+      this.loadding = true;
+      this.service.UploadPorttoShip(formData).subscribe(data => {
+        if(data.statusCode === 200)
+          {
+            this.PagingBooking();
+          }
+      })
+    }
+    catch(error)
+    {
+      this.loadding = false;
+      throw new Error("error 500");
+    }
+  }
+
+  GetStatus(step : number)
   {
-    this.service.bulkAction(this.lstCheckAction).subscribe(data => {
-      if (data.statusCode === 200) {
-        this.toastr.showSuccess(data.message);
-        this.Paging();
-      }
-      else {
-        this.toastr.showError(data.message);
-      }
-    })
+    let status = '';
+    switch(step){
+      case 1 : 
+        status = "Chưa Xuất";
+        break;
+      case 2 : 
+        status = "Đã Xuất";
+        break;
+    }
+    return status;
   }
 }
