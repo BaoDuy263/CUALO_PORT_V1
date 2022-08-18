@@ -21,4 +21,8 @@ export class ContainerService {
     return this.httpService.getRequest("Container", code)
   }
 
+  GetAllContEmpt(page: number, searchText: string, numberDis: number) {
+    return this.httpService.getRequest(`Container/containers-empty?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+  }
+
 }

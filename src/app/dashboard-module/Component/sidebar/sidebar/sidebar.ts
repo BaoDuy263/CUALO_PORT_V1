@@ -60,22 +60,7 @@ export const ROUTE_DATA: TypeRoute[] = [
     //         }
     //     ]
     // },
-    {
-        name :'Kế hoạch tại cảng',
-        roles: ["Admin", "ds"],
-        children : [
-            {
-                name :'Cấp rỗng/đóng rời',
-                url:'plan-packing',
-                roles: ["Admin", "ds"],
-            },
-            {
-                name : 'Trả nguyên/rút ruột',
-                url: 'import-container',
-                roles: ["Admin", "ds"],
-            },
-        ]
-    },
+
     // {
     //     name :'Quản lý khách hàng',
     //     roles: ["Admin"],
@@ -134,6 +119,27 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
         ]
     },
+    {
+      name :'Kế hoạch tại cảng',
+      roles: ["Admin", "ds"],
+      children : [
+          {
+              name :'Cấp rỗng/đóng rời',
+              url:'plan-packing',
+              roles: ["Admin", "ds"],
+          },
+          {
+              name : 'Trả nguyên/rút ruột',
+              url: 'import-container',
+              roles: ["Admin", "ds"],
+          },
+      ]
+    },
+    {
+      name :'Quản lý container',
+      roles: ["Admin"],
+      url:'container'
+    },
     // {
     //     name :'Thực hiên xuất nhập tàu',
     //     roles: ["Admin"],
@@ -171,7 +177,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         url:'404-not-found',
         roles: ["Admin"],
     },
-   
+
 
     //     name :'Quản lý ra vào',
     //     roles: ["Admin"],
@@ -199,14 +205,6 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     roles: ["Admin"],
     //     url:'quanlylichtau'
     // },
-
-
-    {
-      name :'Quản lý container',
-
-      roles: ["Admin"],
-      url:'container'
-    },
 
     {
         name :'Quản trị hệ thống',

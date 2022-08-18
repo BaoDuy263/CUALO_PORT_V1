@@ -1,14 +1,16 @@
 <div style="position: absolute; top: 40%; left: 40%;">
   <mat-spinner *ngIf="loading == true"></mat-spinner>
 </div>
-<div class="" style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+<div class="" style="padding: 20px 23px;">
   <div class="row">
-    <h2 style="font-weight: 500;">Danh sách container</h2>
+    <h2 style="font-weight: 500;">Danh sách kế hoạch</h2>
   </div>
   <div class="row" style=" margin-bottom: 25px;">
     <div class="col-sm-4 d-flex">
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
+      <input type="datetime-local" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's created on"
+        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Date" (ngModelChange)="onSearchDate($event)">
     </div>
     <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
       <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
@@ -20,14 +22,14 @@
           <thead>
             <tr>
               <th style="text-align: center;">STT</th>
-              <th>Mã container</th>
               <th>Tên Khách hàng</th>
+              <th>Hình thức</th>
               <th>Loại container</th>
+              <th>Tên lái xe</th>
               <th>Tên tàu</th>
-              <th>Cảng cuối</th>
               <th>Vị trí trả hàng</th>
-              <th>Ngày cập bến</th>
-              <th>Ngày rời bến</th>
+              <th>Ghi chú</th>
+              <th>Ngày tạo</th>
               <!-- <th>Trạng thái</th> -->
               <th style="text-align: center;">Hành động</th>
             </tr>
@@ -35,16 +37,22 @@
           <tbody style="border-top: none;">
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
-              <td>{{item.code}}</td>
               <td>{{item.customer}}</td>
-              <td>{{item.type}}</td>
-              <td>{{item.vessel}}</td>
-              <td>{{item.lastPort}}</td>
-              <td>{{item.location}}</td>
-              <td>{{item.dateCheckIn}}</td>
-              <td>{{item.dateCheckOut | date:'short'}}</td>
-              <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                  (click)="openEdit(item.code)"></i></td>
+              <td>{{convertHelper.showActivity(item.activity)}}</td>
+              <td>{{item.typeCont}}</td>
+              <td>{{item.shipperName}}</td>
+              <td>{{item.voyage}}</td>
+              <td>{{item.returnAddress}}</td>
+              <td>{{item.note}}</td>
+              <td>{{item.createdOn | date:'short'}}</td>
+              <td style="text-align: center;">
+                <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
+                  data-placement="top" title="Sửa" (click)="openEdit(item.id)">
+                </i>
+                <i class="bi bi-trash3" style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
+                  data-placement="top" title="Xóa" (click)="openDelete(item.id)">
+                </i>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -8,11 +8,12 @@ export interface BookingCustomer
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : number,
     positionReturn : string,
     time: string,
     note : string,
     status : string,
+    containerName: string,
     dateCheckOut: Date,
     createdOn: Date
 }
@@ -38,11 +39,12 @@ export interface BookingCustomerCreate
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : string,
     positionReturn : string,
     time: string,
     note : string,
     status : string,
+    containerName: string,
     dateCheckOut: Date,
 }
 
@@ -57,11 +59,12 @@ export interface BookingCustomerEdit
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : string,
     positionReturn : string,
     time: string,
     note : string,
     status : string,
+    containerName: string,
     dateCheckOut: Date,
 }
 
@@ -87,4 +90,5 @@ export interface lstBookingTemplate
     totalPage: number
     data : BookingTemplate[]
 }
+
 

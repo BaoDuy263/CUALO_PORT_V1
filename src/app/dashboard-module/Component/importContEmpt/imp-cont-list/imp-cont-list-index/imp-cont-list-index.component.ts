@@ -55,7 +55,6 @@ PageInfo = {
   Pagingdata() {
     this.servicePerform.PagingShipToPort(this.PageInfothuchien).subscribe(
       data => {
-        console.log(data,'data')
         this.loadding = false;
           this.lstdata = data.data;
           this.Pagination.currentPage = data.data.currentPage,
@@ -72,7 +71,7 @@ PageInfo = {
     formData.append("file", selectedFile);
     try {
         this.loadding = true;
-        this.bookingServiceService.CreateBookings(formData).subscribe(res => {
+        this.bookingServiceService.CreateActions(formData).subscribe(res => {
           if(res.statusCode === 200)
           {
             this.Pagingdata()

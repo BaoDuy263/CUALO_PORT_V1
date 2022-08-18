@@ -83,9 +83,8 @@ import { ImpContListIndexComponent } from './Component/importContEmpt/imp-cont-l
 import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-temp/imp-cont-temp-index/imp-cont-temp-index.component';
 import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 import { ContainerCreateComponent } from './Component/container/container-create/container-create.component';
-import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component';
-
-
+import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component'
+import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component'
 
 
 
@@ -156,6 +155,7 @@ import { ExportContainerComponent } from './Component/importContFromPort/export-
     ContainerIndexComponent,
     ContainerCreateComponent,
     ExportContainerComponent,
+    PerformIndexComponent
   ],
   imports: [
     CommonModule,

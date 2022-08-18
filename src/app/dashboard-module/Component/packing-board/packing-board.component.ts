@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./packing-board.component.css']
 })
 export class PackingBoardComponent implements OnInit {
-  links = [{link:"/Home/plan-packing/template", label: "Booking"}, {link:"/Home/plan-packing/list", label: "Danh sách kế hoạch"}, ]
+  links = [{link:"/Home/plan-packing/template", label: "Booking"},
+  {link:"/Home/plan-packing/list", label: "Danh sách kế hoạch"},
+  {link:"/Home/plan-packing/perform", label: "Danh sách thực hiện"}]
   constructor(private router: Router) { }
 
   ngOnInit(): void {
