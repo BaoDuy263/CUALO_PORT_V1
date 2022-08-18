@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerSelect } from 'src/app/Model/Customer';
 import { ProductSelect } from 'src/app/Model/Product';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
+import { activitiesPacking } from '../helper/constant';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class BookingCustomerCreateComponent implements OnInit {
   submited: boolean = false;
   bookCutomerId : number = 0;
   isCreate : boolean = true;
-  activities = [{value: 2, name: "Cấp rỗng"}, { value: 9, name: "Đóng rời"}]
+  activities = activitiesPacking;
 
   constructor(private bookingService : BookingServiceService,public dialogRef: MatDialogRef<BookingCustomerCreateComponent> ) {
     this.CreateEditForm = new FormGroup({

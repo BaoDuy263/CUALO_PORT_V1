@@ -55,7 +55,7 @@ export class ContainerIndexComponent implements OnInit {
   openEdit(code: string) {
     this.isCreate = false;
     this.containerCode = code;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%' });
+    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%', height: '800px' });
     dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {

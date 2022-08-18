@@ -17,6 +17,10 @@ export class ContainerService {
     return this.httpService.postRequest("Container", data);
   }
 
+  Update(data: ContainerCreate) {
+    return this.httpService.postRequest("Container/Update", data);
+  }
+
   Detail(code: string) {
     return this.httpService.getRequest("Container", code)
   }
