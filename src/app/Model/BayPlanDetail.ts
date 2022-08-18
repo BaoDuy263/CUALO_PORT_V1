@@ -6,6 +6,8 @@ export interface BayPlanPaging
     Voyace : string,
     ContNo : string,
     BillNo : string,
+    FromDate? : Date,
+    ToDate? : Date
 }
 
 export interface BayPlanIndex
@@ -26,7 +28,8 @@ export interface BayPlanRecord
     billNo : string,
     commodity : string,
     sealNo : string,
-    returnPlan: string
+    returnPlan: string,
+    typeDirection: number
 }
 
 
@@ -78,6 +81,8 @@ export interface PortToShipPaging
     PageSize : number,
     Voyace : string,
     ContNo : string
+    FromDate?: Date,
+    ToDate?: Date
 }
 
 export interface PortToShipIndex
@@ -96,7 +101,9 @@ export interface PortToShipRecord
     gw : number,
     hangHoa : string,
     loaiCont : number,
-    contNo : string
+    contNo : string,
+    dateUpdate: Date,
+    step : number
 }
 
 

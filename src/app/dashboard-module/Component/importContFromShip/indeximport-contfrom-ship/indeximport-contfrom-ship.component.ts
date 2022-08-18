@@ -9,6 +9,7 @@ import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
+import { unescapeLeadingUnderscores } from 'typescript';
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
@@ -66,6 +67,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     Voyace : '',
     ContNo: '',
     BillNo : '',
+    FromDate : undefined,
+    ToDate: undefined
   }
   //
   //Tab thực hiện
@@ -104,7 +107,6 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   Paging() {
-    console.log('2');
     this.service.Paging(this.PageInfo).subscribe(
       data => {
         this.loadding = false;
@@ -113,7 +115,6 @@ export class IndeximportContfromShipComponent implements OnInit {
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
-            console.log('this.lstdata',this.lstdata);
       });
   }
 
@@ -157,6 +158,18 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   onSearchContainer(e: any) {
     this.PageInfo.ContNo = e;
+    this.PageInfo.Page = 1;
+    this.Paging();
+  }
+
+  onSearchFromDate(e: any) {
+    this.PageInfo.FromDate = e;
+    this.PageInfo.Page = 1;
+    this.Paging();
+  }
+
+  onSearchToDate(e: any) {
+    this.PageInfo.ToDate = e;
     this.PageInfo.Page = 1;
     this.Paging();
   }
@@ -275,16 +288,48 @@ export class IndeximportContfromShipComponent implements OnInit {
     }
   }
 
-  bulkAction()
+
+  fileUpload(event: any) {
+    const selectedFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    try
+    {
+      this.loadding = true;
+      this.service.UploadShiptoPort(formData).subscribe(data => {
+        if(data.statusCode === 200)
+          {
+            this.PagingBooking();
+          }
+      })
+    }
+    catch(error)
+    {
+      this.loadding = false;
+      throw new Error("error 500");
+    }
+  }
+
+  GetDirecttion(type: number)
   {
-    this.service.bulkAction(this.lstCheckAction).subscribe(data => {
-      if (data.statusCode === 200) {
-        this.toastr.showSuccess(data.message);
-        this.Paging();
-      }
-      else {
-        this.toastr.showError(data.message);
-      }
-    })
+    let Direction = '';
+    switch(type){
+      case 1 : 
+        Direction = "Lưu vỏ";
+        break;
+      case 2 : 
+        Direction = "Lưu bãi";
+        break;
+      case 3 : 
+        Direction = "Trả nguyên";
+        break;
+      case 4 :
+        Direction = "Rút ruột";
+        break;
+      case 5 :
+        Direction = "(Ship side)T-X";
+        break;
+    }
+    return Direction;
   }
 }

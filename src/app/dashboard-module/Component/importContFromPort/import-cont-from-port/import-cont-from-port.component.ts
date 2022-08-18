@@ -10,7 +10,7 @@ import { ImportContFromShipService } from 'src/app/Service/importContFromShip/im
 export class ImportContFromPortComponent implements OnInit {
 
   file : any;
-  @Input() isImport: boolean = true;
+  @Input() isImportKH: boolean = true;
   constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<ImportContFromPortComponent>) { }
 
   ngOnInit(): void {
@@ -20,12 +20,12 @@ export class ImportContFromPortComponent implements OnInit {
   onSubmit(){
     const formData = new FormData();
     formData.append('file', this.file,this.file.Name);
-    if(this.isImport){
+    if(this.isImportKH){
       this.importContFromShipService.ImportPorttoShip(formData).subscribe(data =>  this.dialogRef.close(data));
     }
-    else
+    if(!this.isImportKH)
     {
-      this.importContFromShipService.UploadPorttoShip(formData).subscribe(data => this.dialogRef.close(data));
+      this.importContFromShipService.ImportPorttoShipTH(formData).subscribe(data => this.dialogRef.close(data));
     }
   }
 

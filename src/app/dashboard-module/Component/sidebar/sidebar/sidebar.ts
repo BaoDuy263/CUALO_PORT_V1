@@ -99,7 +99,7 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     roles: ["Admin"],
     // },
     {
-        name :'Kế hoạch xuất nhập tàu',
+        name :'Nghiệp vụ xuất nhập tàu',
         roles: ["Admin"],
         children : [
             {
@@ -120,7 +120,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         ]
     },
     {
-      name :'Kế hoạch tại cảng',
+      name :'Nghiệp vụ tại cảng',
       roles: ["Admin", "ds"],
       children : [
           {
