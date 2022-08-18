@@ -26,7 +26,9 @@ export class IndexImportContFromPortComponent implements OnInit {
     Page: 1,
     PageSize: 10,
     FileName : '',
-    BookingType : 3
+    BookingType : 3,
+    FromDate : undefined,
+    ToDate : undefined
   } 
 
   lstdataBooking : BookingPlanIndex = {
@@ -178,6 +180,24 @@ export class IndexImportContFromPortComponent implements OnInit {
     this.PageInfo.ToDate = e;
     this.PageInfo.Page = 1;
     this.Paging();
+  }
+
+  onSearchFileName(e: any) {
+    this.PageInfoBooking.FileName = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
+  }
+
+  onSearchBookingFromDate(e: any) {
+    this.PageInfoBooking.FromDate = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
+  }
+
+  onSearchBookingToDate(e: any) {
+    this.PageInfoBooking.ToDate = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
   }
 
   openImportTH() {

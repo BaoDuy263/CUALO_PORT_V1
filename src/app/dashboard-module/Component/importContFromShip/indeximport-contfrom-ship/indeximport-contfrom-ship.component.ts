@@ -9,7 +9,7 @@ import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
-import { unescapeLeadingUnderscores } from 'typescript';
+
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
@@ -26,7 +26,9 @@ export class IndeximportContfromShipComponent implements OnInit {
     Page: 1,
     PageSize: 10,
     FileName : '',
-    BookingType : 4
+    BookingType : 4,
+    FromDate: undefined,
+    ToDate: undefined
   } 
 
   lstdataBooking : BookingPlanIndex = {
@@ -100,7 +102,6 @@ export class IndeximportContfromShipComponent implements OnInit {
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
   ngOnInit(): void {
-    console.log('1')
     this.Paging();
     this.PagingBooking();
     this.PagingThucHien();
@@ -176,10 +177,27 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   
   onChangePage(pageOfItems: any) {
-    console.log('pageOfItems.page',pageOfItems.page);
     this.PageInfo.Page = pageOfItems.page;
     this.PageInfo.PageSize = pageOfItems.pageSize;
     this.Paging();
+  }
+
+  onSearchFileName(e: any) {
+    this.PageInfoBooking.FileName = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
+  }
+
+  onSearchBookingFromDate(e: any) {
+    this.PageInfoBooking.FromDate = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
+  }
+
+  onSearchBookingToDate(e: any) {
+    this.PageInfoBooking.ToDate = e;
+    this.PageInfoBooking.Page = 1;
+    this.PagingBooking();
   }
 
   openImport() {

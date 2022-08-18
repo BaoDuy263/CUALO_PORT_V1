@@ -4,6 +4,8 @@ export interface BookingPlanPaging
     PageSize : number,
     BookingType : number,
     FileName : string,
+    FromDate? : Date,
+    ToDate? : Date
 };
 
 export interface BookingPlanIndex
