@@ -14,7 +14,7 @@ export interface Perform {
   customer: string,
   customerSeal: string,
   dateUpdate: Date,
-  direction: 0,
+  direction: number,
   formality: string,
   height: string,
   id: number,

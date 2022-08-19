@@ -17,9 +17,8 @@ export const activitiesData = [
 ]
 
 export const lstStatusData = [
-  { value: 1, name: "Vận chuyển" },
-  { value: 2, name: "Tại cảng" },
-  { value: 3, name: "Ngoài cảng" },
+  { value: 0, name: "Rỗng" },
+  { value: 1, name: "Đầy" },
 ]
 
 export const lstTypeDelivery = [

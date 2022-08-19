@@ -63,4 +63,16 @@ export class BookingServiceService {
     }
   }
 
+  GetDetailPerform(id: number) {
+    return this.httpService.getRequest("PlanPacking/perform/" + id)
+  }
+
+  DeletePerform(id: number) {
+    return this.httpService.deleteRequest("PlanPacking/perform/" + id)
+  }
+
+  UpdatePerform(data: any) {
+    return this.httpService.postRequest("PlanPacking/perform/Update", data);
+  }
+
 }
