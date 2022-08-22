@@ -56,7 +56,6 @@ export class PerformIndexComponent implements OnInit {
       .subscribe(data => {
         this.loading = false;
         this.lstdata = data;
-        console.log(data, 'data')
         this.Pagination.currentPage = data.currentPage,
           this.Pagination.pageSize = data.pageSize,
           this.Pagination.totalPage = data.totalPage,
