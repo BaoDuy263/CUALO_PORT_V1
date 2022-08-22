@@ -23,9 +23,10 @@
               <th>Mã container</th>
               <th>Tên Khách hàng</th>
               <th>Loại container</th>
-              <th>Tên tàu</th>
-              <th>Cảng cuối</th>
-              <th>Vị trí trả hàng</th>
+              <th>Tình trạng</th>
+              <th>Phương án</th>
+              <th>Hướng</th>
+              <th>Trạng thái</th>
               <th>Ngày cập bến</th>
               <th>Ngày rời bến</th>
               <!-- <th>Trạng thái</th> -->
@@ -38,9 +39,10 @@
               <td>{{item.code}}</td>
               <td>{{item.customer}}</td>
               <td>{{item.type}}</td>
-              <td>{{item.vessel}}</td>
-              <td>{{item.lastPort}}</td>
-              <td>{{item.location}}</td>
+              <th>{{convertHelper.showStatus(item.status)}}</th>
+              <td>{{convertHelper.showActivity(item.activity)}}</td>
+              <td>{{convertHelper.showSide(item.side)}}</td>
+              <td>{{convertHelper.showState(item.state)}}</td>
               <td>{{item.dateCheckIn}}</td>
               <td>{{item.dateCheckOut | date:'short'}}</td>
               <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"

@@ -5,6 +5,7 @@ import { lstContainer } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
+import { convertHelper } from '../../booking-customer/helper/convertHelper';
 
 @Component({
   selector: 'app-container-index',
@@ -34,7 +35,7 @@ export class ContainerIndexComponent implements OnInit {
     Keyword: '',
     pageSize: 10,
   }
-  constructor(private containerService: ContainerService, public dialog: MatDialog, private toastr: ToastrcustomService,) { }
+  constructor(private containerService: ContainerService, public dialog: MatDialog, private toastr: ToastrcustomService, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
     this.loadData(this.PageInfo)
