@@ -1,3 +1,5 @@
+import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
+import { PerformCreateComponent } from './../perform-create/perform-create.component';
 import { convertHelper } from './../helper/convertHelper';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -54,7 +56,6 @@ export class PerformIndexComponent implements OnInit {
       .subscribe(data => {
         this.loading = false;
         this.lstdata = data;
-        console.log(data, 'data')
         this.Pagination.currentPage = data.currentPage,
           this.Pagination.pageSize = data.pageSize,
           this.Pagination.totalPage = data.totalPage,
@@ -90,40 +91,40 @@ export class PerformIndexComponent implements OnInit {
   }
 
   openEdit(id: number) {
-    // this.isCreate = false;
-    // this.bookCutomerId = id;
-    // const dialogRef = this.dialog.open(BookingCustomerCreateComponent, { width: '50%' });
-    // dialogRef.componentInstance.bookCutomerId = this.bookCutomerId;
-    // dialogRef.componentInstance.isCreate = this.isCreate;
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     if (result.statusCode === 200) {
-    //       this.toastr.showSuccess(result.message);
-    //       this.Pagingdata(this.PageInfo);
-    //     }
-    //     else {
-    //       this.toastr.showError(result.message);
-    //     }
-    //   }
-    // })
+    this.isCreate = false;
+    this.bookCutomerId = id;
+    const dialogRef = this.dialog.open(PerformCreateComponent, { width: '50%' });
+    dialogRef.componentInstance.performId = this.bookCutomerId;
+    dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    })
   }
 
 
   openDelete(id: number) {
-    // const dialogRef = this.dialog.open(BookingCustomerDeleteComponent);
-    // dialogRef.componentInstance.bookCutomerId = id;
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     if (result.statusCode === 200) {
-    //       this.toastr.showSuccess(result.message);
-    //       this.Pagingdata(this.PageInfo);
+    const dialogRef = this.dialog.open(PerformDeleteComponent);
+    dialogRef.componentInstance.performId = id;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
 
-    //     }
-    //     else {
-    //       this.toastr.showError(result.message);
-    //     }
-    //   }
-    // });
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
   }
 
   onChangePage(pageOfItems: any) {

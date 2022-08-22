@@ -84,7 +84,9 @@ import { ImpContTempIndexComponent } from './Component/importContEmpt/imp-cont-t
 import { ContainerIndexComponent } from './Component/container/container-index/container-index.component';
 import { ContainerCreateComponent } from './Component/container/container-create/container-create.component';
 import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component'
-import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component'
+import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component';
+import { PerformCreateComponent } from './Component/booking-customer/perform-create/perform-create.component';
+import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component'
 
 
 
@@ -155,7 +157,9 @@ import { PerformIndexComponent } from './Component/booking-customer/perform-inde
     ContainerIndexComponent,
     ContainerCreateComponent,
     ExportContainerComponent,
-    PerformIndexComponent
+    PerformIndexComponent,
+    PerformCreateComponent,
+    PerformDeleteComponent
   ],
   imports: [
     CommonModule,

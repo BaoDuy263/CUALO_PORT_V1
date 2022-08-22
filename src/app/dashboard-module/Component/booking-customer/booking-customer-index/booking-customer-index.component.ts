@@ -212,14 +212,4 @@ export class BookingCustomerIndexComponent implements OnInit {
       });
   }
 
-  // convertActivity(activity: number) {
-  //   switch (activity) {
-  //     case 2:
-  //       return "Cấp rỗng"
-  //     case 9:
-  //       return "Đóng rời"
-  //     default:
-  //       return "";
-  //   }
-  // }
 }
