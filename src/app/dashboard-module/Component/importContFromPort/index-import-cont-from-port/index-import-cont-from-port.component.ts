@@ -109,6 +109,8 @@ export class IndexImportContFromPortComponent implements OnInit {
   }
 
   Paging() {
+    this.PageInfo.FromDate?.toString() == "" ? this.PageInfo.FromDate = undefined : this.PageInfo.FromDate;
+    this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.PagingPorttoShip(this.PageInfo).subscribe(
       data => {
         this.loadding = false;

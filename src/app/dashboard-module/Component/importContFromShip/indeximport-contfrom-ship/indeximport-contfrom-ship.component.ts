@@ -108,15 +108,17 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   Paging() {
+    this.PageInfo.FromDate?.toString() == "" ? this.PageInfo.FromDate = undefined : this.PageInfo.FromDate;
+    this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.Paging(this.PageInfo).subscribe(
       data => {
         this.loadding = false;
-          this.lstdata = data.data;
-          this.Pagination.currentPage = data.data.currentPage,
-            this.Pagination.pageSize = data.data.pageSize,
-            this.Pagination.totalPage = data.data.totalPage,
-            this.Pagination.totalRecord = data.data.totalRecord
-      });
+        this.lstdata = data.data;
+        this.Pagination.currentPage = data.data.currentPage,
+        this.Pagination.pageSize = data.data.pageSize,
+        this.Pagination.totalPage = data.data.totalPage,
+        this.Pagination.totalRecord = data.data.totalRecord
+    });
   }
 
   PagingBooking() {

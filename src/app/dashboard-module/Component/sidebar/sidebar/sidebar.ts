@@ -31,7 +31,6 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
 
             },
-
             {
                 name :'Đơn vị',
                 url:'don-vi',
@@ -217,6 +216,11 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Thống kê truy cập',
+                url:'404-not-found',
+                roles: ["Admin"],
+            },
+            {
+                name :'Phân quyền người dùng',
                 url:'404-not-found',
                 roles: ["Admin"],
             }

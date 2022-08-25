@@ -75,13 +75,11 @@ export class ImportContFromShipService {
 
   
   ImportPorttoShip(file: any) {
-    
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShip',file);
   }
 
   
   ImportPorttoShipTH(file: any) {
-    
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShipTH',file);
   }
 
