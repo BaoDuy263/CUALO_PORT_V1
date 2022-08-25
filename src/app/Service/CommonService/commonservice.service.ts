@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonserviceService {
 
-  _urlApi: string = 'https://seaportwebapi.phanmem.one/api/';
+  _urlApi: string = environment.urlApi + '/api/';
   //  _urlApi: string = 'http://localhost:5000/api/';
   //_urlApi: string = 'http://localhost:7611/api/';
 

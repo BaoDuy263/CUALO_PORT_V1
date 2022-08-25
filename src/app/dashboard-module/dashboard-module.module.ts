@@ -85,6 +85,8 @@ import { ContainerIndexComponent } from './Component/container/container-index/c
 import { ContainerCreateComponent } from './Component/container/container-create/container-create.component';
 import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component'
 import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component';
+import { PerformCreateComponent } from './Component/booking-customer/perform-create/perform-create.component';
+import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component';
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component'
 
 
@@ -157,6 +159,8 @@ import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-a
     ContainerCreateComponent,
     ExportContainerComponent,
     PerformIndexComponent,
+    PerformCreateComponent,
+    PerformDeleteComponent,
     UserAuthorizationComponent
   ],
   imports: [
