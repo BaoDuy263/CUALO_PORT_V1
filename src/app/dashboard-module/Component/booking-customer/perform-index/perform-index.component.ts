@@ -4,7 +4,7 @@ import { convertHelper } from './../helper/convertHelper';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { lstPerform } from 'src/app/Model/Perform';
+import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 
@@ -17,6 +17,7 @@ export class PerformIndexComponent implements OnInit {
   isCreate: boolean = true;
   bookCutomerId: number = 0;
   loading: boolean = false;
+  itemPrint: Perform | null = null;
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -133,4 +134,16 @@ export class PerformIndexComponent implements OnInit {
     this.Pagingdata(pageOfItems)
   }
 
+
+  handlePrinter(item: Perform) {
+    this.itemPrint = item;
+    var divContents = document.getElementById('eir')?.innerHTML || '';
+    var printWindow = window.open('', '', 'height=768,width=1366');
+    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
+    printWindow?.document.write('</head><body>');
+    printWindow?.document.write(divContents);
+    printWindow?.document.write('</body></html>');
+    printWindow?.document.close();
+    printWindow?.print();
+  }
 }

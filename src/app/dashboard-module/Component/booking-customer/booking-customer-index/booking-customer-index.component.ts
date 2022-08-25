@@ -20,7 +20,6 @@ export class BookingCustomerIndexComponent implements OnInit {
   isCreate: boolean = true;
   bookCutomerId: number = 0;
   loadding: boolean = false;
-  itemPrint: BookingCustomer | null = null;
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -213,15 +212,4 @@ export class BookingCustomerIndexComponent implements OnInit {
       });
   }
 
-  handlePrinter(item: BookingCustomer) {
-    this.itemPrint = item;
-    var divContents = document.getElementById('eir')?.innerHTML || '';
-    var printWindow = window.open('', '', 'height=768,width=1366');
-    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    printWindow?.document.write('</head><body>');
-    printWindow?.document.write(divContents);
-    printWindow?.document.write('</body></html>');
-    printWindow?.document.close();
-    printWindow?.print();
-  }
 }

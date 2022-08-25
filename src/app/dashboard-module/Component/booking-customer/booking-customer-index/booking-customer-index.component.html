@@ -52,7 +52,6 @@
               <td>{{item.note}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
               <td class="column-action" style="text-align: center;">
-                <i class="bi bi-printer-fill" (click)="handlePrinter(item)" style="padding-right: 8px; cursor: pointer"></i>
                 <i class="bi bi-card-checklist" style="padding-right: 8px; cursor: pointer" data-toggle="tooltip"
                   data-placement="top" title="Chọn container" (click)="openListCont(item)"></i>
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
@@ -70,100 +69,3 @@
     </div>
   </div>
 
-  <div hidden id="eir">
-    <div class="eir-line1">
-      <table style="width: 100%">
-        <tr>
-          <td style="width: 30%">
-            <img src="../../../../../assets/img/logo-cualo-3.jpg" alt="" width="100px">
-          </td>
-          <td style="width: 30%;text-align: center;">
-            <p><b>PHIẾU GIAO NHẬN CONTAINER</b></p>
-            <p>EQUIPMENT INTERCHANGE RECEIPT</p>
-          </td>
-          <td style="width: 30%">
-            <p>Số/No:</p>
-            <p>Vận đơn/Bill No: ...........</p>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="eir-line2 eir-table">
-      <table style="width: 100%; border: 1px solid black;">
-        <tr>
-          <td colspan="2" style="border: 1px solid black;"><b>Chủ hàng</b>/Customer: {{itemPrint?.customer}}</td>
-          <td  style="width: 30%; border: 1px solid black;"><b>Hãng tàu</b>/operator: VIETSUN</td>
-        </tr>
-        <tr>
-          <td style="width: 30%; border: 1px solid black;"><b>Số Container</b>/Cont. No: {{itemPrint?.listContainer}}</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Loại hàng</b>/Commodity: {{itemPrint?.typeMerchandise}} </td>
-          <td style="width: 30%; border: 1px solid black;"><b>Vị trí</b>/Location:</td>
-        </tr>
-        <tr>
-          <td style="width: 30%; border: 1px solid black;"><b>Số tham chiếu</b>/Ref: </td>
-          <td style="width: 30%; border: 1px solid black;"><b>Phương án</b>/Activity: {{convertHelper.showActivity(itemPrint?.activity || 0)}} </td>
-          <td style="width: 30%; border: 1px solid black;"><b>Cảng đến</b>/POD: </td>
-        </tr>
-      </table>
-    </div>
-    <div class="eir-line3 eir-table" style="margin-top:10px;">
-      <table style="width: 100%; border: 1px solid black;">
-        <tr>
-          <td style="width: 30%; border: 1px solid black;"><b>Tình trạng</b>/Status: {{itemPrint?.status}}</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Mã cont</b>/Iso:</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Mã nguy hiểm</b>/IMDG:</td>
-        </tr>
-        <tr>
-          <td  style="width: 30%; border: 1px solid black;"><b>Loại Cont</b>/Type: {{itemPrint?.typeContainer}}</td>
-          <td  style="width: 30%; border: 1px solid black;"><b>Nhóm hàng</b>/Cargo type:</td>
-          <td  style="width: 30%; border: 1px solid black;"><b>Niêm chì hải quan</b>/Custom seal:</td>
-        </tr>
-        <tr>
-          <td  style="width: 30%; border: 1px solid black;"><b>Kích cỡ</b>/Size:</td>
-          <td  style="width: 30%; border: 1px solid black;"><b>Chiều cao</b>/Height:</td>
-          <td  style="width: 30%; border: 1px solid black;"><b>Niêm chì 1</b>/Seal 1:</td>
-        </tr>
-        <tr>
-          <td style="width: 30%; border: 1px solid black;"><b>Trọng lượng</b>/Weight:</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Nhiệt độ</b>/Temperature:</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Niêm chì 2</b>/Seal 2:</td>
-        </tr>
-        <tr>
-          <td style="width: 30%; border: 1px solid black;"><b>Độ thông gió</b>/Ventilation:</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Cont. Đặc biệt</b>/OOG:</td>
-          <td style="width: 30%; border: 1px solid black;"><b>Nơi trả rỗng</b>/Emp. Return place:</td>
-        </tr>
-      </table>
-    </div>
-    <p>* Nếu không ghi chú, Container được coi giao nhận trong tình trạng tốt (if there is no remark, Container is
-      considered to be in good condition)</p>
-    <div class="eir-line4">
-      <table style="width: 100%">
-        <tr>
-          <td style="width: 50%" class="d-flex flex-column">
-            <p><b>Tình trạng cont</b>/Container Status: Vách bị móp, xước nhẹ</p>
-          </td>
-          <td style="width: 50%">
-            <p><b>THÔNG TIN TÀU-Vessel details:</b></p>
-            <p><b>Tên tàu</b>/Vessel: {{itemPrint?.shipName}} <span><b>Chuyến</b>/Voyace:</span></p>
-            <p><b>Cập bến ngày</b>/Arrival:</p>
-            <p><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator details</b></p>
-            <p><b>Phương tiện vận chuyển</b>/Trans type: Truck</p>
-            <p><b>Công ty vận chuyển</b>/Trans com: {{itemPrint?.company}}</p>
-            <p><b>Số xe</b>/Plate: 37c 228.93</p>
-            <p><b>Thời gian vào</b>/Check in:</p>
-            <p><b>Thời gian ra</b>/Check out: {{itemPrint?.dateCheckOut | date }} </p>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="eir-line5">
-      <table style="width: 100%; text-align: center;">
-        <tr>
-          <td style="width: 30%"><b>BÊN GIAO (Deliver)</b></td>
-          <td style="width: 30%"><b>BÊN NHẬN (Receiver)</b></td>
-          <td style="width: 30%"><b>LÁI NÂNG (Drive)</b></td>
-        </tr>
-      </table>
-    </div>
-  </div>

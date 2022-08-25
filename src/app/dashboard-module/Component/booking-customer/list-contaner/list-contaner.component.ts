@@ -83,6 +83,12 @@ export class ListContanerComponent implements OnInit {
     this.loadData(pageOfItems)
   }
 
+  onSearch(e: any) {
+    this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
 }
 
 export interface Container {
