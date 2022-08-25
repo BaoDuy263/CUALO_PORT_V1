@@ -30,3 +30,15 @@ export const lstTypeDelivery = [
 export const lstTypeContData = [
   "container20f", "container40f"
 ]
+
+export const lstSide = [
+  { value: 1, name: "Import" },
+  { value: 2, name: "Export" },
+  { value: 3, name: "StorageEmpty" },
+]
+
+export const lstState = [
+  { value: 1, name: "Delivery" },
+  { value: 2, name: "Stacking" },
+  { value: 3, name: "OutPort" },
+]
