@@ -133,7 +133,7 @@
                           <td>{{item.receiver}}</td>
                           <td>{{item.commodity}}</td>
                           <td>{{item.contNo}}</td>
-                          <td>{{item.returnPlan}}</td>
+                          <td>{{item.returnPlan | date: 'dd/MM/yyyy'}}</td>
                           <td>{{item.dateUpdate  | date: 'dd/MM/yyyy'}}</td>
                           <td>{{item.dateCheckIn  | date: 'dd/MM/yyyy'}}</td>
                           <td>{{GetDirecttion(item.typeDirection)}}</td>
