@@ -29,7 +29,9 @@ export interface BayPlanRecord
     commodity : string,
     sealNo : string,
     returnPlan: string,
-    typeDirection: number
+    typeDirection: number,
+    dateUpdate: Date,
+    dateCheckIn: Date
 }
 
 
@@ -102,7 +104,8 @@ export interface PortToShipRecord
     hangHoa : string,
     loaiCont : number,
     contNo : string,
-    checkOut: Date,
+    dateCheckOut: Date,
+    dateUpdate: Date,
     step : number
 }
 
