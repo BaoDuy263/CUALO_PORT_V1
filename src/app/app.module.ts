@@ -1,4 +1,4 @@
-import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,10 @@ import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
 import { RoleGuardService } from './Interceptor/rolo.guard.service'
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule  } from '@angular/forms';
+import { AdminService } from './Service/admin.service';
+import { ConfigService } from './Service/config.service';
+import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
+import { MapcontYard3Service } from './Service/map-cont-yard3.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,13 @@ import { FormsModule  } from '@angular/forms';
     ToastrModule.forRoot()
   ],
   providers: [
+    AdminService,
+    ConfigService,
+    OAuthService,
+    UrlHelperService,
     RoleGuardService,
+    MapcontYard3Service,
+    // OAuthLogger,
     AsyncPipe,
     {
       provide: HTTP_INTERCEPTORS,

@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class CommonserviceService {
 
-  _urlApi: string = 'https://seaportwebapi.phanmem.one/api/';
+  //_urlApi: string = 'https://seaportwebapi.phanmem.one/api/';
+  _urlApiMobile: string = 'https://cclo.phanmem.one/api/';
   //  _urlApi: string = 'http://localhost:5000/api/';
-  //_urlApi: string = 'http://localhost:7611/api/';
+  _urlApi: string = 'http://localhost:7611/api/';
 
   constructor(
     private http: HttpClient
@@ -51,4 +52,11 @@ export class CommonserviceService {
   DowloadRequest(url: string) : Observable<any> {
     return this.http.get(this._urlApi + url, {reportProgress: true, responseType: 'blob',});
   }
+
+
+  /// Mobile
+    postRequestMobile(url: string, data: any) : Observable<any>{
+    return this.http.post(this._urlApiMobile + url,data);
+  }
 }
+

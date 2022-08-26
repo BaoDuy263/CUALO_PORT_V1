@@ -1,0 +1,100 @@
+<div class="container-lg" style="width: 800px; height: 500px;">
+
+    <!-- <div class="row">
+      <div class="title_modal" style="padding-right: 0px; line-height: 38px;">Thông tin container</div>
+      <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+        <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+          Sửa Cont xuất tàu
+        </div>
+      </ng-template>
+    </div> -->
+    <a class="close" mat-dialog-close>
+      <i class="bi bi-x"></i>
+    </a>
+    <div class="row" style="width: 100%;">
+      <mat-tab-group>
+        <mat-tab label="Thông tin">
+          <div class="row" style="padding-top: 20px; height: 350px;overflow-x: hidden;width: 100%;">
+            <div style="padding: 10px">
+              <table id="customers">
+                <tr>
+                  <td>Mã Continer:</td>
+                  <td>{{contDet.code}}</td>
+                </tr>
+                <tr>
+                  <td>Mã Seal: </td>
+                  <td>{{contDet.seal}}</td>
+                </tr>
+                <tr>
+                  <td>Kiểu Continer: </td>
+                  <td>{{contDet.type}}</td>
+                </tr>
+                <tr>
+                  <td>Loại hàng: </td>
+                  <td>{{contDet.commodity}}</td>
+                </tr>
+                <tr>
+                  <td>Trọng lượng xếp hàng cho phép: </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Trọng lượng tối đa: </td>
+                  <td></td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Lịch sử">
+
+          <div class="timeline" style="height: 424px; overflow-y: scroll;    overflow-x: hidden;">
+            <div *ngFor="let item of listHistory; index as i" class="container right">
+              <div class="content">
+                <p>
+                  {{item.modifiedOn | date : 'dd/MM, hh:mm' }}
+                </p>
+                <p>- {{item.note}}</p>
+                <p>- Người thực hiện: {{item.modifiedBy}}</p>
+
+              </div>
+            </div>
+
+          </div>
+        </mat-tab>
+        <mat-tab label="Hình ảnh">
+          <div style="height: 424px; overflow-y: scroll;    overflow-x: hidden;">
+            <div *ngFor="let item of listImages; index as i">
+              <div style="width: 50%;float: left;">
+                <div
+                  style=" font-size: large; width: 100% !important; max-width: 100% !important; display: table; padding: 14px 10px; font-size: initial;">
+                  {{item.createdOn | date : 'dd/MM' }}
+                  <span style="font-size: 12px;">
+                    {{item.createdOn | date : 'hh:mm' }}
+                  </span>
+                </div>
+                <div style="padding: 0px 10px;">
+                  <a [href]="UrlRoot + item.urlImage"  target="_blank">
+                    <img *ngIf="item.urlImage" [src]="UrlRoot + item.urlImage" style=" height: auto; overflow: hidden; width: 100%; border: 1px solid #746f6f;
+                    ">
+                  </a>
+
+                  <!-- <div *ngFor="let a of item.items; index as idx" style="width: 25%; float: left; padding-right: 6px; ">
+                  <img  *ngIf="a.urlImage" [src]="UrlRoot+'/Upload/Images/'+a.urlImage"
+                    style=" height: 62px; overflow: hidden; width: 100%; border: 1px solid #746f6f;
+                  ">
+                </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <!-- <div class="d-flex justify-content-end mt-4">
+      <button type="button" class="btn btn-primary" type="submit">Lưu</button>
+      <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+        bỏ</button>
+    </div> -->
+</div>
