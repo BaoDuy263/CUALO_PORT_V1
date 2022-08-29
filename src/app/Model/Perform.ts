@@ -33,7 +33,7 @@ export interface Perform {
   ref: string,
   returnAddress: string,
   returnPlace: string,
-  returnPlan: string,
+  returnPlan: Date,
   seal1: string,
   seal2: string,
   shipperName: string,

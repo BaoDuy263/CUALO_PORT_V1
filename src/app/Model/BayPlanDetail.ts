@@ -28,7 +28,7 @@ export interface BayPlanRecord
     billNo : string,
     commodity : string,
     sealNo : string,
-    returnPlan: string,
+    returnPlan: Date,
     typeDirection: number
 }
 
@@ -42,7 +42,7 @@ export interface BayPlanCreate
     BillNo : string,
     Commodity : string,
     SealNo : string,
-    ReturnPlan : string,
+    ReturnPlan : Date,
     DateUpdate : Date,
     Book : string,
     ReturnAddress : string,

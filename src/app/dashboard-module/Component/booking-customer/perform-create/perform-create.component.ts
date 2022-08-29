@@ -51,7 +51,7 @@ export class PerformCreateComponent implements OnInit {
       ref: new FormControl(''),
       returnAddress: new FormControl(''),
       returnPlace: new FormControl(''),
-      returnPlan: new FormControl(''),
+      returnPlan: new FormControl(),
       seal1: new FormControl(''),
       seal2: new FormControl(''),
       shipperName: new FormControl(''),
