@@ -9,6 +9,7 @@ import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
+import { ExportcontainershipComponent } from '../exportcontainership/exportcontainership.component';
 
 @Component({
   selector: 'app-indeximport-contfrom-ship',
@@ -351,5 +352,22 @@ export class IndeximportContfromShipComponent implements OnInit {
         break;
     }
     return Direction;
+  }
+
+  ImportCont(Id: number)
+  {
+    const dialogRef =this.dialog.open(ExportcontainershipComponent);
+    dialogRef.componentInstance.Id = Id;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
   }
 }

@@ -31,7 +31,8 @@ export interface BayPlanRecord
     returnPlan: Date,
     typeDirection: number,
     dateUpdate: Date,
-    dateCheckIn: Date
+    dateCheckIn: Date,
+    step: number
 }
 
 

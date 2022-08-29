@@ -10,8 +10,12 @@ export class ImportContFromShipService {
 
   constructor(private httpService: CommonserviceService) { }
 
-  bulkAction(data: string){
+  bulkAction(data: number){
     return this.httpService.getRequest('PlanExportFromPorttoShip/bulkAction/' + data);
+  }
+
+  bulkActionImport(data: number){
+    return this.httpService.getRequest('PlanImportFromShiptoPort/bulkActionImport/' + data);
   }
 
   // From Ship to port

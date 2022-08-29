@@ -218,9 +218,9 @@ export class IndexImportContFromPortComponent implements OnInit {
     });
   }
 
-  ExportCont(ContNo: string) {
+  ExportCont(Id: number) {
     const dialogRef =this.dialog.open(ExportContainerComponent);
-    dialogRef.componentInstance.ContNo = ContNo;
+    dialogRef.componentInstance.Id = Id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
