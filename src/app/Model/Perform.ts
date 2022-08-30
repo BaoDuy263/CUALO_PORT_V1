@@ -53,6 +53,9 @@ export interface Perform {
   vessel: string,
   voyage: string,
   weight: number,
+  impExpDate : Date,
+  outDeliveryDate : Date,
+  inDeliveryDate : Date,
 }
 
 export interface lstPerform
