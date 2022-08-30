@@ -40,7 +40,7 @@ export class BookingServiceService {
   }
 
   CreateActions(data: any) {
-    return this.httpService.postRequest("PlanPacking/Upload/ContEmpt", data);
+    return this.httpService.postRequest("PlanPacking/ContEmpt/Upload", data);
   }
 
   CreateEIRFromPlan(data: any) {
@@ -73,6 +73,14 @@ export class BookingServiceService {
 
   UpdatePerform(data: any) {
     return this.httpService.postRequest("PlanPacking/perform/Update", data);
+  }
+
+  GetAllPerformImport(page: number, searchText: string, numberDis: number, date: string) {
+    if (date) {
+      return this.httpService.getRequest(`PlanPacking/perform-import?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&Date=${date}`)
+    } else {
+      return this.httpService.getRequest(`PlanPacking/perform-import?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    }
   }
 
 }

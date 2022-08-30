@@ -46,6 +46,7 @@ export interface BayPlanCreate
     Commodity : string,
     SealNo : string,
     ReturnPlan : Date,
+    DateUpdate : Date,
     CheckIn : Date,
     Book : string,
     ReturnAddress : string,

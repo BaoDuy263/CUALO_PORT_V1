@@ -10,17 +10,17 @@ export class convertHelper {
       case 0:
         return "Không xác định"
       case 1:
-        return "Cấp rỗng"
+        return "Chờ xuất"
       case 2:
-        return "Trả rỗng"
-      case 3:
-        return "Shipside lên tàu"
-      case 4:
-        return "Lấy nguyên"
-      case 5:
-        return "Rút ruột"
-      case 6:
         return "Cấp rỗng"
+      case 3:
+        return "Trả nguyên"
+      case 4:
+        return "Shipside lên tàu"
+      case 5:
+        return "Lấy nguyên"
+      case 6:
+        return "Rút ruột"
       case 7:
         return "Trả bãi"
       case 8:
