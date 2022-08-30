@@ -8,6 +8,7 @@ import { QLTaiKhoanCreateComponent } from '../tai-khoan-create/tai-khoan-create.
 import { QLTaiKhoanDeleteComponent } from '../tai-khoan-delete/tai-khoan-delete.component';
 import { AccountService } from 'src/app/Service/Account/account.service';
 import { AccountCreate, lstAccount } from 'src/app/Model/Account';
+import { UserAuthorizationComponent } from '../user-authorization/user-authorization.component';
 
 @Component({
   selector: 'app-tai-khoan-index',
@@ -85,6 +86,11 @@ export class QLTaiKhoanIndexComponent implements OnInit {
         }
       }
     });
+  }
+
+  openPermission(UserId: string){
+    const dialogRef = this.dialog.open(UserAuthorizationComponent)
+    dialogRef.componentInstance.UserId = UserId;
   }
 
   openCreate() {

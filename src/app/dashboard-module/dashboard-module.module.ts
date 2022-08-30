@@ -86,7 +86,9 @@ import { ContainerCreateComponent } from './Component/container/container-create
 import { ExportContainerComponent } from './Component/importContFromPort/export-container/export-container.component'
 import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component';
 import { PerformCreateComponent } from './Component/booking-customer/perform-create/perform-create.component';
-import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component'
+import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component';
+import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
+import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component'
 
 
 
@@ -159,7 +161,9 @@ import { PerformDeleteComponent } from './Component/booking-customer/perform-del
     ExportContainerComponent,
     PerformIndexComponent,
     PerformCreateComponent,
-    PerformDeleteComponent
+    PerformDeleteComponent,
+    UserAuthorizationComponent,
+    ExportcontainershipComponent
   ],
   imports: [
     CommonModule,

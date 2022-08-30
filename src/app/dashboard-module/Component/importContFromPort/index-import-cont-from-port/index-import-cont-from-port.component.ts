@@ -109,6 +109,8 @@ export class IndexImportContFromPortComponent implements OnInit {
   }
 
   Paging() {
+    this.PageInfo.FromDate?.toString() == "" ? this.PageInfo.FromDate = undefined : this.PageInfo.FromDate;
+    this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.PagingPorttoShip(this.PageInfo).subscribe(
       data => {
         this.loadding = false;
@@ -216,9 +218,9 @@ export class IndexImportContFromPortComponent implements OnInit {
     });
   }
 
-  ExportCont(ContNo: string) {
+  ExportCont(Id: number) {
     const dialogRef =this.dialog.open(ExportContainerComponent);
-    dialogRef.componentInstance.ContNo = ContNo;
+    dialogRef.componentInstance.Id = Id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
