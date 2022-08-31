@@ -32,7 +32,7 @@ export class CreateimportContfromShipComponent implements OnInit {
     {"id" : 5 , name : "(Ship side)T-X"}
   ]
 
-  constructor( private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateimportContfromShipComponent>) { 
+  constructor( private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateimportContfromShipComponent>) {
     this.CreateEditForm = new FormGroup({
       Voyace: new FormControl('', Validators.required),
       Receiver: new FormControl('', Validators.required),
@@ -49,6 +49,9 @@ export class CreateimportContfromShipComponent implements OnInit {
       Shipper : new FormControl(),
       TypeCont : new FormControl(),
       ContNo : new FormControl('',Validators.required),
+      impExpDate : new FormControl(),
+      outDeliveryDate : new FormControl(),
+      inDeliveryDate : new FormControl(),
     })
   }
 
@@ -60,13 +63,12 @@ export class CreateimportContfromShipComponent implements OnInit {
     if(this.Id > 0)
     {
       this.getDetail();
-    }    
+    }
   }
 
   getDetail() {
-   
     this.importContFromShipService.getDetail(this.Id).
-    subscribe(data => 
+    subscribe(data =>
       {
         this.CreateEditForm = new FormGroup({
           id : new FormControl(data.data.id, Validators.required),
@@ -85,12 +87,17 @@ export class CreateimportContfromShipComponent implements OnInit {
           Shipper : new FormControl(data.data.shipper),
           TypeCont : new FormControl(data.data.typeCont),
           ContNo : new FormControl(data.data.contNo,Validators.required),
+          impExpDate : new FormControl(data.data.impExpDate),
+          outDeliveryDate : new FormControl(data.data.outDeliveryDate),
+          inDeliveryDate : new FormControl(data.data.inDeliveryDate),
           })
-      });
+      }
+      );
   }
 
   onSubmit(){
     this.submited = true;
+    console.log(this.CreateEditForm.value,'value')
     this.CreateEditForm.value.Direction = parseInt(this.CreateEditForm.value.Direction);
     if(this.CreateEditForm.valid && this.isCreate === true){
       this.importContFromShipService.Insert(this.CreateEditForm.value).subscribe(response => {
