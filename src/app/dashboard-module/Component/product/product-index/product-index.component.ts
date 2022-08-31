@@ -48,15 +48,15 @@ export class ProductIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-
     this.productService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-      this.loadding = false;
-
-      this.lstdata = data;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
+      if(data){
+        this.loadding = false;
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      }
     })
   }
 
@@ -98,7 +98,6 @@ export class ProductIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);

@@ -4,7 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ProductGroupService } from 'src/app/Service/Product-group/product-group.service';
 import { ProductService } from 'src/app/Service/Product/product.service';
 import { UnitService } from 'src/app/Service/Unit/unit.service';
-import { CustomerService } from '../../../../Service/Customer/customer.service'
 
 @Component({
   selector: 'app-product-create',
@@ -78,7 +77,7 @@ export class ProductCreateComponent implements OnInit {
     this.submited = true;
     this.CreateEditForm.value.status = true;
     this.CreateEditForm.value.isDeleted = true;
-    
+
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.productService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);

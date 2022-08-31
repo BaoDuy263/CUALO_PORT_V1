@@ -28,8 +28,11 @@ export interface BayPlanRecord
     billNo : string,
     commodity : string,
     sealNo : string,
-    returnPlan: string,
-    typeDirection: number
+    returnPlan: Date,
+    typeDirection: number,
+    dateUpdate: Date,
+    dateCheckIn: Date,
+    step: number
 }
 
 
@@ -42,8 +45,9 @@ export interface BayPlanCreate
     BillNo : string,
     Commodity : string,
     SealNo : string,
-    ReturnPlan : string,
+    ReturnPlan : Date,
     DateUpdate : Date,
+    CheckIn : Date,
     Book : string,
     ReturnAddress : string,
     StatusContainer : string,
@@ -63,8 +67,8 @@ export interface BayPlanUpdate
     BillNo : string,
     Commodity : string,
     SealNo : string,
-    ReturnPlan : string,
-    DateUpdate : Date,
+    ReturnPlan : Date,
+    CheckIn : Date,
     Book : string,
     ReturnAddress : string,
     StatusContainer : string,
@@ -102,6 +106,7 @@ export interface PortToShipRecord
     hangHoa : string,
     loaiCont : number,
     contNo : string,
+    dateCheckOut: Date,
     dateUpdate: Date,
     step : number
 }
@@ -111,7 +116,7 @@ export interface PortToShipCreate
 {
     Voyace : string,
     ContNo : string,
-    DateExport : Date,
+    CheckOut : Date,
     GW : number,
     Commodity : string,
     SealNo : string,
@@ -125,7 +130,7 @@ export interface PortToShipUpdate
     Id : number,
     Voyace : string,
     ContNo : string,
-    DateExport : Date,
+    CheckOut : Date,
     GW : number,
     Commodity : string,
     SealNo : string,

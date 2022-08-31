@@ -28,3 +28,43 @@
 .file-input button {
   margin-right: 10px;
 }
+
+.column-action {
+  width: 100px;
+}
+.eir-line1 table {
+  width: 100%;
+}
+.eir-line1 td {
+  width: 30%;
+}
+.eir-line1 img {
+  width: 100px;
+}
+.eir-line2 {
+  margin-bottom: 10px;
+}
+.eir-table table{
+  width: 100%;
+  border: 1px solid black;
+}
+
+.eir-table td {
+  border: 1px solid black;
+  width: 30%;
+  padding-left: 5px;
+}
+.eir-line4 table {
+  width: 100%;
+}
+.eir-line4 td {
+  width: 50%;
+}
+
+.eir-line5 table {
+  width: 100%;
+}
+.eir-line5 td {
+  text-align: center;
+}
+
