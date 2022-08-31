@@ -87,6 +87,7 @@ import { ExportContainerComponent } from './Component/importContFromPort/export-
 import { PerformIndexComponent } from './Component/booking-customer/perform-index/perform-index.component';
 import { ContainerMapsComponent } from './Component/container/container-maps/container-maps.component';
 import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
+import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
 
 
 
@@ -159,7 +160,8 @@ import { ContainerMapsInfoComponent } from './Component/container/container-maps
     ExportContainerComponent,
     PerformIndexComponent,
     ContainerMapsComponent,
-    ContainerMapsInfoComponent
+    ContainerMapsInfoComponent,
+    ContainerImagesEditComponent
   ],
   imports: [
     CommonModule,

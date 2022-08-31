@@ -5,6 +5,8 @@ import { lstContainer } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
+import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
+import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
 
 @Component({
   selector: 'app-container-index',
@@ -12,6 +14,9 @@ import { ContainerCreateComponent } from '../container-create/container-create.c
   styleUrls: ['./container-index.component.css']
 })
 export class ContainerIndexComponent implements OnInit {
+  listImages: any = [];
+  UrlRoot: string = 'https://cclo.phanmem.one';
+
   loading: boolean = false;
   isCreate: boolean = true;
   containerCode: string = '';
@@ -34,11 +39,33 @@ export class ContainerIndexComponent implements OnInit {
     Keyword: '',
     pageSize: 10,
   }
-  constructor(private containerService: ContainerService, public dialog: MatDialog, private toastr: ToastrcustomService,) { }
+  constructor(
+    private containerService: ContainerService,
+    public dialog: MatDialog,
+    private toastr: ToastrcustomService,
+    ) { }
 
   ngOnInit(): void {
     this.loadData(this.PageInfo)
+    this.containerService.ContImagesEmptryGetList('').subscribe((data) => {
+      console.log(data.data);
+      this.listImages = data.data;
+    });
   }
+
+  setOpen(item: any) {
+    // this.mContainerService.mContNoPass.subscribe(message => this.message = message);
+    // this.containerService.GetConNo(item.code);
+    console.log();
+     const dialogRef = this.dialog.open(ContainerImagesEditComponent);
+     dialogRef.componentInstance.ImagesObj= item;
+
+     dialogRef.afterClosed().subscribe(result => {
+       if (result) {
+       }
+     });
+
+   }
 
   loadData(PageInfo: any) {
     this.loading = true;
