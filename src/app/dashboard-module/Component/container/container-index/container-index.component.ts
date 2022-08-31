@@ -46,11 +46,9 @@ export class ContainerIndexComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loadData(this.PageInfo)
-    this.containerService.ContImagesEmptryGetList('').subscribe((data) => {
-      console.log(data.data);
-      this.listImages = data.data;
-    });
+    this.loadData(this.PageInfo);
+    this.loadDataImages()
+
   }
 
   setOpen(item: any) {
@@ -61,10 +59,18 @@ export class ContainerIndexComponent implements OnInit {
      dialogRef.componentInstance.ImagesObj= item;
 
      dialogRef.afterClosed().subscribe(result => {
-       if (result) {
-       }
+      this.loadDataImages()
+      // console.log('-----------------------------');
+      //  if (result) {
+      //  }
      });
 
+   }
+   loadDataImages() {
+    this.containerService.ContImagesEmptryGetList('').subscribe((data) => {
+      console.log(data.data);
+      this.listImages = data.data;
+    });
    }
 
   loadData(PageInfo: any) {
