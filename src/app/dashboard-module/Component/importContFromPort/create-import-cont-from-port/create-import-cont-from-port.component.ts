@@ -33,7 +33,7 @@ export class CreateImportContFromPortComponent implements OnInit {
       Voyace: new FormControl('', Validators.required),
       ContNo: new FormControl('', Validators.required),
       Commodity: new FormControl('',Validators.required),
-      DateExport: new FormControl('',Validators.required),
+      CheckOut: new FormControl('',Validators.required),
       GW : new FormControl(),
       SealNo : new FormControl(),
       TypeCont : new FormControl(),
@@ -44,7 +44,7 @@ export class CreateImportContFromPortComponent implements OnInit {
   get Voyace() { return this.CreateEditForm.get('Voyace'); }
   get ContNo() { return this.CreateEditForm.get('ContNo'); }
   get Commodity() { return this.CreateEditForm.get('Commodity'); }
-  get DateExport() { return this.CreateEditForm.get('DateExport'); }
+  get CheckOut() { return this.CreateEditForm.get('CheckOut'); }
   get IsLeave() { return this.CreateEditForm.get('IsLeave'); }
 
 
@@ -66,7 +66,7 @@ export class CreateImportContFromPortComponent implements OnInit {
           Voyace: new FormControl(data.data.voyace, Validators.required),
           ContNo: new FormControl(data.data.contNo, Validators.required),
           Commodity: new FormControl(data.data.commodity,Validators.required),
-          DateExport: new FormControl(data.data.dateExport,Validators.required),
+          CheckOut: new FormControl(data.data.checkOut,Validators.required),
           GW : new FormControl(data.data.gw),
           SealNo : new FormControl(data.data.sealNo),
           TypeCont : new FormControl(data.data.typeCont),

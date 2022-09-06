@@ -10,7 +10,7 @@ import { ImportContFromShipService } from 'src/app/Service/importContFromShip/im
 export class ExportContainerComponent implements OnInit {
 
 
-  @Input() ContNo : string = '';
+  @Input() Id : number = 0;
   constructor(private service : ImportContFromShipService,public dialogRef: MatDialogRef<ExportContainerComponent>) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class ExportContainerComponent implements OnInit {
 
   bulkAction()
   {
-    this.service.bulkAction(this.ContNo).subscribe(data => {
+    this.service.bulkAction(this.Id).subscribe(data => {
       this.dialogRef.close(data);
     })
   }

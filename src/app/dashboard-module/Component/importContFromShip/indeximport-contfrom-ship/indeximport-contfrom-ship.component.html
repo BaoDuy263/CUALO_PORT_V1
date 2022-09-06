@@ -119,6 +119,8 @@
                           <th>Hàng Hóa</th>
                           <th>Mã Container</th>
                           <th>Ngày trả</th>
+                          <th>Ngày tạo KH</th>
+                          <th>Ngày nhập tàu</th>
                           <th>Hướng xử lý</th>
                           <th  style="text-align: center;">Hành động</th>
                         </tr>
@@ -131,11 +133,15 @@
                           <td>{{item.receiver}}</td>
                           <td>{{item.commodity}}</td>
                           <td>{{item.contNo}}</td>
-                          <td>{{item.returnPlan}}</td>
+                          <td>{{item.returnPlan | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{item.dateUpdate  | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{item.dateCheckIn  | date: 'dd/MM/yyyy'}}</td>
                           <td>{{GetDirecttion(item.typeDirection)}}</td>
                           <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                             (click)="openEdit(item.id)"></i><i class="bi bi-trash3" 
-                            style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i></td>
+                            style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
+                            <i *ngIf="item.step == 1" class="bi bi-arrow-right-square" (click)="ImportCont(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
