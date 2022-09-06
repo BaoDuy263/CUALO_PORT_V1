@@ -39,18 +39,4 @@ export interface AccountEdit
     email: string,
     phoneNumber : string,
     password : string,
-}
-
-export interface Permission
-{
-    parent : PermissionDetail
-    child : PermissionDetail[]
-}
-
-
-export interface PermissionDetail
-{
-    title : string,
-    claimValue: string,
-    isHas : boolean
-}
+}``

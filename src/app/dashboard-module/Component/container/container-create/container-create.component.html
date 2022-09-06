@@ -5,7 +5,7 @@
         mới khách hàng</div>
       <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
         <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
-          Cập nhật container
+          Sửa khách hàng
         </div>
       </ng-template>
     </div>
@@ -13,7 +13,7 @@
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Mã Container</label>
-          <input type="text" class="form-control" formControlName="code" readonly>
+          <input type="text" class="form-control" formControlName="code">
         </div>
       </div>
       <div class="col-lg-6">
@@ -23,9 +23,6 @@
           <select class="form-control" formControlName="type">
             <option *ngFor="let typecont of lstTypeCont" [ngValue]="typecont">{{typecont}}</option>
           </select>
-          <div *ngIf="submited && type?.errors?.['required']">
-            <span *ngIf="type?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
     </div>
@@ -34,9 +31,6 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Biển số</label>
           <input type="text" class="form-control" formControlName="vehicleNo">
-          <!-- <div *ngIf="submited && vehicleNo?.errors?.['required']">
-            <span *ngIf="vehicleNo?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div> -->
         </div>
       </div>
       <div class="col-lg-6">
@@ -51,18 +45,12 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày check in</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckIn">
-          <div *ngIf="submited && dateCheckIn?.errors?.['required']">
-            <span *ngIf="dateCheckIn?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày check out</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
-          <div *ngIf="submited && dateCheckOut?.errors?.['required']">
-            <span *ngIf="dateCheckOut?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
     </div>
@@ -74,25 +62,19 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <label for="exampleFormControlInput1" class="form-label">Phương án</label><br />
+        <label for="exampleFormControlInput1" class="form-label">Hoạt động</label><br />
         <select class="form-control" formControlName="activity">
           <option *ngFor="let activity of activities" [ngValue]="activity.value">{{activity.name}}</option>
         </select>
-        <div *ngIf="submited && activity?.errors?.['required']">
-          <span *ngIf="activity?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-6">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Tình trạng</label><br />
+          <label for="exampleFormControlInput1" class="form-label">Trạng thái</label><br />
           <select class="form-control" formControlName="status">
             <option *ngFor="let status of lstStatus" [ngValue]="status.value">{{status.name}}</option>
           </select>
-          <div *ngIf="submited && status?.errors?.['required']">
-            <span *ngIf="status?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
       <div class="col-lg-6">
@@ -101,33 +83,6 @@
           <select class="form-control" formControlName="typeDelivery">
             <option *ngFor="let type of lsttypeDelivery" [ngValue]="type.value">{{type.name}}</option>
           </select>
-          <div *ngIf="submited && typeDelivery?.errors?.['required']">
-            <span *ngIf="typeDelivery?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Hướng</label><br />
-          <select class="form-control" formControlName="side">
-            <option *ngFor="let side of lstSide" [ngValue]="side.value">{{side.name}}</option>
-          </select>
-          <div *ngIf="submited && side?.errors?.['required']">
-            <span *ngIf="side?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trạng thái</label><br />
-          <select class="form-control" formControlName="status">
-            <option *ngFor="let state of lstState" [ngValue]="state.value">{{state.name}}</option>
-          </select>
-          <div *ngIf="submited && state?.errors?.['required']">
-            <span *ngIf="state?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
     </div>
@@ -136,18 +91,12 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Vị trí</label>
           <input type="text" class="form-control" formControlName="location">
-          <div *ngIf="submited && location?.errors?.['required']">
-            <span *ngIf="location?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Khu vực</label>
           <input type="text" class="form-control" formControlName="region">
-          <div *ngIf="submited && region?.errors?.['required']">
-            <span *ngIf="region?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
     </div>

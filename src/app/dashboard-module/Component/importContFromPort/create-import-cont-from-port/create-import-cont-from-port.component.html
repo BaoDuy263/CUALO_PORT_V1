@@ -31,10 +31,10 @@
         <div class="row" style="padding-top: 20px">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Ngày Xuất Cảng</label>
-                    <input type="datetime-local" class="form-control" formControlName="CheckOut">
-                    <div *ngIf="submited && CheckOut?.errors?.['required']">
-                       <span *ngIf="CheckOut?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
+                    <label for="exampleFormControlInput1" class="form-label">Ngày Xuất</label>
+                    <input type="datetime-local" class="form-control" formControlName="DateExport">
+                    <div *ngIf="submited && DateExport?.errors?.['required']">
+                       <span *ngIf="DateExport?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>  
                    </div>
                 </div>  
           </div>
