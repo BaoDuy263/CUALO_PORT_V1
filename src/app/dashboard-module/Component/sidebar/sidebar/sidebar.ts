@@ -145,22 +145,7 @@ export const ROUTE_DATA: TypeRoute[] = [
       roles: ["Admin"],
       url:'container-maps'
     },
-    // {
-    //     name :'Thực hiên xuất nhập tàu',
-    //     roles: ["Admin"],
-    //     children : [
-    //         {
-    //             name :'Nhập cont từ tàu',
-    //             url: 'thuchiennhapcont',
-    //             roles: ["Admin"],
-    //         },
-    //         {
-    //             name :'Xuất cont lên tàu',
-    //             url: 'thuchienxuatcont',
-    //             roles: ["Admin"],
-    //         },
-    //     ]
-    // },
+   
     {
         name :'Quản lý ra vào',
         roles: ["Admin"],
