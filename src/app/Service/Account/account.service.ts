@@ -22,7 +22,8 @@ export class AccountService {
         }
         return data;
     }))
-  };
+  }
+
   // refreshToken()
 
   sendEmailorPhone(emailOrPhone : string){
@@ -110,13 +111,5 @@ export class AccountService {
       .pipe(map((data:any ) => {
           return data;
       }))
-  }
-
-  GetClaimUser(UserId: string){
-    return this.httpService.getRequest('admin/ManageAccount/' + UserId + '/Claims');
-  }
-
-  GetAllClaim(Id: string){
-    return this.httpService.getRequest('Account/GetClaimUserById/' + Id);
   }
 }

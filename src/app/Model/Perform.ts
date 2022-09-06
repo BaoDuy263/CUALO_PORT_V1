@@ -14,7 +14,7 @@ export interface Perform {
   customer: string,
   customerSeal: string,
   dateUpdate: Date,
-  direction: number,
+  direction: 0,
   formality: string,
   height: string,
   id: number,
@@ -33,7 +33,7 @@ export interface Perform {
   ref: string,
   returnAddress: string,
   returnPlace: string,
-  returnPlan: Date,
+  returnPlan: string,
   seal1: string,
   seal2: string,
   shipperName: string,
@@ -53,9 +53,6 @@ export interface Perform {
   vessel: string,
   voyage: string,
   weight: number,
-  impExpDate : Date,
-  outDeliveryDate : Date,
-  inDeliveryDate : Date,
 }
 
 export interface lstPerform

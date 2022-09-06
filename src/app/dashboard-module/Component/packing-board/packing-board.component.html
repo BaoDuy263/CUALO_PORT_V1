@@ -1,12 +1,6 @@
 <div style="background-color: white;">
-  <nav
-    mat-tab-nav-bar
-  >
-    <a
-      mat-tab-link *ngFor="let link of links"
-      [routerLink]="link.link"
-      routerLinkActive
-      #rla="routerLinkActive"
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of links" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
       [active]="rla.isActive">
       {{link.label}}
     </a>
