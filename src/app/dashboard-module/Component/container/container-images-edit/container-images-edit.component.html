@@ -6,13 +6,13 @@
       <i class="bi bi-x"></i>
     </a>
   </div>
-  <form [formGroup]="EditForm" (ngSubmit)="onSubmit()">
+  <form  (ngSubmit)="onSubmit()">
     <div class="row" style="width: 100%;">
       <div class="col-lg-3">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Chọn container</label><br />
           <select class="form-control" formControlName="code">
-            <option *ngFor="let item of lstCont; index as i" [ngValue]="item.code">{{item.code}}</option>
+            <option *ngFor="let item of lstCont; index as i">{{item.code}}</option>
           </select>
         </div>
       </div>
@@ -35,7 +35,7 @@
         ">
     </a>
     <span style="font-size: 14px;margin-top: 20px;">
-      Thời gian: {{ImagesObj.createdOn | date : 'dd/MM/yyyy hh:mm:ss' }} ({{ImagesObj.createdBy}})
+      Thời gian: {{ImagesObj.createdOn  }} ({{ImagesObj.createdBy}})
     </span>
 
 
