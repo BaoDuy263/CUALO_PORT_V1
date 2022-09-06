@@ -54,9 +54,9 @@ export class CommonserviceService {
   }
 
 
-  /// Mobile
-    postRequestMobile(url: string, data: any) : Observable<any>{
-    return this.http.post(this._urlApiMobile + url,data);
+  ///
+  postRequestMobile(url: string, data: any) : Observable<any>{
+    return this.http.post(this._urlApi + url,data);
   }
 }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContainerService } from 'src/app/Service/container/container.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-container-maps-info',

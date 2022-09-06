@@ -10,6 +10,8 @@ import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
 
+import { lstProduct } from 'src/app/Model/Product';
+
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
@@ -29,7 +31,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     BookingType : 4,
     FromDate: undefined,
     ToDate: undefined
-  } 
+  }
 
   lstdataBooking : BookingPlanIndex = {
     currentPage : 0,
@@ -97,6 +99,13 @@ export class IndeximportContfromShipComponent implements OnInit {
     BillNo : '',
   }
   //
+  lstProduct: lstProduct = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
 
   lstCheckAction : Array<number> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
@@ -105,6 +114,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
     this.PagingBooking();
     this.PagingThucHien();
+    console.log(this.lstProduct);
+
   }
 
   Paging() {
@@ -175,7 +186,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
   }
 
-  
+
   onChangePage(pageOfItems: any) {
     this.PageInfo.Page = pageOfItems.page;
     this.PageInfo.PageSize = pageOfItems.pageSize;
@@ -332,13 +343,13 @@ export class IndeximportContfromShipComponent implements OnInit {
   {
     let Direction = '';
     switch(type){
-      case 1 : 
+      case 1 :
         Direction = "Lưu vỏ";
         break;
-      case 2 : 
+      case 2 :
         Direction = "Lưu bãi";
         break;
-      case 3 : 
+      case 3 :
         Direction = "Trả nguyên";
         break;
       case 4 :
