@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { ContainerActive } from 'src/app/Model/Container';
 import { ContainerService } from 'src/app/Service/container/container.service';
 
@@ -15,33 +14,24 @@ export class ContainerImagesEditComponent implements OnInit {
   UrlRoot: string = 'https://cclo.phanmem.one';
   lstCont: any = [];
 
-  constructor(
-    private containerService: ContainerService,
-    public dialog: MatDialog,
-    ) {
-
+  constructor(private containerService: ContainerService) {
     this.EditForm = new FormGroup({
       code: new FormControl(''),
       note: new FormControl(''),
-      id: new FormControl(''),
     });
   }
 
   ngOnInit(): void {
     this.containerService.Paging(1, '', 1200).subscribe((data) => {
       console.log(data.data);
-      console.log(this.ImagesObj.id);
       this.lstCont = data.data;
     });
   }
 
   onSubmit() {
-
-    this.EditForm.value.id = this.ImagesObj.id;
-    console.log(this.EditForm.value);
+    console.log('---'+this.EditForm.value.code+'######'+this.EditForm.value.note);
     this.containerService.ContainerImageEdit(this.EditForm.value).subscribe(response => {
      // this.dialogRef.close(response);
-     const dialogRef = this.dialog.closeAll();
     });
   }
 }
