@@ -13,7 +13,7 @@ export interface BookingCustomer
     time: string,
     note : string,
     status : string,
-    listContainer: string,
+    containerName: string,
     dateCheckOut: Date,
     createdOn: Date
 }
@@ -44,7 +44,7 @@ export interface BookingCustomerCreate
     time: string,
     note : string,
     status : string,
-    listContainer: string,
+    containerName: string,
     dateCheckOut: Date,
 }
 
@@ -64,7 +64,7 @@ export interface BookingCustomerEdit
     time: string,
     note : string,
     status : string,
-    listContainer: string,
+    containerName: string,
     dateCheckOut: Date,
 }
 

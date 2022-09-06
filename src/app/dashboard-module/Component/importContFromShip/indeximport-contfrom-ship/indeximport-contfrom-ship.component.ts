@@ -9,7 +9,6 @@ import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
-import { ExportcontainershipComponent } from '../exportcontainership/exportcontainership.component';
 
 @Component({
   selector: 'app-indeximport-contfrom-ship',
@@ -109,17 +108,15 @@ export class IndeximportContfromShipComponent implements OnInit {
   }
 
   Paging() {
-    this.PageInfo.FromDate?.toString() == "" ? this.PageInfo.FromDate = undefined : this.PageInfo.FromDate;
-    this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.Paging(this.PageInfo).subscribe(
       data => {
         this.loadding = false;
-        this.lstdata = data.data;
-        this.Pagination.currentPage = data.data.currentPage,
-        this.Pagination.pageSize = data.data.pageSize,
-        this.Pagination.totalPage = data.data.totalPage,
-        this.Pagination.totalRecord = data.data.totalRecord
-    });
+          this.lstdata = data.data;
+          this.Pagination.currentPage = data.data.currentPage,
+            this.Pagination.pageSize = data.data.pageSize,
+            this.Pagination.totalPage = data.data.totalPage,
+            this.Pagination.totalRecord = data.data.totalRecord
+      });
   }
 
   PagingBooking() {
@@ -352,22 +349,5 @@ export class IndeximportContfromShipComponent implements OnInit {
         break;
     }
     return Direction;
-  }
-
-  ImportCont(Id: number)
-  {
-    const dialogRef =this.dialog.open(ExportcontainershipComponent);
-    dialogRef.componentInstance.Id = Id;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Paging();
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
-    });
   }
 }

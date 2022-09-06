@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="opened">
     <div>
-      <img src="assets/img/logo-cualo.png" alt="" class="brand-image img-circle elevation-3"
+      <img src="../assets/img/logo-cualo.png" alt="" class="brand-image img-circle elevation-3"
         style=" width: 45px; border-radius: 50%; margin: 9px;">
       <span class=" font-weight-light text-white pt-2 h6">CUALO PORT</span>
     </div>
@@ -23,7 +23,7 @@
           
           <div class="">
               <div  [matMenuTriggerFor]="menu" >
-                <img id="myBtn" *ngIf="urlAvartar == null" src="assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
+                <img id="myBtn" *ngIf="urlAvartar == null" src="../../../../assets/img/avatar5.png" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
                 <img *ngIf="urlAvartar != null" id="myBtn" [src]="urlAvartar" style="width: 45px;height: 45px;border-radius: 50%; cursor: pointer;"/>
             
               </div>
