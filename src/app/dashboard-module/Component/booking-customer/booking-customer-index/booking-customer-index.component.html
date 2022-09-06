@@ -51,15 +51,14 @@
               <td>{{item.positionReturn}}</td>
               <td>{{item.note}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
-              <td style="text-align: center;">
+              <td class="column-action" style="text-align: center;">
                 <i class="bi bi-card-checklist" style="padding-right: 8px; cursor: pointer" data-toggle="tooltip"
                   data-placement="top" title="Chọn container" (click)="openListCont(item)"></i>
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.id)"></i>
-                <i class="bi bi-trash3"
-                  style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip" data-placement="top"
-                  title="Xóa" (click)="openDelete(item.id)"></i>
-                </td>
+                <i class="bi bi-trash3" style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
+                  data-placement="top" title="Xóa" (click)="openDelete(item.id)"></i>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -69,3 +68,4 @@
       </div>
     </div>
   </div>
+

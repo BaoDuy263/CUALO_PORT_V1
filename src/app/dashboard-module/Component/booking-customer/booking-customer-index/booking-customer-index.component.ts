@@ -1,7 +1,7 @@
 import { ListContanerComponent } from './../list-contaner/list-contaner.component';
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
-import { lstBookingCustomer } from '../../../../Model/Booking-customer'
+import { BookingCustomer, lstBookingCustomer } from '../../../../Model/Booking-customer'
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -212,14 +212,4 @@ export class BookingCustomerIndexComponent implements OnInit {
       });
   }
 
-  // convertActivity(activity: number) {
-  //   switch (activity) {
-  //     case 2:
-  //       return "Cấp rỗng"
-  //     case 9:
-  //       return "Đóng rời"
-  //     default:
-  //       return "";
-  //   }
-  // }
 }
