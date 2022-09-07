@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { lstContainer } from 'src/app/Model/Container';
+import { lstContainer, lstContHistory } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
 import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { FormControl } from '@angular/forms';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-container-index',
@@ -30,15 +32,19 @@ export class ContainerIndexComponent implements OnInit {
     totalRecord: 0,
     totalPage: 0,
   }
+
   PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10,
   }
+
+  selected: number = 0;
+
   constructor(private containerService: ContainerService, public dialog: MatDialog, private toastr: ToastrcustomService, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
-    this.loadData(this.PageInfo)
+    this.loadData(this.PageInfo);
   }
 
   loadData(PageInfo: any) {
@@ -47,10 +53,10 @@ export class ContainerIndexComponent implements OnInit {
       this.loading = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+      this.Pagination.pageSize = data.pageSize,
+      this.Pagination.totalPage = data.totalPage,
+      this.Pagination.totalRecord = data.totalRecord
+    });
   }
 
   openEdit(code: string) {
@@ -97,5 +103,9 @@ export class ContainerIndexComponent implements OnInit {
         }
       }
     });
+  }
+
+  myTabSelectedIndexChange(index: number) {
+    this.selected = index;
   }
 }
