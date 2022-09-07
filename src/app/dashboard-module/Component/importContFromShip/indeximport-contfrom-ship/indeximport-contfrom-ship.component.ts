@@ -9,7 +9,7 @@ import { Pagination } from '../../../../Model/Table';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
-import { ExportcontainershipComponent } from '../exportcontainership/exportcontainership.component';
+
 import { lstProduct } from 'src/app/Model/Product';
 
 @Component({
@@ -31,7 +31,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     BookingType : 4,
     FromDate: undefined,
     ToDate: undefined
-  } 
+  }
 
   lstdataBooking : BookingPlanIndex = {
     currentPage : 0,
@@ -106,7 +106,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     totalRecord : 0,
     data : []
   }
-  
+
   lstCheckAction : Array<number> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
@@ -115,21 +115,19 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.PagingBooking();
     this.PagingThucHien();
     console.log(this.lstProduct);
-    
+
   }
 
   Paging() {
-    this.PageInfo.FromDate?.toString() == "" ? this.PageInfo.FromDate = undefined : this.PageInfo.FromDate;
-    this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.Paging(this.PageInfo).subscribe(
       data => {
         this.loadding = false;
-        this.lstdata = data.data;
-        this.Pagination.currentPage = data.data.currentPage,
-        this.Pagination.pageSize = data.data.pageSize,
-        this.Pagination.totalPage = data.data.totalPage,
-        this.Pagination.totalRecord = data.data.totalRecord
-    });
+          this.lstdata = data.data;
+          this.Pagination.currentPage = data.data.currentPage,
+            this.Pagination.pageSize = data.data.pageSize,
+            this.Pagination.totalPage = data.data.totalPage,
+            this.Pagination.totalRecord = data.data.totalRecord
+      });
   }
 
   PagingBooking() {
@@ -188,7 +186,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
   }
 
-  
+
   onChangePage(pageOfItems: any) {
     this.PageInfo.Page = pageOfItems.page;
     this.PageInfo.PageSize = pageOfItems.pageSize;
@@ -345,13 +343,13 @@ export class IndeximportContfromShipComponent implements OnInit {
   {
     let Direction = '';
     switch(type){
-      case 1 : 
+      case 1 :
         Direction = "Lưu vỏ";
         break;
-      case 2 : 
+      case 2 :
         Direction = "Lưu bãi";
         break;
-      case 3 : 
+      case 3 :
         Direction = "Trả nguyên";
         break;
       case 4 :
@@ -362,22 +360,5 @@ export class IndeximportContfromShipComponent implements OnInit {
         break;
     }
     return Direction;
-  }
-
-  ImportCont(Id: number)
-  {
-    const dialogRef =this.dialog.open(ExportcontainershipComponent);
-    dialogRef.componentInstance.Id = Id;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Paging();
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
-    });
   }
 }

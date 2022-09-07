@@ -1,7 +1,7 @@
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState } from './../../booking-customer/helper/constant';
+import { activitiesData, lstStatusData, lstTypeContData, lstTypeDelivery } from './../../booking-customer/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -18,63 +18,49 @@ export class ContainerCreateComponent implements OnInit {
   lstStatus = lstStatusData;
   lsttypeDelivery = lstTypeDelivery;
   lstTypeCont = lstTypeContData;
-  lstSide = lstSide;
-  lstState = lstState;
   constructor(private containerService: ContainerService, public dialogRef: MatDialogRef<ContainerCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       code: new FormControl(''),
-      type: new FormControl('', Validators.required),
-      vessel: new FormControl(''),
-      voyage: new FormControl(''),
-      lastPort: new FormControl(''),
-      iso: new FormControl(''),
-      side: new FormControl(0, Validators.required),
-      customer: new FormControl(''),
-      bookingNo: new FormControl(''),
-      commodity: new FormControl(''),
+      type: new FormControl(''),
+      // vessel: new FormControl(''),
+      // voyage: new FormControl(''),
+      // lastPort: new FormControl(''),
+      // iso: new FormControl(''),
+      // side: new FormControl(),
+      // customer: new FormControl(''),
+      // bookingNo: new FormControl(''),
+      // commodity: new FormControl(''),
       weight: new FormControl(),
-      dateCheckIn: new FormControl(null, Validators.required),
-      dateCheckOut: new FormControl(null, Validators.required),
+      dateCheckIn: new FormControl(),
+      dateCheckOut: new FormControl(),
       note: new FormControl(''),
       returnAddress: new FormControl(''),
-      noBL: new FormControl(''),
-      consignee: new FormControl(''),
-      typeDelivery: new FormControl(0, Validators.required),
-      activity: new FormControl(0, Validators.required),
-      status: new FormControl(0, Validators.required),
+      // noBL: new FormControl(''),
+      // consignee: new FormControl(''),
+      typeDelivery: new FormControl(),
+      activity: new FormControl(),
+      status: new FormControl(),
       vehicleNo: new FormControl(""),
-      deliveryNo: new FormControl(''),
-      serviceNo: new FormControl(''),
-      sealNo: new FormControl(''),
-      codePT: new FormControl(''),
-      location: new FormControl('', Validators.required),
-      region: new FormControl('', Validators.required),
-      pol: new FormControl(''),
-      pod: new FormControl(''),
-      locationShip: new FormControl(''),
-      planXD: new FormControl(''),
-      cargoType: new FormControl(''),
-      trunkBarge: new FormControl(''),
-      domestic: new FormControl(''),
-      packing: new FormControl(''),
-      nonPacking: new FormControl(''),
-      datePacking: new FormControl(),
+      // deliveryNo: new FormControl(''),
+      // serviceNo: new FormControl(''),
+      // sealNo: new FormControl(''),
+      // codePT: new FormControl(''),
+      location: new FormControl(''),
+      region: new FormControl(''),
+      // pol: new FormControl(''),
+      // pod: new FormControl(''),
+      // locationShip: new FormControl(''),
+      // planXD: new FormControl(''),
+      // cargoType: new FormControl(''),
+      // trunkBarge: new FormControl(''),
+      // domestic: new FormControl(''),
+      // packing: new FormControl(''),
+      // nonPacking: new FormControl(''),
+      // datePacking: new FormControl(),
       seal: new FormControl(''),
-      state: new FormControl(0, Validators.required),
+      state: new FormControl(),
     })
   }
-
-  get type() { return this.CreateEditForm.get('type') }
-  get side() { return this.CreateEditForm.get('side') }
-  get status() { return this.CreateEditForm.get('type') }
-  get dateCheckIn() { return this.CreateEditForm.get('dateCheckIn') }
-  get dateCheckOut() { return this.CreateEditForm.get('dateCheckOut') }
-  get activity() { return this.CreateEditForm.get('activity') }
-  get typeDelivery() { return this.CreateEditForm.get('typeDelivery') }
-  get location() { return this.CreateEditForm.get('location') }
-  get state() { return this.CreateEditForm.get('state') }
-  get region() { return this.CreateEditForm.get('region') }
-  // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
     this.containerService.Detail(this.containerCode).subscribe(response => {

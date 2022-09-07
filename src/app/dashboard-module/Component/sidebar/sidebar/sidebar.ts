@@ -31,6 +31,7 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
 
             },
+
             {
                 name :'Đơn vị',
                 url:'don-vi',
@@ -144,22 +145,7 @@ export const ROUTE_DATA: TypeRoute[] = [
       roles: ["Admin"],
       url:'container-maps'
     },
-    // {
-    //     name :'Thực hiên xuất nhập tàu',
-    //     roles: ["Admin"],
-    //     children : [
-    //         {
-    //             name :'Nhập cont từ tàu',
-    //             url: 'thuchiennhapcont',
-    //             roles: ["Admin"],
-    //         },
-    //         {
-    //             name :'Xuất cont lên tàu',
-    //             url: 'thuchienxuatcont',
-    //             roles: ["Admin"],
-    //         },
-    //     ]
-    // },
+   
     {
         name :'Quản lý ra vào',
         roles: ["Admin"],
@@ -221,11 +207,6 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Thống kê truy cập',
-                url:'404-not-found',
-                roles: ["Admin"],
-            },
-            {
-                name :'Phân quyền người dùng',
                 url:'404-not-found',
                 roles: ["Admin"],
             }

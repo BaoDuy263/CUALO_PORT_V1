@@ -12,9 +12,9 @@ import { convertHelper } from '../helper/convertHelper';
   styleUrls: ['./list-contaner.component.css']
 })
 export class ListContanerComponent implements OnInit {
-  loading: boolean = true;
+  loading: boolean = false;
   lstData: Container[] = [];
-  itemSelected: string[] = [];
+  itemSelected = "";
   planDetail: BookingCustomer | any = null;
   PageInfo = {
     page: 1,
@@ -33,8 +33,7 @@ export class ListContanerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-    this.itemSelected = this.planDetail?.listContainer.split(",");
-    this.itemSelected = this.itemSelected.filter(item => item != '');
+    this.itemSelected = this.planDetail?.containerName;
   }
 
   loadData(PageInfo: any) {
@@ -50,29 +49,17 @@ export class ListContanerComponent implements OnInit {
   }
 
   hanldeClickItem(item: Container) {
-    if (this.itemSelected.includes(item.code)) {
-      this.itemSelected = this.itemSelected.filter(i => i != item.code);
-    }
-    else {
-      this.itemSelected = [...this.itemSelected, item.code]
-    }
+    this.itemSelected = item.code;
   }
 
-  removeAssigneContainer(item: string) {
-    if (this.itemSelected.includes(item)) {
-      this.itemSelected = this.itemSelected.filter(i => i != item)
-    }
-  };
-
   closeDialog() {
-    this.dialogRef.close()
+    this.dialogRef.close(ListContanerComponent)
   }
 
   handleSubmit() {
-    this.loading = true;
     this.bookingService.CreateEIRFromPlan({
       id: this.planDetail.id,
-      listContainerNo: this.itemSelected,
+      containerNo: this.itemSelected,
       activity: this.planDetail.activity
     }).subscribe(res => this.dialogRef.close(res))
   }
@@ -81,12 +68,6 @@ export class ListContanerComponent implements OnInit {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     this.PageInfo = pageOfItems
     this.loadData(pageOfItems)
-  }
-
-  onSearch(e: any) {
-    this.PageInfo.Keyword = e;
-    this.PageInfo.page = 1;
-    this.loadData(this.PageInfo);
   }
 
 }
