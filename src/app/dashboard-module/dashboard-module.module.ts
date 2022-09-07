@@ -27,6 +27,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
@@ -176,6 +179,9 @@ import { ContainerImagesEditComponent } from './Component/container/container-im
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MomentDateModule,
     //
     FormsModule,
     ReactiveFormsModule,

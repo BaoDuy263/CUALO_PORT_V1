@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   // urlApi : 'https://45.124.94.191:8019/api/',
   urlApi : 'https://seaportwebapi.phanmem.one',
   appCode: 'CCLO',

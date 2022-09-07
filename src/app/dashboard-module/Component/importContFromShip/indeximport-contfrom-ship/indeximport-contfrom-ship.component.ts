@@ -12,10 +12,27 @@ import { PerformService } from 'src/app/Service/Perform/perform.service';
 
 import { lstProduct } from 'src/app/Model/Product';
 
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+   
+export const MY_DATE_FORMATS = {
+    parse: {
+      dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+      dateInput: 'DD/MM/YYYY',
+      monthYearLabel: 'MMMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY'
+    },
+};
+
 @Component({
   selector: 'app-indeximport-contfrom-ship',
   templateUrl: './indeximport-contfrom-ship.component.html',
-  styleUrls: ['./indeximport-contfrom-ship.component.css']
+  styleUrls: ['./indeximport-contfrom-ship.component.css'],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+  ]
 })
 export class IndeximportContfromShipComponent implements OnInit {
 
