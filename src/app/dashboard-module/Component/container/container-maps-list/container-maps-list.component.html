@@ -1,0 +1,1370 @@
+
+<div scrollX="true" scrollY="true" style="background-color: #fff;">
+  <div>
+    <div>
+      <div style="text-align: center; margin: 17px 0px; position: relative ">
+        <input (keyup)="onKey($event)" type="text" name="" id="" placeholder="Tìm kiếm Container" style="border: 1px solid #c9c9c9; padding: 8px 10px;
+        width: 95%;
+        border-radius: 6px;">
+        <div style=" position: absolute; top: 6px; font-size: 24px; right: 18px;">
+          <i name="search-outline"></i>
+        </div>
+      </div>
+    </div>
+
+    <table style="width: 100%!important;height: 100%;">
+
+      <tr class="ItemHeight">
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">1</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">2</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">3</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">4</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">5</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">6</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">7</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">8</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">9</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">10</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">11</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">12</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">13</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">14</div>
+        </td>
+
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">15</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">16</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">17</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">18</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">19</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">20</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">21</div>
+        </td>
+
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+      </tr>
+
+      <tr class="ItemHeight">
+        <td rowspan="2" class="CellMapItemLebel">
+          E
+        </td>
+        <td *ngFor="let item of listE8_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE10_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE12_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE14_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          E
+        </td>
+        <td *ngFor="let item of listE21_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          E
+        </td>
+      </tr>
+
+      <tr class="ItemHeight">
+
+        <td *ngFor="let item of listE8_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE10_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE12_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listE14_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem">
+          STT
+        </td> -->
+        <td *ngFor="let item of listE21_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem">
+          STT
+        </td> -->
+      </tr>
+
+    </table>
+
+    <table style="width: 100%!important; margin-top: 1px; margin-bottom: 1px;">
+      <tr class="Tr_BG ItemHeight">
+        <td class="CellMapItem_1">
+        </td>
+
+        <td class="CellMapItem_8">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_62">
+          LỐI ĐI RỘNG 14M 1
+        </td>
+
+        <!-- <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_2">
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_2">
+        </td> -->
+
+        <td class="CellMapItem_1">
+        </td>
+
+        <td class="CellMapItem_7">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <td class="CellMapItem_1">
+        </td>
+
+      </tr>
+
+    </table>
+
+    <table style="width: 100%!important;">
+
+      <tr class="ItemHeight" >
+        <td rowspan="2" class="CellMapItemLebel">
+          D
+        </td>
+
+        <td *ngFor="let item of listD3_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="6" class="CellMapItem_BCD_2_3">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <td *ngFor="let item of listD8_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listD10_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listD12_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+       <td *ngFor="let item of listD14_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          D
+        </td>
+
+        <td rowspan="6" class="CellMapItem_BCD_2_3">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <td *ngFor="let item of listD21_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+        <td rowspan="2" class="CellMapItemLebel">
+          D
+        </td>
+
+      </tr>
+
+      <tr class="ItemHeight"   >
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <td *ngFor="let item of listD3_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listD8_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listD10_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listD12_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listD14_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listD21_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "2" class="CellMapItem_BCD">
+          D
+        </td> -->
+
+      </tr>
+
+      <tr class="ItemHeight" >
+        <td rowspan="2" class="CellMapItemLebel">
+          C
+        </td>
+
+        <td *ngFor="let item of listC3_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listC8_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC10_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC12_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC14_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          C
+        </td>
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listC21_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          C
+        </td>
+
+      </tr>
+
+      <tr class="ItemHeight" >
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <td *ngFor="let item of listC3_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listC8_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC10_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC12_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listC14_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listC21_1; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "2" class="CellMapItem_BCD">
+          D
+        </td> -->
+
+      </tr>
+
+      <tr class="ItemHeight" >
+        <td rowspan="2" class="CellMapItemLebel">
+          B
+        </td>
+
+        <td *ngFor="let item of listB3_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td *ngFor="let item of listB8_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB10_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB12_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB14_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          B
+        </td>
+
+        <td *ngFor="let item of listB21_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+
+        <td rowspan="2" class="CellMapItemLebel">
+          B
+        </td>
+
+      </tr>
+
+      <tr class="ItemHeight" >
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <td *ngFor="let item of listB3_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listB8_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB10_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB12_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+        <td class="CellMapItemSplip_BCD">
+        </td>
+
+        <td *ngFor="let item of listB14_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem_BCD">
+        </td> -->
+
+        <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
+        </td> -->
+
+        <td *ngFor="let item of listB21_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td rowspan = "2" class="CellMapItem_BCD">
+          D
+        </td> -->
+
+      </tr>
+
+    </table>
+
+    <table style="width: 100%!important; margin-top: 1px; margin-bottom: 1px;">
+      <tr class="Tr_BG ItemHeight">
+        <td class="CellMapItem_1">
+        </td>
+
+        <td class="CellMapItem_8">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_62">
+          LỐI ĐI RỘNG 14M
+        </td>
+
+        <!-- <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_2">
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td class="CellMapItem_2">
+        </td> -->
+
+        <td class="CellMapItem_1">
+        </td>
+
+        <td class="CellMapItem_7">
+          LỐI ĐI RỘNG 14M
+          <!-- {{listContYarn3 | json}} -->
+        </td>
+
+        <td class="CellMapItem_1">
+        </td>
+
+      </tr>
+
+    </table>
+
+    <table style="width: 100%!important;">
+
+      <tr class="ItemHeight">
+        <td rowspan="2" class="CellMapItemLebel">
+          A
+        </td>
+
+        <td *ngFor="let item of listA8_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listA10_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listA12_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem">
+          <div class="MapItemOutOfDate">
+           <div (click)="setOpen(cont)" class="MapItem">
+                [x]
+              </div>
+
+          </div>
+        </td> -->
+
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td *ngFor="let item of listA14_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+
+        <td rowspan="2" class="CellMapItemLebel">
+          A
+        </td>
+
+        <td *ngFor="let item of listA21_2; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td rowspan="2" class="CellMapItemLebel">
+          A
+        </td>
+      </tr>
+
+      <tr class="ItemHeight">
+        <!-- <td rowspan="2" class="CellMapItem">
+          A
+        </td> -->
+        <td *ngFor="let item of listA8_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+
+
+        <td *ngFor="let item of listA10_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td *ngFor="let item of listA12_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)">
+            </div>
+          </ng-template>
+        </td>
+
+        <!-- <td class="CellMapItem">
+          <div class="MapItemOutOfDate">
+           <div (click)="setOpen(cont)" class="MapItem">
+                [x]
+              </div>
+
+          </div>
+        </td> -->
+
+
+        <td class="CellMapItemSplip">
+        </td>
+
+        <td *ngFor="let item of listA21_1; index as i" class="CellMapItem">
+          <div *ngIf="item.id; then thenBlock else elseBlock">
+          </div>
+
+          <ng-template #thenBlock>
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="MapItemEmpty" (click)="setOpen(item)" >
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+
+
+      <tr class="ItemHeight">
+
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">1</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">2</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">3</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">4</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">5</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">6</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">7</div>
+        </td>
+
+        <td class="CellMapItem">
+          <div class="MapItem_Header">8</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">9</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">10</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">11</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">12</div>
+        </td>
+
+        <td class="CellMapItemSplip">
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">13</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">14</div>
+        </td>
+
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">15</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">16</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">17</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">18</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">19</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">20</div>
+        </td>
+        <td class="CellMapItem">
+          <div class="MapItem_Header">21</div>
+        </td>
+
+        <td class="CellMapItem">
+          <span style="font-size: 10px; font-weight: bold;">STT</span>
+        </td>
+      </tr>
+
+    </table>
+  </div>

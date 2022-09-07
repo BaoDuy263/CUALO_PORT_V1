@@ -43,6 +43,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       Voyace: new FormControl('', Validators.required),
       Receiver: new FormControl('', Validators.required),
       BillNo: new FormControl(),
+<<<<<<< HEAD
       WG: new FormControl(),
       SealNo: new FormControl(),
       Commodity: new FormControl(),
@@ -56,6 +57,21 @@ export class CreateimportContfromShipComponent implements OnInit {
       TypeCont: new FormControl(),
       ContNo: new FormControl('', Validators.required),
     });
+=======
+      WG : new FormControl(),
+      SealNo : new FormControl(),
+      Commodity : new FormControl(),
+      ReturnPlan : new FormControl(),
+      CheckIn : new FormControl(),
+      Book : new FormControl(),
+      ReturnAddress : new FormControl(),
+      StatusContainer : new FormControl(),
+      Direction : new FormControl(),
+      Shipper : new FormControl(),
+      TypeCont : new FormControl(),
+      ContNo : new FormControl('',Validators.required),
+    })
+>>>>>>> f45a13be4b1b0cd693fab04290e58482d1d2f45b
   }
 
   get Voyace() {
@@ -75,6 +91,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   }
 
   getDetail() {
+<<<<<<< HEAD
     this.importContFromShipService.getDetail(this.Id).subscribe((data) => {
       this.CreateEditForm = new FormGroup({
         id: new FormControl(data.data.id, Validators.required),
@@ -93,6 +110,30 @@ export class CreateimportContfromShipComponent implements OnInit {
         Shipper: new FormControl(data.data.shipper),
         TypeCont: new FormControl(data.data.typeCont),
         ContNo: new FormControl(data.data.contNo, Validators.required),
+=======
+   
+    this.importContFromShipService.getDetail(this.Id).
+    subscribe(data => 
+      {
+        this.CreateEditForm = new FormGroup({
+          id : new FormControl(data.data.id, Validators.required),
+          Voyace: new FormControl(data.data.voyace, Validators.required),
+          Receiver: new FormControl(data.data.receiver, Validators.required),
+          BillNo: new FormControl(data.data.billNo),
+          WG : new FormControl(data.data.gw),
+          SealNo : new FormControl(data.data.sealNo),
+          Commodity : new FormControl(data.data.commodity),
+          ReturnPlan : new FormControl(data.data.returnPlan),
+          CheckIn : new FormControl(data.data.checkIn),
+          Book : new FormControl(data.data.book),
+          ReturnAddress : new FormControl(data.data.returnAddress),
+          StatusContainer : new FormControl(data.data.statusContainer),
+          Direction : new FormControl(data.data.direction),
+          Shipper : new FormControl(data.data.shipper),
+          TypeCont : new FormControl(data.data.typeCont),
+          ContNo : new FormControl(data.data.contNo,Validators.required),
+          })
+>>>>>>> f45a13be4b1b0cd693fab04290e58482d1d2f45b
       });
     });
   }

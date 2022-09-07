@@ -10,6 +10,7 @@ import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { BookingPlanIndex, BookingPlanPaging } from 'src/app/Model/BookingPlan';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
 import { ExportcontainershipComponent } from '../exportcontainership/exportcontainership.component';
+import { lstProduct } from 'src/app/Model/Product';
 
 @Component({
   selector: 'app-indeximport-contfrom-ship',
@@ -98,7 +99,14 @@ export class IndeximportContfromShipComponent implements OnInit {
     BillNo : '',
   }
   //
-
+  lstProduct: lstProduct = {
+    currentPage : 0,
+    pageSize: 0,
+    totalPage : 0,
+    totalRecord : 0,
+    data : []
+  }
+  
   lstCheckAction : Array<number> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
@@ -106,6 +114,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
     this.PagingBooking();
     this.PagingThucHien();
+    console.log(this.lstProduct);
+    
   }
 
   Paging() {

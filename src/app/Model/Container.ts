@@ -44,6 +44,11 @@ export interface Container {
   state: number
 }
 
+export interface ContainerActive {
+  code: string,
+  note: string
+}
+
 export interface ContainerCreate{
     code: string,
     type: string,

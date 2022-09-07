@@ -1,0 +1,44 @@
+<div class="container-lg" style="width: 800px; height: 500px;">
+
+  <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;padding-bottom: 10px;">
+    Cập nhật thông tin ảnh Container
+    <a class="close" mat-dialog-close>
+      <i class="bi bi-x"></i>
+    </a>
+  </div>
+  <form  (ngSubmit)="onSubmit()">
+    <div class="row" style="width: 100%;">
+      <div class="col-lg-3">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Chọn container</label><br />
+          <select class="form-control" formControlName="code">
+            <option *ngFor="let item of lstCont; index as i">{{item.code}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="mb-9" style="padding-left: 10px;">
+          <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
+          <input type="text" class="form-control" formControlName="note">
+          <input type="hidden" value="{{ImagesObj.id}}"  formControlName="id">
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-outline-secondary" style="float: right;"  type="submit"
+      id="button-addon3">Ghi nhận</button>
+  </form>
+  <br>
+  <div class="row" style="width: 70%;">
+    <a [href]="UrlRoot + ImagesObj.urlImage" target="_blank">
+      <img *ngIf="ImagesObj.urlImage" [src]="UrlRoot + ImagesObj.urlImage" style=" height: auto; overflow: hidden; width: 100%; border: 1px solid #746f6f;
+        ">
+    </a>
+    <span style="font-size: 14px;margin-top: 20px;">
+      Thời gian: {{ImagesObj.createdOn  }} ({{ImagesObj.createdBy}})
+    </span>
+
+
+  </div>
+
+</div>
