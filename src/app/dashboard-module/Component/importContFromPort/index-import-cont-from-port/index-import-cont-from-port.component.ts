@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ImportContFromPortComponent } from "../import-cont-from-port/import-cont-from-port.component" 
-import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service'
+import { ImportContFromPortComponent } from "../import-cont-from-port/import-cont-from-port.component"; 
+import { ImportContFromShipService } from '../../../../Service/importContFromShip/import-cont-from-ship.service';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { PortToShipIndex, PortToShipPaging } from 'src/app/Model/BayPlanDetail';
-import { BookingPlanPaging,BookingPlanIndex } from '../../../../Model/BookingPlan'
+import { BookingPlanPaging,BookingPlanIndex } from '../../../../Model/BookingPlan';
 import { Pagination } from 'src/app/Model/Table';
-import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component'
-import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component'
+import { CreateImportContFromPortComponent } from '../create-import-cont-from-port/create-import-cont-from-port.component';
+import { DeleteImportContFromPortComponent } from '../delete-import-cont-from-port/delete-import-cont-from-port.component';
 import { PerformService } from 'src/app/Service/Perform/perform.service';
 import { ExportContainerComponent } from '../export-container/export-container.component';
 @Component({
