@@ -1,0 +1,18 @@
+table {
+  text-align: center;
+}
+.list-contaner {
+  width: 50%;
+}
+.item-cont {
+  cursor: pointer;
+}
+.item-cont:hover {
+  background-color: rgb(221, 221, 221);
+}
+.activate {
+  background-color: rgb(221, 221, 221);
+}
+.classFull {
+  color: #fb8787;
+}

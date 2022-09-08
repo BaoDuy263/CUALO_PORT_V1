@@ -1,4 +1,4 @@
-import { Container, ContainerActive, ContainerCreate } from './../../Model/Container';
+import { Container, ContainerActive, ContainerCreate, ContImage } from './../../Model/Container';
 import { Injectable } from '@angular/core';
 import { CommonserviceService } from '../CommonService/commonservice.service';
 import { BehaviorSubject } from 'rxjs';
@@ -55,6 +55,21 @@ export class ContainerService {
     return this.httpService.getRequest(`Container/containers-empty?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
   }
 
+  GetAllContHistory(page: number, searchText: string, numberDis: number, startDate: string, endDate: string) {
+    return this.httpService.getRequest(`contHistory?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
+  }
+
+  GetAllContImages(page: number, searchText: string, numberDis: number, startDate: string, endDate: string) {
+    return this.httpService.getRequest(`contImages?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
+  }
+
+  UpdateContImages(data: ContImage) {
+    return this.httpService.postRequest(`contImages/Update`, data);
+  }
+
+  GetDetailContImage(id: number) {
+    return this.httpService.getRequest(`contImages/${id}`);
+  }
   ContainerImageEdit(data: ContainerActive) {
     console.log(data);
     return this.httpService.postRequest("Container/containers-images-edit", data)

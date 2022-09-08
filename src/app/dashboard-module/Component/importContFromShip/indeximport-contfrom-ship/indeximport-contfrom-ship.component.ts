@@ -31,7 +31,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     BookingType : 4,
     FromDate: undefined,
     ToDate: undefined
-  } 
+  }
 
   lstdataBooking : BookingPlanIndex = {
     currentPage : 0,
@@ -188,7 +188,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
   }
 
-  
+
   onChangePage(pageOfItems: any) {
     this.PageInfo.Page = pageOfItems.page;
     this.PageInfo.PageSize = pageOfItems.pageSize;
@@ -345,13 +345,13 @@ export class IndeximportContfromShipComponent implements OnInit {
   {
     let Direction = '';
     switch(type){
-      case 1 : 
+      case 1 :
         Direction = "Lưu vỏ";
         break;
-      case 2 : 
+      case 2 :
         Direction = "Lưu bãi";
         break;
-      case 3 : 
+      case 3 :
         Direction = "Trả nguyên";
         break;
       case 4 :

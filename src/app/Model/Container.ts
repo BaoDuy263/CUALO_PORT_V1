@@ -91,12 +91,47 @@ export interface ContainerCreate{
     state: number
 }
 
+export interface ContHistory {
+  id: number,
+  contNo: string,
+  note: string,
+  createdBy: string,
+  modifiedBy: string,
+  createdOn: Date,
+  modifiedOn: Date,
+}
+
+export interface ContImage {
+  id: number,
+  contNo: string,
+  urlImage: string,
+  captureArea: string,
+  note: string,
+  createdOn: Date,
+}
+
 export interface lstContainer {
   currentPage: number,
   pageSize: number,
   totalRecord: number,
-  totalPage: number
+  totalPage: number,
   data: Container[]
+}
+
+export interface lstContHistory {
+  currentPage: number,
+  pageSize: number,
+  totalRecord: number,
+  totalPage: number,
+  data: ContHistory[]
+}
+
+export interface lstContImages {
+  currentPage: number,
+  pageSize: number,
+  totalRecord: number,
+  totalPage: number,
+  data: ContImage[]
 }
 
 export enum TypeDelivery {

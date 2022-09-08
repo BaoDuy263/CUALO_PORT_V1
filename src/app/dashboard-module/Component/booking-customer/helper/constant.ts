@@ -1,5 +1,6 @@
 export const activitiesPacking = [
   { value: 2, name: "Cấp rỗng" },
+  { value: 4, name: "ShipSide"},
   { value: 9, name: "Đóng rời" }
 ]
 

@@ -32,7 +32,10 @@ export interface BayPlanRecord
     typeDirection: number,
     dateUpdate: Date,
     dateCheckIn: Date,
-    step: number
+    step: number,
+    impExpDate : Date,
+    outDeliveryDate : Date,
+    inDeliveryDate : Date,
 }
 
 
@@ -53,7 +56,10 @@ export interface BayPlanCreate
     StatusContainer : string,
     Direction : string,
     Shipper : string,
-    TypeCont : string
+    TypeCont : string,
+    impExpDate : Date,
+    outDeliveryDate : Date,
+    inDeliveryDate : Date,
 }
 
 
@@ -74,7 +80,10 @@ export interface BayPlanUpdate
     StatusContainer : string,
     Direction : string,
     Shipper : string,
-    TypeCont : string
+    TypeCont : string,
+    impExpDate : Date,
+    outDeliveryDate : Date,
+    inDeliveryDate : Date,
 }
 
 // From Port to Ship
