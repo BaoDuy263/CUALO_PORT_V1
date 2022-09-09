@@ -18,8 +18,8 @@ export const activitiesData = [
 ]
 
 export const lstStatusData = [
-  { value: 0, name: "Rỗng" },
-  { value: 1, name: "Đầy" },
+  { value: 0, name: "E" },
+  { value: 1, name: "F" },
 ]
 
 export const lstTypeDelivery = [

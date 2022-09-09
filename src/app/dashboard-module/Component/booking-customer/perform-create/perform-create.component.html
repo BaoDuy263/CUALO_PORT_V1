@@ -1,23 +1,29 @@
-<div class="container-lg" style="width: 700px">
+<div class="container-lg perform-create" style="width: 700px">
   <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm
-        mới khách hàng</div>
+        mới thực hiện</div>
       <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
         <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
-          Sửa khách hàng
+          Sửa thực hiện
         </div>
       </ng-template>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
           <label for="exampleFormControlInput1" class="form-label">Ngày check in</label>
           <input type="datetime-local" class="form-control" formControlName="checkIn">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Ngày check-out</label>
+          <input type="datetime-local" class="form-control" formControlName="checkOut">
+        </div>
+      </div>
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Hình thức</label><br />
           <select
@@ -30,13 +36,19 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Tên khách hàng</label>
           <input type="text" class="form-control" formControlName="customer">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Book</label>
+          <input type="text" class="form-control" formControlName="book">
+        </div>
+      </div>
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Liên hệ</label>
           <input type="text" class="form-control" formControlName="contact">
@@ -44,44 +56,189 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Số container</label>
           <input type="number" class="form-control" formControlName="countContainer">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Tên tàu</label>
           <input type="text" class="form-control" formControlName="voyage">
         </div>
       </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">CargoType</label>
+          <input type="text" class="form-control" formControlName="cargoType">
+        </div>
+      </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Địa chỉ trả hàng</label>
           <input type="text" class="form-control" formControlName="returnAddress">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
           <input type="text" class="form-control" formControlName="statusContainer">
         </div>
       </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Hàng hóa</label>
+          <input type="text" class="form-control" formControlName="commodity">
+        </div>
+      </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Thời gian</label>
           <input type="text" class="form-control" formControlName="time">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày check-out</label>
-          <input type="datetime-local" class="form-control" formControlName="checkOut">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">Bill/No</label>
+          <input type="text" class="form-control" formControlName="billNo">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Mã Container</label>
+          <input type="text" class="form-control" formControlName="contNo">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">OOG</label>
+          <input type="text" class="form-control" formControlName="oog">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">operator</label>
+          <input type="text" class="form-control" formControlName="operator">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">POD</label>
+          <input type="text" class="form-control" formControlName="pod">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">REF</label>
+          <input type="text" class="form-control" formControlName="ref">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">Tàu</label>
+          <input type="text" class="form-control" formControlName="vessel">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Cân nặng</label>
+          <input type="text" class="form-control" formControlName="weight">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Chiều cao</label>
+          <input type="text" class="form-control" formControlName="height">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">Imdg</label>
+          <input type="text" class="form-control" formControlName="imdg">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">isLeave</label>
+          <input type="text" class="form-control" formControlName="isLeave">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">ISO</label>
+          <input type="text" class="form-control" formControlName="iso">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">Landing date</label>
+          <input type="text" class="form-control" formControlName="landingDate">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Location</label>
+          <input type="text" class="form-control" formControlName="location">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
+          <input type="text" class="form-control" formControlName="shipperName">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">Side</label>
+          <input type="text" class="form-control" formControlName="side">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Kích cỡ</label>
+          <input type="text" class="form-control" formControlName="size">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">transCom</label>
+          <input type="text" class="form-control" formControlName="transCom">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
+          <label for="exampleFormControlInput1" class="form-label">transType</label>
+          <input type="text" class="form-control" formControlName="transType">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Loại container</label>
+          <input type="text" class="form-control" formControlName="typeCont">
         </div>
       </div>
     </div>

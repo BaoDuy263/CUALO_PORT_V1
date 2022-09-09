@@ -41,7 +41,10 @@ export interface Container {
   seal: string,
   createdBy: string,
   modifiedBy: string,
-  state: number
+  state: number,
+  impExpDate: Date,
+  outDeliveryDate: Date,
+  inDeliveryDate: Date
 }
 
 export interface ContainerActive {

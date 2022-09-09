@@ -19,7 +19,7 @@ export class VehicleIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
   loadding: boolean = false;
-  
+
   Pagination: Pagination = {
     currentPage : 0,
     pageSize : 0,
@@ -39,7 +39,7 @@ export class VehicleIndexComponent implements OnInit {
     page : 1,
     Keyword : '',
     pageSize : 10
-  }  
+  }
   constructor(private VehicleService : VehicleService,public dialog: MatDialog,private toastr : ToastrcustomService) { }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class VehicleIndexComponent implements OnInit {
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-        // console.log('this.Pagination',this.Pagination);  
+        // console.log('this.Pagination',this.Pagination);
      })
   }
 
@@ -79,6 +79,8 @@ export class VehicleIndexComponent implements OnInit {
     licensePlates: '',
     rfidcode: '',
     nameDriver: '',
+    customer: '',
+    phoneNumber: '',
     tonnageDefault : '',
     idCardNumber: '',
     mediumUnladenWeight: '',
@@ -100,9 +102,9 @@ export class VehicleIndexComponent implements OnInit {
           {
             this.toastr.showError(result.message);
           }
-      } 
+      }
     })
-    
+
   }
 
   openCreate() {
@@ -119,7 +121,7 @@ export class VehicleIndexComponent implements OnInit {
           }
         }
     });
-    
+
   }
 
 
