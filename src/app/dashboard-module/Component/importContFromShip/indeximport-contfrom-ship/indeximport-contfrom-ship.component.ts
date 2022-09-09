@@ -72,7 +72,8 @@ export class IndeximportContfromShipComponent implements OnInit {
     ContNo: '',
     BillNo : '',
     FromDate : undefined,
-    ToDate: undefined
+    ToDate: undefined,
+    isThuchien: false
   }
   //
   //Tab thực hiện
@@ -97,6 +98,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     Voyace : '',
     ContNo: '',
     BillNo : '',
+    isThuchien: false
   }
   //
   lstProduct: lstProduct = {
@@ -114,8 +116,6 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.Paging();
     this.PagingBooking();
     this.PagingThucHien();
-    console.log(this.lstProduct);
-    
   }
 
   Paging() {
@@ -166,6 +166,12 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   onSearchVoyace(e: any) {
     this.PageInfo.Voyace = e;
+    this.PageInfo.Page = 1;
+    this.Paging();
+  }
+
+  onShowThucHien(e:any) {
+    this.PageInfo.isThuchien = e;
     this.PageInfo.Page = 1;
     this.Paging();
   }
@@ -345,29 +351,25 @@ export class IndeximportContfromShipComponent implements OnInit {
   {
     let Direction = '';
     switch(type){
-      case 1 :
-        Direction = "Lưu vỏ";
-        break;
       case 2 :
-        Direction = "Lưu bãi";
-        break;
-      case 3 :
-        Direction = "Trả nguyên";
-        break;
-      case 4 :
-        Direction = "Rút ruột";
+        Direction = "Cấp rông";
         break;
       case 5 :
-        Direction = "(Ship side)T-X";
+        Direction = "Lấy nguyên";
+        break;
+      case 6 :
+        Direction = "Rút ruột";
         break;
     }
     return Direction;
   }
 
-  ImportCont(Id: number)
+  ImportCont(Id: number,ContNo: string,Location: string)
   {
     const dialogRef =this.dialog.open(ExportcontainershipComponent);
     dialogRef.componentInstance.Id = Id;
+    dialogRef.componentInstance.ContNo = ContNo;
+    dialogRef.componentInstance.Location = Location;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {

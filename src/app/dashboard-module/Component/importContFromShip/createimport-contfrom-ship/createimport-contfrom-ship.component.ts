@@ -28,12 +28,12 @@ export class CreateimportContfromShipComponent implements OnInit {
   ];
 
   lstDirection = [
-    { id: 1, name: 'Lưu vỏ' },
-    { id: 2, name: 'Lưu bãi' },
-    { id: 3, name: 'Trả Nguyên' },
-    { id: 4, name: 'Rút Ruột' },
-    { id: 5, name: '(Ship side)T-X' },
+    { id: 5, name: 'Lấy Nguyên' },
+    { id: 6, name: 'Rút Ruột' },
+    { id: 3, name: 'Trả rỗng' },
   ];
+
+  lstLocation :Array<{id: string,positionLabel:string}> = []
 
   constructor(
     private importContFromShipService: ImportContFromShipService,
@@ -47,7 +47,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       SealNo: new FormControl(),
       Commodity: new FormControl(),
       ReturnPlan: new FormControl(),
-      DateUpdate: new FormControl(),
+      Location: new FormControl(),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
       StatusContainer: new FormControl(),
@@ -55,6 +55,8 @@ export class CreateimportContfromShipComponent implements OnInit {
       Shipper: new FormControl(),
       TypeCont: new FormControl(),
       ContNo: new FormControl('', Validators.required),
+      CheckIn: new FormControl(),
+      Activity: new FormControl(),
     });
   }
 
@@ -69,6 +71,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.GetLocatonFree();
     if (this.Id > 0) {
       this.getDetail();
     }
@@ -76,20 +79,22 @@ export class CreateimportContfromShipComponent implements OnInit {
 
   getDetail() {
     this.importContFromShipService.getDetail(this.Id).subscribe((data) => {
+    
       this.CreateEditForm = new FormGroup({
         id: new FormControl(data.data.id, Validators.required),
         Voyace: new FormControl(data.data.voyace, Validators.required),
         Receiver: new FormControl(data.data.receiver, Validators.required),
         BillNo: new FormControl(data.data.billNo),
-        WG: new FormControl(data.data.gw),
+        WG: new FormControl(data.data.wg),
         SealNo: new FormControl(data.data.sealNo),
         Commodity: new FormControl(data.data.commodity),
         ReturnPlan: new FormControl(data.data.returnPlan),
-        DateUpdate: new FormControl(data.data.dateUpdate),
+        Location: new FormControl(data.data.location),
         Book: new FormControl(data.data.book),
+        CheckIn: new FormControl(data.data.checkIn),
         ReturnAddress: new FormControl(data.data.returnAddress),
         StatusContainer: new FormControl(data.data.statusContainer),
-        Direction: new FormControl(data.data.direction),
+        Activity: new FormControl(data.data.activity),
         Shipper: new FormControl(data.data.shipper),
         TypeCont: new FormControl(data.data.typeCont),
         ContNo: new FormControl(data.data.contNo, Validators.required),
@@ -97,10 +102,17 @@ export class CreateimportContfromShipComponent implements OnInit {
     });
   }
 
+  GetLocatonFree()
+  {
+    this.importContFromShipService.GetLocationFree().subscribe(data=> {
+      this.lstLocation = data;
+    })
+  }
+
   onSubmit() {
     this.submited = true;
-    this.CreateEditForm.value.Direction = parseInt(
-      this.CreateEditForm.value.Direction
+    this.CreateEditForm.value.Activity = parseInt(
+      this.CreateEditForm.value.Activity
     );
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.importContFromShipService
@@ -116,5 +128,16 @@ export class CreateimportContfromShipComponent implements OnInit {
           this.dialogRef.close(response);
         });
     }
+  }
+
+  onImportAndUpdate(){
+    this.CreateEditForm.value.Activity = parseInt(
+      this.CreateEditForm.value.Activity
+    );
+    this.importContFromShipService
+    .ImportAndUpdate(this.CreateEditForm.value)
+    .subscribe((response) => {
+      this.dialogRef.close(response);
+    });
   }
 }
