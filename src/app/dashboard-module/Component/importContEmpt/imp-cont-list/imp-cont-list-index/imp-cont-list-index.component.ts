@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { lstPerform } from 'src/app/Model/Perform';
+import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { convertHelper } from '../../../booking-customer/helper/convertHelper';
@@ -17,6 +17,7 @@ export class ImpContListIndexComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
+  itemPrint: Perform | null = null;
   lstdata: lstPerform = {
     currentPage: 0,
     pageSize: 0,
@@ -142,5 +143,17 @@ export class ImpContListIndexComponent implements OnInit {
     this.PageInfo.Date = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
+  }
+
+  handlePrinter(item: Perform) {
+    this.itemPrint = item;
+    var divContents = document.getElementById('eir-import')?.innerHTML || '';
+    var printWindow = window.open('', '', 'height=768,width=1366');
+    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
+    printWindow?.document.write('</head><body>');
+    printWindow?.document.write(divContents);
+    printWindow?.document.write('</body></html>');
+    printWindow?.document.close();
+    printWindow?.print();
   }
 }
