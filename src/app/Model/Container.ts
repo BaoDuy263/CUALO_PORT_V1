@@ -124,3 +124,14 @@ export enum State {
   Stacking = 2,
   OutPort = 3
 }
+
+
+export interface ContImagesPaging
+{
+    Page : number,
+    PageSize : number,
+    ContNo : string,
+    FromDate : string,
+    ToDate : string,
+    Status: number
+};

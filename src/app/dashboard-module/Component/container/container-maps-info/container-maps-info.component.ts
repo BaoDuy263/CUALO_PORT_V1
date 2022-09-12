@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContainerService } from 'src/app/Service/container/container.service';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+
+// import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-container-maps-info',
@@ -22,7 +24,6 @@ export class ContainerMapsInfoComponent implements OnInit {
 
   constructor(private mContainerService: ContainerService) {
     // lấy thông tin container
-
   }
 
   ///message:string;
@@ -33,7 +34,7 @@ export class ContainerMapsInfoComponent implements OnInit {
         this.contDet = data.item1[0];
       });
       this.mContainerService.ContHistoryGetList(this.ContNum).subscribe((data) => {
-      //  console.log(data.item1);
+      //  console.log(data.itXem1);
         this.listHistory = data.item1;
       });
       this.mContainerService.ContImagesGetList(this.ContNum).subscribe((data) => {

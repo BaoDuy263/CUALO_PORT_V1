@@ -126,6 +126,7 @@ export class ContainerMapsComponent implements OnInit {
     console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
+      console.log('======================');
       console.log(data.item1);
       this.listContYarn3 = data.item1;
       this.displayListCont(this.listContYarn3);
@@ -166,41 +167,45 @@ export class ContainerMapsComponent implements OnInit {
     var arrE2 = [];
 
     console.log(listCont.length + '------------------------');
+
     for (let i = 0; i < listCont.length; i++) {
-      if (listCont[i]['positionLabel'] == 'A' && listCont[i]['position'] == 1) {
+
+      console.log(i);
+      var lable = listCont[i]['positionLabel'].charAt(0);
+      if (lable == 'A' && listCont[i]['position'] == 1) {
         arrA1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'A' && listCont[i]['position'] == 2) {
+      if (lable == 'A' && listCont[i]['position'] == 2) {
         arrA2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'B' && listCont[i]['position'] == 1) {
+      if (lable == 'B' && listCont[i]['position'] == 1) {
         arrB1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'B' && listCont[i]['position'] == 2) {
+      if (lable == 'B' && listCont[i]['position'] == 2) {
         arrB2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'C' && listCont[i]['position'] == 1) {
+      if (lable == 'C' && listCont[i]['position'] == 1) {
         arrC1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'C' && listCont[i]['position'] == 2) {
+      if (lable == 'C' && listCont[i]['position'] == 2) {
         arrC2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'D' && listCont[i]['position'] == 1) {
+      if (lable == 'D' && listCont[i]['position'] == 1) {
         arrD1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'D' && listCont[i]['position'] == 2) {
+      if (lable == 'D' && listCont[i]['position'] == 2) {
         arrD2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'E' && listCont[i]['position'] == 1) {
+      if (lable == 'E' && listCont[i]['position'] == 1) {
         arrE1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'E' && listCont[i]['position'] == 2) {
+      if (lable == 'E' && listCont[i]['position'] == 2) {
         arrE2.push(listCont[i]);
       }
     }
-    console.log('------------------------');
-    console.log(arrE1);
-    console.log(arrE2);
+    // console.log('------------------------');
+    // console.log(arrE1);
+     console.log(arrE2);
     var listA1 = this.sortList(arrA1, 21, 1, 'A');
     var listA2 = this.sortList(arrA2, 21, 2, 'A');
     var listB1 = this.sortList(arrB1, 21, 1, 'B');
@@ -213,9 +218,9 @@ export class ContainerMapsComponent implements OnInit {
     // var listE2 = this.sortList(arrE2, 21, 2, 'E');
     var listE1 = this.sortList(arrE1, 21, 1, 'E');
     var listE2 = this.sortList(arrE2, 21, 2, 'E');
-    console.log('======');
-    console.log(listE1);
-    console.log(listE2);
+    // console.log('======');
+     console.log(listE1);
+    // console.log(listE2);
 
     this.listA8_1 = listA1.slice(0, 8);
     this.listA10_1 = listA1.slice(8, 10);
@@ -271,7 +276,8 @@ export class ContainerMapsComponent implements OnInit {
     this.listD21_1 = listD1.slice(16, 21);
 
     this.listE8_2 = listE2.slice(0, 8);
-    console.log('################');
+    console.log(this.listE8_2);
+    //console.log('################');
 
     this.listE10_2 = listE2.slice(8, 10);
     this.listE12_2 = listE2.slice(10, 12);
@@ -283,6 +289,8 @@ export class ContainerMapsComponent implements OnInit {
     this.listE12_1 = listE1.slice(10, 12);
     this.listE14_1 = listE1.slice(12, 14);
     this.listE21_1 = listE1.slice(14, 21);
+
+
   }
 
   sortList(arr: any[], count: number, position: number, positionLabel: string) {

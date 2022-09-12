@@ -2,6 +2,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import '~ngx-toastr/toastr';
+@import "~@ng-select/ng-select/themes/default.theme.css"; /*CSS select seach*/
+
 html, body { height: 100vh; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;padding: 0; }
 .mat-drawer-inner-container::-webkit-scrollbar {

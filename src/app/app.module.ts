@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
 import { RoleGuardService } from './Interceptor/rolo.guard.service'
 import { ToastrModule } from 'ngx-toastr';
@@ -14,6 +14,7 @@ import { AdminService } from './Service/admin.service';
 import { ConfigService } from './Service/config.service';
 import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
 import { MapcontYard3Service } from './Service/map-cont-yard3.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { MapcontYard3Service } from './Service/map-cont-yard3.service';
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgSelectModule,
+    CommonModule,
     ToastrModule.forRoot()
   ],
   providers: [
@@ -45,7 +48,8 @@ import { MapcontYard3Service } from './Service/map-cont-yard3.service';
   ],
   bootstrap: [AppComponent],
   schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
 })
 export class AppModule { }

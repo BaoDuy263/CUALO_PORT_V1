@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { ContainerIndexComponent } from './container-index.component';
 
 describe('ContainerIndexComponent', () => {

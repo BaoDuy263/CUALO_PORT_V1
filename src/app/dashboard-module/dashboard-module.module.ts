@@ -1,5 +1,6 @@
 import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
 
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
 //Component
@@ -89,6 +90,7 @@ import { PerformCreateComponent } from './Component/booking-customer/perform-cre
 import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component';
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
 import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component'
+import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
 
 
 
@@ -163,7 +165,8 @@ import { ExportcontainershipComponent } from './Component/importContFromShip/exp
     PerformCreateComponent,
     PerformDeleteComponent,
     UserAuthorizationComponent,
-    ExportcontainershipComponent
+    ExportcontainershipComponent,
+    ContainerImagesEditComponent,
   ],
   imports: [
     CommonModule,
@@ -181,6 +184,7 @@ import { ExportcontainershipComponent } from './Component/importContFromShip/exp
     //
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     //
     // ToastrModule.forRoot()
   ],
