@@ -89,8 +89,11 @@ import { PerformIndexComponent } from './Component/booking-customer/perform-inde
 import { PerformCreateComponent } from './Component/booking-customer/perform-create/perform-create.component';
 import { PerformDeleteComponent } from './Component/booking-customer/perform-delete/perform-delete.component';
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
-import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component'
+import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component';
 import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
+import { ContainerHistoryIndexComponent } from './Component/container/container-history-index/container-history-index.component';
+import { ContainerImgIndexComponent } from './Component/container/container-img-index/container-img-index.component';
+import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component'
 
 
 
@@ -167,6 +170,8 @@ import { ContainerImagesEditComponent } from './Component/container/container-im
     UserAuthorizationComponent,
     ExportcontainershipComponent,
     ContainerImagesEditComponent,
+    ContainerImgIndexComponent,
+    ContainerDialogComponent
   ],
   imports: [
     CommonModule,

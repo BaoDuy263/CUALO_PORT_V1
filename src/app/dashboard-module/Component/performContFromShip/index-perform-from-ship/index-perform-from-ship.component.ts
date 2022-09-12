@@ -31,6 +31,7 @@ export class IndexPerformFromShipComponent implements OnInit {
     Voyace : '',
     ContNo: '',
     BillNo : '',
+    isThuchien:false
   }
 
   constructor(private service : PerformService) { }

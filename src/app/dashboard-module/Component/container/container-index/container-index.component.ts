@@ -2,9 +2,13 @@ import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { ContImagesPaging, lstContainer } from 'src/app/Model/Container';
+import { lstContainer, lstContHistory } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
+import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { FormControl } from '@angular/forms';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
 
 @Component({
@@ -46,20 +50,25 @@ export class ContainerIndexComponent implements OnInit {
     totalRecord: 0,
     totalPage: 0,
   };
+
   PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10,
   };
+
+
+  selected: number = 0;
+
   constructor(
     private containerService: ContainerService,
     public dialog: MatDialog,
     private toastr: ToastrcustomService
+    public convertHelper: convertHelper
   ) {}
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-
     this.containerService.Paging(1, '', 1200).subscribe((data) => {
       this.lstCont = data.data;
     });
@@ -195,5 +204,9 @@ export class ContainerIndexComponent implements OnInit {
         }
       }
     });
+  }
+
+  myTabSelectedIndexChange(index: number) {
+    this.selected = index;
   }
 }

@@ -30,6 +30,7 @@
               <th>Vị trí trả hàng</th>
               <th>Ghi chú</th>
               <th>Ngày tạo</th>
+              <th>Ngày cấp container</th>
               <!-- <th>Trạng thái</th> -->
               <th style="text-align: center;">Hành động</th>
             </tr>
@@ -45,6 +46,7 @@
               <td>{{item.returnAddress}}</td>
               <td>{{item.note}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
+              <td>{{item.outDeliveryDate | date: 'short'}}</td>
               <td style="text-align: center;">
                 <i class="bi bi-printer-fill" (click)="handlePrinter(item)" style="padding-right: 8px; cursor: pointer"></i>
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"

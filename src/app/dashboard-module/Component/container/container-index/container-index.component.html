@@ -1,8 +1,9 @@
 <div style="position: absolute; top: 40%; left: 40%;">
   <mat-spinner *ngIf="loading == true"></mat-spinner>
 </div>
+
 <div class="" style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
-  <mat-tab-group>
+  <mat-tab-group animationDuration="0ms" (selectedIndexChange)="myTabSelectedIndexChange($event)">
     <mat-tab label="Danh sách container">
       <!-- <div class="row">
         <h2 style="font-weight: 500;">Danh sách container</h2>
@@ -25,9 +26,10 @@
                   <th>Mã container</th>
                   <th>Tên Khách hàng</th>
                   <th>Loại container</th>
-                  <th>Tên tàu</th>
-                  <th>Cảng cuối</th>
-                  <th>Vị trí trả hàng</th>
+                  <th>Tình trạng</th>
+                  <th>Phương án</th>
+                  <th>Hướng</th>
+                  <th>Trạng thái</th>
                   <th>Ngày cập bến</th>
                   <th>Ngày rời bến</th>
                   <!-- <th>Trạng thái</th> -->
@@ -40,9 +42,10 @@
                   <td>{{item.code}}</td>
                   <td>{{item.customer}}</td>
                   <td>{{item.type}}</td>
-                  <td>{{item.vessel}}</td>
-                  <td>{{item.lastPort}}</td>
-                  <td>{{item.location}}</td>
+                  <th>{{convertHelper.showStatus(item.status)}}</th>
+                  <td>{{convertHelper.showActivity(item.activity)}}</td>
+                  <td>{{convertHelper.showSide(item.side)}}</td>
+                  <td>{{convertHelper.showState(item.state)}}</td>
                   <td>{{item.dateCheckIn}}</td>
                   <td>{{item.dateCheckOut | date:'short'}}</td>
                   <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
@@ -56,6 +59,9 @@
           </div>
         </div>
       </div>
+    </mat-tab>
+    <mat-tab label="Lịch sử container">
+      <app-container-history-index *ngIf="selected == 1"></app-container-history-index>
     </mat-tab>
     <mat-tab label="Hình ảnh">
 

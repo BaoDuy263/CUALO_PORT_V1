@@ -10,6 +10,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ExportcontainershipComponent implements OnInit {
 
   @Input() Id : number = 0;
+  @Input() ContNo : string = "";
+  @Input() Location : string = "";
   constructor(private service : ImportContFromShipService,public dialogRef: MatDialogRef<ExportcontainershipComponent>) { }
 
   ngOnInit(): void {
