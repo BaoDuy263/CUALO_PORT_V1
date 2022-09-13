@@ -171,7 +171,8 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     ExportcontainershipComponent,
     ContainerImagesEditComponent,
     ContainerImgIndexComponent,
-    ContainerDialogComponent
+    ContainerDialogComponent,
+    ContainerHistoryIndexComponent
   ],
   imports: [
     CommonModule,

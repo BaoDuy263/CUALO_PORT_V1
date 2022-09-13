@@ -1,8 +1,7 @@
 import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { ContImagesPaging, lstContainer } from 'src/app/Model/Container';
-import { lstContainer, lstContHistory } from 'src/app/Model/Container';
+import { ContImagesPaging, lstContainer, lstContHistory } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
@@ -63,7 +62,7 @@ export class ContainerIndexComponent implements OnInit {
   constructor(
     private containerService: ContainerService,
     public dialog: MatDialog,
-    private toastr: ToastrcustomService
+    private toastr: ToastrcustomService,
     public convertHelper: convertHelper
   ) {}
 
