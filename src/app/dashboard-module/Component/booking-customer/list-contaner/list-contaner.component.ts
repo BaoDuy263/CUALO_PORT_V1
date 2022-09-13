@@ -93,5 +93,6 @@ export class ListContanerComponent implements OnInit {
 
 export interface Container {
   code: string,
-  status: number
+  status: number,
+  impExpDate: Date
 }
