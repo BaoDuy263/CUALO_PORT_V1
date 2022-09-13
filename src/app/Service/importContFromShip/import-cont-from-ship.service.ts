@@ -62,7 +62,7 @@ export class ImportContFromShipService {
   }
 
   Delete(id: number){
-    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?Id='+id);
+    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?Id=' + id);
   }
 
   //From port to ship
@@ -111,6 +111,14 @@ export class ImportContFromShipService {
 
   DeletePorttoShip(id: number){
     return this.httpService.deleteRequest('PlanExportFromPorttoShip/Delete?Id='+id);
+  }
+
+  GetLocationFree(){
+    return this.httpService.getRequest('MapContYard3/GetLocationFree');
+  }
+
+  ImportAndUpdate(data : BayPlanUpdate){
+    return this.httpService.putRequest('PlanImportFromShiptoPort/ImportAndUpdate',data);
   }
 }
 

@@ -10,7 +10,7 @@ export class CommonserviceService {
 
   _urlApi: string = environment.urlApi + '/api/';
   //  _urlApi: string = 'http://localhost:5000/api/';
-  // _urlApi: string = 'http://localhost:7611/api/';
+  //_urlApi: string = 'http://localhost:7611/api/';
 
   constructor(
     private http: HttpClient

@@ -45,7 +45,6 @@ export class IndexbayplanComponent implements OnInit {
   Paging() {
     this.service.Paging(this.PageInfo).subscribe(
       data => {
-        console.log('data',data);
         this.loadding = false;
           this.lstdata = data.data;
             this.Pagination.currentPage = data.data.currentPage,

@@ -7,7 +7,8 @@ export interface BayPlanPaging
     ContNo : string,
     BillNo : string,
     FromDate? : Date,
-    ToDate? : Date
+    ToDate? : Date,
+    isThuchien: boolean
 }
 
 export interface BayPlanIndex
@@ -29,13 +30,14 @@ export interface BayPlanRecord
     commodity : string,
     sealNo : string,
     returnPlan: Date,
-    typeDirection: number,
+    activity: number,
     dateUpdate: Date,
     dateCheckIn: Date,
     step: number,
     impExpDate : Date,
     outDeliveryDate : Date,
     inDeliveryDate : Date,
+    location : string
 }
 
 
@@ -78,7 +80,8 @@ export interface BayPlanUpdate
     Book : string,
     ReturnAddress : string,
     StatusContainer : string,
-    Direction : string,
+    Activity : string,
+    Location: string,
     Shipper : string,
     TypeCont : string,
     impExpDate : Date,
