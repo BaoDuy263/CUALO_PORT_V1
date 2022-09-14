@@ -15,6 +15,7 @@ export interface BookingCustomer
     status : string,
     listContainer: string,
     countContainer: number,
+    isPrinted: boolean,
     dateCheckOut: Date,
     createdOn: Date
 }

@@ -76,14 +76,14 @@ export class BookingCustomerIndexComponent implements OnInit {
   Pagingdata(PageInfo: any) {
     this.loadding = true;
     this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date?.slice(0, 10))
-    .subscribe(data => {
-      this.loadding = false;
-      this.lstdata = data;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+      .subscribe(data => {
+        this.loadding = false;
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      })
   }
 
   GetListSelectCustomer() {

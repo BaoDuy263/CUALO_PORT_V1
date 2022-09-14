@@ -5,7 +5,7 @@
 <div class="list-container">
   <div>
     <h3>Container đang sử dụng: <p class="label-container">
-      <span *ngFor="let item of itemSelected">{{item}}<i class="bi bi-x" (click)="removeAssigneContainer(item)"></i></span></p></h3>
+      <span *ngFor="let item of itemSelected">{{item}}<i *ngIf="!planDetail.isPrinted" class="bi bi-x" (click)="removeAssigneContainer(item)"></i></span></p></h3>
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
     <table class="table">

@@ -35,6 +35,7 @@ export class ListContanerComponent implements OnInit {
     this.loadData(this.PageInfo);
     this.itemSelected = this.planDetail?.listContainer.split(",");
     this.itemSelected = this.itemSelected.filter(item => item != '');
+    console.log(this.planDetail)
   }
 
   loadData(PageInfo: any) {
