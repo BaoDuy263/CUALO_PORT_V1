@@ -35,9 +35,9 @@ export class convertHelper {
   showStatus(value: number) {
     switch (value) {
       case 0:
-        return "Rỗng"
+        return "E"
       case 1:
-        return "Đầy"
+        return "F"
       default:
         return "";
     }

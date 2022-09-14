@@ -6,15 +6,15 @@
 </div>
 <div class="row" style=" margin-bottom: 25px;">
   <div class="col-sm-6 d-flex">
-    <div class="col-sm-4">
+    <div class="col-sm-4 mr-20">
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 mr-20">
       <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
         [(ngModel)]="PageInfo.startDate" (ngModelChange)="startDate($event)">
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 mr-20">
       <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
         [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
     </div>

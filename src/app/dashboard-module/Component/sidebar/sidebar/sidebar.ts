@@ -98,39 +98,33 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     roles: ["Admin"],
     // },
     {
-        name :'Nghiệp vụ xuất nhập tàu',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Nhập cont từ tàu',
-                url: 'nhapcont',
-                roles: ["Admin"],
-            },
-            {
-                name :'Xuất cont lên tàu',
-                url: 'xuatcont',
-                roles: ["Admin"],
-            },
-            {
-                name :'Quản lý lịch tàu',
-                roles: ["Admin"],
-                url:'quanlylichtau'
-            },
-        ]
-    },
-    {
       name :'Nghiệp vụ tại cảng',
       roles: ["Admin", "ds"],
       children : [
           {
-              name :'Cấp rỗng/đóng rời',
+              name :'Nhập cont từ tàu',
+              url: 'nhapcont',
+              roles: ["Admin"],
+          },
+          {
+              name :'Lấy nguyên/rút ruột-Trả rỗng',
               url:'plan-packing',
               roles: ["Admin", "ds"],
           },
           {
-              name : 'Trả nguyên/rút ruột',
+              name : 'Cấp rỗng/đóng hàng-Hạ bãi',
               url: 'import-container',
               roles: ["Admin", "ds"],
+          },
+          {
+            name :'Xuất cont lên tàu',
+            url: 'xuatcont',
+            roles: ["Admin"],
+          },
+          {
+            name :'Quản lý lịch tàu',
+            roles: ["Admin"],
+            url:'quanlylichtau'
           },
       ]
     },

@@ -7,20 +7,28 @@
   </div>
   <div class="row" style=" margin-bottom: 25px;">
     <div class="col-sm-4 d-flex">
-      <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
+      <input type="text" class="form-control mr-20" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
-      <input type="datetime-local" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's created on"
+      <input type="datetime-local mr-20" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's created on"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Date" (ngModelChange)="onSearchDate($event)">
     </div>
-    <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
-      <div class="file-input">
-        <button class="btn btn-secondary" (click)="downloadTemp()">Tải file mẫu</button>
-        <input type="file" name="file-input" id="file-input" class="file-input__input" (change)="fileUpload($event)" />
-        <label class="file-input__label btn btn-success" for="file-input">
-          <span>Import file</span></label>
+    <div class="col-sm-8">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Hành động
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <!-- <li><a class="dropdown-item" >Thêm mới</a></li> -->
+          <li><button class="btn btn-transparent w-100" (click)="downloadTemp()">Tải file mẫu</button></li>
+          <li><input type="file" name="file-input" id="file-input" class="file-input__input"
+              (change)="fileUpload($event)" />
+            <label class="file-input__label btn btn-transparent w-100" for="file-input">
+              <span>Import file</span></label></li>
+          <li><button class="btn btn-transparent w-100" type="button" id="button-addon3" (click)="openCreate()">Thêm
+              mới</button></li>
+        </ul>
       </div>
-      <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
-        mới</button>
     </div>
     <div class="row">
       <div class="table-responsive">
@@ -30,10 +38,11 @@
               <th style="text-align: center;">STT</th>
               <th>Tên Khách hàng</th>
               <th>Hình thức</th>
-              <th>Loại container</th>
+              <th>Kích cỡ container</th>
               <th>Tên lái xe</th>
               <th>Tên tàu</th>
               <th>Vị trí trả hàng</th>
+              <th>Số container</th>
               <th>Ghi chú</th>
               <th>Ngày tạo</th>
               <!-- <th>Trạng thái</th> -->
@@ -49,6 +58,7 @@
               <td>{{item.shipperName}}</td>
               <td>{{item.shipName}}</td>
               <td>{{item.positionReturn}}</td>
+              <td>{{item.countContainer}}</td>
               <td>{{item.note}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
               <td class="column-action" style="text-align: center;">
@@ -68,4 +78,3 @@
       </div>
     </div>
   </div>
-
