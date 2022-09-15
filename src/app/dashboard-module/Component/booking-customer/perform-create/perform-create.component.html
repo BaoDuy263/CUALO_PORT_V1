@@ -26,10 +26,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Hình thức</label><br />
-          <select
-            class="form-control"
-            formControlName="activity"
-          >
+          <select class="form-control" formControlName="activity">
             <option *ngFor="let activity of activities" [ngValue]="activity.value">{{activity.name}}</option>
           </select>
         </div>
@@ -240,6 +237,21 @@
           <label for="exampleFormControlInput1" class="form-label">Loại container</label>
           <input type="text" class="form-control" formControlName="typeCont">
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)"></app-autocomplete>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
+        <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.nameDriver : ''">
+      </div>
+      <div class="col-lg-4">
+        <label for="exampleFormControlInput1" class="form-label">Tên công ty</label>
+        <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.customer : ''">
       </div>
     </div>
     <div class="row">

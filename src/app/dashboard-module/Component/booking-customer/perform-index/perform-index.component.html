@@ -9,7 +9,7 @@
     <div class="col-sm-4 d-flex">
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
-      <input type="datetime-local" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's created on"
+      <input type="datetime-local" class="form-control"  style="margin-left: 20px;" placeholder="Tìm kiếm" aria-label="Recipient's created on"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Date" (ngModelChange)="onSearchDate($event)">
     </div>
     <!-- <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
@@ -66,7 +66,7 @@
     </div>
   </div>
 
-  <div hidden id="eir">
+  <div id="eir" style="font-size: 11px; line-height: 8px;">
     <div class="eir-line1">
       <table style="width: 100%">
         <tr>
@@ -156,9 +156,19 @@
     <div class="eir-line5">
       <table style="width: 100%; text-align: center;">
         <tr>
-          <td style="width: 30%"><b>BÊN GIAO (Deliver)</b></td>
+          <td style="width: 30%;"><b>BÊN GIAO (Deliver)</b></td>
           <td style="width: 30%"><b>BÊN NHẬN (Receiver)</b></td>
           <td style="width: 30%"><b>LÁI NÂNG (Drive)</b></td>
+        </tr>
+        <tr>
+          <td style="width: 30%; height: 150px;"><b></b></td>
+          <td style="width: 30%"><b></b></td>
+          <td style="width: 30%"><b></b></td>
+        </tr>
+        <tr>
+          <td style="width: 30%;"><b>{{itemPrint?.shipperName}}</b></td>
+          <td style="width: 30%"><b></b></td>
+          <td style="width: 30%"><b></b></td>
         </tr>
       </table>
     </div>
