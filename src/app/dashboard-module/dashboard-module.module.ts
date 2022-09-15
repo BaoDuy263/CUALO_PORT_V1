@@ -1,3 +1,4 @@
+import { AutocompleteComponent } from './../View/autocomplete/autocomplete.component';
 import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,7 @@ import { PaginationComponent } from '../View/pagination/pagination.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
-import { LoadingComponent } from '../View/loading/loading.component'
+import { LoadingComponent } from '../View/loading/loading.component';
 //Thư viện
 
 // import {MatMenuModule} from '@angular/material/menu';
@@ -27,6 +28,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
@@ -92,6 +94,8 @@ import { ExportcontainershipComponent } from './Component/importContFromShip/exp
 import { ContainerHistoryIndexComponent } from './Component/container/container-history-index/container-history-index.component';
 import { ContainerImgIndexComponent } from './Component/container/container-img-index/container-img-index.component';
 import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -105,7 +109,7 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     TaikhoanComponent ,
     //view
     PaginationComponent,
-
+    AutocompleteComponent,
     MultidropdownComponent,
     SidebarComponent,
     LoadingComponent,
@@ -129,7 +133,6 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     BookingImportContCreateComponent,
     BookingImportContDeleteComponent,
     BookingImportContIndexComponent,
-    MultidropdownComponent,
     SidebarComponent,
     ExampleComponent,
     QLTaiKhoanCreateComponent,
@@ -184,6 +187,9 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
     //
     FormsModule,
     ReactiveFormsModule,

@@ -1,8 +1,11 @@
+import { filter } from 'rxjs/operators';
+import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { activitiesPacking } from '../helper/constant';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-perform-create',
@@ -12,10 +15,17 @@ import { activitiesPacking } from '../helper/constant';
 export class PerformCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  isCreate : boolean = true;
+  isCreate: boolean = true;
   performId: number = 0;
   activities = activitiesPacking;
-  constructor(private bookingService : BookingServiceService,public dialogRef: MatDialogRef<PerformCreateComponent>) {
+  lstVehicle: any = [];
+  vehicleSelected: any = null;
+  PageInfo = {
+    page: 1,
+    Keyword: '',
+    pageSize: 10
+  }
+  constructor(private bookingService: BookingServiceService, private vehicleService: VehicleService, public dialogRef: MatDialogRef<PerformCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       activity: new FormControl(),
       billNo: new FormControl(''),
@@ -72,9 +82,10 @@ export class PerformCreateComponent implements OnInit {
       voyage: new FormControl(''),
       weight: new FormControl(),
     })
-   }
+  }
 
   ngOnInit(): void {
+    this.loadVehicles();
     this.bookingService.GetDetailPerform(this.performId).subscribe(res => {
       res = res.data;
       this.CreateEditForm = new FormGroup({
@@ -136,19 +147,32 @@ export class PerformCreateComponent implements OnInit {
     })
   }
 
+  loadVehicles() {
+    setTimeout(() => {
+      this.vehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+        this.lstVehicle = data.data;
+      })
+    }, 300);
+  }
+
   onSubmit() {
     this.submited = true;
-    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-    // if(this.CreateEditForm.valid && this.isCreate === true){
-    //   this.bookingService.Insert(this.CreateEditForm.value).subscribe(response => {
-    //       this.dialogRef.close(response);
-    //   });
-    // }
-    if(this.CreateEditForm.valid && this.isCreate === false){
+    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity);
+    this.CreateEditForm.value.shipperName = this.vehicleSelected.nameDriver;
+    this.CreateEditForm.value.vehicleNo = this.vehicleSelected.licensePlates;
+    if (this.CreateEditForm.valid && this.isCreate === false) {
       this.bookingService.UpdatePerform(this.CreateEditForm.value).subscribe(response => {
-          this.dialogRef.close(response);
+        this.dialogRef.close(response);
       })
     }
+  }
+
+  handleSelect(value: any) {
+    const index = this.lstVehicle.findIndex((item:any) => item.licensePlates === value);
+    if (index < 0) {
+      return;
+    }
+    this.vehicleSelected = this.lstVehicle[index];
   }
 
 }

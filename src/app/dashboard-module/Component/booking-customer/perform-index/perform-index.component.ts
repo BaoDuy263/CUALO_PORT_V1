@@ -1,3 +1,4 @@
+import { Vehicle } from './../../../../Model/Vehicle';
 import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
 import { PerformCreateComponent } from './../perform-create/perform-create.component';
 import { convertHelper } from './../helper/convertHelper';
@@ -76,21 +77,6 @@ export class PerformIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  openCreate() {
-    // const dialogRef = this.dialog.open(BookingCustomerCreateComponent);
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     if (result.statusCode === 200) {
-    //       this.toastr.showSuccess(result.message);
-    //       this.Pagingdata(this.PageInfo);
-    //     }
-    //     else {
-    //       this.toastr.showError(result.message);
-    //     }
-    //   }
-    // });
-  }
-
   openEdit(id: number) {
     this.isCreate = false;
     this.bookCutomerId = id;
@@ -119,7 +105,6 @@ export class PerformIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -137,6 +122,7 @@ export class PerformIndexComponent implements OnInit {
 
   handlePrinter(item: Perform) {
     this.itemPrint = item;
+    console.log(this.itemPrint)
     var divContents = document.getElementById('eir')?.innerHTML || '';
     var printWindow = window.open('', '', 'height=768,width=1366');
     printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
