@@ -102,6 +102,7 @@ export class ContainerMapsIndexComponent implements OnInit {
   dataReturned: any;
   listInfo: any = {};
 
+  NumCont: string = '';
   IdSouce: string = '';
   IdTaget: string = '';
 
@@ -120,10 +121,10 @@ export class ContainerMapsIndexComponent implements OnInit {
     this.listInfo.pageNumber = 1;
     this.listInfo.pageSize = 1000;
     this.listInfo.contNo = '';
-    console.log(this.listInfo);
+    //console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
-      // console.log(data.item1);
+      // //console.log(data.item1);
       this.listContYarn3 = data.item1;
       this.displayListCont(this.listContYarn3);
     });
@@ -140,7 +141,7 @@ export class ContainerMapsIndexComponent implements OnInit {
     var arrE1 = [];
     var arrE2 = [];
 
-    console.log(listCont);
+    //console.log(listCont);
 
     for (let i = 0; i < listCont.length; i++) {
       var lable = listCont[i]['positionLabel'].charAt(0);
@@ -176,9 +177,9 @@ export class ContainerMapsIndexComponent implements OnInit {
         arrE2.push(listCont[i]);
       }
     }
-    console.log('------------------------');
-    console.log(arrE1);
-    console.log(arrE2);
+    //console.log('------------------------');
+    //console.log(arrE1);
+    //console.log(arrE2);
     var listA1 = this.sortList(arrA1, 21, 1, 'A');
     var listA2 = this.sortList(arrA2, 21, 2, 'A');
     var listB1 = this.sortList(arrB1, 21, 1, 'B');
@@ -191,9 +192,9 @@ export class ContainerMapsIndexComponent implements OnInit {
     // var listE2 = this.sortList(arrE2, 21, 2, 'E');
     var listE1 = this.sortList(arrE1, 21, 1, 'E');
     var listE2 = this.sortList(arrE2, 21, 2, 'E');
-    console.log('======');
-    console.log(listE1);
-    console.log(listE2);
+    //console.log('======');
+    //console.log(listE1);
+    //console.log(listE2);
 
     this.listA8_1 = listA1.slice(0, 8);
     this.listA10_1 = listA1.slice(8, 10);
@@ -249,9 +250,9 @@ export class ContainerMapsIndexComponent implements OnInit {
     this.listD21_1 = listD1.slice(16, 21);
 
     this.listE8_2 = listE2.slice(0, 8);
-    console.log('$$$$$$$$$$$$$$$$');
-    console.log(this.listE8_2);
-    console.log('################');
+    //console.log('$$$$$$$$$$$$$$$$');
+    //console.log(this.listE8_2);
+    //console.log('################');
 
     this.listE10_2 = listE2.slice(8, 10);
     this.listE12_2 = listE2.slice(10, 12);
@@ -300,13 +301,23 @@ export class ContainerMapsIndexComponent implements OnInit {
 
   SetChange() {
     this.IsChangeLocal = true;
-    console.log('-----------------');
+    //console.log('-----------------');
     // this.listContAfterSearch(event.target.value);
   }
   SaveChange() {
-    this.IsChangeLocal = false;
-    alert(this.IdSouce + '######' + this.IdTaget);
-    console.log('-----------------');
+    // this.IsChangeLocal = false;
+    // alert(this.NumCont +' : ' +this.IdSouce + '######' + this.IdTaget);
+    // //console.log('-----------------');
+    var _DataInput: any = {};
+    _DataInput.ContNo = this.NumCont;
+    _DataInput.oldLocation = this.IdSouce;
+    _DataInput.newLocaiton = this.IdTaget;
+    var _mDataInput = JSON.stringify(_DataInput);
+    console.log(_mDataInput);
+    this.MapContYarn3Service_.MoveLocalCont(_DataInput).subscribe((data) => {
+      // this.listContYarn3 = data;
+      console.log(data);
+    });
     // this.listContAfterSearch(event.target.value);
   }
 
@@ -393,13 +404,14 @@ export class ContainerMapsIndexComponent implements OnInit {
 
   btnSouceChange(contInfo: any, code: any) {
     // Vị trí chuyển
-    this.IdSouce = code;
+    this.NumCont = contInfo.code;
+    this.IdSouce = contInfo.positionLabel;
     this.contInfo.BackgroundColour = 'red';
   }
 
   btnTagetChange(contInfo: any, code: any) {
     // Vị trí chuyển
-    this.IdTaget = code;
+    this.IdTaget = contInfo.positionLabel;
     this.contInfo.BackgroundColour = 'green';
   }
 }
