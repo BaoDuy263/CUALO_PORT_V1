@@ -93,9 +93,11 @@ import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-a
 import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component';
 import { ContainerHistoryIndexComponent } from './Component/container/container-history-index/container-history-index.component';
 import { ContainerImgIndexComponent } from './Component/container/container-img-index/container-img-index.component';
-import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
+import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
+import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
 
 
 
@@ -172,7 +174,9 @@ import { MatInputModule } from '@angular/material/input';
     ExportcontainershipComponent,
     ContainerHistoryIndexComponent,
     ContainerImgIndexComponent,
-    ContainerDialogComponent
+    ContainerDialogComponent,
+    ContainerMapsIndexComponent,
+    ContainerMapsInfoComponent,
   ],
   imports: [
     CommonModule,

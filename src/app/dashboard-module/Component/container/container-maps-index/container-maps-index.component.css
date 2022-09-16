@@ -1,0 +1,166 @@
+.CellMapItem {
+  width: 4.1%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: solid 1px #c4cde6;
+  height: 19px;
+}
+
+.MapItem:hover {
+  background-color: red;
+}
+.MapItemEmpty:hover {
+  background-color: red;
+
+}
+
+.CellMapItemLebel {
+  width: 4.1%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: solid 1px #c4cde6;
+  background-color: #6685e0;
+  color: #fff;
+  height: 19px;
+}
+
+.CellMapItemSplip {
+  width: 0.45%;
+  padding: 1px;
+  background-color: #fff!important;
+}
+
+.MapItem_Header {
+  background-color: yellow;
+  padding: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.MapItem {
+  padding-top: 1px;
+  padding-bottom: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+}
+.MapItemEmpty {
+  width: 100%;
+  height: 100%;
+}
+
+.MapItemOutOfDate {
+  padding-top: 1px;
+  padding-bottom: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  background-color: red;
+  color: #fff;
+}
+
+.CellMapItem_1 {
+  width: 4.1%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  height: 20px;
+}
+
+.CellMapItem_2 {
+  height: 20px;
+  width: 8.2%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.CellMapItem_62 {
+  height: 20px;
+  width: 25.5%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.CellMapItem_7 {
+  height: 20px;
+  width: 28.7%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.CellMapItem_8 {
+  height: 20px;
+  width: 32.88%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.CellMapItemSplip_BCD {
+  width: 0.45%;
+  padding: 1px;
+}
+
+.CellMapItem_BCD {
+  width: 4.1%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: solid 1px #c4cde6;
+  min-height: 20px !important;
+  height: 20px;
+}
+
+.CellMapItem_BCD_2_3 {
+  width: 8.2%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  border: solid 1px #c4cde6;
+  border-top: solid 1px #f4f5f8;
+  border-bottom: solid 1px #f4f5f8;
+  background-color: #f4f5f8;
+}
+
+.CellMapItem_BCD_3 {
+  width: 12.3%;
+  padding: 1px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: solid 1px #c4cde6;
+}
+
+.Tr_BG{
+  background-color: #f4f5f8;
+}
+.none{
+  display: none;
+}
+.hiddenColor{
+  color: #002db1;
+}
+.blockColor{
+  color: #c4cde6;
+}
+
+#scroll-list{
+  height: 200px;
+  }
+
+  .ItemHeight
+  {
+    height: 40px;
+
+  }
