@@ -122,14 +122,15 @@ export class PerformIndexComponent implements OnInit {
 
   handlePrinter(item: Perform) {
     this.itemPrint = item;
-    console.log(this.itemPrint)
-    var divContents = document.getElementById('eir')?.innerHTML || '';
-    var printWindow = window.open('', '', 'height=768,width=1366');
-    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    printWindow?.document.write('</head><body>');
-    printWindow?.document.write(divContents);
-    printWindow?.document.write('</body></html>');
-    printWindow?.document.close();
-    printWindow?.print();
+    setTimeout(() => {
+      var divContents = document.getElementById('eir')?.innerHTML || '';
+      var printWindow = window.open('', '', 'height=768,width=1366');
+      printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
+      printWindow?.document.write('</head><body>');
+      printWindow?.document.write(divContents);
+      printWindow?.document.write('</body></html>');
+      printWindow?.document.close();
+      printWindow?.print();
+    }, 300);
   }
 }
