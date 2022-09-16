@@ -316,7 +316,15 @@ export class ContainerMapsIndexComponent implements OnInit {
     console.log(_mDataInput);
     this.MapContYarn3Service_.MoveLocalCont(_DataInput).subscribe((data) => {
       // this.listContYarn3 = data;
-      console.log(data);
+      console.log(data.statusCode);
+      if(data.statusCode=='200')
+      this.mContainerService.MapYar3List().subscribe((data) => {
+        this.listContYarn3 = data.item1;
+        this.displayListCont(this.listContYarn3);
+        console.log(this.listContYarn3);
+        this.Resethange();
+        this.IsChangeLocal = false;
+      });
     });
     // this.listContAfterSearch(event.target.value);
   }
