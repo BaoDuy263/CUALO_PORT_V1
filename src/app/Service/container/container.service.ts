@@ -47,8 +47,14 @@ export class ContainerService {
   ContImagesGetList(code: string) {
     return this.httpService.getRequest("Container/images-get-list?ContNo="+code)
   }
-  ContImagesEmptryGetList(code: string) {
-    return this.httpService.getRequest("Container/containers-images-empty?Page=1&PageSize=1000")
+  ContImagesEmptryGetList(code: string, dateFrom: string, dateTo: string , status: number) {
+    console.log(code);
+    let dateFrom_= dateFrom;
+    let dateTo_= dateTo;
+    // console.log(dateFrom_);
+    // console.log('------');
+    // console.log(dateTo_);
+    return this.httpService.getRequest(`Container/containers-images-empty?Page=1&PageSize=1000&Keyword=${code}&StartDate=${dateFrom_}&EndDate=${dateTo_}&Status=${status}`)
   }
 
   GetAllContEmpt(page: number, searchText: string, numberDis: number) {

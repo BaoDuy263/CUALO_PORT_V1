@@ -1,6 +1,8 @@
 import { AutocompleteComponent } from './../View/autocomplete/autocomplete.component';
 import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
+
 
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
 //Component
@@ -13,6 +15,7 @@ import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component'
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 import { LoadingComponent } from '../View/loading/loading.component';
+
 //Thư viện
 
 // import {MatMenuModule} from '@angular/material/menu';
@@ -98,6 +101,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
 import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
 import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
+import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
 
 
 
@@ -177,6 +181,7 @@ import { ContainerMapsInfoComponent } from './Component/container/container-maps
     ContainerDialogComponent,
     ContainerMapsIndexComponent,
     ContainerMapsInfoComponent,
+    ContainerImagesEditComponent
   ],
   imports: [
     CommonModule,
@@ -197,6 +202,7 @@ import { ContainerMapsInfoComponent } from './Component/container/container-maps
     //
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     //
     // ToastrModule.forRoot()
   ],
