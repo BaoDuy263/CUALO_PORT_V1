@@ -35,7 +35,7 @@ export class ContainerIndexComponent implements OnInit {
     data: []
   };
 
-  ImagesContSeach: ContImagesPaging = {
+  ImagesContSeach = {
     Page: 1,
     PageSize: 1000,
     ContNo: '',
@@ -74,11 +74,11 @@ export class ContainerIndexComponent implements OnInit {
       console.log(this.lstCont);
     });
 
-    let LastDate = new Date();
-    LastDate.setDate(LastDate.getDate() - 10);
-    console.log('-------------------');
-    this.ImagesContSeach.FromDate = LastDate.toDateString();
-    this.ImagesContSeach.ToDate = new Date().toDateString();
+    // let LastDate = new Date();
+    // LastDate.setDate(LastDate.getDate() - 10);
+    // console.log('-------------------');
+    // this.ImagesContSeach.FromDate = LastDate.toDateString();
+    // this.ImagesContSeach.ToDate = new Date().toDateString();
     this.loadDataImages();
   }
 
@@ -152,6 +152,7 @@ export class ContainerIndexComponent implements OnInit {
     })
   }
 
+
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     this.PageInfo = pageOfItems
@@ -166,15 +167,24 @@ export class ContainerIndexComponent implements OnInit {
 
   onSearchContainer(e: any) {
     this.ImagesContSeach.ContNo = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
   }
 
   onSearchFromDate(e: any) {
     this.ImagesContSeach.FromDate = e;
+    this.loadDataImages();
   }
 
   onSearchToDate(e: any) {
     this.ImagesContSeach.ToDate = e;
+    this.loadDataImages();
   }
+
+
+
+
+
   checkSelected(event: any) {
     // console.log('sdfjsdfsdjfsdfsdfsdfs----' + this.CheckedImagesEmtry);
     if (event.target.checked) this.CheckedImagesEmtry = true;
