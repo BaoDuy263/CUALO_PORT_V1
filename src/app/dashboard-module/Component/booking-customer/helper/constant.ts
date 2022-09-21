@@ -32,7 +32,7 @@ export const lstTypeDelivery = [
 ]
 
 export const lstTypeContData = [
-  "container20f", "container40f"
+  "20'DC", "20'OT", "40'DC", "40'OT"
 ]
 
 export const lstSide = [

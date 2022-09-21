@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { activitiesData, lstState } from "./constant";
+import { activitiesData, lstState, lstStep } from "./constant";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { activitiesData, lstState } from "./constant";
 
 export class convertHelper {
   showActivity(value: number) {
-    return value ? activitiesData[value].name : "";
+    return activitiesData[value].name;
   }
 
   showStatus(value: number) {
@@ -37,7 +37,11 @@ export class convertHelper {
   }
 
   showState(value: number) {
-    return value ? lstState[value-1].name : "";
+    return value >= 1 ? lstState[value-1].name : "";
+  }
+
+  showStep(value: number) {
+    return lstStep[value].name;
   }
 
 }
