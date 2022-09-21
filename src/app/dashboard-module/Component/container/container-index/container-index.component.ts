@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { lstContainer, lstContHistory } from 'src/app/Model/Container';
+import { ContImagesPaging, lstContainer, lstContHistory } from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
@@ -22,6 +22,10 @@ export class ContainerIndexComponent implements OnInit {
   listImages: any = [];
   UrlRoot: string = 'https://cclo.phanmem.one';
 
+  selectedCont: any;
+  CheckedImagesEmtry: boolean = true;
+  lstCont: any = [];
+
   loading: boolean = false;
   isCreate: boolean = true;
   containerCode: string = '';
@@ -31,6 +35,15 @@ export class ContainerIndexComponent implements OnInit {
     totalRecord: 0,
     totalPage: 0,
     data: []
+  };
+
+  ImagesContSeach = {
+    Page: 1,
+    PageSize: 1000,
+    ContNo: '',
+    FromDate: '',
+    ToDate: '',
+    Status: -1,
   };
 
   Pagination: Pagination = {
@@ -61,7 +74,17 @@ export class ContainerIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-    // this.loadDataImages()
+    this.containerService.Paging(1, '', 1200).subscribe((data) => {
+      this.lstCont = data.data;
+      console.log(this.lstCont);
+    });
+
+    // let LastDate = new Date();
+    // LastDate.setDate(LastDate.getDate() - 10);
+    // console.log('-------------------');
+    // this.ImagesContSeach.FromDate = LastDate.toDateString();
+    // this.ImagesContSeach.ToDate = new Date().toDateString();
+    this.loadDataImages();
   }
 
   setOpen(item: any) {
@@ -78,12 +101,29 @@ export class ContainerIndexComponent implements OnInit {
       //  }
     });
 
+   }
+   loadDataImages() {
+    let code = '',
+      dateFrom = '',
+      dateTo = '',
+      status = 1;
+    console.log(this.selectedCont);
+    if (this.selectedCont != undefined) code = this.selectedCont;
+    this.containerService
+      .ContImagesEmptryGetList(
+        code,
+        this.ImagesContSeach.FromDate,
+        this.ImagesContSeach.ToDate,
+        status
+      )
+      .subscribe((data) => {
+        console.log(data.data);
+        this.listImages = data.data;
+      });
   }
-  loadDataImages() {
-    this.containerService.ContImagesEmptryGetList('').subscribe((data) => {
-      console.log(data.data);
-      this.listImages = data.data;
-    });
+
+  btnSeach_Click() {
+    this.loadDataImages();
   }
 
   loadData(PageInfo: any) {
@@ -118,6 +158,7 @@ export class ContainerIndexComponent implements OnInit {
     })
   }
 
+
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     this.PageInfo = pageOfItems
@@ -128,6 +169,35 @@ export class ContainerIndexComponent implements OnInit {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
     this.loadData(this.PageInfo);
+  }
+
+  onSearchContainer(e: any) {
+    this.ImagesContSeach.ContNo = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
+  onSearchFromDate(e: any) {
+    this.ImagesContSeach.FromDate = e;
+    this.loadDataImages();
+  }
+
+  onSearchToDate(e: any) {
+    this.ImagesContSeach.ToDate = e;
+    this.loadDataImages();
+  }
+
+
+
+
+
+  checkSelected(event: any) {
+    // console.log('sdfjsdfsdjfsdfsdfsdfs----' + this.CheckedImagesEmtry);
+    if (event.target.checked) this.CheckedImagesEmtry = true;
+    else this.CheckedImagesEmtry = false;
+
+    console.log(this.CheckedImagesEmtry);
+    // this.ImagesContSeach.ToDate = e;
   }
 
   openCreate() {

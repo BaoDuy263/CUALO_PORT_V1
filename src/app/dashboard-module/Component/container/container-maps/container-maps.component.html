@@ -1,18 +1,32 @@
+<div scrollX="true" scrollY="true"
+  style="height: 86vh;background-color: #fff;margin-top: -10px;padding-right:10px;padding-left:10px;">
+  <div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div style="text-align: center; margin: 10px 0px; position: relative ">
+          <select class="form-control" formControlName="code">
+            <option value="-1">Chọn loại bản đồ Container</option>
+            <!-- <option *ngFor="let item of lstCont; index as i">{{item.code}}</option> -->
+          </select>
 
-<div scrollX="true" scrollY="true" style="height: 86vh;background-color: #fff;margin-top: -10px;padding-right:10px;padding-left:10px;">
-  <div >
-      <div style="text-align: center; margin: 10px 0px; position: relative ">
-        <input (keyup)="onKey($event)" type="text" name="" id="" placeholder="Tìm kiếm Container" style="border: 1px solid #c9c9c9; padding: 8px 10px;
-        width: 100%;
-        border-radius: 6px;margin-top: 10px;">
-        <div style=" position: absolute; top: 6px; font-size: 24px; right: 18px;">
-          <i name="search-outline"></i>
         </div>
       </div>
+      <div class="col-lg-9">
+        <div style="text-align: center; margin: 10px 0px; position: relative ">
+          <input (keyup)="onKey($event)" type="text" name="" id="" placeholder="Tìm kiếm Container" style="border: 1px solid #c9c9c9; padding: 8px 10px;
+            width: 100%;
+            border-radius: 6px;">
+          <div style=" position: absolute; top: 6px; font-size: 24px; right: 18px;">
+            <i name="search-outline"></i>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <table style="width: 100%!important;height: 100%;">
 
-      <tr class="ItemHeight">
+    <table style="width: 100%!important;">
+
+      <tr>
         <td class="CellMapItem">
           <span style="font-size: 10px; font-weight: bold;">STT</span>
         </td>
@@ -98,29 +112,33 @@
         </td>
       </tr>
 
-      <tr class="ItemHeight">
+      <tr>
         <td rowspan="2" class="CellMapItemLebel">
-          E
+          dfsdfsdfsdf
+          <li *ngFor="let index of [0,1,2,3,4,5]">
+            {{ index }}
+          </li>
         </td>
-        <td *ngFor="let item of listE8_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position then thenBlock else elseBlock">
+        <td *ngFor="let item of listE8_2" class="CellMapItem">
+          {{item}}
+          <!-- <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
-            <div class="MapItem"  (click)="setOpen(item)">
-              [x]
+            <div class="MapItem" (click)="setOpen(item)">
+              [x] {{item.code}}
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
-          </ng-template>
+          </ng-template> -->
         </td>
 
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE10_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -129,7 +147,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -137,7 +155,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE12_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -146,14 +164,14 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE14_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -162,7 +180,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -171,7 +189,7 @@
           E
         </td>
         <td *ngFor="let item of listE21_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -180,7 +198,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -190,10 +208,10 @@
         </td>
       </tr>
 
-      <tr class="ItemHeight">
+      <tr>
 
         <td *ngFor="let item of listE8_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -202,7 +220,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -210,7 +228,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE10_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -219,7 +237,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -227,7 +245,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE12_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -236,7 +254,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -244,7 +262,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listE14_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -253,16 +271,16 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem">
-          STT
-        </td> -->
+            STT
+          </td> -->
         <td *ngFor="let item of listE21_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -271,20 +289,20 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem">
-          STT
-        </td> -->
+            STT
+          </td> -->
       </tr>
 
     </table>
 
     <table style="width: 100%!important; margin-top: 1px; margin-bottom: 1px;">
-      <tr class="Tr_BG ItemHeight">
+      <tr class="Tr_BG">
         <td class="CellMapItem_1">
         </td>
 
@@ -296,20 +314,20 @@
         </td>
 
         <td class="CellMapItem_62">
-          LỐI ĐI RỘNG 14M 1
+          LỐI ĐI RỘNG 14M
         </td>
 
         <!-- <td class="CellMapItemSplip">
-        </td>
+          </td>
 
-        <td class="CellMapItem_2">
-        </td>
+          <td class="CellMapItem_2">
+          </td>
 
-        <td class="CellMapItemSplip">
-        </td>
+          <td class="CellMapItemSplip">
+          </td>
 
-        <td class="CellMapItem_2">
-        </td> -->
+          <td class="CellMapItem_2">
+          </td> -->
 
         <td class="CellMapItem_1">
         </td>
@@ -327,13 +345,13 @@
 
     <table style="width: 100%!important;">
 
-      <tr class="ItemHeight" >
+      <tr>
         <td rowspan="2" class="CellMapItemLebel">
           D
         </td>
 
         <td *ngFor="let item of listD3_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -342,8 +360,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
-              {{item.position}}
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -353,7 +370,7 @@
         </td>
 
         <td *ngFor="let item of listD8_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -362,7 +379,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -371,7 +388,7 @@
         </td>
 
         <td *ngFor="let item of listD10_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -380,7 +397,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -389,7 +406,7 @@
         </td>
 
         <td *ngFor="let item of listD12_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -398,7 +415,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -406,8 +423,8 @@
         <td class="CellMapItemSplip_BCD">
         </td>
 
-       <td *ngFor="let item of listD14_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+        <td *ngFor="let item of listD14_2; index as i" class="CellMapItem_BCD">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -416,7 +433,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -430,7 +447,7 @@
         </td>
 
         <td *ngFor="let item of listD21_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -439,7 +456,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -449,12 +466,12 @@
 
       </tr>
 
-      <tr class="ItemHeight"   >
+      <tr>
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listD3_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code != null; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -463,16 +480,16 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listD8_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -481,7 +498,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -490,7 +507,7 @@
         </td>
 
         <td *ngFor="let item of listD10_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -499,7 +516,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -508,7 +525,7 @@
         </td>
 
         <td *ngFor="let item of listD12_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -517,7 +534,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -526,7 +543,7 @@
         </td>
 
         <td *ngFor="let item of listD14_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -535,19 +552,19 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listD21_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -556,24 +573,24 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "2" class="CellMapItem_BCD">
-          D
-        </td> -->
+            D
+          </td> -->
 
       </tr>
 
-      <tr class="ItemHeight" >
+      <tr>
         <td rowspan="2" class="CellMapItemLebel">
           C
         </td>
 
         <td *ngFor="let item of listC3_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -582,16 +599,16 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listC8_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -600,7 +617,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -609,7 +626,7 @@
         </td>
 
         <td *ngFor="let item of listC10_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -618,7 +635,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -627,7 +644,7 @@
         </td>
 
         <td *ngFor="let item of listC12_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -636,7 +653,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -645,7 +662,7 @@
         </td>
 
         <td *ngFor="let item of listC14_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -654,7 +671,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -664,10 +681,10 @@
         </td>
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listC21_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -676,7 +693,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -687,12 +704,12 @@
 
       </tr>
 
-      <tr class="ItemHeight" >
+      <tr>
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listC3_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -701,15 +718,22 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
+
+          <!-- <div *ngIf="item.name">
+            <div class="MapItem" (click)="setOpen(item)">
+              [x]
+            </div>
+          </div> -->
+
         </td>
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listC8_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -718,7 +742,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -727,7 +751,7 @@
         </td>
 
         <td *ngFor="let item of listC10_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -736,7 +760,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -745,7 +769,7 @@
         </td>
 
         <td *ngFor="let item of listC12_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -754,7 +778,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -763,7 +787,7 @@
         </td>
 
         <td *ngFor="let item of listC14_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -772,19 +796,19 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listC21_1; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -793,24 +817,24 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "2" class="CellMapItem_BCD">
-          D
-        </td> -->
+            D
+          </td> -->
 
       </tr>
 
-      <tr class="ItemHeight" >
+      <tr>
         <td rowspan="2" class="CellMapItemLebel">
           B
         </td>
 
         <td *ngFor="let item of listB3_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -819,13 +843,13 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <td *ngFor="let item of listB8_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -834,7 +858,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -844,7 +868,7 @@
         </td>
 
         <td *ngFor="let item of listB10_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -853,7 +877,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -862,7 +886,7 @@
         </td>
 
         <td *ngFor="let item of listB12_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -871,7 +895,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -880,7 +904,7 @@
         </td>
 
         <td *ngFor="let item of listB14_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -889,7 +913,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -899,7 +923,7 @@
         </td>
 
         <td *ngFor="let item of listB21_2; index as i" class="CellMapItem_BCD">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -908,7 +932,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -920,12 +944,12 @@
 
       </tr>
 
-      <tr class="ItemHeight" >
+      <tr>
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listB3_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -934,16 +958,16 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listB8_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -952,7 +976,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -961,7 +985,7 @@
         </td>
 
         <td *ngFor="let item of listB10_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -970,7 +994,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -979,7 +1003,7 @@
         </td>
 
         <td *ngFor="let item of listB12_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -988,7 +1012,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -996,7 +1020,7 @@
         </td>
 
         <td *ngFor="let item of listB14_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1005,19 +1029,19 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem_BCD">
-        </td> -->
+          </td> -->
 
         <!-- <td rowspan = "6" class="CellMapItem_BCD_2_3">
-        </td> -->
+          </td> -->
 
         <td *ngFor="let item of listB21_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1026,21 +1050,21 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td rowspan = "2" class="CellMapItem_BCD">
-          D
-        </td> -->
+            D
+          </td> -->
 
       </tr>
 
     </table>
 
     <table style="width: 100%!important; margin-top: 1px; margin-bottom: 1px;">
-      <tr class="Tr_BG ItemHeight">
+      <tr class="Tr_BG">
         <td class="CellMapItem_1">
         </td>
 
@@ -1056,16 +1080,16 @@
         </td>
 
         <!-- <td class="CellMapItemSplip">
-        </td>
+          </td>
 
-        <td class="CellMapItem_2">
-        </td>
+          <td class="CellMapItem_2">
+          </td>
 
-        <td class="CellMapItemSplip">
-        </td>
+          <td class="CellMapItemSplip">
+          </td>
 
-        <td class="CellMapItem_2">
-        </td> -->
+          <td class="CellMapItem_2">
+          </td> -->
 
         <td class="CellMapItem_1">
         </td>
@@ -1084,13 +1108,13 @@
 
     <table style="width: 100%!important;">
 
-      <tr class="ItemHeight">
+      <tr>
         <td rowspan="2" class="CellMapItemLebel">
           A
         </td>
 
         <td *ngFor="let item of listA8_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1099,7 +1123,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1108,7 +1132,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listA10_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1117,7 +1141,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1125,7 +1149,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listA12_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1134,26 +1158,26 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem">
-          <div class="MapItemOutOfDate">
-           <div (click)="setOpen(cont)" class="MapItem">
-                [x]
-              </div>
+            <div class="MapItemOutOfDate">
+             <div (c [class.bgplan]="item.idPlan"lick)="setOpen(cont)" class="MapItem">
+                  [x]
+                </div>
 
-          </div>
-        </td> -->
+            </div>
+          </td> -->
 
 
         <td class="CellMapItemSplip">
         </td>
 
         <td *ngFor="let item of listA14_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1162,7 +1186,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1173,7 +1197,7 @@
         </td>
 
         <td *ngFor="let item of listA21_2; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1182,7 +1206,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1192,12 +1216,12 @@
         </td>
       </tr>
 
-      <tr class="ItemHeight">
+      <tr>
         <!-- <td rowspan="2" class="CellMapItem">
-          A
-        </td> -->
+            A
+          </td> -->
         <td *ngFor="let item of listA8_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1206,7 +1230,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1216,7 +1240,7 @@
 
 
         <td *ngFor="let item of listA10_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1225,7 +1249,7 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
@@ -1233,7 +1257,7 @@
         <td class="CellMapItemSplip">
         </td>
         <td *ngFor="let item of listA12_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1242,26 +1266,26 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty" >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
 
         <!-- <td class="CellMapItem">
-          <div class="MapItemOutOfDate">
-           <div (click)="setOpen(cont)" class="MapItem">
-                [x]
-              </div>
+            <div class="MapItemOutOfDate">
+             <div (c [class.bgplan]="item.idPlan"lick)="setOpen(cont)" class="MapItem">
+                  [x]
+                </div>
 
-          </div>
-        </td> -->
+            </div>
+          </td> -->
 
 
         <td class="CellMapItemSplip">
         </td>
 
         <td *ngFor="let item of listA21_1; index as i" class="CellMapItem">
-          <div *ngIf="item.position; then thenBlock else elseBlock">
+          <div *ngIf="item.code; then thenBlock else elseBlock">
           </div>
 
           <ng-template #thenBlock>
@@ -1270,14 +1294,12 @@
             </div>
           </ng-template>
           <ng-template #elseBlock>
-            <div class="MapItemEmpty"  >
+            <div class="MapItemEmpty" (click)="setOpen(item)">
             </div>
           </ng-template>
         </td>
       </tr>
-
-
-      <tr class="ItemHeight">
+      <tr>
 
         <td class="CellMapItem">
           <span style="font-size: 10px; font-weight: bold;">STT</span>
@@ -1367,3 +1389,8 @@
 
     </table>
   </div>
+
+  <!-- dfsdfsdfsdf
+  <li *ngFor="let index of [0,1,2,3,4,5]">
+    {{ index }}
+  </li> -->

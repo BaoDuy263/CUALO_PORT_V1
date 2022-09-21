@@ -138,3 +138,33 @@ export interface lstContImages {
 }
 
 
+export enum Activity {
+  HaBaiChoXuat = 1,
+  CapRong = 2,
+  TraRong = 3,
+  ShipSide = 4,
+  LayNguyen = 5,
+  RutRuot = 6,
+  TraBai = 7,
+  KepChi = 8
+}
+export enum StatusCont {
+  Epmpty = 0,
+  Full = 1,
+}
+export enum State {
+  Delivery = 1,
+  Stacking = 2,
+  OutPort = 3
+}
+
+export interface ContImagesPaging
+{
+    Page : number,
+    PageSize : number,
+    ContNo : string,
+    FromDate : string,
+    ToDate : string,
+    Status: number
+};
+

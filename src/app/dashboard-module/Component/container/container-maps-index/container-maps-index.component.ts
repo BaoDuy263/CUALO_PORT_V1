@@ -1,23 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MapcontYard3Service_ } from 'src/app/Service/MapcontYard3Service/mapcont-yard3-service.service';
-import { MapcontYard3Service } from 'src/app/Service/map-cont-yard3.service';
-import { ContainerService } from 'src/app/Service/container/container.service';
-import { BookingContEmptyCreateComponent } from '../../booking-cont-empty/booking-cont-empty-create/booking-cont-empty-create.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ContainerMapsListComponent } from '../container-maps-list/container-maps-list.component';
+import { ContainerService } from 'src/app/Service/container/container.service';
+import { MapcontYard3Service } from 'src/app/Service/map-cont-yard3.service';
+import { MapcontYard3Service_ } from 'src/app/Service/MapcontYard3Service/mapcont-yard3-service.service';
 import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
 
 @Component({
-  selector: 'app-container-maps',
-  templateUrl: './container-maps.component.html',
-  styleUrls: ['./container-maps.component.css'],
+  selector: 'app-container-maps-index',
+  templateUrl: './container-maps-index.component.html',
+  styleUrls: ['./container-maps-index.component.css'],
 })
-export class ContainerMapsComponent implements OnInit {
-
-
-  //itemForm!: FormGroup;
+export class ContainerMapsIndexComponent implements OnInit {
   contInfo: any = {};
   message =
     'This modal example uses triggers to automatically open a modal when the button is clicked.';
@@ -32,6 +25,7 @@ export class ContainerMapsComponent implements OnInit {
   listE: any = [];
   hiddenForm: string = 'false';
   checkEmpty: boolean = true;
+  IsChangeLocal: boolean = false;
   textSearch: string = '';
   checkFirst: string = '';
   zoomProperties = {
@@ -108,11 +102,15 @@ export class ContainerMapsComponent implements OnInit {
   dataReturned: any;
   listInfo: any = {};
 
+  NumCont: string = '';
+  IdSouce: string = '';
+  IdTaget: string = '';
+
   constructor(
     private MapContYarn3Service_: MapcontYard3Service_,
     private MapContYarn3Service: MapcontYard3Service,
     private mContainerService: ContainerService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.listCont();
   }
@@ -123,10 +121,10 @@ export class ContainerMapsComponent implements OnInit {
     this.listInfo.pageNumber = 1;
     this.listInfo.pageSize = 1000;
     this.listInfo.contNo = '';
-    console.log(this.listInfo);
+    //console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
-     // console.log(data.item1);
+      // //console.log(data.item1);
       this.listContYarn3 = data.item1;
       this.displayListCont(this.listContYarn3);
     });
@@ -143,10 +141,10 @@ export class ContainerMapsComponent implements OnInit {
     var arrE1 = [];
     var arrE2 = [];
 
-    console.log(listCont);
+    //console.log(listCont);
 
     for (let i = 0; i < listCont.length; i++) {
-       var lable = listCont[i]['positionLabel'].charAt(0);
+      var lable = listCont[i]['positionLabel'].charAt(0);
       if (lable == 'A' && listCont[i]['position'] == 1) {
         arrA1.push(listCont[i]);
       }
@@ -179,9 +177,9 @@ export class ContainerMapsComponent implements OnInit {
         arrE2.push(listCont[i]);
       }
     }
-    console.log('------------------------');
-    console.log(arrE1);
-    console.log(arrE2);
+    //console.log('------------------------');
+    //console.log(arrE1);
+    //console.log(arrE2);
     var listA1 = this.sortList(arrA1, 21, 1, 'A');
     var listA2 = this.sortList(arrA2, 21, 2, 'A');
     var listB1 = this.sortList(arrB1, 21, 1, 'B');
@@ -194,9 +192,9 @@ export class ContainerMapsComponent implements OnInit {
     // var listE2 = this.sortList(arrE2, 21, 2, 'E');
     var listE1 = this.sortList(arrE1, 21, 1, 'E');
     var listE2 = this.sortList(arrE2, 21, 2, 'E');
-    console.log('======');
-    console.log(listE1);
-    console.log(listE2);
+    //console.log('======');
+    //console.log(listE1);
+    //console.log(listE2);
 
     this.listA8_1 = listA1.slice(0, 8);
     this.listA10_1 = listA1.slice(8, 10);
@@ -252,9 +250,9 @@ export class ContainerMapsComponent implements OnInit {
     this.listD21_1 = listD1.slice(16, 21);
 
     this.listE8_2 = listE2.slice(0, 8);
-    console.log('$$$$$$$$$$$$$$$$');
-    console.log(this.listE8_2);
-    console.log('################');
+    //console.log('$$$$$$$$$$$$$$$$');
+    //console.log(this.listE8_2);
+    //console.log('################');
 
     this.listE10_2 = listE2.slice(8, 10);
     this.listE12_2 = listE2.slice(10, 12);
@@ -300,35 +298,128 @@ export class ContainerMapsComponent implements OnInit {
 
     return arr2;
   }
-  onKey(event: any) {
-    this.textSearch = event.target.value;
+
+  SetChange() {
+    this.IsChangeLocal = true;
+    //console.log('-----------------');
     // this.listContAfterSearch(event.target.value);
   }
-  setOpen(item: { id:any,  code: any }) {
-   // this.mContainerService.mContNoPass.subscribe(message => this.message = message);
-    this.mContainerService.GetConNo(item.code);
-
-    const dialogRef = this.dialog.open(ContainerMapsInfoComponent);
-    dialogRef.componentInstance.ContNum= item.code;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // if (result.statusCode === 200) {
-        //   this.toastr.showSuccess(result.message);
-        //   this.Paging();
-        // }
-        // else {
-        //   this.toastr.showError(result.message);
-        // }
-      }
+  SaveChange() {
+    // this.IsChangeLocal = false;
+    // alert(this.NumCont +' : ' +this.IdSouce + '######' + this.IdTaget);
+    // //console.log('-----------------');
+    var _DataInput: any = {};
+    _DataInput.ContNo = this.NumCont;
+    _DataInput.oldLocation = this.IdSouce;
+    _DataInput.newLocaiton = this.IdTaget;
+    var _mDataInput = JSON.stringify(_DataInput);
+    console.log(_mDataInput);
+    this.MapContYarn3Service_.MoveLocalCont(_DataInput).subscribe((data) => {
+      // this.listContYarn3 = data;
+      console.log(data.statusCode);
+      if(data.statusCode=='200')
+      this.mContainerService.MapYar3List().subscribe((data) => {
+        this.listContYarn3 = data.item1;
+        this.displayListCont(this.listContYarn3);
+        console.log(this.listContYarn3);
+        this.Resethange();
+        this.IsChangeLocal = false;
+      });
     });
-    this.checkFirst = 'true';
-    if (item.id) {
-      this.checkEmpty = false;
-    } else {
-      this.checkEmpty = true;
-    }
-    this.contInfo = item;
-    this.hiddenForm = 'true';
+    // this.listContAfterSearch(event.target.value);
   }
 
+  Resethange() {
+    this.IsChangeLocal = true;
+    this.IdTaget = '';
+    this.IdSouce = '';
+    for (let contInfo_ of this.listContYarn3) {
+      contInfo_.BackgroundColour = '#fff';
+    }
+  }
+
+  onKey(event: any) {
+    for (let contInfo_ of this.listContYarn3) {
+      contInfo_.BackgroundColour = '#fff';
+    }
+    this.textSearch = event.target.value;
+    console.log(this.textSearch);
+    // this.listContAfterSearch(event.target.value);
+    if(this.textSearch!="")
+    {
+      for (let contInfo_ of this.listContYarn3) {
+        if (contInfo_.code != null) {
+          if (
+            contInfo_.code
+              .toLowerCase()
+              .includes(event.target.value.toLowerCase()) == true
+          ) {
+            contInfo_.BackgroundColour = '#ccc';
+          }
+        }
+      }
+    }
+
+  }
+
+  setOpen(item: { id: any; code: any }) {
+    // console.log(item);
+    this.contInfo = item;
+    this.contInfo.BackgroundColour = '#fff';
+    console.log(this.contInfo);
+    // this.mContainerService.mContNoPass.subscribe(message => this.message = message);
+    if (!this.IsChangeLocal) {
+      if (item.code != null) {
+        this.mContainerService.GetConNo(item.code);
+
+        const dialogRef = this.dialog.open(ContainerMapsInfoComponent);
+        dialogRef.componentInstance.ContNum = item.code;
+        dialogRef.afterClosed().subscribe((result) => {
+          if (result) {
+            // if (result.statusCode === 200) {
+            //   this.toastr.showSuccess(result.message);
+            //   this.Paging();
+            // }
+            // else {
+            //   this.toastr.showError(result.message);
+            // }
+          }
+        });
+        this.checkFirst = 'true';
+        if (item.id) {
+          this.checkEmpty = false;
+        } else {
+          this.checkEmpty = true;
+        }
+
+        this.hiddenForm = 'true';
+      }
+    } else {
+      // Tô đỏ cont được chọn
+      if (this.IdSouce == '') {
+        this.btnSouceChange(this.contInfo, item.code);
+      }
+      // tô xanh vị trí đích nếu nguồn có rồi
+      else if (
+        this.IdSouce != item.code &&
+        item.code == null &&
+        this.IdTaget == ''
+      ) {
+        this.btnTagetChange(this.contInfo, item.code);
+      }
+    }
+  }
+
+  btnSouceChange(contInfo: any, code: any) {
+    // Vị trí chuyển
+    this.NumCont = contInfo.code;
+    this.IdSouce = contInfo.positionLabel;
+    this.contInfo.BackgroundColour = 'red';
+  }
+
+  btnTagetChange(contInfo: any, code: any) {
+    // Vị trí chuyển
+    this.IdTaget = contInfo.positionLabel;
+    this.contInfo.BackgroundColour = 'green';
+  }
 }

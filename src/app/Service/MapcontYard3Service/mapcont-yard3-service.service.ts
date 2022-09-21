@@ -12,8 +12,13 @@ export class MapcontYard3Service_ {
 
 
   getMap(_data: any) {
-
     return this.httpServiceMobile.postRequestMobile('MapContYard3/GetDataPagedList', _data)
+    .pipe(map((data: any) => {
+      return data;
+    }))
+  }
+  MoveLocalCont(_data: any) {
+    return this.httpServiceMobile.putRequest('MapContYard3/UpdateMoveCont', _data)
     .pipe(map((data: any) => {
       return data;
     }))

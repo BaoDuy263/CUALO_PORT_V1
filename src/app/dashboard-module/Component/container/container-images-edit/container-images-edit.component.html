@@ -6,27 +6,34 @@
       <i class="bi bi-x"></i>
     </a>
   </div>
-  <form  (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
     <div class="row" style="width: 100%;">
       <div class="col-lg-3">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Chọn container</label><br />
-          <select class="form-control" formControlName="code">
-            <option *ngFor="let item of lstCont; index as i">{{item.code}}</option>
-          </select>
+          <ng-select [(ngModel)]="selectedCont" (change)="changeCont($event)" >
+            <ng-option *ngFor="let item of lstCont" [value]="item.code">{{item.code}}</ng-option>
+          </ng-select>
         </div>
       </div>
-      <div class="col-lg-9">
+      <div class="col-lg-7">
         <div class="mb-9" style="padding-left: 10px;">
           <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
           <input type="text" class="form-control" formControlName="note">
-          <input type="hidden" value="{{ImagesObj.id}}"  formControlName="id">
+          <input type="hidden" value="{{ImagesObj.id}}" formControlName="id">
         </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="mb-12" style="padding-left: 10px;    padding-top: 26px;">
+          <label for="exampleFormControlInput1" class="form-label">&nbsp;</label>
+          <button class="btn btn-outline-secondary" style="float: right;" type="submit" id="button-addon3">Ghi
+            nhận</button>
+        </div>
+
       </div>
     </div>
 
-    <button class="btn btn-outline-secondary" style="float: right;"  type="submit"
-      id="button-addon3">Ghi nhận</button>
+
   </form>
   <br>
   <div class="row" style="width: 70%;">
@@ -35,7 +42,7 @@
         ">
     </a>
     <span style="font-size: 14px;margin-top: 20px;">
-      Thời gian: {{ImagesObj.createdOn  }} ({{ImagesObj.createdBy}})
+      Thời gian: {{ImagesObj.createdOn }} ({{ImagesObj.createdBy}})
     </span>
 
 
