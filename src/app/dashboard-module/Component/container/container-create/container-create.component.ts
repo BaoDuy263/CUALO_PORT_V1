@@ -1,3 +1,4 @@
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState } from './../../booking-customer/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,9 +21,9 @@ export class ContainerCreateComponent implements OnInit {
   lstTypeCont = lstTypeContData;
   lstSide = lstSide;
   lstState = lstState;
-  constructor(private containerService: ContainerService, public dialogRef: MatDialogRef<ContainerCreateComponent>) {
+  constructor(private containerService: Containerv2Service, public dialogRef: MatDialogRef<ContainerCreateComponent>) {
     this.CreateEditForm = new FormGroup({
-      code: new FormControl(''),
+      contNo: new FormControl(''),
       type: new FormControl('', Validators.required),
       vessel: new FormControl(''),
       voyage: new FormControl(''),
@@ -77,9 +78,10 @@ export class ContainerCreateComponent implements OnInit {
   // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
-    this.containerService.Detail(this.containerCode).subscribe(response => {
+    this.containerService.GetDetail(this.containerCode).subscribe(response => {
+      response = response.data
       this.CreateEditForm = new FormGroup({
-        code: new FormControl(response.code),
+        contNo: new FormControl(response.contNo),
         type: new FormControl(response.type),
         vessel: new FormControl(response.vessel),
         voyage: new FormControl(response.voyage),
@@ -130,12 +132,12 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
-      this.containerService.Insert(this.CreateEditForm.value).subscribe(response => {
+      this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       });
     }
     if (this.CreateEditForm.valid && this.isCreate === false) {
-      this.containerService.Update(this.CreateEditForm.value).subscribe(response => {
+      this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       })
     }

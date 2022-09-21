@@ -9,8 +9,14 @@
     <div class="col-sm-4 d-flex">
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
-      <input type="datetime-local" class="form-control"  style="margin-left: 20px;" placeholder="Tìm kiếm" aria-label="Recipient's created on"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Date" (ngModelChange)="onSearchDate($event)">
+    </div>
+    <div class="col-sm-4 mr-20">
+      <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
+        [(ngModel)]="PageInfo.startDate" (ngModelChange)="startDate($event)">
+    </div>
+    <div class="col-sm-4 mr-20">
+      <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
+        [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
     </div>
     <!-- <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
       <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
@@ -25,7 +31,6 @@
               <th>Tên Khách hàng</th>
               <th>Hình thức</th>
               <th>Loại container</th>
-              <th>Tên lái xe</th>
               <th>Tên tàu</th>
               <th>Vị trí trả hàng</th>
               <th>Ghi chú</th>
@@ -41,7 +46,6 @@
               <td>{{item.customer}}</td>
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{item.typeCont}}</td>
-              <td>{{item.shipperName}}</td>
               <td>{{item.voyage}}</td>
               <td>{{item.returnAddress}}</td>
               <td>{{item.note}}</td>
@@ -78,7 +82,7 @@
             <p>EQUIPMENT INTERCHANGE RECEIPT</p>
           </td>
           <td style="width: 30%">
-            <p>Số/No: {{itemPrint?.No}}</p>
+            <p>Số/No: {{itemPrint?.no}}</p>
             <p>Vận đơn/Bill No: {{itemPrint?.billNo}}</p>
           </td>
         </tr>
@@ -137,7 +141,7 @@
       <table style="width: 100%">
         <tr>
           <td style="width: 50%" class="d-flex flex-column">
-            <p><b>Tình trạng cont</b>/Container Status: {{itemPrint?.statusContainer}}</p>
+            <p><b>Tình trạng cont</b>/Container Status: {{itemPrint?.container?.status}}</p>
           </td>
           <td style="width: 50%">
             <p><b>THÔNG TIN TÀU-Vessel details:</b></p>
@@ -166,7 +170,7 @@
           <td style="width: 30%"><b></b></td>
         </tr>
         <tr>
-          <td style="width: 30%;"><b>{{itemPrint?.shipperName}}</b></td>
+          <td style="width: 30%;"><b></b></td>
           <td style="width: 30%"><b></b></td>
           <td style="width: 30%"><b></b></td>
         </tr>

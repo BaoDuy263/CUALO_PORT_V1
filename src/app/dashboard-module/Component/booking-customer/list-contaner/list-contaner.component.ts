@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BookingCustomer } from 'src/app/Model/Booking-customer';
+import { ContainerV2, lstContainerV2 } from 'src/app/Model/Containerv2';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
-import { ContainerService } from 'src/app/Service/container/container.service';
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { convertHelper } from '../helper/convertHelper';
 
 @Component({
@@ -13,14 +14,22 @@ import { convertHelper } from '../helper/convertHelper';
 })
 export class ListContanerComponent implements OnInit {
   loading: boolean = true;
-  lstData: Container[] = [];
+  lstData: lstContainerV2 = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+    data: []
+  };
   itemSelected: string[] = [];
   planDetail: BookingCustomer | any = null;
   PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10,
-  };
+    startDate: '',
+    endDate: ''
+  }
   Pagination: Pagination = {
     currentPage: 0,
     pageSize: 0,
@@ -28,7 +37,7 @@ export class ListContanerComponent implements OnInit {
     totalPage: 0,
   }
   constructor(private bookingService: BookingServiceService,
-    private containerService: ContainerService,
+    private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ListContanerComponent>, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
@@ -40,9 +49,11 @@ export class ListContanerComponent implements OnInit {
 
   loadData(PageInfo: any) {
     this.loading = true;
-    this.containerService.GetAllContEmpt(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+    this.containerService.Paging(this.PageInfo.page, this.PageInfo.Keyword,
+      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
+    .subscribe(data => {
       this.loading = false;
-      this.lstData = data.data;
+      this.lstData.data = data.data;
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
@@ -50,12 +61,12 @@ export class ListContanerComponent implements OnInit {
     });
   }
 
-  hanldeClickItem(item: Container) {
-    if (this.itemSelected.includes(item.code)) {
-      this.itemSelected = this.itemSelected.filter(i => i != item.code);
+  hanldeClickItem(item: ContainerV2) {
+    if (this.itemSelected.includes(item.contNo)) {
+      this.itemSelected = this.itemSelected.filter(i => i != item.contNo);
     }
     else {
-      this.itemSelected = [...this.itemSelected, item.code]
+      this.itemSelected = [...this.itemSelected, item.contNo]
     }
   }
 
@@ -90,10 +101,4 @@ export class ListContanerComponent implements OnInit {
     this.loadData(this.PageInfo);
   }
 
-}
-
-export interface Container {
-  code: string,
-  status: number,
-  impExpDate: Date
 }

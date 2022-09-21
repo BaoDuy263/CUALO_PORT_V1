@@ -137,28 +137,4 @@ export interface lstContImages {
   data: ContImage[]
 }
 
-export enum TypeDelivery {
-  TAUBAI = 1,
-  BAIXE = 2,
-  BAIXESL = 3
-}
 
-export enum Activity {
-  HaBaiChoXuat = 1,
-  CapRong = 2,
-  TraRong = 3,
-  ShipSide = 4,
-  LayNguyen = 5,
-  RutRuot = 6,
-  TraBai = 7,
-  KepChi = 8
-}
-export enum StatusCont {
-  Epmpty = 0,
-  Full = 1,
-}
-export enum State {
-  Delivery = 1,
-  Stacking = 2,
-  OutPort = 3
-}
