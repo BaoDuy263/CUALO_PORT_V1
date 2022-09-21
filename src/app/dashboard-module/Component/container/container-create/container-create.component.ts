@@ -1,4 +1,5 @@
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState } from './../../booking-customer/helper/constant';
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -20,50 +21,48 @@ export class ContainerCreateComponent implements OnInit {
   lstTypeCont = lstTypeContData;
   lstSide = lstSide;
   lstState = lstState;
-  constructor(private containerService: ContainerService, public dialogRef: MatDialogRef<ContainerCreateComponent>) {
+  lstStep = lstStep;
+  constructor(private containerService: Containerv2Service, public dialogRef: MatDialogRef<ContainerCreateComponent>) {
     this.CreateEditForm = new FormGroup({
-      code: new FormControl(''),
-      type: new FormControl('', Validators.required),
+      contNo: new FormControl(''),
       vessel: new FormControl(''),
       voyage: new FormControl(''),
-      lastPort: new FormControl(''),
-      iso: new FormControl(''),
-      side: new FormControl(0, Validators.required),
       customer: new FormControl(''),
-      bookingNo: new FormControl(''),
       commodity: new FormControl(''),
       weight: new FormControl(),
-      dateCheckIn: new FormControl(null, Validators.required),
-      dateCheckOut: new FormControl(null, Validators.required),
+      nWeight: new FormControl(),
       note: new FormControl(''),
-      returnAddress: new FormControl(''),
-      noBL: new FormControl(''),
       consignee: new FormControl(''),
-      typeDelivery: new FormControl(0, Validators.required),
-      activity: new FormControl(0, Validators.required),
-      status: new FormControl(0, Validators.required),
-      vehicleNo: new FormControl(""),
-      deliveryNo: new FormControl(''),
-      serviceNo: new FormControl(''),
-      sealNo: new FormControl(''),
-      codePT: new FormControl(''),
-      location: new FormControl('', Validators.required),
-      region: new FormControl('', Validators.required),
-      pol: new FormControl(''),
-      pod: new FormControl(''),
-      locationShip: new FormControl(''),
-      planXD: new FormControl(''),
-      cargoType: new FormControl(''),
-      trunkBarge: new FormControl(''),
-      domestic: new FormControl(''),
-      packing: new FormControl(''),
-      nonPacking: new FormControl(''),
-      datePacking: new FormControl(),
+      book: new FormControl(''),
+      bill: new FormControl(''),
       seal: new FormControl(''),
-      state: new FormControl(0, Validators.required),
+      type: new FormControl(''),
+      size: new FormControl(''),
+      datePlan: new FormControl(''),
+      dateCheckIn: new FormControl(''),
+      dateCheckOut: new FormControl(''),
+      transaction_eir_no: new FormControl(''),
+      location: new FormControl(''),
+      statusContainer: new FormControl(''),
+      step: new FormControl(''),
+      side: new FormControl(''),
+      typeDelivery: new FormControl(''),
+      activity: new FormControl(''),
+      status: new FormControl(''),
+      state: new FormControl(''),
+      datePacking: new FormControl(''),
+      inDeliveryDate: new FormControl(''),
+      outDeliveryDate: new FormControl(''),
+      returnPlan: new FormControl(''),
+      returnAddress: new FormControl(''),
+      createdOn: new FormControl(''),
+      createdBy: new FormControl(''),
+      modifiedBy: new FormControl(''),
+      modifiedOn: new FormControl(''),
     })
   }
 
+  get contNo() { return this.CreateEditForm.get('contNo')}
   get type() { return this.CreateEditForm.get('type') }
   get side() { return this.CreateEditForm.get('side') }
   get status() { return this.CreateEditForm.get('type') }
@@ -77,47 +76,44 @@ export class ContainerCreateComponent implements OnInit {
   // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
-    this.containerService.Detail(this.containerCode).subscribe(response => {
+    this.containerService.GetDetail(this.containerCode).subscribe(response => {
+      response = response.data
       this.CreateEditForm = new FormGroup({
-        code: new FormControl(response.code),
-        type: new FormControl(response.type),
+        contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
         voyage: new FormControl(response.voyage),
-        lastPort: new FormControl(response.lastPort),
-        iso: new FormControl(response.iso),
-        side: new FormControl(response.side),
         customer: new FormControl(response.customer),
-        bookingNo: new FormControl(response.bookingNo),
         commodity: new FormControl(response.commodity),
         weight: new FormControl(response.weight),
+        nWeight: new FormControl(response.nWeight),
+        note: new FormControl(response.note),
+        consignee: new FormControl(response.consignee),
+        book: new FormControl(response.book),
+        bill: new FormControl(response.bill),
+        seal: new FormControl(response.seal),
+        type: new FormControl(response.type),
+        size: new FormControl(response.size),
+        datePlan: new FormControl(response.datePlan),
         dateCheckIn: new FormControl(response.dateCheckIn),
         dateCheckOut: new FormControl(response.dateCheckOut),
-        note: new FormControl(response.note),
-        returnAddress: new FormControl(response.returnAddress),
-        noBL: new FormControl(response.noBL),
-        consignee: new FormControl(response.consignee),
+        transaction_eir_no: new FormControl(response.transaction_eir_no),
+        location: new FormControl(response.location),
+        statusContainer: new FormControl(response.statusContainer),
+        step: new FormControl(response.step),
+        side: new FormControl(response.side),
         typeDelivery: new FormControl(response.typeDelivery),
         activity: new FormControl(response.activity),
         status: new FormControl(response.status),
-        vehicleNo: new FormControl(response.vehicleNo),
-        deliveryNo: new FormControl(response.deliveryNo),
-        serviceNo: new FormControl(response.serviceNo),
-        sealNo: new FormControl(response.sealNo),
-        codePT: new FormControl(response.codePT),
-        location: new FormControl(response.location),
-        region: new FormControl(response.region),
-        pol: new FormControl(response.pol),
-        pod: new FormControl(response.pod),
-        locationShip: new FormControl(response.locationShip),
-        planXD: new FormControl(response.planXD),
-        cargoType: new FormControl(response.cargoType),
-        trunkBarge: new FormControl(response.trunkBarge),
-        domestic: new FormControl(response.domestic),
-        packing: new FormControl(response.packing),
-        nonPacking: new FormControl(response.nonPacking),
-        datePacking: new FormControl(response.datePacking),
-        seal: new FormControl(response.seal),
         state: new FormControl(response.state),
+        datePacking: new FormControl(response.datePacking),
+        inDeliveryDate: new FormControl(response.inDeliveryDate),
+        outDeliveryDate: new FormControl(response.outDeliveryDate),
+        returnPlan: new FormControl(response.returnPlan),
+        returnAddress: new FormControl(response.returnAddress),
+        createdOn: new FormControl(response.createdOn),
+        createdBy: new FormControl(response.createdBy),
+        modifiedBy: new FormControl(response.modifiedBy),
+        modifiedOn: new FormControl(response.modifiedOn),
       })
     })
   }
@@ -130,12 +126,12 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
-      this.containerService.Insert(this.CreateEditForm.value).subscribe(response => {
+      this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       });
     }
     if (this.CreateEditForm.valid && this.isCreate === false) {
-      this.containerService.Update(this.CreateEditForm.value).subscribe(response => {
+      this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       })
     }

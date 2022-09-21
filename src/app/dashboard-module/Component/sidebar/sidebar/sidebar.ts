@@ -108,12 +108,12 @@ export const ROUTE_DATA: TypeRoute[] = [
           },
           {
               name :'Lấy nguyên/rút ruột-Trả rỗng',
-              url:'plan-packing',
+              url:'import-container',
               roles: ["Admin", "ds"],
           },
           {
               name : 'Cấp rỗng/đóng hàng-Hạ bãi',
-              url: 'import-container',
+              url: 'plan-packing',
               roles: ["Admin", "ds"],
           },
           {
