@@ -153,12 +153,9 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trạng thái</label><br />
-          <select class="form-control" formControlName="status">
+          <select class="form-control" formControlName="state">
             <option *ngFor="let state of lstState" [ngValue]="state.value">{{state.name}}</option>
           </select>
-          <div *ngIf="submited && state?.errors?.['required']">
-            <span *ngIf="state?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
         </div>
       </div>
       <div class="col-lg-4">

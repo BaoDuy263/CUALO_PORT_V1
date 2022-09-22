@@ -44,12 +44,12 @@ export class ContainerCreateComponent implements OnInit {
       transaction_eir_no: new FormControl(''),
       location: new FormControl(''),
       statusContainer: new FormControl(''),
-      step: new FormControl(''),
-      side: new FormControl(''),
-      typeDelivery: new FormControl(''),
-      activity: new FormControl(''),
-      status: new FormControl(''),
-      state: new FormControl(''),
+      step: new FormControl(0),
+      side: new FormControl(0),
+      typeDelivery: new FormControl(0),
+      activity: new FormControl(0),
+      status: new FormControl(0),
+      state: new FormControl(0),
       datePacking: new FormControl(''),
       inDeliveryDate: new FormControl(''),
       outDeliveryDate: new FormControl(''),
@@ -78,6 +78,7 @@ export class ContainerCreateComponent implements OnInit {
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
+      console.log(response,'data')
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
