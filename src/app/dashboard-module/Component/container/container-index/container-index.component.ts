@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { ContImagesPaging, lstContainer, lstContHistory } from 'src/app/Model/Container';
+import {
+  ContImagesPaging,
+  lstContainer,
+  lstContHistory,
+} from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerCreateComponent } from '../container-create/container-create.component';
@@ -16,7 +20,7 @@ import { lstContainerV2 } from 'src/app/Model/Containerv2';
 @Component({
   selector: 'app-container-index',
   templateUrl: './container-index.component.html',
-  styleUrls: ['./container-index.component.css']
+  styleUrls: ['./container-index.component.css'],
 })
 export class ContainerIndexComponent implements OnInit {
   listImages: any = [];
@@ -34,7 +38,7 @@ export class ContainerIndexComponent implements OnInit {
     pageSize: 0,
     totalRecord: 0,
     totalPage: 0,
-    data: []
+    data: [],
   };
 
   ImagesContSeach = {
@@ -51,7 +55,7 @@ export class ContainerIndexComponent implements OnInit {
     pageSize: 0,
     totalRecord: 0,
     totalPage: 0,
-  }
+  };
 
   PageInfo = {
     page: 1,
@@ -142,27 +146,28 @@ export class ContainerIndexComponent implements OnInit {
   openEdit(code: string) {
     this.isCreate = false;
     this.containerCode = code;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%', height: '800px' });
+    const dialogRef = this.dialog.open(ContainerCreateComponent, {
+      width: '50%',
+      height: '800px',
+    });
     dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.loadData(this.PageInfo);
-        }
-        else {
+        } else {
           this.toastr.showError(result.message);
         }
       }
-    })
+    });
   }
-
 
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
-    this.PageInfo = pageOfItems
-    this.loadData(pageOfItems)
+    this.PageInfo = pageOfItems;
+    this.loadData(pageOfItems);
   }
 
   onSearch(e: any) {
@@ -187,28 +192,27 @@ export class ContainerIndexComponent implements OnInit {
     this.loadDataImages();
   }
 
-
-
-
+  ddlContChange(e: any) {
+    this.loadDataImages();
+  }
 
   checkSelected(event: any) {
     // console.log('sdfjsdfsdjfsdfsdfsdfs----' + this.CheckedImagesEmtry);
     if (event.target.checked) this.CheckedImagesEmtry = true;
     else this.CheckedImagesEmtry = false;
 
-    console.log(this.CheckedImagesEmtry);
+    this.loadDataImages();
     // this.ImagesContSeach.ToDate = e;
   }
 
   openCreate() {
     const dialogRef = this.dialog.open(ContainerCreateComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.loadData(this.PageInfo);
-        }
-        else {
+        } else {
           this.toastr.showError(result.message);
         }
       }
