@@ -14,6 +14,8 @@ import { FormControl } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
 import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { lstContainerV2 } from 'src/app/Model/Containerv2';
 
 @Component({
   selector: 'app-container-index',
@@ -31,7 +33,7 @@ export class ContainerIndexComponent implements OnInit {
   loading: boolean = false;
   isCreate: boolean = true;
   containerCode: string = '';
-  lstdata: lstContainer = {
+  lstdata: lstContainerV2 = {
     currentPage: 0,
     pageSize: 0,
     totalRecord: 0,
@@ -59,16 +61,20 @@ export class ContainerIndexComponent implements OnInit {
     page: 1,
     Keyword: '',
     pageSize: 10,
-  };
+    startDate: '',
+    endDate: ''
+  }
+
 
   selected: number = 0;
 
   constructor(
     private containerService: ContainerService,
+    private containerV2Service: Containerv2Service,
     public dialog: MatDialog,
     private toastr: ToastrcustomService,
     public convertHelper: convertHelper
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
@@ -77,11 +83,11 @@ export class ContainerIndexComponent implements OnInit {
       console.log(this.lstCont);
     });
 
-    // let LastDate = new Date();
-    // LastDate.setDate(LastDate.getDate() - 10);
-    // console.log('-------------------');
-    // this.ImagesContSeach.FromDate = LastDate.toDateString();
-    // this.ImagesContSeach.ToDate = new Date().toDateString();
+    let LastDate = new Date();
+    LastDate.setDate(LastDate.getDate() - 10);
+    console.log('-------------------');
+    this.ImagesContSeach.FromDate = LastDate.toDateString();
+    this.ImagesContSeach.ToDate = new Date().toDateString();
     this.loadDataImages();
   }
 
@@ -92,14 +98,15 @@ export class ContainerIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(ContainerImagesEditComponent);
     dialogRef.componentInstance.ImagesObj = item;
 
-    dialogRef.afterClosed().subscribe((result) => {
-      this.loadDataImages();
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadDataImages()
       // console.log('-----------------------------');
       //  if (result) {
       //  }
     });
-  }
-  loadDataImages() {
+
+   }
+   loadDataImages() {
     let code = '',
       dateFrom = '',
       dateTo = '',
@@ -125,16 +132,15 @@ export class ContainerIndexComponent implements OnInit {
 
   loadData(PageInfo: any) {
     this.loading = true;
-    this.containerService
-      .Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize)
-      .subscribe((data) => {
-        this.loading = false;
-        this.lstdata = data;
-        (this.Pagination.currentPage = data.currentPage),
-          (this.Pagination.pageSize = data.pageSize),
-          (this.Pagination.totalPage = data.totalPage),
-          (this.Pagination.totalRecord = data.totalRecord);
-      });
+    this.containerV2Service.Paging(this.PageInfo.page, this.PageInfo.Keyword,
+      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate).subscribe(data => {
+      this.loading = false;
+      this.lstdata = data;
+      this.Pagination.currentPage = data.currentPage,
+        this.Pagination.pageSize = data.pageSize,
+        this.Pagination.totalPage = data.totalPage,
+        this.Pagination.totalRecord = data.totalRecord
+    });
   }
 
   openEdit(code: string) {

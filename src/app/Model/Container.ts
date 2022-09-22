@@ -137,11 +137,6 @@ export interface lstContImages {
   data: ContImage[]
 }
 
-export enum TypeDelivery {
-  TAUBAI = 1,
-  BAIXE = 2,
-  BAIXESL = 3
-}
 
 export enum Activity {
   HaBaiChoXuat = 1,
