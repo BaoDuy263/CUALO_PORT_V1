@@ -150,7 +150,7 @@
             <p><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator details</b></p>
             <p><b>Phương tiện vận chuyển</b>/Trans type: {{itemPrint?.transType}}</p>
             <p><b>Công ty vận chuyển</b>/Trans com: {{itemPrint?.transCom}}</p>
-            <p><b>Số xe</b>/Plate: {{itemPrint?.vehicleNo}}</p>
+            <p><b>Số xe</b>/Plate: {{itemPrint?.licensePlates}}</p>
             <p><b>Thời gian vào</b>/Check in: {{itemPrint?.checkIn | date }}</p>
             <p><b>Thời gian ra</b>/Check out: {{itemPrint?.checkOut | date }} </p>
           </td>
@@ -170,7 +170,7 @@
           <td style="width: 30%"><b></b></td>
         </tr>
         <tr>
-          <td style="width: 30%;"><b></b></td>
+          <td style="width: 30%;"><b>{{itemPrint?.nameDriver}}</b></td>
           <td style="width: 30%"><b></b></td>
           <td style="width: 30%"><b></b></td>
         </tr>
