@@ -78,7 +78,7 @@
 
 
         <div class="col-sm-3">
-          <ng-select [disabled]="CheckedImagesEmtry" [(ngModel)]="selectedCont">
+          <ng-select [disabled]="CheckedImagesEmtry" [(ngModel)]="selectedCont" (click)="ddlContChange($event)">
             <ng-option *ngFor="let item of lstCont" [value]="item.code">{{item.code}}</ng-option>
           </ng-select>
         </div>
