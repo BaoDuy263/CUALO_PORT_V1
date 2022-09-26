@@ -28,6 +28,7 @@
           <thead>
             <tr>
               <th style="text-align: center;">STT</th>
+              <th>Step</th>
               <th>Tên Khách hàng</th>
               <th>Bước hiện tại</th>
               <th>Loại container</th>
@@ -43,6 +44,7 @@
           <tbody style="border-top: none;">
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
+              <td>{{convertHelper.showStep(item.step)}}</td>
               <td>{{item.customer}}</td>
               <td>{{convertHelper.showStep(item.step)}}</td>
               <td>{{item.type}}</td>
