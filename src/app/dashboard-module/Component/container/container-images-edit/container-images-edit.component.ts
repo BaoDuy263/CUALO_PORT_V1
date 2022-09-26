@@ -32,7 +32,6 @@ export class ContainerImagesEditComponent implements OnInit {
   ngOnInit(): void {
     this.containerService.Paging(1, '', 1200).subscribe((data) => {
       console.log(data.data);
-      console.log(this.ImagesObj.id);
       this.lstCont = data.data;
     });
   }
