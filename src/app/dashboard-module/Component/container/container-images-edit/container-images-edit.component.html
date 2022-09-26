@@ -12,7 +12,7 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Chọn container</label><br />
           <ng-select [(ngModel)]="selectedCont" (change)="changeCont($event)" >
-            <ng-option *ngFor="let item of lstCont" [value]="item.code">{{item.code}}</ng-option>
+            <ng-option *ngFor="let item of lstCont" [value]="item.contNo">{{item.contNo}}</ng-option>
           </ng-select>
         </div>
       </div>

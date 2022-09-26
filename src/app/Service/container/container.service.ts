@@ -19,7 +19,7 @@ export class ContainerService {
   constructor(private httpService: CommonserviceService) { }
 
   Paging(page: number, searchText: string, numberDis: number) {
-    return this.httpService.getRequest(`Container?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    return this.httpService.getRequest(`Containerv2?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
   }
 
   Insert(data: ContainerCreate) {
