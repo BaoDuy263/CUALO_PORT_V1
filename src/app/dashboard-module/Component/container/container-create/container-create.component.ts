@@ -218,8 +218,8 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
     this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || '';
-    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || '';
+    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
