@@ -13,6 +13,10 @@ export class TransactionService {
     return this.httpService.getRequest(`transactioneir?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
   }
 
+  GetAllTrans(page: number, searchText: string, numberDis: number, startDate: string, endDate: string) {
+    return this.httpService.getRequest(`transactioneir/getall?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
+  }
+
   GetDetailTrans(id: number) {
     return this.httpService.getRequest(`transactioneir/${id}`);
   }
@@ -27,5 +31,9 @@ export class TransactionService {
 
   Delete(id: number) {
     return this.httpService.deleteRequest(`transactioneir/${id}`)
+  }
+
+  SaveTransaction(data: any) {
+    return this.httpService.postRequest(`transactioneir/saveTransaction`, data)
   }
 }

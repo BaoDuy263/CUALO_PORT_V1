@@ -17,6 +17,7 @@ export interface ContainerV2 {
   dateCheckIn: Date,  // Ngày nhập bãi.
   dateCheckOut: Date,  // Ngày ra bãi.
   transaction_eir_no: string,  // Số lệnh giao nhận. - map với trường No tự sinh trong TransactionEIR
+  transition_eir_id: number,
   location: string,   // Vị trí.
   statusContainer: string,   // trạng thái cont.
   step: Step,   // Bước hiện tại.
@@ -33,7 +34,42 @@ export interface ContainerV2 {
   createdOn: Date,
   createdBy: string,
   modifiedBy: string,
-  modifiedOn: Date
+  modifiedOn: Date,
+  ref : string,  //Mã tham chiếu.
+  iso : string,  //
+  cargoType : string,  // Loại hàng hóa.
+  height : string,  //Chiều cao.
+  temparature : string,  // Nhiệt độ.
+  oog : string,  // Cont đặc biệt.
+  operator : string,  // Hãng tàu.
+  pod : string,  // Cảng Đến.
+  imdg : string,  // Mã Nguy Hiểm.
+  customerSeal : string,  // Niêm chì hải quan.
+  seal1 : string,  // Niêm chì 1.
+  seal2 : string,  // Niêm chì 2.
+  returnPlace : string,  // Nơi trả rỗng.
+  landingDate : Date,   //Ngày cập bến.
+  transType : string,  // Phương tiện vận chuyển.
+  transCom : string,  // Công ty vận chuyển.
+  vehicleNo : string,  // Sô xe.
+  checkIn : Date,  // Thời gian vào.
+  checkOut : Date,  // Thời gian ra.
+  noBL : string,  //số B/L
+  serviceNo : string,  // Số lệnh dịch vụ
+  sealNo : string,   // Số seal
+  codePT : string,   // Số seal
+  region : string,   // Vùng
+  pol : string,   // Cảng đến
+  locationShip : string,   // Cảng đến
+  planXD : string,   // Phương Án
+  trunkBarge : string,  // Xe sà lan.
+  domestic : string,  // Hàng nội địa hay hàng ngoại
+  packing : string,  //  đóng
+  nonPacking : string,  // rút
+  container: ContainerV2,
+  nameDriver: string,
+  licensePlates: string,
+  phoneNumberDriver: string,
 }
 
 export interface lstContainerV2 {

@@ -1,7 +1,7 @@
 <div style="position: absolute; top: 40%; left: 40%;">
   <mat-spinner *ngIf="loading == true"></mat-spinner>
 </div>
-<div class="" style="padding: 20px 23px;">
+<div class="" style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
   <div class="row">
     <h2 style="font-weight: 500;">Danh sách thực hiện </h2>
   </div>
@@ -10,14 +10,14 @@
       <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
     </div>
-    <!-- <div class="col-sm-4 mr-20">
+    <div class="col-sm-4 mr-20">
       <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
         [(ngModel)]="PageInfo.startDate" (ngModelChange)="startDate($event)">
     </div>
     <div class="col-sm-4 mr-20">
       <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
         [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
-    </div> -->
+    </div>
     <!-- <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
       <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
         mới</button>
@@ -45,21 +45,19 @@
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.customer}}</td>
               <td>{{convertHelper.showStep(item.step)}}</td>
-              <td>{{item.type}}</td>
+              <td>{{item.typeCont}}</td>
               <td>{{item.voyage}}</td>
               <td>{{item.returnAddress}}</td>
               <td>{{item.note}}</td>
               <td>{{item.createdOn | date:'short'}}</td>
               <td>{{item.outDeliveryDate | date: 'short'}}</td>
               <td style="text-align: center;">
-                <i class="bi bi-printer-fill" (click)="handlePrinter(item.contNo)" style="padding-right: 8px; cursor: pointer"
-                  data-toggle="tooltip" title="In phiếu"></i>
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
-                  data-placement="top" title="Sửa" (click)="openEdit(item.contNo)">
+                  data-placement="top" title="Sửa" (click)="openEdit(item.id)">
                 </i>
-                <!-- <i class="bi bi-trash3" style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
+                <i class="bi bi-trash3" style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Xóa" (click)="openDelete(item.id)">
-                </i> -->
+                </i>
               </td>
             </tr>
           </tbody>
@@ -70,5 +68,4 @@
       </div>
     </div>
   </div>
-
-
+</div>

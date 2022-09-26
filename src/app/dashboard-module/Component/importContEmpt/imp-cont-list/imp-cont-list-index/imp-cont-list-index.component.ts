@@ -1,3 +1,5 @@
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { lstContainerV2 } from 'src/app/Model/Containerv2';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -5,8 +7,10 @@ import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { convertHelper } from '../../../booking-customer/helper/convertHelper';
+import { PerformCreateComponent } from '../../../booking-customer/perform-create/perform-create.component';
 import { CreateimportContfromShipComponent } from '../../../importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from '../../../importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
+import { ContainerCreateComponent } from '../../../container/container-create/container-create.component';
 
 @Component({
   selector: 'app-imp-cont-list-index',
@@ -17,8 +21,9 @@ export class ImpContListIndexComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
+  containerCode: string = '';
   itemPrint: Perform | null = null;
-  lstdata: lstPerform = {
+  lstdata: lstContainerV2 = {
     currentPage: 0,
     pageSize: 0,
     totalPage: 0,
@@ -36,9 +41,10 @@ export class ImpContListIndexComponent implements OnInit {
     page: 1,
     Keyword: '',
     pageSize: 10,
-    Date: ''
+    startDate: '',
+    endDate: ''
   }
-  constructor(private bookingService: BookingServiceService, public dialog: MatDialog,
+  constructor(private bookingService: BookingServiceService, private containverService: Containerv2Service, public dialog: MatDialog,
     private toastr: ToastrcustomService, private bookingServiceService: BookingServiceService, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
@@ -47,10 +53,11 @@ export class ImpContListIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.bookingService.GetAllPerformImport(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date?.slice(0, 10))
+    this.containverService.GetAllContImp(this.PageInfo.page, this.PageInfo.Keyword,
+      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
       .subscribe(data => {
         this.loadding = false;
-        this.lstdata = data.data;
+        this.lstdata.data = data.data;
         this.Pagination.currentPage = data.currentPage,
           this.Pagination.pageSize = data.pageSize,
           this.Pagination.totalPage = data.totalPage,
@@ -84,34 +91,37 @@ export class ImpContListIndexComponent implements OnInit {
       });
   }
 
-  openDelete(id: number) {
-    const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
-    dialogRef.componentInstance.Id = id;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
-    });
+  openDelete(contNo: string) {
+    // const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
+    // dialogRef.componentInstance.Id = id;
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     if (result.statusCode === 200) {
+    //       this.toastr.showSuccess(result.message);
+    //       this.Pagingdata(this.PageInfo);
+    //     }
+    //     else {
+    //       this.toastr.showError(result.message);
+    //     }
+    //   }
+    // });
   }
 
-  openEdit(id: number) {
+  openEdit(code: string) {
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
-    dialogRef.componentInstance.Id = id;
+    this.containerCode = code;
+    const dialogRef = this.dialog.open(ContainerCreateComponent, {
+      width: '50%',
+      height: '800px',
+    });
+    dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-        }
-        else {
+        } else {
           this.toastr.showError(result.message);
         }
       }
@@ -119,7 +129,7 @@ export class ImpContListIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
+    const dialogRef = this.dialog.open(PerformCreateComponent, { width: '50%' });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -139,13 +149,19 @@ export class ImpContListIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  onSearchDate(e: any) {
-    this.PageInfo.Date = e;
+  startDate(e: any) {
+    this.PageInfo.startDate = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
   }
 
-  handlePrinter(item: Perform) {
+  endDate(e: any) {
+    this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  handlePrinter(item: any) {
     this.itemPrint = item;
     var divContents = document.getElementById('eir-import')?.innerHTML || '';
     var printWindow = window.open('', '', 'height=768,width=1366');
@@ -155,5 +171,9 @@ export class ImpContListIndexComponent implements OnInit {
     printWindow?.document.write('</body></html>');
     printWindow?.document.close();
     printWindow?.print();
+  }
+
+  saveTransaction(item: any) {
+    console.log(item, 'item')
   }
 }

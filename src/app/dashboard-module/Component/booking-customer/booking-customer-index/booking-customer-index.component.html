@@ -9,8 +9,6 @@
     <div class="col-sm-4 d-flex">
       <input type="text" class="form-control mr-20" placeholder="Tìm kiếm" aria-label="Recipient's customer"
         aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
-      <input type="datetime-local mr-20" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's created on"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Date" (ngModelChange)="onSearchDate($event)">
     </div>
     <div class="col-sm-8">
       <div class="dropdown">
@@ -44,8 +42,6 @@
               <th>Vị trí trả hàng</th>
               <th>Số container</th>
               <th>Ghi chú</th>
-              <th>Ngày tạo</th>
-              <!-- <th>Trạng thái</th> -->
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
@@ -60,7 +56,6 @@
               <td>{{item.positionReturn}}</td>
               <td>{{item.countContainer}}</td>
               <td>{{item.note}}</td>
-              <td>{{item.createdOn | date:'short'}}</td>
               <td class="column-action" style="text-align: center;">
                 <i class="bi bi-card-checklist" style="padding-right: 8px; cursor: pointer" data-toggle="tooltip"
                   data-placement="top" title="Chọn container" (click)="openListCont(item)"></i>
