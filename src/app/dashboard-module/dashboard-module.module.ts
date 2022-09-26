@@ -95,13 +95,16 @@ import { PerformDeleteComponent } from './Component/booking-customer/perform-del
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
 import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component';
 import { ContainerHistoryIndexComponent } from './Component/container/container-history-index/container-history-index.component';
-import { ContainerImgIndexComponent } from './Component/container/container-img-index/container-img-index.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
 import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
 import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
 import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
+import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
+import { TransactionCreateComponent } from './Component/transaction/transaction-create/transaction-create.component';
+import { TransactionDeleteComponent } from './Component/transaction/transaction-delete/transaction-delete.component';
+import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 
 
 
@@ -177,11 +180,14 @@ import { ContainerImagesEditComponent } from './Component/container/container-im
     UserAuthorizationComponent,
     ExportcontainershipComponent,
     ContainerHistoryIndexComponent,
-    ContainerImgIndexComponent,
     ContainerDialogComponent,
     ContainerMapsIndexComponent,
     ContainerMapsInfoComponent,
-    ContainerImagesEditComponent
+    ContainerImagesEditComponent,
+    TransactionIndexComponent,
+    TransactionCreateComponent,
+    TransactionDeleteComponent,
+    ContainerPopupComponent
   ],
   imports: [
     CommonModule,

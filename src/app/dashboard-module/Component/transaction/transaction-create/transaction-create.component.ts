@@ -1,24 +1,21 @@
-import { TransactionService } from './../../../../Service/transaction/transaction.service';
-import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { filter } from 'rxjs/operators';
-import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { activitiesData, activitiesPacking, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../helper/constant';
-import { map, Observable, startWith } from 'rxjs';
+import { TransactionService } from 'src/app/Service/transaction/transaction.service';
+import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../../booking-customer/helper/constant';
 
 @Component({
-  selector: 'app-perform-create',
-  templateUrl: './perform-create.component.html',
-  styleUrls: ['./perform-create.component.css']
+  selector: 'app-transaction-create',
+  templateUrl: './transaction-create.component.html',
+  styleUrls: ['./transaction-create.component.css']
 })
-export class PerformCreateComponent implements OnInit {
+export class TransactionCreateComponent implements OnInit {
+
   CreateEditForm!: FormGroup
   submited: boolean = false;
   isCreate: boolean = true;
-  contNo: string = '';
+  transId: number = 0;
   activities = activitiesData;
   lstStatusData = lstStatusData;
   lstStep = lstStep;
@@ -32,10 +29,9 @@ export class PerformCreateComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   }
-  constructor(private containerService: Containerv2Service,
+  constructor(private transactionService: TransactionService,
     private vehicleService: VehicleService,
-    private transactionService: TransactionService,
-    public dialogRef: MatDialogRef<PerformCreateComponent>) {
+    public dialogRef: MatDialogRef<TransactionCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       id: new FormControl(),
       contNo: new FormControl(''),
@@ -107,7 +103,8 @@ export class PerformCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadVehicles();
-    this.containerService.GetDetail(this.contNo).subscribe(res => {
+    this.transactionService.GetDetailTrans(this.transId).subscribe(res => {
+      console.log(res,'res')
       this.CreateEditForm = new FormGroup({
         id: new FormControl(res.id),
         contNo: new FormControl(res.contNo),
@@ -193,7 +190,7 @@ export class PerformCreateComponent implements OnInit {
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || '';
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || '';
     if (this.CreateEditForm.valid && this.isCreate === false) {
-      this.containerService.UpdateCont(this.contNo, this.CreateEditForm.value).subscribe(response => {
+      this.transactionService.UpdateTrans(this.transId, this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       })
     }
@@ -206,5 +203,6 @@ export class PerformCreateComponent implements OnInit {
     }
     this.vehicleSelected = this.lstVehicle[index];
   }
+
 
 }

@@ -1,29 +1,25 @@
-import { ContainerCreateComponent } from './../../container/container-create/container-create.component';
-import { lstContainerV2 } from 'src/app/Model/Containerv2';
-import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { TransactionService } from './../../../../Service/transaction/transaction.service';
-import { Vehicle } from './../../../../Model/Vehicle';
-import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
-import { PerformCreateComponent } from './../perform-create/perform-create.component';
-import { convertHelper } from './../helper/convertHelper';
+import { TransactionDeleteComponent } from './../transaction-delete/transaction-delete.component';
+import { TransactionCreateComponent } from './../transaction-create/transaction-create.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
-import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { lstTransactionEIR, TransactionEIR } from 'src/app/Model/TransactionEIR';
+import { TransactionService } from 'src/app/Service/transaction/transaction.service';
+import { PerformCreateComponent } from '../../booking-customer/perform-create/perform-create.component';
+import { PerformDeleteComponent } from '../../booking-customer/perform-delete/perform-delete.component';
+import { convertHelper } from '../../booking-customer/helper/convertHelper';
 
 @Component({
-  selector: 'app-perform-index',
-  templateUrl: './perform-index.component.html',
-  styleUrls: ['./perform-index.component.css']
+  selector: 'app-transaction-index',
+  templateUrl: './transaction-index.component.html',
+  styleUrls: ['./transaction-index.component.css']
 })
-export class PerformIndexComponent implements OnInit {
+export class TransactionIndexComponent implements OnInit {
   isCreate: boolean = true;
-  contNo: string = '';
+  transId: number = 0;
   loading: boolean = false;
-  contSelect: string = '';
+  itemPrint: TransactionEIR | null = null;
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -32,17 +28,13 @@ export class PerformIndexComponent implements OnInit {
     totalPage: 0,
   }
 
-  lstdata: lstContainerV2 = {
+  lstdata: lstTransactionEIR = {
     currentPage: 0,
     pageSize: 0,
     totalRecord: 0,
     totalPage: 0,
     data: []
   };
-
-  lstCustomer: any = [];
-  lstProduct: any = [];
-
   PageInfo = {
     page: 1,
     Keyword: '',
@@ -50,19 +42,17 @@ export class PerformIndexComponent implements OnInit {
     startDate: '',
     endDate: ''
   }
-  constructor(private containerService: Containerv2Service, public dialog: MatDialog,
+  constructor(private transactionService: TransactionService, public dialog: MatDialog,
     private toastr: ToastrcustomService,
-    public convertHelper: convertHelper,
-    private transactionService: TransactionService
-    ) { }
+    public convertHelper: convertHelper,) { }
 
   ngOnInit(): void {
-    this.Pagingdata(this.PageInfo)
+    this.Pagingdata(this.PageInfo);
   }
 
   Pagingdata(PageInfo: any) {
     this.loading = true;
-    this.containerService.GetContProviding(this.PageInfo.page, this.PageInfo.Keyword,
+    this.transactionService.GetAllTrans(this.PageInfo.page, this.PageInfo.Keyword,
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
       .subscribe(data => {
         this.loading = false;
@@ -92,11 +82,11 @@ export class PerformIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  openEdit(contNo: string) {
+  openEdit(id: number) {
     this.isCreate = false;
-    this.contNo = contNo;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%' });
-    dialogRef.componentInstance.containerCode = this.contNo;
+    this.transId = id;
+    const dialogRef = this.dialog.open(TransactionCreateComponent, { width: '50%' });
+    dialogRef.componentInstance.transId = this.transId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -113,8 +103,8 @@ export class PerformIndexComponent implements OnInit {
 
 
   openDelete(id: number) {
-    const dialogRef = this.dialog.open(PerformDeleteComponent);
-    dialogRef.componentInstance.performId = id;
+    const dialogRef = this.dialog.open(TransactionDeleteComponent);
+    dialogRef.componentInstance.transId = id;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -134,18 +124,4 @@ export class PerformIndexComponent implements OnInit {
     this.Pagingdata(pageOfItems)
   }
 
-
-  handlePrinter(item: string) {
-    // this.itemPrint = item;
-    // setTimeout(() => {
-    //   var divContents = document.getElementById('eir')?.innerHTML || '';
-    //   var printWindow = window.open('', '', 'height=768,width=1366');
-    //   printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    //   printWindow?.document.write('</head><body>');
-    //   printWindow?.document.write(divContents);
-    //   printWindow?.document.write('</body></html>');
-    //   printWindow?.document.close();
-    //   printWindow?.print();
-    // }, 300);
-  }
 }

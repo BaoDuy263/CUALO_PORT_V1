@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { activitiesData, lstState, lstStep } from "./constant";
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep } from "./constant";
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +11,15 @@ export class convertHelper {
   }
 
   showStatus(value: number) {
-    switch (value) {
-      case 0:
-        return "E"
-      case 1:
-        return "F"
-      default:
-        return "";
-    }
+    return lstStatusData[value].name;
   }
 
   showSide(value: number) {
-    switch (value) {
-      case 0:
-        return "Không xác định"
-      case 1:
-        return "Import"
-      case 2:
-        return "Export"
-      case 3:
-        return "Storage empty"
-      default:
-        return "";
-    }
+    return lstSide[value].name;
   }
 
   showState(value: number) {
-    return value >= 1 ? lstState[value-1].name : "";
+    return lstState[value].name;
   }
 
   showStep(value: number) {
