@@ -99,10 +99,10 @@ export class ImpContListIndexComponent implements OnInit {
     });
   }
 
-  openEdit(id: number) {
+  openEdit(ContNo: string) {
     this.isCreate = false;
     const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
-    dialogRef.componentInstance.Id = id;
+    dialogRef.componentInstance.Cont = ContNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

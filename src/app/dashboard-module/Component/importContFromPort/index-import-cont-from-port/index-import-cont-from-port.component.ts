@@ -119,7 +119,6 @@ export class IndexImportContFromPortComponent implements OnInit {
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
-            
       });
   }
 

@@ -265,10 +265,10 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
-  openEdit(id: number){
+  openEdit(ContNo: string){
     this.isCreate = false;
     const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
-    dialogRef.componentInstance.Id = id;
+    dialogRef.componentInstance.Cont = ContNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -349,6 +349,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   GetDirecttion(type: number)
   {
+    console.log('type',type);
     let Direction = '';
     switch(type){
       case 2 :
@@ -361,6 +362,7 @@ export class IndeximportContfromShipComponent implements OnInit {
         Direction = "Rút ruột";
         break;
     }
+    console.log('Direction',Direction);
     return Direction;
   }
 

@@ -19,7 +19,7 @@ export class ExportcontainershipComponent implements OnInit {
 
   bulkAction()
   {
-    this.service.bulkActionImport(this.Id).subscribe(data => {
+    this.service.bulkActionImport(this.ContNo).subscribe(data => {
       this.dialogRef.close(data);
     })
   }
