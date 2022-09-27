@@ -236,4 +236,15 @@ export class ContainerIndexComponent implements OnInit {
     this.PageInfo = pageOfItems
     this.loadData(pageOfItems)
   }
+
+  resetData() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      startDate: '',
+      endDate: ''
+    }
+    this.loadData(this.PageInfo);
+  }
 }
