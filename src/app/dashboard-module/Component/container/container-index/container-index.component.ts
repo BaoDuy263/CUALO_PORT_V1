@@ -78,17 +78,17 @@ export class ContainerIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-    this.containerService.Paging(1, '', 1200).subscribe((data) => {
-      this.lstCont = data.data;
-      console.log(this.lstCont);
-    });
+    // this.containerService.Paging(1, '', 1200).subscribe((data) => {
+    //   this.lstCont = data.data;
+    //   console.log(this.lstCont);
+    // });
 
-    let LastDate = new Date();
-    LastDate.setDate(LastDate.getDate() - 10);
-    console.log('-------------------');
-    this.ImagesContSeach.FromDate = LastDate.toDateString();
-    this.ImagesContSeach.ToDate = new Date().toDateString();
-    this.loadDataImages();
+    // let LastDate = new Date();
+    // LastDate.setDate(LastDate.getDate() - 10);
+    // console.log('-------------------');
+    // this.ImagesContSeach.FromDate = LastDate.toDateString();
+    // this.ImagesContSeach.ToDate = new Date().toDateString();
+    // this.loadDataImages();
   }
 
   setOpen(item: any) {
@@ -164,12 +164,6 @@ export class ContainerIndexComponent implements OnInit {
     });
   }
 
-  onChangePage(pageOfItems: any) {
-    pageOfItems.Keyword = this.PageInfo.Keyword;
-    this.PageInfo = pageOfItems;
-    this.loadData(pageOfItems);
-  }
-
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
@@ -221,5 +215,25 @@ export class ContainerIndexComponent implements OnInit {
 
   myTabSelectedIndexChange(index: number) {
     this.selected = index;
+  }
+
+  startDate(e: any) {
+    this.PageInfo.startDate = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
+  endDate(e: any) {
+    this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.startDate = this.PageInfo.startDate;
+    pageOfItems.endDate = this.PageInfo.endDate;
+    this.PageInfo = pageOfItems
+    this.loadData(pageOfItems)
   }
 }
