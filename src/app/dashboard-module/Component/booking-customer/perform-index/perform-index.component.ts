@@ -1,3 +1,8 @@
+import { ContainerCreateComponent } from './../../container/container-create/container-create.component';
+import { lstContainerV2 } from 'src/app/Model/Containerv2';
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { TransactionService } from './../../../../Service/transaction/transaction.service';
+import { Vehicle } from './../../../../Model/Vehicle';
 import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
 import { PerformCreateComponent } from './../perform-create/perform-create.component';
 import { convertHelper } from './../helper/convertHelper';
@@ -7,6 +12,7 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
+import { lstTransactionEIR, TransactionEIR } from 'src/app/Model/TransactionEIR';
 
 @Component({
   selector: 'app-perform-index',
@@ -15,9 +21,9 @@ import { BookingServiceService } from 'src/app/Service/booking-customer/booking-
 })
 export class PerformIndexComponent implements OnInit {
   isCreate: boolean = true;
-  bookCutomerId: number = 0;
+  contNo: string = '';
   loading: boolean = false;
-  itemPrint: Perform | null = null;
+  contSelect: string = '';
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -26,7 +32,7 @@ export class PerformIndexComponent implements OnInit {
     totalPage: 0,
   }
 
-  lstdata: lstPerform = {
+  lstdata: lstContainerV2 = {
     currentPage: 0,
     pageSize: 0,
     totalRecord: 0,
@@ -41,11 +47,14 @@ export class PerformIndexComponent implements OnInit {
     page: 1,
     Keyword: '',
     pageSize: 10,
-    Date: ''
+    startDate: '',
+    endDate: ''
   }
-  constructor(private bookingService: BookingServiceService, public dialog: MatDialog,
+  constructor(private containerService: Containerv2Service, public dialog: MatDialog,
     private toastr: ToastrcustomService,
-    public convertHelper: convertHelper) { }
+    public convertHelper: convertHelper,
+    private transactionService: TransactionService
+    ) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo)
@@ -53,7 +62,8 @@ export class PerformIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loading = true;
-    this.bookingService.GetAllPerform(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date?.slice(0, 10))
+    this.containerService.GetContProviding(this.PageInfo.page, this.PageInfo.Keyword,
+      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
       .subscribe(data => {
         this.loading = false;
         this.lstdata = data;
@@ -70,32 +80,23 @@ export class PerformIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  onSearchDate(e: any) {
-    this.PageInfo.Date = e;
+  startDate(e: any) {
+    this.PageInfo.startDate = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
   }
 
-  openCreate() {
-    // const dialogRef = this.dialog.open(BookingCustomerCreateComponent);
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     if (result.statusCode === 200) {
-    //       this.toastr.showSuccess(result.message);
-    //       this.Pagingdata(this.PageInfo);
-    //     }
-    //     else {
-    //       this.toastr.showError(result.message);
-    //     }
-    //   }
-    // });
+  endDate(e: any) {
+    this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
   }
 
-  openEdit(id: number) {
+  openEdit(contNo: string) {
     this.isCreate = false;
-    this.bookCutomerId = id;
-    const dialogRef = this.dialog.open(PerformCreateComponent, { width: '50%' });
-    dialogRef.componentInstance.performId = this.bookCutomerId;
+    this.contNo = contNo;
+    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%' });
+    dialogRef.componentInstance.containerCode = this.contNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -119,7 +120,6 @@ export class PerformIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -135,15 +135,17 @@ export class PerformIndexComponent implements OnInit {
   }
 
 
-  handlePrinter(item: Perform) {
-    this.itemPrint = item;
-    var divContents = document.getElementById('eir')?.innerHTML || '';
-    var printWindow = window.open('', '', 'height=768,width=1366');
-    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    printWindow?.document.write('</head><body>');
-    printWindow?.document.write(divContents);
-    printWindow?.document.write('</body></html>');
-    printWindow?.document.close();
-    printWindow?.print();
+  handlePrinter(item: string) {
+    // this.itemPrint = item;
+    // setTimeout(() => {
+    //   var divContents = document.getElementById('eir')?.innerHTML || '';
+    //   var printWindow = window.open('', '', 'height=768,width=1366');
+    //   printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
+    //   printWindow?.document.write('</head><body>');
+    //   printWindow?.document.write(divContents);
+    //   printWindow?.document.write('</body></html>');
+    //   printWindow?.document.close();
+    //   printWindow?.print();
+    // }, 300);
   }
 }

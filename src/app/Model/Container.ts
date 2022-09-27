@@ -41,7 +41,10 @@ export interface Container {
   seal: string,
   createdBy: string,
   modifiedBy: string,
-  state: number
+  state: number,
+  impExpDate: Date,
+  outDeliveryDate: Date,
+  inDeliveryDate: Date
 }
 
 export interface ContainerActive {
@@ -134,11 +137,6 @@ export interface lstContImages {
   data: ContImage[]
 }
 
-export enum TypeDelivery {
-  TAUBAI = 1,
-  BAIXE = 2,
-  BAIXESL = 3
-}
 
 export enum Activity {
   HaBaiChoXuat = 1,
@@ -159,3 +157,14 @@ export enum State {
   Stacking = 2,
   OutPort = 3
 }
+
+export interface ContImagesPaging
+{
+    Page : number,
+    PageSize : number,
+    ContNo : string,
+    FromDate : string,
+    ToDate : string,
+    Status: number
+};
+

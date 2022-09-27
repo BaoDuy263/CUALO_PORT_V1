@@ -53,8 +53,6 @@ export class BookingCustomerIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
-    this.GetListSelectCustomer();
-    this.GetListSelectProduct();
   }
 
 
@@ -76,28 +74,15 @@ export class BookingCustomerIndexComponent implements OnInit {
   Pagingdata(PageInfo: any) {
     this.loadding = true;
     this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date?.slice(0, 10))
-    .subscribe(data => {
-      this.loadding = false;
-      this.lstdata = data;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+      .subscribe(data => {
+        this.loadding = false;
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      })
   }
-
-  GetListSelectCustomer() {
-    // this.customerService.GetSelectList().subscribe(data => {
-    //   this.lstCustomer = data.data;
-    // })
-  }
-
-  GetListSelectProduct() {
-    // this.productService.GetSelectList().subscribe(data => {
-    //   this.lstProduct = data.data;
-    // })
-  }
-
 
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
@@ -154,7 +139,6 @@ export class BookingCustomerIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -187,7 +171,7 @@ export class BookingCustomerIndexComponent implements OnInit {
   }
 
   openListCont(item: any) {
-    const dialogRef = this.dialog.open(ListContanerComponent, { width: '25%' });
+    const dialogRef = this.dialog.open(ListContanerComponent, { width: '40%' });
     dialogRef.componentInstance.planDetail = item
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

@@ -31,8 +31,9 @@ import { IndexPerformContFormPortComponent } from './Component/performContFromPo
 import { IndexPerformFromShipComponent } from './Component/performContFromShip/index-perform-from-ship/index-perform-from-ship.component';
 import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component'
 import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
-import { ContainerMapsComponent } from './Component/container/container-maps/container-maps.component';
 import { ContainerMapsListComponent } from './Component/container/container-maps-list/container-maps-list.component';
+import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component';
+import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
 
 const routes: Routes = [
   {
@@ -88,9 +89,10 @@ const routes: Routes = [
       { path: '404-not-found', component: NotfoundComponent },
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
-      { path: 'container-maps', component: ContainerMapsComponent },
+      { path: 'container-maps', component: ContainerMapsIndexComponent },
       { path: 'container-maps-list', component: ContainerMapsListComponent },
       { path: 'container', component: ContainerIndexComponent},
+      { path: 'transaction', component: TransactionIndexComponent},
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [

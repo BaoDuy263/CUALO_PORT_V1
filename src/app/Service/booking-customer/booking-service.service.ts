@@ -83,4 +83,8 @@ export class BookingServiceService {
     }
   }
 
+  PrintE(data: any) {
+    return this.httpService.postRequest("PlanPacking/print", data);
+  }
+
 }

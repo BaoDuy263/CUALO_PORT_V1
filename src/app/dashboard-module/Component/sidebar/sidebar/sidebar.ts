@@ -98,39 +98,38 @@ export const ROUTE_DATA: TypeRoute[] = [
     //     roles: ["Admin"],
     // },
     {
-        name :'Nghiệp vụ xuất nhập tàu',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Nhập cont từ tàu',
-                url: 'nhapcont',
-                roles: ["Admin"],
-            },
-            {
-                name :'Xuất cont lên tàu',
-                url: 'xuatcont',
-                roles: ["Admin"],
-            },
-            {
-                name :'Quản lý lịch tàu',
-                roles: ["Admin"],
-                url:'quanlylichtau'
-            },
-        ]
-    },
-    {
       name :'Nghiệp vụ tại cảng',
       roles: ["Admin", "ds"],
       children : [
           {
-              name :'Cấp rỗng/đóng rời',
-              url:'plan-packing',
+              name :'Nhập cont từ tàu',
+              url: 'nhapcont',
+              roles: ["Admin"],
+          },
+          {
+              name :'Lấy nguyên/rút ruột-Trả rỗng',
+              url:'import-container',
               roles: ["Admin", "ds"],
           },
           {
-              name : 'Trả nguyên/rút ruột',
-              url: 'import-container',
+              name : 'Cấp rỗng/đóng hàng-Hạ bãi',
+              url: 'plan-packing',
               roles: ["Admin", "ds"],
+          },
+          {
+            name :'Xuất cont lên tàu',
+            url: 'xuatcont',
+            roles: ["Admin"],
+          },
+          {
+            name :'Quản lý lịch tàu',
+            roles: ["Admin"],
+            url:'quanlylichtau'
+          },
+          {
+            name: "Quản lý transaction",
+            roles: ["Admin"],
+            url: 'transaction'
           },
       ]
     },

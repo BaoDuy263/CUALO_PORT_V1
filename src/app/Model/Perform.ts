@@ -1,6 +1,7 @@
 export interface Perform {
   activity: number,
   billNo: string,
+  No: string,
   book: string,
   cargoType: string,
   checkIn: Date,

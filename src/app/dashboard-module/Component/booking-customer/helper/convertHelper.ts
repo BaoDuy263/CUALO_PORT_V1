@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep } from "./constant";
 
 @Injectable({
   providedIn: 'root'
@@ -6,71 +7,23 @@ import { Injectable } from "@angular/core";
 
 export class convertHelper {
   showActivity(value: number) {
-    switch (value) {
-      case 0:
-        return "Không xác định"
-      case 1:
-        return "Chờ xuất"
-      case 2:
-        return "Cấp rỗng"
-      case 3:
-        return "Trả nguyên"
-      case 4:
-        return "Shipside lên tàu"
-      case 5:
-        return "Lấy nguyên"
-      case 6:
-        return "Rút ruột"
-      case 7:
-        return "Trả bãi"
-      case 8:
-        return "Kẹp chì"
-      case 9:
-        return "Đóng rời"
-      default:
-        return "";
-    }
+    return activitiesData[value].name;
   }
 
   showStatus(value: number) {
-    switch (value) {
-      case 0:
-        return "Rỗng"
-      case 1:
-        return "Đầy"
-      default:
-        return "";
-    }
+    return lstStatusData[value].name;
   }
 
   showSide(value: number) {
-    switch (value) {
-      case 0:
-        return "Không xác định"
-      case 1:
-        return "Import"
-      case 2:
-        return "Export"
-      case 3:
-        return "Storage empty"
-      default:
-        return "";
-    }
+    return lstSide[value].name;
   }
 
   showState(value: number) {
-    switch (value) {
-      case 0:
-        return "Không xác định"
-      case 1:
-        return "Delivery"
-      case 2:
-        return "Stacking"
-      case 3:
-        return "Ngoài cảng"
-      default:
-        return "";
-    }
+    return lstState[value].name;
+  }
+
+  showStep(value: number) {
+    return lstStep[value].name;
   }
 
 }

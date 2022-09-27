@@ -1,5 +1,8 @@
+import { AutocompleteComponent } from './../View/autocomplete/autocomplete.component';
 import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
+
 
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
 //Component
@@ -11,7 +14,8 @@ import { PaginationComponent } from '../View/pagination/pagination.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
-import { LoadingComponent } from '../View/loading/loading.component'
+import { LoadingComponent } from '../View/loading/loading.component';
+
 //Thư viện
 
 // import {MatMenuModule} from '@angular/material/menu';
@@ -27,6 +31,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 //
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
@@ -90,8 +95,16 @@ import { PerformDeleteComponent } from './Component/booking-customer/perform-del
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
 import { ExportcontainershipComponent } from './Component/importContFromShip/exportcontainership/exportcontainership.component';
 import { ContainerHistoryIndexComponent } from './Component/container/container-history-index/container-history-index.component';
-import { ContainerImgIndexComponent } from './Component/container/container-img-index/container-img-index.component';
-import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
+import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
+import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
+import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
+import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
+import { TransactionCreateComponent } from './Component/transaction/transaction-create/transaction-create.component';
+import { TransactionDeleteComponent } from './Component/transaction/transaction-delete/transaction-delete.component';
+import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 
 
 
@@ -105,7 +118,7 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     TaikhoanComponent ,
     //view
     PaginationComponent,
-
+    AutocompleteComponent,
     MultidropdownComponent,
     SidebarComponent,
     LoadingComponent,
@@ -129,7 +142,6 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     BookingImportContCreateComponent,
     BookingImportContDeleteComponent,
     BookingImportContIndexComponent,
-    MultidropdownComponent,
     SidebarComponent,
     ExampleComponent,
     QLTaiKhoanCreateComponent,
@@ -168,8 +180,14 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     UserAuthorizationComponent,
     ExportcontainershipComponent,
     ContainerHistoryIndexComponent,
-    ContainerImgIndexComponent,
-    ContainerDialogComponent
+    ContainerDialogComponent,
+    ContainerMapsIndexComponent,
+    ContainerMapsInfoComponent,
+    ContainerImagesEditComponent,
+    TransactionIndexComponent,
+    TransactionCreateComponent,
+    TransactionDeleteComponent,
+    ContainerPopupComponent
   ],
   imports: [
     CommonModule,
@@ -184,9 +202,13 @@ import { ContainerDialogComponent } from './Component/container/container-dialog
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
     //
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     //
     // ToastrModule.forRoot()
   ],

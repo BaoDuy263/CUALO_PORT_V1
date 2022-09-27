@@ -126,32 +126,10 @@ export class ContainerMapsComponent implements OnInit {
     console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
-      console.log(data.item1);
+     // console.log(data.item1);
       this.listContYarn3 = data.item1;
       this.displayListCont(this.listContYarn3);
     });
-    // this.MapContYarn3Service_.getMap(this.listInfo).subscribe((data) => {
-    //   // this.loadding = false;
-    //   console.log(data);
-    //   // this.lstdata = data;
-    //   // (this.Pagination.currentPage = data.currentPage),
-    //   //   (this.Pagination.pageSize = data.pageSize),
-    //   //   (this.Pagination.totalPage = data.totalPage),
-    //   //   (this.Pagination.totalRecord = data.totalRecord);
-    // });
-
-    // this.MapContYarn3Service.getMap1(this.listInfo);
-    // this.MapContYarn3Service.getMap1(this.listInfo).subscribe(
-    // (response: { data: { [x: string]: string | any[] } }) => {
-    //   console.log(response);
-    //   // this.listContYarn3 = response.data['items'];
-    //   // if (checkSelect == true) {
-    //   //   //this.listContAfterSearch(this.textSearch);
-    //   // } else {
-    //   //   this.displayListCont(response.data['items']);
-    //   // }
-    // }
-    //);
   }
   displayListCont(listCont: string | any[]) {
     var arrA1 = [];
@@ -165,36 +143,39 @@ export class ContainerMapsComponent implements OnInit {
     var arrE1 = [];
     var arrE2 = [];
 
-    console.log(listCont.length + '------------------------');
+    console.log(listCont);
+
     for (let i = 0; i < listCont.length; i++) {
-      if (listCont[i]['positionLabel'] == 'A' && listCont[i]['position'] == 1) {
+       var lable = listCont[i]['positionLabel'].charAt(0);
+      if (lable == 'A' && listCont[i]['position'] == 1) {
         arrA1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'A' && listCont[i]['position'] == 2) {
+      if (lable == 'A' && listCont[i]['position'] == 2) {
         arrA2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'B' && listCont[i]['position'] == 1) {
+      if (lable == 'B' && listCont[i]['position'] == 1) {
         arrB1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'B' && listCont[i]['position'] == 2) {
+      if (lable == 'B' && listCont[i]['position'] == 2) {
         arrB2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'C' && listCont[i]['position'] == 1) {
+      if (lable == 'C' && listCont[i]['position'] == 1) {
         arrC1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'C' && listCont[i]['position'] == 2) {
+      if (lable == 'C' && listCont[i]['position'] == 2) {
         arrC2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'D' && listCont[i]['position'] == 1) {
+      if (lable == 'D' && listCont[i]['position'] == 1) {
         arrD1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'D' && listCont[i]['position'] == 2) {
+      if (lable == 'D' && listCont[i]['position'] == 2) {
         arrD2.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'E' && listCont[i]['position'] == 1) {
+
+      if (lable == 'E' && listCont[i]['position'] == 1) {
         arrE1.push(listCont[i]);
       }
-      if (listCont[i]['positionLabel'] == 'E' && listCont[i]['position'] == 2) {
+      if (lable == 'E' && listCont[i]['position'] == 2) {
         arrE2.push(listCont[i]);
       }
     }
@@ -271,6 +252,8 @@ export class ContainerMapsComponent implements OnInit {
     this.listD21_1 = listD1.slice(16, 21);
 
     this.listE8_2 = listE2.slice(0, 8);
+    console.log('$$$$$$$$$$$$$$$$');
+    console.log(this.listE8_2);
     console.log('################');
 
     this.listE10_2 = listE2.slice(8, 10);
