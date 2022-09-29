@@ -7,23 +7,23 @@ import { activitiesData, lstSide, lstState, lstStatusData, lstStep } from "./con
 
 export class convertHelper {
   showActivity(value: number) {
-    return activitiesData[value].name;
+    return activitiesData[value]?.name;
   }
 
   showStatus(value: number) {
-    return lstStatusData[value].name;
+    return lstStatusData[value]?.name;
   }
 
   showSide(value: number) {
-    return lstSide[value].name;
+    return lstSide[value]?.name;
   }
 
   showState(value: number) {
-    return lstState[value].name;
+    return lstState[value]?.name;
   }
 
   showStep(value: number) {
-    return lstStep[value].name;
+    return lstStep[value]?.name;
   }
 
 }

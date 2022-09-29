@@ -1,3 +1,4 @@
+import { ContainerEditComponent } from './../container-edit/container-edit.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -121,7 +122,6 @@ export class ContainerIndexComponent implements OnInit {
         status
       )
       .subscribe((data) => {
-        console.log(data.data);
         this.listImages = data.data;
       });
   }
@@ -146,7 +146,7 @@ export class ContainerIndexComponent implements OnInit {
   openEdit(code: string) {
     this.isCreate = false;
     this.containerCode = code;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, {
+    const dialogRef = this.dialog.open(ContainerEditComponent, {
       width: '50%',
       height: '800px',
     });
@@ -200,7 +200,7 @@ export class ContainerIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(ContainerCreateComponent);
+    const dialogRef = this.dialog.open(ContainerEditComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {

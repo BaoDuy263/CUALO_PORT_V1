@@ -1,22 +1,20 @@
-import { ContainerPopupComponent } from './../container-popup/container-popup.component';
-import { TransactionService } from './../../../../Service/transaction/transaction.service';
-import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
-import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { result } from 'lodash';
+import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { TransactionService } from 'src/app/Service/transaction/transaction.service';
+import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../booking-customer/helper/constant';
+import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { ContainerPopupComponent } from '../container-popup/container-popup.component';
 
 @Component({
-  selector: 'app-container-create',
-  templateUrl: './container-create.component.html',
-  styleUrls: ['./container-create.component.css']
+  selector: 'app-container-edit',
+  templateUrl: './container-edit.component.html',
+  styleUrls: ['./container-edit.component.css']
 })
-export class ContainerCreateComponent implements OnInit {
+export class ContainerEditComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
   containerCode: string = '';
@@ -38,9 +36,8 @@ export class ContainerCreateComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   };
-  displayStyle: string = ''
   constructor(private containerService: Containerv2Service,
-    public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
+    public dialogRef: MatDialogRef<ContainerEditComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
     public dialog: MatDialog, public convertHelper: convertHelper) {
     this.CreateEditForm = new FormGroup({
@@ -120,19 +117,6 @@ export class ContainerCreateComponent implements OnInit {
       phoneNumberDriver: new FormControl(''),
     })
   }
-
-  get contNo() { return this.CreateEditForm.get('contNo') }
-  get type() { return this.CreateEditForm.get('type') }
-  get side() { return this.CreateEditForm.get('side') }
-  get status() { return this.CreateEditForm.get('type') }
-  get dateCheckIn() { return this.CreateEditForm.get('dateCheckIn') }
-  get dateCheckOut() { return this.CreateEditForm.get('dateCheckOut') }
-  get activity() { return this.CreateEditForm.get('activity') }
-  get typeDelivery() { return this.CreateEditForm.get('typeDelivery') }
-  get location() { return this.CreateEditForm.get('location') }
-  get state() { return this.CreateEditForm.get('state') }
-  get region() { return this.CreateEditForm.get('region') }
-  // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
@@ -285,17 +269,4 @@ export class ContainerCreateComponent implements OnInit {
     this.vehicleSelected = this.lstVehicle[index];
   }
 
-  printE() {
-    this.transactionService.GetDetailTrans(this.transId).subscribe(res => {
-      if (res == null) {
-        const dialogRef = this.dialog.open(ContainerPopupComponent);
-        dialogRef.componentInstance.title = 'Vui lòng lưu giao dịch trước khi in!'
-        dialogRef.componentInstance.button = 'Xác nhận';
-      } else {
-        this.transNo = res.no;
-        this.displayStyle = 'displayStyle';
-        setTimeout(() => window.print(), 500);
-      }
-    });
-  }
 }
