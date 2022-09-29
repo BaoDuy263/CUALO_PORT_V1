@@ -1,8 +1,8 @@
-<div class="container-lg perform-create">
+<div class="container-lg container-edit">
   <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm
-        mới thực hiện</div>
+        mới container</div>
       <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
         <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
           Sửa thực hiện
@@ -12,15 +12,14 @@
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="mb-3">
-          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
           <label for="exampleFormControlInput1" class="form-label">Mã container</label>
-          <input type="text" class="form-control" formControlName="contNo" readonly>
+          <input type="text" class="form-control" formControlName="contNo">
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">billNo</label>
-          <input type="text" class="form-control" formControlName="billNo">
+          <label for="exampleFormControlInput1" class="form-label">bill</label>
+          <input type="text" class="form-control" formControlName="bill">
         </div>
       </div>
       <div class="col-lg-4">
@@ -38,7 +37,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trình trạng container</label>
-          <select class="form-control" formControlName="status">
+          <select class="form-control" formControlName="activity">
             <option *ngFor="let s of lstStatusData" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -101,7 +100,6 @@
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <!-- Sau này sẽ fix cứng khách hàng đăng nhập vì form này sẽ làm file riêng -->
           <label for="exampleFormControlInput1" class="form-label">Chiều cao</label>
           <input type="text" class="form-control" formControlName="height">
         </div>
@@ -208,8 +206,8 @@
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Số xe</label>
-          <input type="text" class="form-control" formControlName="vehicleNo">
+          <label for="exampleFormControlInput1" class="form-label">Ngày ra bãi</label>
+          <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
         </div>
       </div>
     </div>
@@ -229,7 +227,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Bước hiện tại</label>
-          <select class="form-control" formControlName="step">
+          <select class="form-control" formControlName="activity">
             <option *ngFor="let s of lstStep" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -255,7 +253,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">State</label>
-          <select class="form-control" formControlName="state">
+          <select class="form-control" formControlName="activity">
             <option *ngFor="let s of lstState" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -276,179 +274,165 @@
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Cảng cuối</label>
-          <input type="text" class="form-control" formControlName="lastPort">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày nhận bãi</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckIn">
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày ra bãi</label>
-          <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nơi trả vỏ</label>
+            <input type="text" class="form-control" formControlName="returnAddress">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Số B/L</label>
+            <input type="text" class="form-control" formControlName="noBL">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Người nhận hàng</label>
+            <input type="text" class="form-control" formControlName="consignee">
+          </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
-          <input type="text" class="form-control" formControlName="note">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Số lệnh dịch vụ</label>
+            <input type="text" class="form-control" formControlName="serviceNo">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Sô seal</label>
+            <input type="text" class="form-control" formControlName="sealNo">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Mã PT</label>
+            <input type="text" class="form-control" formControlName="codePT">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Nơi trả vỏ</label>
-          <input type="text" class="form-control" formControlName="returnAddress">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Vùng</label>
+            <input type="text" class="form-control" formControlName="region">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">POL</label>
+            <input type="text" class="form-control" formControlName="pol">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Cảng đến</label>
+            <input type="text" class="form-control" formControlName="locationShip">
+          </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Số B/L</label>
-          <input type="text" class="form-control" formControlName="noBL">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Phương án</label>
+            <input type="text" class="form-control" formControlName="planXD">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Xe sà lan</label>
+            <input type="text" class="form-control" formControlName="trunkBarge">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Hàng nội địa hay hàng ngoại</label>
+            <input type="text" class="form-control" formControlName="domestic">
+          </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Người nhận hàng</label>
-          <input type="text" class="form-control" formControlName="consignee">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Đóng</label>
+            <input type="text" class="form-control" formControlName="packing">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Rút</label>
+            <input type="text" class="form-control" formControlName="nonPacking">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
+            <input type="text" class="form-control" formControlName="nameDriver">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Số lệnh dịch vụ</label>
-          <input type="text" class="form-control" formControlName="serviceNo">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
+            <input type="text" class="form-control" formControlName="licensePlates">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Số điện thoại lái xe</label>
+            <input type="text" class="form-control" formControlName="phoneNumberDriver">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
+            <input type="text" class="form-control" formControlName="createdBy">
+          </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Sô seal</label>
-          <input type="text" class="form-control" formControlName="sealNo">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)">
+            </app-autocomplete>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Mã PT</label>
-          <input type="text" class="form-control" formControlName="codePT">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Vùng</label>
-          <input type="text" class="form-control" formControlName="region">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">POL</label>
-          <input type="text" class="form-control" formControlName="pol">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Cảng đến</label>
-          <input type="text" class="form-control" formControlName="locationShip">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">PlanXD</label>
-          <input type="text" class="form-control" formControlName="planXD">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Xe sà lan</label>
-          <input type="text" class="form-control" formControlName="trunkBarge">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Hàng nội địa hay hàng ngoại</label>
-          <input type="text" class="form-control" formControlName="domestic">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Đóng</label>
-          <input type="text" class="form-control" formControlName="packing">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Rút</label>
-          <input type="text" class="form-control" formControlName="nonPacking">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
+        <div class="col-lg-4">
           <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
-          <input type="text" class="form-control" formControlName="nameDriver">
+          <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.nameDriver : ''">
+        </div>
+        <div class="col-lg-4">
+          <label for="exampleFormControlInput1" class="form-label">Tên công ty</label>
+          <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.customer : ''">
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
-          <input type="text" class="form-control" formControlName="licensePlates">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
+            <textarea type="text" class="form-control" formControlName="note"></textarea>
+          </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Số điện thoại lái xe</label>
-          <input type="text" class="form-control" formControlName="phoneNumberDriver">
+      <div class="d-flex justify-content-between mt-4 mb-4">
+        <div class="group-button">
+          <button type="button" class="btn btn-secondary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
+            dịch</button>
+        </div>
+        <div class="group-button">
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Ghi nhận</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+            bỏ</button>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
-          <input type="text" class="form-control" formControlName="createdBy">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)">
-          </app-autocomplete>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
-        <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.nameDriver : ''">
-      </div>
-      <div class="col-lg-4">
-        <label for="exampleFormControlInput1" class="form-label">Tên công ty</label>
-        <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.customer : ''">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
-          <textarea type="text" class="form-control" formControlName="note"></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-end mt-4">
-      <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
-      <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
-        bỏ</button>
     </div>
   </form>
 </div>

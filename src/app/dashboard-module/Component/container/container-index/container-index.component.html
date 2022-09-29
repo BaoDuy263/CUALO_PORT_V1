@@ -98,8 +98,8 @@
           </ng-select>
         </div>
         <div class="col-sm-2">
-          <div class="form-group " style="margin-top: 10px;">
-            <input formControlName="status" type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
+          <div class="form-group" style="margin-top: 10px;">
+            <input  type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
               (change)="checkSelected($event)">
             <label for="txtStatus">Chưa gắn Container</label>
           </div>
@@ -123,7 +123,8 @@
             </div>
             <div style="padding: 0px 10px;">
               <a (click)="setOpen(item)" style="cursor: pointer;">
-                <img *ngIf="item.urlImage" [src]="UrlRoot + item.urlImage" style=" height: 220px; overflow: hidden; width: 100%; border: 1px solid #746f6f;
+                <img *ngIf="item.urlImage" [src]="UrlRoot + item.urlImage"
+                      style=" height: 220px; overflow: hidden; width: 100%; border: 1px solid #746f6f;
                 ">
               </a>
             </div>
