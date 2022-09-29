@@ -18,7 +18,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   CreateEditForm!: FormGroup;
   submited: boolean = false;
   isCreate: boolean = true;
-  @Input() Id: number = 0;
+  @Input() Cont: string = '';
 
   lstContainer = [
     { id: "20'DC", name: 'Container Khô 20 feet (20DC)' },
@@ -30,7 +30,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   lstDirection = [
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
-    { id: 3, name: 'Trả rỗng' },
+    { id: 2, name: 'Cấp rỗng' },
   ];
 
   lstLocation :Array<{id: string,positionLabel:string}> = []
@@ -72,16 +72,14 @@ export class CreateimportContfromShipComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetLocatonFree();
-    if (this.Id > 0) {
+    if (this.Cont  !== '') {
       this.getDetail();
     }
   }
 
   getDetail() {
-    this.importContFromShipService.getDetail(this.Id).subscribe((data) => {
-    
+    this.importContFromShipService.getDetail(this.Cont).subscribe((data) => {
       this.CreateEditForm = new FormGroup({
-        id: new FormControl(data.data.id, Validators.required),
         Voyace: new FormControl(data.data.voyace, Validators.required),
         Receiver: new FormControl(data.data.receiver, Validators.required),
         BillNo: new FormControl(data.data.billNo),

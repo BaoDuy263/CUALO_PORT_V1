@@ -119,7 +119,6 @@ export class IndexImportContFromPortComponent implements OnInit {
             this.Pagination.pageSize = data.data.pageSize,
             this.Pagination.totalPage = data.data.totalPage,
             this.Pagination.totalRecord = data.data.totalRecord
-            
       });
   }
 
@@ -264,10 +263,10 @@ export class IndexImportContFromPortComponent implements OnInit {
     });
   }
 
-  openEdit(id: number){
+  openEdit(ContNo: string){
     this.isCreate = false;
     const dialogRef = this.dialog.open(CreateImportContFromPortComponent);
-    dialogRef.componentInstance.Id = id;
+    dialogRef.componentInstance.containerCode = ContNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -346,6 +345,43 @@ export class IndexImportContFromPortComponent implements OnInit {
       this.loadding = false;
       throw new Error("error 500");
     }
+  }
+
+  GetDirecttion(type: number)
+  {
+    console.log('type',type);
+    let Direction = '';
+    switch(type){
+      case 1 :
+        Direction = "Hạ bãi chờ xuất";
+        break;
+      case 2 :
+        Direction = "Cấp rỗng";
+        break;
+      case 3:
+        Direction = "Trả rỗng";
+        break;
+      case 4:
+        Direction = "ShipSide";
+        break;
+      case 5:
+        Direction = "Lấy nguyên";
+        break;
+      case 6:
+        Direction = "Rút ruột";
+        break;
+      case 7:
+        Direction = "Trả bãi";
+        break;
+      case 8:
+        Direction = "Kẹp chì";
+        break;
+      case 9:
+        Direction = "Đóng rời";
+        break;
+    }
+    console.log('Direction',Direction);
+    return Direction;
   }
 
   GetStatus(step : number)

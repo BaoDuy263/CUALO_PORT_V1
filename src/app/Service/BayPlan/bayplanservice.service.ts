@@ -19,5 +19,5 @@ export class BayplanserviceService {
   Paging(data : PlanPaging) {
     return this.httpService.postRequest('BayPlan/Paging', data);
   }
-}
+} 
 
