@@ -22,7 +22,6 @@ export class IndeximportContfromShipComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
-
   //Tab Booking
   PageInfoBooking : BookingPlanPaging = {
     Page: 1,
@@ -123,6 +122,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.Paging(this.PageInfo).subscribe(
       data => {
+        console.log('data',data);
         this.loadding = false;
         this.lstdata = data.data;
         this.Pagination.currentPage = data.data.currentPage,
@@ -349,7 +349,6 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   GetDirecttion(type: number)
   {
-    console.log('type',type);
     let Direction = '';
     switch(type){
       case 2 :
@@ -365,7 +364,6 @@ export class IndeximportContfromShipComponent implements OnInit {
         Direction = "Đóng hàng";
         break;
     }
-    console.log('Direction',Direction);
     return Direction;
   }
 
@@ -386,5 +384,16 @@ export class IndeximportContfromShipComponent implements OnInit {
         }
       }
     });
+  }
+
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(new Date(dateUpdate).toISOString() == "0000-12-31T17:17:56.000Z"){
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
   }
 }

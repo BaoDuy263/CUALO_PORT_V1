@@ -28,9 +28,11 @@ export class CreateimportContfromShipComponent implements OnInit {
   ];
 
   lstDirection = [
+    { id: 0, name: 'Chưa xác định'},
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
     { id: 2, name: 'Cấp rỗng' },
+    { id: 9, name: 'Đóng hàng' },
   ];
 
   lstLocation :Array<{id: string,positionLabel:string}> = []
@@ -46,7 +48,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       WG: new FormControl(),
       SealNo: new FormControl(),
       Commodity: new FormControl(),
-      ReturnPlan: new FormControl(new Date),
+      ReturnPlan: new FormControl("0001-01-01T00:00:00"),
       Location: new FormControl(),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
@@ -55,8 +57,8 @@ export class CreateimportContfromShipComponent implements OnInit {
       Shipper: new FormControl(),
       TypeCont: new FormControl(),
       ContNo: new FormControl('', Validators.required),
-      CheckIn: new FormControl(new Date),
-      Activity: new FormControl(),
+      CheckIn: new FormControl("0001-01-01T00:00:00"),
+      Activity: new FormControl(0),
     });
   }
 
@@ -113,6 +115,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       this.CreateEditForm.value.Activity
     );
     if (this.CreateEditForm.valid && this.isCreate === true) {
+      console.log('value',this.CreateEditForm.value);
       this.importContFromShipService
         .Insert(this.CreateEditForm.value)
         .subscribe((response) => {

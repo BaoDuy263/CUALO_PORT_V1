@@ -87,7 +87,7 @@
                       <input type="text" class="form-control" placeholder="Chuyến nhập xuất" [(ngModel)]="PageInfo.Voyace" (ngModelChange)="onSearchVoyace($event)">
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control" placeholder="Mã container (có thể nhập 4 số cuối của cont)" [(ngModel)]="PageInfo.ContNo" (ngModelChange)="onSearchContainer($event)">
+                      <input type="text" class="form-control" placeholder="Mã container" [(ngModel)]="PageInfo.ContNo" (ngModelChange)="onSearchContainer($event)">
                     </div>
                     <div class="col-sm-3">
                       <input type="text" class="form-control" placeholder="Từ ngày"  onfocus="(this.type='date')" [(ngModel)]="PageInfo.FromDate" (ngModelChange)="onSearchFromDate($event)">
@@ -125,13 +125,13 @@
                           <th  style="text-align: center;">STT</th>
                           <!-- <th></th> -->
                           <th>Chuyến nhập xuất</th>
+                          <th>Mã Container</th>
+                          <th>Phương Án</th>
                           <th>Người nhận hàng</th>
                           <th>Hàng Hóa</th>
-                          <th>Mã Container</th>
-                          <th>Ngày trả</th>
                           <th>Ngày tạo KH</th>
                           <th>Ngày nhập tàu</th>
-                          <th>Phương Án</th>
+                          <th>Ngày trả</th>
                           <th>Vị trí đặt Cont</th>
                           <th  style="text-align: center;">Hành động</th>
                         </tr>
@@ -141,13 +141,13 @@
                           <td style="text-align: center;">{{i + 1}}</td>
                           <!-- <td ><input type="checkbox" value="" id="flexCheckChecked" ></td> -->
                           <td>{{item.voyace}}</td>
+                          <td>{{item.contNo}}</td>
+                          <td>{{GetDirecttion(item.activity)}}</td>
                           <td>{{item.receiver}}</td>
                           <td>{{item.commodity}}</td>
-                          <td>{{item.contNo}}</td>
-                          <td>{{item.returnPlan | date: 'dd/MM/yyyy'}}</td>
-                          <td>{{item.dateUpdate  | date: 'dd/MM/yyyy'}}</td>
-                          <td>{{item.dateCheckIn  | date: 'dd/MM/yyyy'}}</td>
-                          <td>{{GetDirecttion(item.activity)}}</td>
+                          <td>{{CheckDate(item.dateUpdate)}}</td>
+                          <td>{{CheckDate(item.dateCheckIn)}}</td>
+                          <td>{{CheckDate(item.returnPlan)}}</td>
                           <th>{{item.location}}</th>
                           <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                             (click)="openEdit(item.contNo)" *ngIf="item.step == 0"></i><i class="bi bi-trash3" 
