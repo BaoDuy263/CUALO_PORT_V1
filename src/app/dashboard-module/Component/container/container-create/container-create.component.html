@@ -206,10 +206,16 @@
           <input type="text" class="form-control" formControlName="transCom">
         </div>
       </div>
-      <div class="col-lg-4">
+      <!-- <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Số xe</label>
           <input type="text" class="form-control" formControlName="vehicleNo">
+        </div>
+      </div> -->
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Ngày ra bãi</label>
+          <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
         </div>
       </div>
     </div>
@@ -274,33 +280,27 @@
           <input type="datetime-local" class="form-control" formControlName="inDeliveryDate">
         </div>
       </div>
-      <div class="col-lg-4">
+      <!-- <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Cảng cuối</label>
           <input type="text" class="form-control" formControlName="lastPort">
         </div>
-      </div>
-    </div>
-    <div class="row">
+      </div> -->
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày nhận bãi</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckIn">
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày ra bãi</label>
-          <input type="datetime-local" class="form-control" formControlName="dateCheckOut">
-        </div>
-      </div>
+    </div>
+    <!-- <div class="row"> -->
       <!-- <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ghi chú</label>
           <input type="text" class="form-control" formControlName="note">
         </div>
       </div> -->
-    </div>
+    <!-- </div> -->
     <div class="row">
       <div class="col-lg-4">
         <div class="mb-3">
@@ -452,7 +452,7 @@
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
       </div>
       <div class="group-button">
-        <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Ghi nhận</button>
         <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
           bỏ</button>
       </div>
