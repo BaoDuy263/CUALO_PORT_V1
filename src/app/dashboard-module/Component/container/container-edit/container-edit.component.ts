@@ -207,22 +207,29 @@ export class ContainerEditComponent implements OnInit {
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
-        this.submited = true;
-        this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-        this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-        this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-        this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-        this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-        this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-        if (this.CreateEditForm.valid && this.isCreate === true) {
-          this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          });
-        }
-        if (this.CreateEditForm.valid && this.isCreate === false) {
-          this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          })
+        const check = this.validateForm(this.CreateEditForm.value);
+        if (check) {
+          this.submited = true;
+          this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+          this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+          this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+          this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+          this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+          this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+          if (this.CreateEditForm.valid && this.isCreate === true) {
+            this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
+              this.dialogRef.close(response);
+            });
+          }
+          if (this.CreateEditForm.valid && this.isCreate === false) {
+            this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
+              this.dialogRef.close(response);
+            })
+          }
+        } else {
+          const dialogRef2 = this.dialog.open(ContainerPopupComponent);
+          dialogRef2.componentInstance.title = 'Bước hiện tại không phù hợp với phương án được chọn. Vui lòng chọn lại phương án!!!';
+          dialogRef2.componentInstance.button = 'Xác nhận';
         }
       }
     })
@@ -242,7 +249,7 @@ export class ContainerEditComponent implements OnInit {
     dialogRef.componentInstance.button = 'Hủy bỏ';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     dialogRef.afterClosed().subscribe(result => {
-      if (result.confirm === 'event') {
+      if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
           if (res != null) {
             this.transId = res.data.id;
@@ -265,6 +272,24 @@ export class ContainerEditComponent implements OnInit {
       return;
     }
     this.vehicleSelected = this.lstVehicle[index];
+  }
+
+  validateForm(form: any){
+    const listCheck = [
+      { step: 0, activity: [2, 5, 6, 9] },
+      { step: 1, activity: [5, 6] },
+      { step: 2, activity: [3, 5, 6] },
+      { step: 3, activity: [2, 9] },
+      { step: 4, activity: [1, 2, 9] },
+      { step: 5, activity: [1] },
+    ]
+    let isSuccess = true
+    for (let i = 0; i < listCheck.length; i++) {
+      if (form.step === listCheck[i].step && !listCheck[i].activity.includes(form.activity)) {
+        isSuccess = false;
+      }
+    }
+    return isSuccess;
   }
 
 }
