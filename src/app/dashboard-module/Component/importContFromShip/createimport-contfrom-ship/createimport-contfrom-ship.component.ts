@@ -46,7 +46,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       WG: new FormControl(),
       SealNo: new FormControl(),
       Commodity: new FormControl(),
-      ReturnPlan: new FormControl(),
+      ReturnPlan: new FormControl(new Date),
       Location: new FormControl(),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
@@ -55,7 +55,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       Shipper: new FormControl(),
       TypeCont: new FormControl(),
       ContNo: new FormControl('', Validators.required),
-      CheckIn: new FormControl(),
+      CheckIn: new FormControl(new Date),
       Activity: new FormControl(),
     });
   }

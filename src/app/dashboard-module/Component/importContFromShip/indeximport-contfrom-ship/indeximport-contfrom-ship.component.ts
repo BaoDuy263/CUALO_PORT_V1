@@ -361,6 +361,9 @@ export class IndeximportContfromShipComponent implements OnInit {
       case 6 :
         Direction = "Rút ruột";
         break;
+      case 9 :
+        Direction = "Đóng hàng";
+        break;
     }
     console.log('Direction',Direction);
     return Direction;
