@@ -217,13 +217,11 @@ export class ContainerEditComponent implements OnInit {
         if (this.CreateEditForm.valid && this.isCreate === true) {
           this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
             this.dialogRef.close(response);
-            this.toastr.showSuccess(response.message);
           });
         }
         if (this.CreateEditForm.valid && this.isCreate === false) {
           this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
             this.dialogRef.close(response);
-            this.toastr.showSuccess(response.message);
           })
         }
       }
