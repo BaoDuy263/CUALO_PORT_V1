@@ -2,19 +2,10 @@ import { ContainerEditComponent } from './../container-edit/container-edit.compo
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import {
-  ContImagesPaging,
-  lstContainer,
-  lstContHistory,
-} from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
-import { ContainerCreateComponent } from '../container-create/container-create.component';
 import { convertHelper } from '../../booking-customer/helper/convertHelper';
-import { FormControl } from '@angular/forms';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
-import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { lstContainerV2 } from 'src/app/Model/Containerv2';
 
@@ -81,29 +72,22 @@ export class ContainerIndexComponent implements OnInit {
     this.loadData(this.PageInfo);
     this.containerService.Paging(1, '', 1200).subscribe((data) => {
       this.lstCont = data.data;
-      console.log(this.lstCont);
     });
 
     let LastDate = new Date();
     LastDate.setDate(LastDate.getDate() - 10);
-    console.log('-------------------');
     this.ImagesContSeach.FromDate = LastDate.toDateString();
     this.ImagesContSeach.ToDate = new Date().toDateString();
     this.loadDataImages();
   }
 
   setOpen(item: any) {
-    // this.mContainerService.mContNoPass.subscribe(message => this.message = message);
-    // this.containerService.GetConNo(item.code);
-    console.log();
+
     const dialogRef = this.dialog.open(ContainerImagesEditComponent);
     dialogRef.componentInstance.ImagesObj = item;
 
     dialogRef.afterClosed().subscribe(result => {
       this.loadDataImages()
-      // console.log('-----------------------------');
-      //  if (result) {
-      //  }
     });
 
    }
@@ -191,12 +175,10 @@ export class ContainerIndexComponent implements OnInit {
   }
 
   checkSelected(event: any) {
-    // console.log('sdfjsdfsdjfsdfsdfsdfs----' + this.CheckedImagesEmtry);
     if (event.target.checked) this.CheckedImagesEmtry = true;
     else this.CheckedImagesEmtry = false;
 
     this.loadDataImages();
-    // this.ImagesContSeach.ToDate = e;
   }
 
   openCreate() {
