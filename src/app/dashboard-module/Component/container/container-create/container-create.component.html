@@ -1,8 +1,11 @@
 <style type="text/css" media="print">
   @page {
-      size: auto;   /* auto is the initial value */
-      margin: 0;  /* this affects the margin in the printer settings */
+    size: auto;
+    /* auto is the initial value */
+    margin: 0;
+    /* this affects the margin in the printer settings */
   }
+
 </style>
 <div class="container-lg container-create">
   <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
@@ -48,7 +51,8 @@
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Số Container</b>/Cont. No:
                 <input type="text" class="form-control" formControlName="contNo"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................" readonly>
+                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................"
+                  readonly>
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -115,8 +119,10 @@
           <tr>
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Loại Cont</b>/Type:
-                <input type="text" class="form-control" formControlName="type"
+                <select class="form-control" formControlName="type"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  <option *ngFor="let t of lstTypeCont" [ngValue]="t">{{t}}</option>
+                </select>
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -202,7 +208,8 @@
             <td style="width: 90%" class="d-flex flex-column">
               <p><b>Tình trạng cont</b>/Container Status:
                 <textarea type="text" class="form-control" formControlName="statusContainer"
-                  style="border: none; padding: 0; width: 100%; margin-left: 10px;" rows="10" placeholder="................"></textarea>
+                  style="border: none; padding: 0; width: 100%; margin-left: 10px;" rows="10"
+                  placeholder="................"></textarea>
               </p>
             </td>
             <td style="width: 50%">
@@ -221,7 +228,8 @@
                 <input type="datetime-local" class="form-control" formControlName="landingDate"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
-              <p style="display: flex; align-items: center;"><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator details</b>
+              <p style="display: flex; align-items: center;"><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator
+                  details</b>
                 <input type="text" class="form-control" formControlName="transType"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
@@ -229,7 +237,8 @@
                 <span style="padding-left: 10px;">{{vehicleSelected ? vehicleSelected.customer : ''}}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Số xe</b>/Plate:
-                <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)">
+                <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle"
+                  (itemSelected)="handleSelect($event)">
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
