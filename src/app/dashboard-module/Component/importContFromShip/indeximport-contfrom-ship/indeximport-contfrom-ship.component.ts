@@ -25,7 +25,7 @@ export class IndeximportContfromShipComponent implements OnInit {
   //Tab Booking
   PageInfoBooking : BookingPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     FileName : '',
     BookingType : 4,
     FromDate: undefined,
@@ -66,7 +66,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   PageInfo : BayPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     BillNo : '',
@@ -93,7 +93,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   PageInfothuchien : BayPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     BillNo : '',
@@ -122,7 +122,6 @@ export class IndeximportContfromShipComponent implements OnInit {
     this.PageInfo.ToDate?.toString() == "" ? this.PageInfo.ToDate = undefined : this.PageInfo.ToDate;
     this.service.Paging(this.PageInfo).subscribe(
       data => {
-        console.log('data',data);
         this.loadding = false;
         this.lstdata = data.data;
         this.Pagination.currentPage = data.data.currentPage,
@@ -388,7 +387,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   CheckDate(dateUpdate: Date) {
     let DateString = ""
-    if(new Date(dateUpdate).toISOString() == "0000-12-31T17:17:56.000Z"){
+    if(dateUpdate == null){
       DateString = "";
     }else
     {

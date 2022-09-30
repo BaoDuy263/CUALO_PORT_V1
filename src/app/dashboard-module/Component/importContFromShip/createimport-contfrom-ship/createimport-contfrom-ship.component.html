@@ -118,6 +118,9 @@
           <option *ngFor="let item of lstDirection" [value]="item.id">{{item.name}}
           </option>
         </select>
+        <div *ngIf="submited && Activity?.errors?.['required']">
+          <span *ngIf="Activity?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+        </div>
       </div>
     </div>
     <!-- <div class="row" style="padding-top: 20px">

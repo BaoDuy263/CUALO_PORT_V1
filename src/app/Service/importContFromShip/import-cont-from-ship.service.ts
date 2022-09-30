@@ -58,7 +58,6 @@ export class ImportContFromShipService {
   }
 
   getDetail(contNo: string){
-    console.log('contNo',contNo);
     return this.httpService.getRequest('PlanImportFromShiptoPort/GetDetail/' + contNo);
   }
 

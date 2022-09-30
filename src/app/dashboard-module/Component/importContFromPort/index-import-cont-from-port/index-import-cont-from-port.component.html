@@ -138,7 +138,7 @@
                           (click)="openEdit(item.contNo)"></i>
                           <i class="bi bi-trash3" 
                           style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
-                          <i *ngIf="item.step == 0" class="bi bi-arrow-right-square" (click)="ExportCont(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
+                          <i *ngIf="item.step == 5" class="bi bi-arrow-right-square" (click)="ExportCont(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
                         </td>
                       </tr>
                     </tbody>
