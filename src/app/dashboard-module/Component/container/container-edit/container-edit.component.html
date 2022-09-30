@@ -37,7 +37,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trình trạng container</label>
-          <select class="form-control" formControlName="activity">
+          <select class="form-control" formControlName="status">
             <option *ngFor="let s of lstStatusData" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -227,7 +227,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Bước hiện tại</label>
-          <select class="form-control" formControlName="activity">
+          <select class="form-control" formControlName="step">
             <option *ngFor="let s of lstStep" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -237,7 +237,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Hướng</label>
-          <select class="form-control" formControlName="typeDelivery">
+          <select class="form-control" formControlName="side">
             <option *ngFor="let s of lstSide" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
@@ -253,7 +253,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">State</label>
-          <select class="form-control" formControlName="activity">
+          <select class="form-control" formControlName="state">
             <option *ngFor="let s of lstState" [ngValue]="s.value">{{s.name}}</option>
           </select>
         </div>
