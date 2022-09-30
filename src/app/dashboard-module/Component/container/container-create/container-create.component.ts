@@ -233,13 +233,11 @@ export class ContainerCreateComponent implements OnInit {
         if (this.CreateEditForm.valid && this.isCreate === true) {
           this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
             this.dialogRef.close(response);
-            this.toastr.showSuccess(response.message);
           });
         }
         if (this.CreateEditForm.valid && this.isCreate === false) {
           this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
             this.dialogRef.close(response);
-            this.toastr.showSuccess(response.message);
           })
         }
       }
@@ -260,13 +258,13 @@ export class ContainerCreateComponent implements OnInit {
     dialogRef.componentInstance.button = 'Hủy bỏ';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     dialogRef.afterClosed().subscribe(result => {
-      if (result.confirm === 'event') {
+      if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
           if (res != null) {
             this.transId = res.data.id;
             this.toastr.showSuccess(res.message);
           } else {
-            this.toastr.showError("Có lỗi xảy ra!");
+            this.toastr.showError('Có lỗi xảy ra');
           }
         });
       }
