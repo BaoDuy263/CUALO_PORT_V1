@@ -273,15 +273,12 @@
         </table>
       </div>
     </div>
-    <div class="d-flex justify-content-between mt-4 mb-4 list-button" [ngClass]="[displayStyle]">
+    <div class="d-flex justify-content-end mt-4 mb-4 list-button" [ngClass]="[displayStyle]">
       <div class="group-button" style="margin-right: 10px">
-        <button type="button" class="btn btn-secondary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
+        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
           dịch</button>
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
-      </div>
-      <div class="group-button">
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">Ghi nhận</button>
-        <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
+        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
           bỏ</button>
       </div>
     </div>
