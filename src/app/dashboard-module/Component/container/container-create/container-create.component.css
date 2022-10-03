@@ -1,6 +1,39 @@
-.container-create {
-  max-height: 800px;
-}
 .container-create form {
   padding-bottom: 30px;
 }
+input[type="datetime-local"]::-webkit-inner-spin-button,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #fff;
+}
+p {
+  margin-bottom: 0px;
+}
+#eir, input,  select, textarea {
+  font-size: 12px;
+}
+td {
+  white-space: nowrap;
+}
+.eir-line1 {
+  font-size: 14px;
+}
+.eir-line1 input {
+  font-size: 14px;
+}
+.displayStyle {
+  display: none !important;
+}
+
+/* .list-button {
+  position: fixed;
+  bottom: -10px;
+} */

@@ -106,6 +106,7 @@ import { TransactionCreateComponent } from './Component/transaction/transaction-
 import { TransactionDeleteComponent } from './Component/transaction/transaction-delete/transaction-delete.component';
 import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 import { ContainerImagesListComponent } from './Component/container/container-images-list/container-images-list.component';
+import { ContainerEditComponent } from './Component/container/container-edit/container-edit.component';
 
 
 
@@ -189,7 +190,8 @@ import { ContainerImagesListComponent } from './Component/container/container-im
     TransactionCreateComponent,
     TransactionDeleteComponent,
     ContainerPopupComponent,
-    ContainerImagesListComponent
+    ContainerImagesListComponent,
+    ContainerEditComponent
   ],
   imports: [
     CommonModule,
@@ -210,7 +212,7 @@ import { ContainerImagesListComponent } from './Component/container/container-im
     //
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule,
+    NgSelectModule
     //
     // ToastrModule.forRoot()
   ],

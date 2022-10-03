@@ -18,7 +18,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   CreateEditForm!: FormGroup;
   submited: boolean = false;
   isCreate: boolean = true;
-  @Input() Id: number = 0;
+  @Input() Cont: string = '';
 
   lstContainer = [
     { id: "20'DC", name: 'Container Khô 20 feet (20DC)' },
@@ -28,9 +28,11 @@ export class CreateimportContfromShipComponent implements OnInit {
   ];
 
   lstDirection = [
+    { id: 0, name: 'Chưa xác định'},
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
-    { id: 3, name: 'Trả rỗng' },
+    { id: 2, name: 'Cấp rỗng' },
+    { id: 9, name: 'Đóng hàng' },
   ];
 
   lstLocation :Array<{id: string,positionLabel:string}> = []
@@ -46,7 +48,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       WG: new FormControl(),
       SealNo: new FormControl(),
       Commodity: new FormControl(),
-      ReturnPlan: new FormControl(),
+      ReturnPlan: new FormControl(null),
       Location: new FormControl(),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
@@ -55,8 +57,8 @@ export class CreateimportContfromShipComponent implements OnInit {
       Shipper: new FormControl(),
       TypeCont: new FormControl(),
       ContNo: new FormControl('', Validators.required),
-      CheckIn: new FormControl(),
-      Activity: new FormControl(),
+      CheckIn: new FormControl(null),
+      Activity: new FormControl('',Validators.required),
     });
   }
 
@@ -70,37 +72,36 @@ export class CreateimportContfromShipComponent implements OnInit {
     return this.CreateEditForm.get('ContNo');
   }
 
-  ngOnInit(): void {
-    this.GetLocatonFree();
-    if (this.Id > 0) {
-      this.getDetail();
-    }
+  get Activity() {
+    return this.CreateEditForm.get('Activity');
   }
 
-  getDetail() {
-    this.importContFromShipService.getDetail(this.Id).subscribe((data) => {
-    
-      this.CreateEditForm = new FormGroup({
-        id: new FormControl(data.data.id, Validators.required),
-        Voyace: new FormControl(data.data.voyace, Validators.required),
-        Receiver: new FormControl(data.data.receiver, Validators.required),
-        BillNo: new FormControl(data.data.billNo),
-        WG: new FormControl(data.data.wg),
-        SealNo: new FormControl(data.data.sealNo),
-        Commodity: new FormControl(data.data.commodity),
-        ReturnPlan: new FormControl(data.data.returnPlan),
-        Location: new FormControl(data.data.location),
-        Book: new FormControl(data.data.book),
-        CheckIn: new FormControl(data.data.checkIn),
-        ReturnAddress: new FormControl(data.data.returnAddress),
-        StatusContainer: new FormControl(data.data.statusContainer),
-        Activity: new FormControl(data.data.activity),
-        Shipper: new FormControl(data.data.shipper),
-        TypeCont: new FormControl(data.data.typeCont),
-        ContNo: new FormControl(data.data.contNo, Validators.required),
+  ngOnInit(): void {
+    if (this.Cont  !== '') {
+      this.importContFromShipService.getDetail(this.Cont).subscribe((data) => {
+        this.CreateEditForm = new FormGroup({
+          Voyace: new FormControl(data.data.voyace, Validators.required),
+          Receiver: new FormControl(data.data.receiver, Validators.required),
+          BillNo: new FormControl(data.data.billNo),
+          WG: new FormControl(data.data.wg),
+          SealNo: new FormControl(data.data.sealNo),
+          Commodity: new FormControl(data.data.commodity),
+          ReturnPlan: new FormControl(data.data.returnPlan),
+          Location: new FormControl(data.data.location),
+          Book: new FormControl(data.data.book),
+          CheckIn: new FormControl(data.data.checkIn),
+          ReturnAddress: new FormControl(data.data.returnAddress),
+          StatusContainer: new FormControl(data.data.statusContainer),
+          Activity: new FormControl(data.data.activity),
+          Shipper: new FormControl(data.data.shipper),
+          TypeCont: new FormControl(data.data.typeCont),
+          ContNo: new FormControl(data.data.contNo, Validators.required),
+        });
       });
-    });
+    }
+    this.GetLocatonFree();
   }
+
 
   GetLocatonFree()
   {

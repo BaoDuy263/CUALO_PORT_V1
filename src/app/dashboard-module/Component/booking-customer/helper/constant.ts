@@ -8,7 +8,7 @@ export const activitiesData = [
   { value: 0, name: "Chưa xác định" },
   { value: 1, name: "Hạ bãi chờ xuất" },
   { value: 2, name: "Cấp rỗng" },
-  { value: 3, name: "Trả nguyên" },
+  { value: 3, name: "Trả rỗng" },
   { value: 4, name: "ship side" },
   { value: 5, name: "Lấy nguyên" },
   { value: 6, name: "Rút ruột" },
@@ -36,14 +36,14 @@ export const lstTypeContData = [
 ]
 
 export const lstSide = [
-  { value: 0, name: "Không xác định"},
+  { value: 0, name: ""},
   { value: 1, name: "Import" },
   { value: 2, name: "Export" },
   { value: 3, name: "StorageEmpty" },
 ]
 
 export const lstState = [
-  { value: 0, name: "Không xác định"},
+  { value: 0, name: ""},
   { value: 1, name: "Delivery" },
   { value: 2, name: "Stacking" },
   { value: 3, name: "OutPort" },

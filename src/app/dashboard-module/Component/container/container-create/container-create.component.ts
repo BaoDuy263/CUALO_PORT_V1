@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { convertHelper } from '../../booking-customer/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
+import { result } from 'lodash';
 
 @Component({
   selector: 'app-container-create',
@@ -31,17 +32,20 @@ export class ContainerCreateComponent implements OnInit {
   itemPrint: any = null;
   lstVehicle: any = [];
   vehicleSelected: any = null;
+  transNo: string = '';
   PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10
   };
+  displayStyle: string = ''
   constructor(private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
     public dialog: MatDialog, public convertHelper: convertHelper) {
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
+      no: new FormControl(''),
       vessel: new FormControl(''),
       voyage: new FormControl(''),
       customer: new FormControl(''),
@@ -213,23 +217,31 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submited = true;
-    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-    this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-    this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-    this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-    if (this.CreateEditForm.valid && this.isCreate === true) {
-      this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
-        this.dialogRef.close(response);
-      });
-    }
-    if (this.CreateEditForm.valid && this.isCreate === false) {
-      this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
-        this.dialogRef.close(response);
-      })
-    }
+    const dialogRef = this.dialog.open(ContainerPopupComponent);
+    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+    dialogRef.componentInstance.button = 'Đóng';
+    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'confirm') {
+        this.submited = true;
+        this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+        this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+        this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+        this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+        this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+        this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+        if (this.CreateEditForm.valid && this.isCreate === true) {
+          this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
+            this.dialogRef.close(response);
+          });
+        }
+        if (this.CreateEditForm.valid && this.isCreate === false) {
+          this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
+            this.dialogRef.close(response);
+          })
+        }
+      }
+    })
   }
 
   loadVehicles() {
@@ -241,14 +253,22 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   saveTrans() {
-    this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
-      if (res != null) {
-        this.transId = res.data.id;
-        this.toastr.showSuccess(res.message);
-      } else {
-        this.toastr.showError("Có lỗi xảy ra!");
+    const dialogRef = this.dialog.open(ContainerPopupComponent);
+    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+    dialogRef.componentInstance.button = 'Đóng';
+    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'confirm') {
+        this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
+          if (res != null) {
+            this.transId = res.data.id;
+            this.toastr.showSuccess(res.message);
+          } else {
+            this.toastr.showError('Có lỗi xảy ra');
+          }
+        });
       }
-    });
+    })
   }
 
   getDetailTrans(id: number) {
@@ -270,18 +290,9 @@ export class ContainerCreateComponent implements OnInit {
         dialogRef.componentInstance.title = 'Vui lòng lưu giao dịch trước khi in!'
         dialogRef.componentInstance.button = 'Xác nhận';
       } else {
-        this.itemPrint = res;
-        console.log(this.itemPrint, 'print')
-        setTimeout(() => {
-          var divContents = document.getElementById('eir')?.innerHTML || '';
-          var printWindow = window.open('', '', 'height=768,width=1366');
-          printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-          printWindow?.document.write('</head><body>');
-          printWindow?.document.write(divContents);
-          printWindow?.document.write('</body></html>');
-          printWindow?.document.close();
-          printWindow?.print();
-        }, 300);
+        this.transNo = res.no;
+        this.displayStyle = 'displayStyle';
+        setTimeout(() => window.print(), 500);
       }
     });
   }

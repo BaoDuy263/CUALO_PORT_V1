@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-container-popup',
@@ -8,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class ContainerPopupComponent implements OnInit {
   button: string = '';
   title: string = '';
-  constructor() { }
+  buttonConfirm: string = ''
+  constructor(public dialogRef: MatDialogRef<ContainerPopupComponent> ) { }
 
   ngOnInit(): void {
   }
 
   onClose() {
 
+  }
+
+  onSubmit() {
+    this.dialogRef.close({ event: 'confirm'})
   }
 
 }

@@ -120,8 +120,21 @@ export class TransactionIndexComponent implements OnInit {
 
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.startDate = this.PageInfo.startDate;
+    pageOfItems.endDate = this.PageInfo.endDate;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
+  }
+
+  resetData() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      startDate: '',
+      endDate: ''
+    }
+    this.Pagingdata(this.PageInfo);
   }
 
 }

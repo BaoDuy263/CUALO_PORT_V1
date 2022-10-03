@@ -120,7 +120,8 @@ export interface PortToShipRecord
     contNo : string,
     dateCheckOut: Date,
     dateUpdate: Date,
-    step : number
+    step : number,
+    activity : number
 }
 
 

@@ -1,35 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { TransactionService } from './../../../../Service/transaction/transaction.service';
+import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
-@Component({
-  selector: 'app-create-import-cont-from-port',
-  templateUrl: './create-import-cont-from-port.component.html',
-  styleUrls: ['./create-import-cont-from-port.component.css']
-})
-export class CreateImportContFromPortComponent implements OnInit {
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../booking-customer/helper/constant';
+import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { ContainerPopupComponent } from '../container-popup/container-popup.component';
 
+@Component({
+  selector: 'app-container-edit',
+  templateUrl: './container-edit.component.html',
+  styleUrls: ['./container-edit.component.css']
+})
+export class ContainerEditComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  lstStatus = [
-    { "text" : "Để lại" , "value" : true},
-    {"text" : "Xuất" , "value" : false}
-  ];
-
-
-  lstContainer = [
-    {"id" : "20'DC" , name : "Container Khô 20 feet (20DC)"},
-    {"id" : "20'OT" , name : "Container Khô 20 feet hở nóc (20Ot)"},
-    {"id" : "40'DC" , name : "Container Khô 40 feet (40DC)"},
-    {"id" : "40'OT" , name : "Container Khô 40 feet hở nóc(400C)"}
-  ]
-
-  @Input() containerCode : string = '';
-  @Input() isCreate : boolean = true;
+  containerCode: string = '';
+  isCreate: boolean = true;
   activities = activitiesData;
   lstStatusData = lstStatusData;
   lstTypeDelivery = lstTypeDelivery;
@@ -37,17 +26,23 @@ export class CreateImportContFromPortComponent implements OnInit {
   lstSide = lstSide;
   lstState = lstState;
   lstStep = lstStep;
+  transId: number = 0;
+  itemPrint: any = null;
   lstVehicle: any = [];
   vehicleSelected: any = null;
+  transNo: string = '';
   PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10
   };
-  constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateImportContFromPortComponent>,private containerService: Containerv2Service,private transactionService: TransactionService, private vehicleService: VehicleService)
-  { 
+  constructor(private containerService: Containerv2Service,
+    public dialogRef: MatDialogRef<ContainerEditComponent>, private toastr: ToastrcustomService,
+    private transactionService: TransactionService, private vehicleService: VehicleService,
+    public dialog: MatDialog, public convertHelper: convertHelper) {
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
+      no: new FormControl(''),
       vessel: new FormControl(''),
       voyage: new FormControl(''),
       customer: new FormControl(''),
@@ -123,30 +118,10 @@ export class CreateImportContFromPortComponent implements OnInit {
     })
   }
 
-  get Voyace() { return this.CreateEditForm.get('voyace'); }
-  get ContNo() { return this.CreateEditForm.get('contNo'); }
-  get Commodity() { return this.CreateEditForm.get('commodity'); }
-  get CheckOut() { return this.CreateEditForm.get('dateCheckOut'); }
-
-
   ngOnInit(): void {
-    if(!this.isCreate){
-      this.getDetail();
-    }
-  }
-
-  handleSelect(value: any) {
-    const index = this.lstVehicle.findIndex((item: any) => item.licensePlates === value);
-    if (index < 0) {
-      return;
-    }
-    this.vehicleSelected = this.lstVehicle[index];
-  }
-
-  getDetail() {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
-      console.log(' response.data', response.data);
+      this.transId = response.transaction_eir_id;
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -222,6 +197,42 @@ export class CreateImportContFromPortComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
     });
+    this.loadVehicles();
+  }
+
+  onSubmit() {
+    const dialogRef = this.dialog.open(ContainerPopupComponent);
+    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+    dialogRef.componentInstance.button = 'Đóng';
+    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'confirm') {
+        const check = this.validateForm(this.CreateEditForm.value);
+        if (check) {
+          this.submited = true;
+          this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+          this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+          this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+          this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+          this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+          this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+          if (this.CreateEditForm.valid && this.isCreate === true) {
+            this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
+              this.dialogRef.close(response);
+            });
+          }
+          if (this.CreateEditForm.valid && this.isCreate === false) {
+            this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
+              this.dialogRef.close(response);
+            })
+          }
+        } else {
+          const dialogRef2 = this.dialog.open(ContainerPopupComponent);
+          dialogRef2.componentInstance.title = 'Bước hiện tại không phù hợp với phương án được chọn. Vui lòng chọn lại phương án!!!';
+          dialogRef2.componentInstance.button = 'Xác nhận';
+        }
+      }
+    })
   }
 
   loadVehicles() {
@@ -232,24 +243,53 @@ export class CreateImportContFromPortComponent implements OnInit {
     }, 300);
   }
 
-  onSubmit() {
-    this.submited = true;
-    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-    this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-    this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-    this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-    if (this.CreateEditForm.valid && this.isCreate === true) {
-      this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
-        this.dialogRef.close(response);
-      });
+  saveTrans() {
+    const dialogRef = this.dialog.open(ContainerPopupComponent);
+    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+    dialogRef.componentInstance.button = 'Hủy bỏ';
+    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'confirm') {
+        this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
+          if (res != null) {
+            this.transId = res.data.id;
+            this.toastr.showSuccess(res.message);
+          } else {
+            this.toastr.showError("Có lỗi xảy ra!");
+          }
+        });
+      }
+    })
+  }
+
+  getDetailTrans(id: number) {
+    this.transactionService.GetDetailTrans(id).subscribe(res => { return res })
+  }
+
+  handleSelect(value: any) {
+    const index = this.lstVehicle.findIndex((item: any) => item.licensePlates === value);
+    if (index < 0) {
+      return;
     }
-    if (this.CreateEditForm.valid && this.isCreate === false) {
-      this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
-        this.dialogRef.close(response);
-      })
+    this.vehicleSelected = this.lstVehicle[index];
+  }
+
+  validateForm(form: any){
+    const listCheck = [
+      { step: 0, activity: [2, 5, 6, 9] },
+      { step: 1, activity: [5, 6] },
+      { step: 2, activity: [3, 5, 6] },
+      { step: 3, activity: [2, 9] },
+      { step: 4, activity: [1, 2, 9] },
+      { step: 5, activity: [1] },
+    ]
+    let isSuccess = true
+    for (let i = 0; i < listCheck.length; i++) {
+      if (form.step === listCheck[i].step && !listCheck[i].activity.includes(form.activity)) {
+        isSuccess = false;
+      }
     }
+    return isSuccess;
   }
 
 }
