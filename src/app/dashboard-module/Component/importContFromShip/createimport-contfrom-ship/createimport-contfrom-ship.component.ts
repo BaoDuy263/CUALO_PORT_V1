@@ -18,6 +18,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   CreateEditForm!: FormGroup;
   submited: boolean = false;
   isCreate: boolean = true;
+  loadding: boolean = false;
   @Input() Cont: string = '';
 
   lstContainer = [
@@ -28,7 +29,6 @@ export class CreateimportContfromShipComponent implements OnInit {
   ];
 
   lstDirection = [
-    { id: 0, name: 'Chưa xác định'},
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
     { id: 2, name: 'Cấp rỗng' },
