@@ -70,15 +70,15 @@ export class ContainerIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-    this.containerService.Paging(1, '', 1200).subscribe((data) => {
-      this.lstCont = data.data;
-    });
+    // this.containerService.Paging(1, '', 1200).subscribe((data) => {
+    //   this.lstCont = data.data;
+    // });
 
-    let LastDate = new Date();
-    LastDate.setDate(LastDate.getDate() - 10);
-    this.ImagesContSeach.FromDate = LastDate.toDateString();
-    this.ImagesContSeach.ToDate = new Date().toDateString();
-    this.loadDataImages();
+    // let LastDate = new Date();
+    // LastDate.setDate(LastDate.getDate() - 10);
+    // this.ImagesContSeach.FromDate = LastDate.toDateString();
+    // this.ImagesContSeach.ToDate = new Date().toDateString();
+    // this.loadDataImages();
   }
 
   setOpen(item: any) {

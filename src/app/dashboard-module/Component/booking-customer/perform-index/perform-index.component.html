@@ -37,7 +37,6 @@
               <th>Hướng</th>
               <th>Trạng thái</th>
               <th>Ngày cập bến</th>
-              <th>Ngày rời bến</th>
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
@@ -52,8 +51,7 @@
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{convertHelper.showSide(item.side)}}</td>
               <td>{{convertHelper.showState(item.state)}}</td>
-              <td>{{item.dateCheckIn}}</td>
-              <td>{{item.dateCheckOut | date:'short'}}</td>
+              <td>{{item.dateCheckIn | date:'short'}}</td>
               <td style="text-align: center;">
                 <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.contNo)">

@@ -50,7 +50,6 @@
               <th>Hướng</th>
               <th>Trạng thái</th>
               <th>Ngày cập bến</th>
-              <th>Ngày rời bến</th>
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
@@ -65,8 +64,7 @@
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{convertHelper.showSide(item.side)}}</td>
               <td>{{convertHelper.showState(item.state)}}</td>
-              <td>{{item.dateCheckIn}}</td>
-              <td>{{item.dateCheckOut | date:'short'}}</td>
+              <td>{{item.dateCheckIn | date:'short'}}</td>
               <td style="text-align: center;">
                 <!-- <i class="bi bi-printer-fill" style="cursor: pointer;" (click)="saveTransaction(item)"></i> -->
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer; margin-left: 5px;"
