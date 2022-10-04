@@ -97,8 +97,8 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" (click)="openCreate()">Thêm mới</a></li>
-                    <li><a class="dropdown-item" (click)="openImport()">Import kế hoạch</a></li>
-                    <li><a class="dropdown-item" (click)="openImportTH()">Import thực hiện</a></li>
+                    <li><a class="dropdown-item" (click)="openImport()">Thêm mới danh sách kế hoạch</a></li>
+                    <li><a class="dropdown-item" (click)="openImportTH()">Thêm mới danh sách thực hiện</a></li>
                     <li><a class="dropdown-item" (click)="DowloadTemplate()">DownLoad Template</a></li>
                   </ul>
                 </div>
@@ -114,8 +114,11 @@
                         <th style="text-align: center;">STT</th>
                         <th>Chuyến</th>
                         <th>Mã Container</th>
+                        <th>Loại hàng hóa</th>
+                        <th>Cân nặng</th>
                         <th>Ngày kế hoạch</th>
                         <th>Ngày Xuất Cảng</th>
+                        <th>Phương Án</th>
                         <th>Trạng thái</th>
                         <th  style="text-align: center;">Hành động</th>
                       </tr>
@@ -125,14 +128,17 @@
                         <td style="text-align: center;">{{i + 1}}</td>
                         <td>{{item.chuyen}}</td>
                         <td>{{item.contNo}}</td>
+                        <td>{{item.hangHoa}}</td>
+                        <td>{{item.gw}}</td>
                         <td>{{item.dateUpdate | date: 'dd/MM/yyyy' }}</td>
                         <td>{{item.dateCheckOut | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{GetDirecttion(item.activity)}}</td>
                         <td>{{GetStatus(item.step)}}</td>
                         <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                          (click)="openEdit(item.id)"></i>
+                          (click)="openEdit(item.contNo)"></i>
                           <i class="bi bi-trash3" 
                           style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
-                          <i *ngIf="item.step == 1" class="bi bi-arrow-right-square" (click)="ExportCont(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
+                          <i *ngIf="item.step == 5" class="bi bi-arrow-right-square" (click)="ExportCont(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
                         </td>
                       </tr>
                     </tbody>

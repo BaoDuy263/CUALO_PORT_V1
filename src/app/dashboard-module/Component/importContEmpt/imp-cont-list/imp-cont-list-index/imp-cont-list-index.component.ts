@@ -111,8 +111,7 @@ export class ImpContListIndexComponent implements OnInit {
     this.isCreate = false;
     this.containerCode = code;
     const dialogRef = this.dialog.open(ContainerCreateComponent, {
-      width: '50%',
-      height: '800px',
+      width: '100%',
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
@@ -129,7 +128,7 @@ export class ImpContListIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(PerformCreateComponent, { width: '50%' });
+    const dialogRef = this.dialog.open(PerformCreateComponent, { width: '100%' });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {

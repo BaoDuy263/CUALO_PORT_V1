@@ -14,7 +14,7 @@ export class ImportContFromShipService {
     return this.httpService.getRequest('PlanExportFromPorttoShip/bulkAction/' + data);
   }
 
-  bulkActionImport(data: number){
+  bulkActionImport(data: string){
     return this.httpService.getRequest('PlanImportFromShiptoPort/bulkActionImport/' + data);
   }
 
@@ -57,8 +57,8 @@ export class ImportContFromShipService {
     return this.httpService.putRequest('PlanImportFromShiptoPort/Update',data);
   }
 
-  getDetail(id: number){
-    return this.httpService.getRequest('PlanImportFromShiptoPort/GetDetail/' + id );
+  getDetail(contNo: string){
+    return this.httpService.getRequest('PlanImportFromShiptoPort/GetDetail/' + contNo);
   }
 
   Delete(id: number){

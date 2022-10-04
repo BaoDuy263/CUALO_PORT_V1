@@ -28,37 +28,38 @@
           <thead>
             <tr>
               <th style="text-align: center;">STT</th>
+              <th>Mã container</th>
               <th>Step</th>
               <th>Tên Khách hàng</th>
-              <th>Bước hiện tại</th>
               <th>Loại container</th>
-              <th>Tên tàu</th>
-              <th>Vị trí trả hàng</th>
-              <th>Ghi chú</th>
-              <th>Ngày tạo</th>
-              <th>Ngày cấp container</th>
-              <!-- <th>Trạng thái</th> -->
+              <th>Tình trạng</th>
+              <th>Phương án</th>
+              <th>Hướng</th>
+              <th>Trạng thái</th>
+              <th>Ngày cập bến</th>
+              <th>Ngày rời bến</th>
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
           <tbody style="border-top: none;">
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
+              <td>{{item.contNo}}</td>
               <td>{{convertHelper.showStep(item.step)}}</td>
               <td>{{item.customer}}</td>
-              <td>{{convertHelper.showStep(item.step)}}</td>
               <td>{{item.type}}</td>
-              <td>{{item.voyage}}</td>
-              <td>{{item.returnAddress}}</td>
-              <td>{{item.note}}</td>
-              <td>{{item.createdOn | date:'short'}}</td>
-              <td>{{item.outDeliveryDate | date: 'short'}}</td>
+              <th>{{convertHelper.showStatus(item.status)}}</th>
+              <td>{{convertHelper.showActivity(item.activity)}}</td>
+              <td>{{convertHelper.showSide(item.side)}}</td>
+              <td>{{convertHelper.showState(item.state)}}</td>
+              <td>{{item.dateCheckIn}}</td>
+              <td>{{item.dateCheckOut | date:'short'}}</td>
               <td style="text-align: center;">
-                <i class="bi bi-printer-fill" (click)="handlePrinter(item.contNo)" style="padding-right: 8px; cursor: pointer"
-                  data-toggle="tooltip" title="In phiếu"></i>
-                <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
+                <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.contNo)">
                 </i>
+                <!-- <i class="bi bi-printer-fill" (click)="handlePrinter(item.contNo)" style="padding-right: 8px; cursor: pointer"
+                  data-toggle="tooltip" title="In phiếu"></i> -->
                 <!-- <i class="bi bi-trash3" style="font-size:15px;padding-left: 5px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Xóa" (click)="openDelete(item.id)">
                 </i> -->

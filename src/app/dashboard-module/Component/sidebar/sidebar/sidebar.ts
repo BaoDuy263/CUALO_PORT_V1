@@ -13,24 +13,24 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin"],
         children : [
 
-            {
-                name :'Nhóm hàng hóa',
-                url:'nhom-san-pham',
-                roles: ["Admin"],
+            // {
+            //     name :'Nhóm hàng hóa',
+            //     url:'nhom-san-pham',
+            //     roles: ["Admin"],
 
-            },
-            {
-                name :'Hàng hóa',
-                url:'san-pham',
-                roles: ["Admin"],
+            // },
+            // {
+            //     name :'Hàng hóa',
+            //     url:'san-pham',
+            //     roles: ["Admin"],
 
-            },
-            {
-                name :'Khách hàng',
-                url:'khachhang',
-                roles: ["Admin"],
+            // },
+            // {
+            //     name :'Khách hàng',
+            //     url:'khachhang',
+            //     roles: ["Admin"],
 
-            },
+            // },
             {
                 name :'Đơn vị',
                 url:'don-vi',
@@ -175,11 +175,11 @@ export const ROUTE_DATA: TypeRoute[] = [
             }
         ]
     },
-    {
-        name :'Quản lý công nợ',
-        url:'404-not-found',
-        roles: ["Admin"],
-    },
+    // {
+    //     name :'Quản lý công nợ',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
 
 
     //     name :'Quản lý ra vào',

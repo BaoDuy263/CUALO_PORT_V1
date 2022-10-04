@@ -95,7 +95,7 @@ export class PerformIndexComponent implements OnInit {
   openEdit(contNo: string) {
     this.isCreate = false;
     this.contNo = contNo;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '50%' });
+    const dialogRef = this.dialog.open(ContainerCreateComponent, { width: '100%' });
     dialogRef.componentInstance.containerCode = this.contNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {

@@ -1,19 +1,11 @@
+import { ContainerEditComponent } from './../container-edit/container-edit.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import {
-  ContImagesPaging,
-  lstContainer,
-  lstContHistory,
-} from 'src/app/Model/Container';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
-import { ContainerCreateComponent } from '../container-create/container-create.component';
 import { convertHelper } from '../../booking-customer/helper/convertHelper';
-import { FormControl } from '@angular/forms';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
-import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { lstContainerV2 } from 'src/app/Model/Containerv2';
 import { formatDate } from '@angular/common';
@@ -73,8 +65,8 @@ export class ContainerIndexComponent implements OnInit {
     this.loadData(this.PageInfo);
     this.containerService.Paging(1, '', 1200).subscribe((data) => {
       this.lstCont = data.data;
-      console.log(this.lstCont);
     });
+
 
     // let LastDate = new Date();
     // LastDate.setDate(LastDate.getDate() - 10);
@@ -86,7 +78,6 @@ export class ContainerIndexComponent implements OnInit {
     //alert(formatDate(new Date(), format, locale));
    // this.loadDataImages();
   }
-
 
 
 
@@ -107,7 +98,7 @@ export class ContainerIndexComponent implements OnInit {
   openEdit(code: string) {
     this.isCreate = false;
     this.containerCode = code;
-    const dialogRef = this.dialog.open(ContainerCreateComponent, {
+    const dialogRef = this.dialog.open(ContainerEditComponent, {
       width: '50%',
       height: '800px',
     });
@@ -125,12 +116,6 @@ export class ContainerIndexComponent implements OnInit {
     });
   }
 
-  onChangePage(pageOfItems: any) {
-    pageOfItems.Keyword = this.PageInfo.Keyword;
-    this.PageInfo = pageOfItems;
-    this.loadData(pageOfItems);
-  }
-
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
@@ -145,7 +130,7 @@ export class ContainerIndexComponent implements OnInit {
 
 
   openCreate() {
-    const dialogRef = this.dialog.open(ContainerCreateComponent);
+    const dialogRef = this.dialog.open(ContainerEditComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -160,5 +145,36 @@ export class ContainerIndexComponent implements OnInit {
 
   myTabSelectedIndexChange(index: number) {
     this.selected = index;
+  }
+
+  startDate(e: any) {
+    this.PageInfo.startDate = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
+  endDate(e: any) {
+    this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.loadData(this.PageInfo);
+  }
+
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.startDate = this.PageInfo.startDate;
+    pageOfItems.endDate = this.PageInfo.endDate;
+    this.PageInfo = pageOfItems
+    this.loadData(pageOfItems)
+  }
+
+  resetData() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      startDate: '',
+      endDate: ''
+    }
+    this.loadData(this.PageInfo);
   }
 }

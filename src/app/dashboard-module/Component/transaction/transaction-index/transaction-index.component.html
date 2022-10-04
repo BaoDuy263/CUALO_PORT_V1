@@ -6,17 +6,22 @@
     <h2 style="font-weight: 500;">Danh sách thực hiện </h2>
   </div>
   <div class="row" style=" margin-bottom: 25px;">
-    <div class="col-sm-4 d-flex">
-      <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
-    </div>
-    <div class="col-sm-4 mr-20">
-      <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
-        [(ngModel)]="PageInfo.startDate" (ngModelChange)="startDate($event)">
-    </div>
-    <div class="col-sm-4 mr-20">
-      <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
-        [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
+    <div class="col-sm-6 d-flex">
+      <div class="col-sm-3 mr-20">
+        <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
+          aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
+      </div>
+      <div class="col-sm-3 mr-20">
+        <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
+          [(ngModel)]="PageInfo.startDate" (ngModelChange)="startDate($event)">
+      </div>
+      <div class="col-sm-3 mr-20">
+        <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
+          [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
+      </div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-primary" (click)="resetData()"><i class="bi bi-arrow-clockwise"></i></button>
+      </div>
     </div>
     <!-- <div class="col-sm-8 d-flex justify-content-end" style="text-align: right;">
       <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm
@@ -30,7 +35,7 @@
               <th style="text-align: center;">STT</th>
               <th>Tên Khách hàng</th>
               <th>Bước hiện tại</th>
-              <th>Loại container</th>
+              <th>Mã container</th>
               <th>Tên tàu</th>
               <th>Vị trí trả hàng</th>
               <th>Ghi chú</th>
@@ -45,7 +50,7 @@
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.customer}}</td>
               <td>{{convertHelper.showStep(item.step)}}</td>
-              <td>{{item.typeCont}}</td>
+              <td>{{item.contNo}}</td>
               <td>{{item.voyage}}</td>
               <td>{{item.returnAddress}}</td>
               <td>{{item.note}}</td>
