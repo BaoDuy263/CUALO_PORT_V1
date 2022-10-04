@@ -10,6 +10,7 @@ import { ContainerService } from 'src/app/Service/container/container.service';
 })
 export class ContainerHistoryIndexComponent implements OnInit {
   loading: boolean = true;
+  AreaCode: string = "-1";
   lstdata: lstContHistory = {
     currentPage: 0,
     pageSize: 0,

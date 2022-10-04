@@ -61,7 +61,7 @@
                   <td>{{convertHelper.showActivity(item.activity)}}</td>
                   <td>{{convertHelper.showSide(item.side)}}</td>
                   <td>{{convertHelper.showState(item.state)}}</td>
-                  <td>{{item.dateCheckIn}}</td>
+                  <td>{{item.dateCheckIn | date:'short'}}</td>
                   <td>{{item.dateCheckOut | date:'short'}}</td>
                   <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                       (click)="openEdit(item.contNo)"></i></td>
@@ -79,57 +79,6 @@
       <app-container-history-index *ngIf="selected == 1"></app-container-history-index>
     </mat-tab>
     <mat-tab label="Hình ảnh">
-
-      <div class="row" style="margin-top: 10px;">
-
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="Từ ngày" onfocus="(this.type='date')"
-            [ngModel]="ImagesContSeach.FromDate" (ngModelChange)="onSearchFromDate($event)">
-        </div>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
-            [ngModel]="ImagesContSeach.ToDate" (ngModelChange)="onSearchToDate($event)">
-        </div>
-
-
-        <div class="col-sm-3">
-          <ng-select [disabled]="CheckedImagesEmtry" [(ngModel)]="selectedCont" (click)="ddlContChange($event)">
-            <ng-option *ngFor="let item of lstCont" [value]="item.contNo">{{item.contNo}}</ng-option>
-          </ng-select>
-        </div>
-        <div class="col-sm-2">
-          <div class="form-group" style="margin-top: 10px;">
-            <input  type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
-              (change)="checkSelected($event)">
-            <label for="txtStatus">Chưa gắn Container</label>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="btnSeach_Click()">Tìm
-            kiếm</button>
-        </div>
-      </div>
-      <hr>
-      <div style="height: 524px; overflow-y: scroll;    overflow-x: hidden;">
-        <div *ngFor="let item of listImages; index as i">
-          <div style="float: left;width: 25%;;">
-            <div
-              style=" font-size: large; width: 100% !important; max-width: 100% !important; display: table; padding: 14px 10px; font-size: initial;">
-              {{item.createdOn | date : 'dd/MM/yyyy' }}
-              <span style="font-size: 12px;">
-                {{item.createdOn | date : 'hh:mm' }}
-              </span>
-              ({{item.createdBy}})
-            </div>
-            <div style="padding: 0px 10px;">
-              <a (click)="setOpen(item)" style="cursor: pointer;">
-                <img *ngIf="item.urlImage" [src]="UrlRoot + item.urlImage"
-                      style=" height: 220px; overflow: hidden; width: 100%; border: 1px solid #746f6f;
-                ">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-container-images-list></app-container-images-list>
     </mat-tab>
   </mat-tab-group>

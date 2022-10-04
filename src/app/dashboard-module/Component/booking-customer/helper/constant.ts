@@ -5,7 +5,7 @@ export const activitiesPacking = [
 ]
 
 export const activitiesData = [
-  { value: 0, name: "Chưa xác định" },
+  { value: 0, name: "" },
   { value: 1, name: "Hạ bãi chờ xuất" },
   { value: 2, name: "Cấp rỗng" },
   { value: 3, name: "Trả rỗng" },

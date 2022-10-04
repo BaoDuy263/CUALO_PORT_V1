@@ -401,6 +401,7 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="mb-3">
+            <label for="">Chọn biển số xe </label>
             <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)">
             </app-autocomplete>
           </div>
