@@ -49,6 +49,7 @@
   font-weight: bold;
   text-align: center;
   overflow-wrap: anywhere;
+  height: 100%;
 }
 .MapItemEmpty {
   width: 100%;
