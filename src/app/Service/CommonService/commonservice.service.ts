@@ -53,6 +53,10 @@ export class CommonserviceService {
     return this.http.get(this._urlApi + url, {reportProgress: true, responseType: 'blob',});
   }
 
+  DowloadPostRequest(url: string,data: any) : Observable<any> {
+    return this.http.post(this._urlApi + url, data , {reportProgress: true, responseType: 'blob'});
+  }
+
   ///
   postRequestMobile(url: string, data: any) : Observable<any>{
     return this.http.post(this._urlApi + url,data);
