@@ -61,7 +61,7 @@
                   <td>{{convertHelper.showActivity(item.activity)}}</td>
                   <td>{{convertHelper.showSide(item.side)}}</td>
                   <td>{{convertHelper.showState(item.state)}}</td>
-                  <td>{{item.dateCheckIn}}</td>
+                  <td>{{item.dateCheckIn | date:'short'}}</td>
                   <td>{{item.dateCheckOut | date:'short'}}</td>
                   <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                       (click)="openEdit(item.contNo)"></i></td>
