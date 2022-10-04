@@ -24,7 +24,7 @@ export class IndexImportContFromPortComponent implements OnInit {
   //Tab Booking
   PageInfoBooking : BookingPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     FileName : '',
     BookingType : 3,
     FromDate : undefined,
@@ -50,7 +50,7 @@ export class IndexImportContFromPortComponent implements OnInit {
   //Tab Kế hoạch
   PageInfo : PortToShipPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     FromDate: undefined,
@@ -77,7 +77,7 @@ export class IndexImportContFromPortComponent implements OnInit {
   //Tab thực hiện
   PageInfoTH : PortToShipPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     FromDate: undefined,

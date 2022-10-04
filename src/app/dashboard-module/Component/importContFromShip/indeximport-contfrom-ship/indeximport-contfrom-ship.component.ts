@@ -22,11 +22,10 @@ export class IndeximportContfromShipComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
-
   //Tab Booking
   PageInfoBooking : BookingPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     FileName : '',
     BookingType : 4,
     FromDate: undefined,
@@ -67,7 +66,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   PageInfo : BayPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     BillNo : '',
@@ -94,7 +93,7 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   PageInfothuchien : BayPlanPaging = {
     Page: 1,
-    PageSize: 10,
+    PageSize: 20,
     Voyace : '',
     ContNo: '',
     BillNo : '',
@@ -349,7 +348,6 @@ export class IndeximportContfromShipComponent implements OnInit {
 
   GetDirecttion(type: number)
   {
-    console.log('type',type);
     let Direction = '';
     switch(type){
       case 2 :
@@ -361,8 +359,10 @@ export class IndeximportContfromShipComponent implements OnInit {
       case 6 :
         Direction = "Rút ruột";
         break;
+      case 9 :
+        Direction = "Đóng hàng";
+        break;
     }
-    console.log('Direction',Direction);
     return Direction;
   }
 
@@ -383,5 +383,16 @@ export class IndeximportContfromShipComponent implements OnInit {
         }
       }
     });
+  }
+
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(dateUpdate == null){
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
   }
 }
