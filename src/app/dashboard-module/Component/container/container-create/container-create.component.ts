@@ -60,8 +60,8 @@ export class ContainerCreateComponent implements OnInit {
       type: new FormControl(''),
       size: new FormControl(''),
       datePlan: new FormControl(''),
-      dateCheckIn: new FormControl(''),
-      dateCheckOut: new FormControl(''),
+      dateCheckIn: new FormControl(),
+      dateCheckOut: new FormControl(),
       transaction_eir_no: new FormControl(0),
       transaction_eir_id: new FormControl(0),
       location: new FormControl(''),
@@ -97,7 +97,7 @@ export class ContainerCreateComponent implements OnInit {
       seal2: new FormControl(''),
       returnPlace: new FormControl(''),
       landingDate: new FormControl(''),
-      transType: new FormControl(''),
+      transType: new FormControl('Truck'),
       transCom: new FormControl(''),
       vehicleNo: new FormControl(''),
       checkIn: new FormControl(''),
@@ -124,8 +124,6 @@ export class ContainerCreateComponent implements OnInit {
   get contNo() { return this.CreateEditForm.get('contNo') }
   get type() { return this.CreateEditForm.get('type') }
   get side() { return this.CreateEditForm.get('side') }
-  get status() { return this.CreateEditForm.get('type') }
-  get dateCheckIn() { return this.CreateEditForm.get('dateCheckIn') }
   get dateCheckOut() { return this.CreateEditForm.get('dateCheckOut') }
   get activity() { return this.CreateEditForm.get('activity') }
   get typeDelivery() { return this.CreateEditForm.get('typeDelivery') }
@@ -138,6 +136,7 @@ export class ContainerCreateComponent implements OnInit {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
       this.transId = response.transaction_eir_id;
+      console.log(response)
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -191,7 +190,7 @@ export class ContainerCreateComponent implements OnInit {
         seal2: new FormControl(response.seal2),
         returnPlace: new FormControl(response.returnPlace),
         landingDate: new FormControl(response.landingDate),
-        transType: new FormControl(response.transType),
+        transType: new FormControl('Truck'),
         transCom: new FormControl(response.transCom),
         vehicleNo: new FormControl(response.vehicleNo),
         checkIn: new FormControl(response.checkIn),
@@ -291,9 +290,20 @@ export class ContainerCreateComponent implements OnInit {
         dialogRef.componentInstance.button = 'Xác nhận';
       } else {
         this.transNo = res.no;
+        this.CreateEditForm.value.dateCheckIn = res.dateCheckIn;
         this.displayStyle = 'displayStyle';
         setTimeout(() => window.print(), 500);
       }
     });
+  }
+
+  getStatus() {
+    if (this.CreateEditForm.value.activity === 2 || this.CreateEditForm.value.activity === 3) {
+      this.CreateEditForm.value.status = 0;
+      return "E";
+    } else {
+      this.CreateEditForm.value.status = 1;
+      return "F"
+    }
   }
 }

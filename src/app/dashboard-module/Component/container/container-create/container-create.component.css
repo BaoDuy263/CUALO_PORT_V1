@@ -33,6 +33,13 @@ td {
   display: none !important;
 }
 
+input, select, span {
+  font-weight: bold;
+}
+span {
+  margin-left: 10px;
+}
+
 /* .list-button {
   position: fixed;
   bottom: -10px;

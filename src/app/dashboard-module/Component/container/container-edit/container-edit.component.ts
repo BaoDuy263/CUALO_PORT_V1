@@ -5,6 +5,7 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { validateMajor } from 'src/app/utils/constant';
 import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../booking-customer/helper/constant';
 import { convertHelper } from '../../booking-customer/helper/convertHelper';
 import { ContainerPopupComponent } from '../container-popup/container-popup.component';
@@ -275,14 +276,7 @@ export class ContainerEditComponent implements OnInit {
   }
 
   validateForm(form: any){
-    const listCheck = [
-      { step: 0, activity: [2, 5, 6, 9] },
-      { step: 1, activity: [5, 6] },
-      { step: 2, activity: [3, 5, 6] },
-      { step: 3, activity: [2, 9] },
-      { step: 4, activity: [1, 2, 9] },
-      { step: 5, activity: [1] },
-    ]
+    const listCheck = validateMajor;
     let isSuccess = true
     for (let i = 0; i < listCheck.length; i++) {
       if (form.step === listCheck[i].step && !listCheck[i].activity.includes(form.activity)) {
@@ -291,5 +285,4 @@ export class ContainerEditComponent implements OnInit {
     }
     return isSuccess;
   }
-
 }
