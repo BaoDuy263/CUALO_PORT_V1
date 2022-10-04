@@ -130,13 +130,11 @@ export class ContainerCreateComponent implements OnInit {
   get location() { return this.CreateEditForm.get('location') }
   get state() { return this.CreateEditForm.get('state') }
   get region() { return this.CreateEditForm.get('region') }
-  // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
       this.transId = response.transaction_eir_id;
-      console.log(response)
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -305,5 +303,9 @@ export class ContainerCreateComponent implements OnInit {
       this.CreateEditForm.value.status = 1;
       return "F"
     }
+  }
+
+  closePopup() {
+    this.dialogRef.close({ event: 'close'})
   }
 }
