@@ -8,6 +8,7 @@ import { convertHelper } from '../../booking-customer/helper/convertHelper';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { lstContainerV2 } from 'src/app/Model/Containerv2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-container-index',
@@ -15,11 +16,11 @@ import { lstContainerV2 } from 'src/app/Model/Containerv2';
   styleUrls: ['./container-index.component.css'],
 })
 export class ContainerIndexComponent implements OnInit {
-  listImages: any = [];
+
   UrlRoot: string = 'https://cclo.phanmem.one';
 
-  selectedCont: any;
-  CheckedImagesEmtry: boolean = true;
+
+
   lstCont: any = [];
 
   loading: boolean = false;
@@ -33,14 +34,6 @@ export class ContainerIndexComponent implements OnInit {
     data: [],
   };
 
-  ImagesContSeach = {
-    Page: 1,
-    PageSize: 1000,
-    ContNo: '',
-    FromDate: '',
-    ToDate: '',
-    Status: -1,
-  };
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -74,45 +67,20 @@ export class ContainerIndexComponent implements OnInit {
       this.lstCont = data.data;
     });
 
-    let LastDate = new Date();
-    LastDate.setDate(LastDate.getDate() - 10);
-    this.ImagesContSeach.FromDate = LastDate.toDateString();
-    this.ImagesContSeach.ToDate = new Date().toDateString();
-    this.loadDataImages();
+
+    // let LastDate = new Date();
+    // LastDate.setDate(LastDate.getDate() - 10);
+    // console.log('-------------------');
+    // const format = 'dd/MM/yyyy';
+    // const locale = 'en-US';
+    // this.ImagesContSeach.FromDate = formatDate(LastDate, format, locale);
+    // this.ImagesContSeach.ToDate = formatDate(new Date(), format, locale);
+    //alert(formatDate(new Date(), format, locale));
+   // this.loadDataImages();
   }
 
-  setOpen(item: any) {
 
-    const dialogRef = this.dialog.open(ContainerImagesEditComponent);
-    dialogRef.componentInstance.ImagesObj = item;
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadDataImages()
-    });
-
-   }
-   loadDataImages() {
-    let code = '',
-      dateFrom = '',
-      dateTo = '',
-      status = 1;
-    console.log(this.selectedCont);
-    if (this.selectedCont != undefined) code = this.selectedCont;
-    this.containerService
-      .ContImagesEmptryGetList(
-        code,
-        this.ImagesContSeach.FromDate,
-        this.ImagesContSeach.ToDate,
-        status
-      )
-      .subscribe((data) => {
-        this.listImages = data.data;
-      });
-  }
-
-  btnSeach_Click() {
-    this.loadDataImages();
-  }
 
   loadData(PageInfo: any) {
     this.loading = true;
@@ -155,31 +123,11 @@ export class ContainerIndexComponent implements OnInit {
   }
 
   onSearchContainer(e: any) {
-    this.ImagesContSeach.ContNo = e;
+   // this.ImagesContSeach.ContNo = e;
     this.PageInfo.page = 1;
     this.loadData(this.PageInfo);
   }
 
-  onSearchFromDate(e: any) {
-    this.ImagesContSeach.FromDate = e;
-    this.loadDataImages();
-  }
-
-  onSearchToDate(e: any) {
-    this.ImagesContSeach.ToDate = e;
-    this.loadDataImages();
-  }
-
-  ddlContChange(e: any) {
-    this.loadDataImages();
-  }
-
-  checkSelected(event: any) {
-    if (event.target.checked) this.CheckedImagesEmtry = true;
-    else this.CheckedImagesEmtry = false;
-
-    this.loadDataImages();
-  }
 
   openCreate() {
     const dialogRef = this.dialog.open(ContainerEditComponent);
