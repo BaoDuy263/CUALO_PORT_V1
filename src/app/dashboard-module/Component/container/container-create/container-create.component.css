@@ -33,8 +33,11 @@ td {
   display: none !important;
 }
 
-input, select {
+input, select, span {
   font-weight: bold;
+}
+span {
+  margin-left: 10px;
 }
 
 /* .list-button {

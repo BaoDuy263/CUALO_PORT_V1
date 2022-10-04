@@ -38,7 +38,6 @@ export class ContainerCreateComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   };
-  status: number = 0;
   displayStyle: string = ''
   constructor(private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
@@ -61,8 +60,8 @@ export class ContainerCreateComponent implements OnInit {
       type: new FormControl(''),
       size: new FormControl(''),
       datePlan: new FormControl(''),
-      dateCheckIn: new FormControl(''),
-      dateCheckOut: new FormControl(''),
+      dateCheckIn: new FormControl(),
+      dateCheckOut: new FormControl(),
       transaction_eir_no: new FormControl(0),
       transaction_eir_id: new FormControl(0),
       location: new FormControl(''),
@@ -137,7 +136,7 @@ export class ContainerCreateComponent implements OnInit {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
       this.transId = response.transaction_eir_id;
-      this.status = response.status;
+      console.log(response)
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -291,6 +290,7 @@ export class ContainerCreateComponent implements OnInit {
         dialogRef.componentInstance.button = 'Xác nhận';
       } else {
         this.transNo = res.no;
+        this.CreateEditForm.value.dateCheckIn = res.dateCheckIn;
         this.displayStyle = 'displayStyle';
         setTimeout(() => window.print(), 500);
       }

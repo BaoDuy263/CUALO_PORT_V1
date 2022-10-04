@@ -241,12 +241,10 @@
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
-                <input type="datetime-local" class="form-control" formControlName="dateCheckIn"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................" readonly>
+                <span>{{CreateEditForm.value.dateCheckIn | date : 'dd/MM/yyyy hh:mm aa'}}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian ra</b>/Check out:
-                <input type="datetime-local" class="form-control" formControlName="dateCheckOut"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................" readonly>
+                <span>{{CreateEditForm.value.dateCheckOut | date : 'dd/MM/yyyy hh:mm aa'}}</span>
               </p>
             </td>
           </tr>
