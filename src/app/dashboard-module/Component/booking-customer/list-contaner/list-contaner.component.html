@@ -24,7 +24,7 @@
           <th scope="row">{{i+1}}</th>
           <td>{{item.contNo}}</td>
           <th>{{convertHelper.showStatus(item.status)}}</th>
-          <th>{{item.createdOn | date:'short'}}</th>
+          <th>{{item.createdOn | date:'dd/mm/yyyy, hh:ss aa'}}</th>
         </tr>
       </tbody>
     </table>

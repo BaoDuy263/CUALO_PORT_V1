@@ -30,11 +30,11 @@ export class ContainerImagesListComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.containerService.Paging(1, '', 1200).subscribe((data) => {
-      this.lstCont = data.data;
-      console.log(this.lstCont);
-    });
-    this.loadDataImages();
+    // this.containerService.Paging(1, '', 1200).subscribe((data) => {
+    //   this.lstCont = data.data;
+    //   console.log(this.lstCont);
+    // });
+    // this.loadDataImages();
   }
 
   loadDataImages() {
