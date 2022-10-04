@@ -106,6 +106,7 @@ import { TransactionCreateComponent } from './Component/transaction/transaction-
 import { TransactionDeleteComponent } from './Component/transaction/transaction-delete/transaction-delete.component';
 import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 import { ContainerEditComponent } from './Component/container/container-edit/container-edit.component';
+import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
 
 
 
@@ -189,7 +190,8 @@ import { ContainerEditComponent } from './Component/container/container-edit/con
     TransactionCreateComponent,
     TransactionDeleteComponent,
     ContainerPopupComponent,
-    ContainerEditComponent
+    ContainerEditComponent,
+    ReportDailyComponent
   ],
   imports: [
     CommonModule,

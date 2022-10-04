@@ -40,4 +40,7 @@ export class Containerv2Service {
     return this.httpService.getRequest(`containerv2/getAllProviding?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
   }
 
+
+
+
 }

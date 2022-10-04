@@ -217,9 +217,9 @@ export class IndexImportContFromPortComponent implements OnInit {
     });
   }
 
-  ExportCont(Id: number) {
+  ExportCont(ContNo: string) {
     const dialogRef =this.dialog.open(ExportContainerComponent);
-    dialogRef.componentInstance.Id = Id;
+    dialogRef.componentInstance.ContNo = ContNo;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -327,7 +327,6 @@ export class IndexImportContFromPortComponent implements OnInit {
 
   fileUpload(event: any) {
     const selectedFile = event.target.files[0];
-    console.log('selectedFile',selectedFile);
     const formData = new FormData();
     formData.append("file", selectedFile);
     try
