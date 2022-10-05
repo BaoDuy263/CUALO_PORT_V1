@@ -58,3 +58,8 @@ export const lstStep = [
   { value: 5, name: "Hạ Bãi" },
   { value: 6, name: "Đã xuất" },
 ]
+
+export const lstTypeVehicle = [
+  { value: 0, name: "Xe ngoài"},
+  { value: 1, name: "Nội bộ"}
+]

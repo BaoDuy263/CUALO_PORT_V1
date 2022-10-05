@@ -40,7 +40,12 @@ span {
   margin-left: 10px;
 }
 
-/* .list-button {
-  position: fixed;
-  bottom: -10px;
-} */
+.form-print {
+  position: relative;
+}
+
+.list-button {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}

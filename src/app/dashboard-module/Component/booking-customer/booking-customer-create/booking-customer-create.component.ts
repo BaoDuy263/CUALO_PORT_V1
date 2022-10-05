@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerSelect } from 'src/app/Model/Customer';
 import { ProductSelect } from 'src/app/Model/Product';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
-import { activitiesPacking } from '../helper/constant';
+import { activitiesPacking } from '../../../../utils/helper/constant';
 
 
 @Component({

@@ -1,13 +1,13 @@
 import { ContainerPopupComponent } from './../container-popup/container-popup.component';
 import { TransactionService } from './../../../../Service/transaction/transaction.service';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from '../../../../utils/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { result } from 'lodash';
 
@@ -213,37 +213,37 @@ export class ContainerCreateComponent implements OnInit {
     this.loadVehicles();
   }
 
-  onSubmit() {
-    const dialogRef = this.dialog.open(ContainerPopupComponent);
-    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
-    dialogRef.componentInstance.button = 'Đóng';
-    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.event === 'confirm') {
-        this.submited = true;
-        this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-        this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-        this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-        this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-        this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-        this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-        if (this.CreateEditForm.valid && this.isCreate === true) {
-          this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          });
-        }
-        if (this.CreateEditForm.valid && this.isCreate === false) {
-          this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          })
-        }
-      }
-    })
-  }
+  // onSubmit() {
+  //   const dialogRef = this.dialog.open(ContainerPopupComponent);
+  //   dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+  //   dialogRef.componentInstance.button = 'Đóng';
+  //   dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result.event === 'confirm') {
+  //       this.submited = true;
+  //       this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+  //       this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+  //       this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+  //       this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+  //       this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+  //       this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+  //       if (this.CreateEditForm.valid && this.isCreate === true) {
+  //         this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
+  //           this.dialogRef.close(response);
+  //         });
+  //       }
+  //       if (this.CreateEditForm.valid && this.isCreate === false) {
+  //         this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
+  //           this.dialogRef.close(response);
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 
   loadVehicles() {
     setTimeout(() => {
-      this.vehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+      this.vehicleService.GetAllEmpty(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
         this.lstVehicle = data.data;
       })
     }, 300);
@@ -254,6 +254,13 @@ export class ContainerCreateComponent implements OnInit {
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
     dialogRef.componentInstance.button = 'Đóng';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+    this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+    this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+    this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+    console.log(this.CreateEditForm.value.dateCheckIn)
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
