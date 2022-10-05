@@ -8,7 +8,7 @@
 
 </style>
 <div class="container-lg container-create">
-  <form [formGroup]="CreateEditForm">
+  <form [formGroup]="CreateEditForm" class="form-print">
     <div id="eir">
       <div class="eir-line1">
         <table style="width: 100%;">
@@ -117,7 +117,7 @@
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Loại Cont</b>/Type:
                 <input type="text" class="form-control" formControlName="type"
-                style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -229,15 +229,15 @@
                   details</b>
               </p>
               <p style="display: flex; align-items: center;"><b>Phương tiện vận chuyển</b>/Trans type
-              <input type="text" class="form-control" formControlName="transType"
-                style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
-            </p>
+                <input type="text" class="form-control" formControlName="transType"
+                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+              </p>
               <p style="display: flex; align-items: center;"><b>Công ty vận chuyển</b>/Trans com:
                 <span style="padding-left: 10px;">{{vehicleSelected ? vehicleSelected.customer : ''}}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Số xe</b>/Plate:
                 <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle"
-                  (itemSelected)="handleSelect($event)">
+                  [valueDefault]="CreateEditForm.value.licensePlates" (itemSelected)="handleSelect($event)">
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:

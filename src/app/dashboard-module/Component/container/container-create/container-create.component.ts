@@ -243,7 +243,7 @@ export class ContainerCreateComponent implements OnInit {
 
   loadVehicles() {
     setTimeout(() => {
-      this.vehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
+      this.vehicleService.GetAllEmpty(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
         this.lstVehicle = data.data;
       })
     }, 300);
