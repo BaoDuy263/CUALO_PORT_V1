@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../../booking-customer/helper/constant';
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../../../../utils/helper/constant';
 
 @Component({
   selector: 'app-transaction-create',

@@ -6,7 +6,7 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
-import { convertHelper } from '../../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../../utils/helper/convertHelper';
 import { PerformCreateComponent } from '../../../booking-customer/perform-create/perform-create.component';
 import { CreateimportContfromShipComponent } from '../../../importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from '../../../importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
@@ -115,16 +115,11 @@ export class ImpContListIndexComponent implements OnInit {
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        } else {
-          this.toastr.showError(result.message);
-        }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'close') {
+        this.Pagingdata(this.PageInfo);
       }
-    });
+    })
   }
 
   openCreate() {
