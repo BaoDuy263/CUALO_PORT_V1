@@ -134,6 +134,7 @@ export class ContainerCreateComponent implements OnInit {
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
+      this.getVehicle(response.licensePlates)
       this.transId = response.transaction_eir_id;
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
@@ -210,7 +211,6 @@ export class ContainerCreateComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
     });
-      this.getVehicle(this.CreateEditForm.value.licensePlates)
 
     this.loadVehicles();
   }
@@ -245,16 +245,16 @@ export class ContainerCreateComponent implements OnInit {
 
   loadVehicles() {
     setTimeout(() => {
-      this.vehicleService.GetAllEmpty(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-        this.lstVehicle = data.data;
+      this.vehicleService.GetAllEmpty().subscribe(data => {
+        this.lstVehicle = data;
       })
     }, 300);
   }
 
   getVehicle(licensePlates: string) {
-    const endCodeUriLP = encodeURI('37C 12345');
+    const endCodeUriLP = encodeURI(licensePlates);
     this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
-      console.log(res,'res')
+      this.vehicleSelected = res;
     })
   }
 
@@ -269,7 +269,6 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-    console.log(this.CreateEditForm.value.dateCheckIn)
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {

@@ -47,8 +47,8 @@ export class VehicleService {
       }))
   }
 
-  GetAllEmpty(page:number, searchText:string,numberDis:number) {
-    return this.httpService.getRequest('Vehicle/getAllEmpty' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
+  GetAllEmpty() {
+    return this.httpService.getRequest('Vehicle/getAllEmpty')
       .pipe(map((data : lstVehicle) => {
           return data;
       }))

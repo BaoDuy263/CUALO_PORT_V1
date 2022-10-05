@@ -81,9 +81,7 @@ export class PerformIndexComponent implements OnInit {
     dialogRef.componentInstance.containerCode = this.contNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if (result.event === 'close') {
-        this.Pagingdata(this.PageInfo);
-      }
+      this.Pagingdata(this.PageInfo);
     })
   }
 
