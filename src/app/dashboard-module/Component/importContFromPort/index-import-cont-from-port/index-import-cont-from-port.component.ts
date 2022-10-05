@@ -348,7 +348,6 @@ export class IndexImportContFromPortComponent implements OnInit {
 
   GetDirecttion(type: number)
   {
-    console.log('type',type);
     let Direction = '';
     switch(type){
       case 1 :
@@ -379,7 +378,6 @@ export class IndexImportContFromPortComponent implements OnInit {
         Direction = "Đóng rời";
         break;
     }
-    console.log('Direction',Direction);
     return Direction;
   }
 
