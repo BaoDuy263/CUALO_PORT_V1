@@ -210,6 +210,8 @@ export class ContainerCreateComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
     });
+      this.getVehicle(this.CreateEditForm.value.licensePlates)
+
     this.loadVehicles();
   }
 
@@ -247,6 +249,13 @@ export class ContainerCreateComponent implements OnInit {
         this.lstVehicle = data.data;
       })
     }, 300);
+  }
+
+  getVehicle(licensePlates: string) {
+    const endCodeUriLP = encodeURI('37C 12345');
+    this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
+      console.log(res,'res')
+    })
   }
 
   saveTrans() {

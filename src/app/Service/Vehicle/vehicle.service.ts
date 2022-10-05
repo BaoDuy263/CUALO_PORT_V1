@@ -54,4 +54,8 @@ export class VehicleService {
       }))
   }
 
+  GetByLicensePlates(licensePlates: string) {
+    return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
+  }
+
 }
