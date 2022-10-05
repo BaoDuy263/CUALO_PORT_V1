@@ -6,7 +6,7 @@ import { BookingServiceService } from 'src/app/Service/booking-customer/booking-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { activitiesData, activitiesPacking, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../helper/constant';
+import { activitiesData, activitiesPacking, lstSide, lstState, lstStatusData, lstStep, lstTypeDelivery } from '../../../../utils/helper/constant';
 import { map, Observable, startWith } from 'rxjs';
 
 @Component({

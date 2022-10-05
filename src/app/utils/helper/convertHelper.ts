@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { activitiesData, lstSide, lstState, lstStatusData, lstStep,lstTypeDelivery } from "./constant";
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep,lstTypeDelivery ,lstTypeVehicle} from "./constant";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,10 @@ export class convertHelper {
   showTypeDelivery(value: number)
   {
     return lstTypeDelivery[value]?.name;
+  }
+  
+  showTypeVehicle(value: number) {
+    return lstTypeVehicle[value]?.name;
   }
 
 }

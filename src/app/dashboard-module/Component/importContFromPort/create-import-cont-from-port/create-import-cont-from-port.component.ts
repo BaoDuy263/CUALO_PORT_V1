@@ -5,7 +5,7 @@ import { ImportContFromShipService } from 'src/app/Service/importContFromShip/im
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { TransactionService } from './../../../../Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from '../../../../utils/helper/constant';
 @Component({
   selector: 'app-create-import-cont-from-port',
   templateUrl: './create-import-cont-from-port.component.html',
@@ -45,7 +45,7 @@ export class CreateImportContFromPortComponent implements OnInit {
     pageSize: 10
   };
   constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateImportContFromPortComponent>,private containerService: Containerv2Service,private transactionService: TransactionService, private vehicleService: VehicleService)
-  { 
+  {
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
       vessel: new FormControl(''),

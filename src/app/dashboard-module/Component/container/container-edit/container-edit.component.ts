@@ -6,8 +6,8 @@ import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.serv
 import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { validateMajor } from 'src/app/utils/constant';
-import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../booking-customer/helper/constant';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../../../utils/helper/constant';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ContainerPopupComponent } from '../container-popup/container-popup.component';
 
 @Component({

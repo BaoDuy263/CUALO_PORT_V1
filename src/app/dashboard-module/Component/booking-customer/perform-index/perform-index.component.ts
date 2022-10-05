@@ -5,7 +5,7 @@ import { TransactionService } from './../../../../Service/transaction/transactio
 import { Vehicle } from './../../../../Model/Vehicle';
 import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
 import { PerformCreateComponent } from './../perform-create/perform-create.component';
-import { convertHelper } from './../helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -54,7 +54,7 @@ export class PerformIndexComponent implements OnInit {
     private toastr: ToastrcustomService,
     public convertHelper: convertHelper,
     private transactionService: TransactionService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo)
@@ -81,14 +81,8 @@ export class PerformIndexComponent implements OnInit {
     dialogRef.componentInstance.containerCode = this.contNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
+      if (result.event === 'close') {
+        this.Pagingdata(this.PageInfo);
       }
     })
   }
