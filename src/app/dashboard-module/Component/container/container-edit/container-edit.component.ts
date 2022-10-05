@@ -238,8 +238,8 @@ export class ContainerEditComponent implements OnInit {
 
   loadVehicles() {
     setTimeout(() => {
-      this.vehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-        this.lstVehicle = data.data;
+      this.vehicleService.GetAllEmpty().subscribe(data => {
+        this.lstVehicle = data;
       })
     }, 300);
   }

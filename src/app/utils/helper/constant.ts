@@ -9,11 +9,11 @@ export const activitiesData = [
   { value: 1, name: "Hạ bãi chờ xuất" },
   { value: 2, name: "Cấp rỗng" },
   { value: 3, name: "Trả rỗng" },
-  { value: 4, name: "ship side" },
+  // { value: 4, name: "ship side" },
   { value: 5, name: "Lấy nguyên" },
   { value: 6, name: "Rút ruột" },
-  { value: 7, name: "Trả bãi" },
-  { value: 8, name: "Kẹp chì" },
+  // { value: 7, name: "Trả bãi" },
+  // { value: 8, name: "Kẹp chì" },
   { value: 9, name: "Đóng rời" },
 ]
 
