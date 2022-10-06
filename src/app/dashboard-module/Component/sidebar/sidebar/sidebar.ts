@@ -235,7 +235,7 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
             },
             {
-                name :'Phân quyền người dùng',
+                name :'Phân quyền hệ thống',
                 url:'404-not-found',
                 roles: ["Admin"],
             }
