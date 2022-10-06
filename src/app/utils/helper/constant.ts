@@ -23,12 +23,13 @@ export const lstStatusData = [
 ]
 
 export const lstTypeDelivery = [
-  { value: 1, name: "Tàu xe" },
+  { value: 1, name: "Tàu xe"},
   { value: 2, name: "Xe tàu" },
-  { value: 3, name: "Bãi tàu" },
+  { value: 3, name: "Bãi tàu", },
   { value: 4, name: "Bãi xe" },
   { value: 5, name: "Xe bãi" },
   { value: 6, name: "Tàu bãi" },
+  { value: 7, name: "Bãi bãi" },
 ]
 
 export const lstTypeContData = [
@@ -62,4 +63,15 @@ export const lstStep = [
 export const lstTypeVehicle = [
   { value: 0, name: "Xe ngoài"},
   { value: 1, name: "Nội bộ"}
+]
+
+export const lstCheckTD = [
+  { activityPrev: 5, activityNext: 1, typeDelivery: 4, nameType: "Đóng kết hợp" },
+  { activityPrev: 6, activityNext: 3, typeDelivery: 7, nameType: "B-B",
+  alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?" },
+  { activityPrev: 0, activityNext: 3, typeDelivery: 5, nameType: "X-B" },
+  { activityPrev: 2, activityNext: 1, typeDelivery: 4, nameType: "Shipside X-T" },
+  { activityPrev: 9, activityNext: 1, typeDelivery: 7, nameType: "B-B",
+  alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?"},
+  { activityPrev: 0, activityNext: 5, typeDelivery: 5, nameType: "X-B",}
 ]
