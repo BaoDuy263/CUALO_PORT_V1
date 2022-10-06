@@ -37,9 +37,9 @@
               <th>Tình trạng</th>
               <th>Hướng</th>
               <th>Trạng thái</th>
-              <th>Ngày cập bến</th>
               <th>Thời gian checkin</th>
               <th>Thời gian checkout</th>
+              <th>Ngày cập bến</th>
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
@@ -54,9 +54,9 @@
               <th>{{convertHelper.showStatus(item.status)}}</th>
               <td>{{convertHelper.showSide(item.side)}}</td>
               <td>{{convertHelper.showState(item.state)}}</td>
-              <td>{{item.landingDate | date: 'dd/MM/yyyy hh:ss aa' }}</td>
               <td>{{item.dateCheckIn | date: 'dd/MM/yyyy hh:ss aa' }}</td>
               <td>{{item.dateCheckOut | date: 'dd/MM/yyyy hh:ss aa' }}</td>
+              <td>{{item.landingDate | date: 'dd/MM/yyyy hh:ss aa' }}</td>
               <td style="text-align: center;">
                 <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.contNo)">
