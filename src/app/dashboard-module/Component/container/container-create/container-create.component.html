@@ -77,11 +77,11 @@
             </td>
             <td style="width: 20%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Phương án</b>/Activity:
-                <select class="form-control" formControlName="activity"
+                <select class="form-control" formControlName="activity" (change)="changeActivity($event)"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
                   <option *ngFor="let a of activities" [ngValue]="a.value">{{a.name}}</option>
                 </select>
-                <label>PTGN: </label> <span>{{getTypeDelivery()}}</span>
+                <label>PTGN: </label> <span>{{typeDelivery}}</span>
               </p>
             </td>
             <td style="width: 20%; border: 1px solid black;">
@@ -276,8 +276,7 @@
         <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
           dịch</button>
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
-        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Hủy
-          bỏ</button>
+        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Đóng</button>
       </div>
     </div>
   </form>

@@ -247,7 +247,7 @@ export class ContainerEditComponent implements OnInit {
   saveTrans() {
     const dialogRef = this.dialog.open(ContainerPopupComponent);
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
-    dialogRef.componentInstance.button = 'Hủy bỏ';
+    dialogRef.componentInstance.button = 'Đóng';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {

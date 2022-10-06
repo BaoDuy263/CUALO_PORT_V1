@@ -1,7 +1,7 @@
 export const activitiesPacking = [
   { value: 2, name: "Cấp rỗng" },
-  { value: 4, name: "ShipSide"},
-  { value: 9, name: "Đóng rời" }
+  { value: 4, name: "ShipSide" },
+  { value: 9, name: "Đóng hàng" }
 ]
 
 export const activitiesData = [
@@ -14,7 +14,7 @@ export const activitiesData = [
   { value: 6, name: "Rút ruột" },
   // { value: 7, name: "Trả bãi" },
   // { value: 8, name: "Kẹp chì" },
-  { value: 9, name: "Đóng rời" },
+  { value: 9, name: "Đóng hàng" },
 ]
 
 export const lstStatusData = [
@@ -23,7 +23,7 @@ export const lstStatusData = [
 ]
 
 export const lstTypeDelivery = [
-  { value: 1, name: "Tàu xe"},
+  { value: 1, name: "Tàu xe" },
   { value: 2, name: "Xe tàu" },
   { value: 3, name: "Bãi tàu", },
   { value: 4, name: "Bãi xe" },
@@ -37,14 +37,14 @@ export const lstTypeContData = [
 ]
 
 export const lstSide = [
-  { value: 0, name: ""},
+  { value: 0, name: "" },
   { value: 1, name: "Import" },
   { value: 2, name: "Export" },
   { value: 3, name: "StorageEmpty" },
 ]
 
 export const lstState = [
-  { value: 0, name: ""},
+  { value: 0, name: "" },
   { value: 1, name: "Delivery" },
   { value: 2, name: "Stacking" },
   { value: 3, name: "OutPort" },
@@ -61,17 +61,59 @@ export const lstStep = [
 ]
 
 export const lstTypeVehicle = [
-  { value: 0, name: "Xe ngoài"},
-  { value: 1, name: "Nội bộ"}
+  { value: 0, name: "Xe ngoài" },
+  { value: 1, name: "Nội bộ" }
 ]
 
 export const lstCheckTD = [
-  { activityPrev: 5, activityNext: 1, typeDelivery: 4, nameType: "Đóng kết hợp" },
-  { activityPrev: 6, activityNext: 3, typeDelivery: 7, nameType: "B-B",
-  alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?" },
-  { activityPrev: 0, activityNext: 3, typeDelivery: 5, nameType: "X-B" },
-  { activityPrev: 2, activityNext: 1, typeDelivery: 4, nameType: "Shipside X-T" },
-  { activityPrev: 9, activityNext: 1, typeDelivery: 7, nameType: "B-B",
-  alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?"},
-  { activityPrev: 0, activityNext: 5, typeDelivery: 5, nameType: "X-B",}
+  {
+    activityPrev: 5,
+    activityNext: 1,
+    typeDelivery: 4,
+    nameType: "Đóng kết hợp",
+    alert: "",
+    newStep: 4,
+  },
+  {
+    activityPrev: 6,
+    activityNext: 3,
+    typeDelivery: 7,
+    nameType: "B-B",
+    alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?",
+    newStep: 3,
+    newStepCancel: 2
+  },
+  {
+    activityPrev: 0,
+    activityNext: 3,
+    typeDelivery: 5,
+    nameType: "X-B",
+    alert: "",
+    newStep: 0
+  },
+  {
+    activityPrev: 2,
+    activityNext: 1,
+    typeDelivery: 4,
+    nameType: "Shipside X-T",
+    alert: "",
+    newStep: 6
+  },
+  {
+    activityPrev: 9,
+    activityNext: 1,
+    typeDelivery: 7,
+    nameType: "B-B",
+    alert: "Container này có để lại bãi đóng rút chờ cấp rỗng/đóng hàng không?",
+    newStep: 5,
+    newStepCancel: 4
+  },
+  {
+    activityPrev: 0,
+    activityNext: 5,
+    typeDelivery: 5,
+    nameType: "X-B",
+    alert: "",
+    newStep: 6
+  }
 ]

@@ -10,6 +10,7 @@ import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { result } from 'lodash';
+import { ContainerEditComponent } from '../container-edit/container-edit.component';
 
 @Component({
   selector: 'app-container-create',
@@ -40,7 +41,8 @@ export class ContainerCreateComponent implements OnInit {
   };
   displayStyle: string = '';
   currentActivity: number = 0;
-  lstCheckTD = lstCheckTD
+  lstCheckTD = lstCheckTD;
+  typeDelivery: string = "";
   constructor(private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
@@ -128,7 +130,6 @@ export class ContainerCreateComponent implements OnInit {
   get side() { return this.CreateEditForm.get('side') }
   get dateCheckOut() { return this.CreateEditForm.get('dateCheckOut') }
   get activity() { return this.CreateEditForm.get('activity') }
-  get typeDelivery() { return this.CreateEditForm.get('typeDelivery') }
   get location() { return this.CreateEditForm.get('location') }
   get state() { return this.CreateEditForm.get('state') }
   get region() { return this.CreateEditForm.get('region') }
@@ -272,7 +273,6 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-    console.log(this.CreateEditForm.value);
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
@@ -315,7 +315,7 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   getStatus() {
-    if ([2,3].includes(this.CreateEditForm.value.activity)) {
+    if ([2, 3].includes(this.CreateEditForm.value.activity)) {
       this.CreateEditForm.value.status = 0;
       return "E";
     } else {
@@ -325,17 +325,43 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   getTypeDelivery() {
+
+  };
+
+  changeActivity(e: any) {
     for (let i = 0; i < lstCheckTD.length; i++) {
-      if (this.currentActivity === lstCheckTD[i].activityPrev &&
-        this.CreateEditForm.value.activity === lstCheckTD[i].activityNext) {
+      const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
+        && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
+      if (checkCurrActivity) {
+        this.typeDelivery = lstCheckTD[i].nameType;
         this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
+        this.openPopup(lstCheckTD[i].alert, lstCheckTD[i].newStep, lstCheckTD[i]?.newStepCancel)
+        if (lstCheckTD[i].newStep !== 0) {
+          this.CreateEditForm.value.step = lstCheckTD[i].newStep
+        }
         return lstCheckTD[i].nameType
       }
     }
     return ""
-  };
+  }
+
+  openPopup(alert: string, newStep: number, newStepCancel: number | undefined) {
+    if (alert !== "") {
+      const dialogRef = this.dialog.open(ContainerPopupComponent)
+      dialogRef.componentInstance.title = alert;
+      dialogRef.componentInstance.button = "Không";
+      dialogRef.componentInstance.buttonConfirm = "Có";
+      dialogRef.afterClosed().subscribe(result => {
+        if (result.event === 'confirm') {
+          this.CreateEditForm.value.step = newStep
+        } else {
+          this.CreateEditForm.value.step = newStepCancel;
+        }
+      })
+    }
+  }
 
   closePopup() {
-    this.dialogRef.close({ event: 'close'})
+    this.dialogRef.close({ event: 'close' })
   }
 }
