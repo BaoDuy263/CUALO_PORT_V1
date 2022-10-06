@@ -1,7 +1,7 @@
 import { ContainerPopupComponent } from './../container-popup/container-popup.component';
 import { TransactionService } from './../../../../Service/transaction/transaction.service';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from '../../../../utils/helper/constant';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep, lstCheckTD } from '../../../../utils/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -38,7 +38,9 @@ export class ContainerCreateComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   };
-  displayStyle: string = ''
+  displayStyle: string = '';
+  currentActivity: number = 0;
+  lstCheckTD = lstCheckTD
   constructor(private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
@@ -136,6 +138,7 @@ export class ContainerCreateComponent implements OnInit {
       response = response.data
       this.getVehicle(response.licensePlates)
       this.transId = response.transaction_eir_id;
+      this.currentActivity = response.activity;
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -269,6 +272,7 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+    console.log(this.CreateEditForm.value);
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
@@ -311,7 +315,7 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   getStatus() {
-    if (this.CreateEditForm.value.activity === 2 || this.CreateEditForm.value.activity === 3) {
+    if ([2,3].includes(this.CreateEditForm.value.activity)) {
       this.CreateEditForm.value.status = 0;
       return "E";
     } else {
@@ -319,6 +323,17 @@ export class ContainerCreateComponent implements OnInit {
       return "F"
     }
   }
+
+  getTypeDelivery() {
+    for (let i = 0; i < lstCheckTD.length; i++) {
+      if (this.currentActivity === lstCheckTD[i].activityPrev &&
+        this.CreateEditForm.value.activity === lstCheckTD[i].activityNext) {
+        this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
+        return lstCheckTD[i].nameType
+      }
+    }
+    return ""
+  };
 
   closePopup() {
     this.dialogRef.close({ event: 'close'})
