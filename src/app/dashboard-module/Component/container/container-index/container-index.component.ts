@@ -160,4 +160,15 @@ export class ContainerIndexComponent implements OnInit {
     }
     this.loadData(this.PageInfo);
   }
+
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(dateUpdate == null) {
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
+  }
 }

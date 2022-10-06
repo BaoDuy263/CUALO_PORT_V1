@@ -70,6 +70,8 @@ export interface ContainerV2 {
   nameDriver: string,
   licensePlates: string,
   phoneNumberDriver: string,
+  lastImportDate: Date,
+  lastExportDate: Date
 }
 
 export interface lstContainerV2 {
