@@ -56,6 +56,7 @@ export class ImpContListIndexComponent implements OnInit {
     this.containverService.GetAllContImp(this.PageInfo.page, this.PageInfo.Keyword,
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
       .subscribe(data => {
+        console.log(data.data)
         this.loadding = false;
         this.lstdata.data = data.data;
         this.Pagination.currentPage = data.currentPage,
