@@ -13,7 +13,8 @@
       <div class="col-lg-4 col-md-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Mã container</label>
-          <input type="text" class="form-control" formControlName="contNo">
+          <input *ngIf="!isCreate" type="text" class="form-control" formControlName="contNo" readonly>
+          <input *ngIf="isCreate" type="text" class="form-control" formControlName="contNo">
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
@@ -45,7 +46,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Loại container</label>
-          <input type="text" class="form-control" formControlName="typeCont">
+          <input type="text" class="form-control" formControlName="type">
         </div>
       </div>
     </div>
@@ -116,12 +117,6 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">OOG</label>
           <input type="text" class="form-control" formControlName="oog">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">operator</label>
-          <input type="text" class="form-control" formControlName="operator">
         </div>
       </div>
       <div class="col-lg-4">
@@ -260,18 +255,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày cấp con, trả khách</label>
-          <input type="datetime-local" class="form-control" formControlName="outDeliveryDate">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày nhận vỏ</label>
-          <input type="datetime-local" class="form-control" formControlName="inDeliveryDate">
-        </div>
-      </div>
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày nhận bãi</label>
