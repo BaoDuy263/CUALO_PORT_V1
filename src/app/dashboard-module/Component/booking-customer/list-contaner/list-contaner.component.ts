@@ -61,6 +61,9 @@ export class ListContanerComponent implements OnInit {
   }
 
   hanldeClickItem(item: ContainerV2) {
+    if (item.status === 1) {
+      return;
+    }
     if (this.itemSelected.includes(item.contNo)) {
       this.itemSelected = this.itemSelected.filter(i => i != item.contNo);
     }

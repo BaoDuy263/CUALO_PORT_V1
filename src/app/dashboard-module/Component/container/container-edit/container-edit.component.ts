@@ -60,19 +60,17 @@ export class ContainerEditComponent implements OnInit {
       datePlan: new FormControl(''),
       dateCheckIn: new FormControl(''),
       dateCheckOut: new FormControl(''),
-      transaction_eir_no: new FormControl(0),
-      transaction_eir_id: new FormControl(0),
+      transaction_eir_no: new FormControl(),
+      transaction_eir_id: new FormControl(),
       location: new FormControl(''),
       statusContainer: new FormControl(''),
-      step: new FormControl(0),
-      side: new FormControl(0),
-      typeDelivery: new FormControl(0),
-      activity: new FormControl(0),
-      status: new FormControl(0),
-      state: new FormControl(0),
+      step: new FormControl(),
+      side: new FormControl(),
+      typeDelivery: new FormControl(),
+      activity: new FormControl(),
+      status: new FormControl(),
+      state: new FormControl(),
       datePacking: new FormControl(''),
-      inDeliveryDate: new FormControl(''),
-      outDeliveryDate: new FormControl(''),
       returnPlan: new FormControl(''),
       returnAddress: new FormControl(''),
       createdOn: new FormControl(''),
@@ -196,6 +194,7 @@ export class ContainerEditComponent implements OnInit {
         nameDriver: new FormControl(response.nameDriver),
         licensePlates: new FormControl(response.licensePlates),
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
+        noBL: new FormControl(response.noBL)
       })
     });
     this.loadVehicles();
@@ -211,12 +210,9 @@ export class ContainerEditComponent implements OnInit {
         const check = this.validateForm(this.CreateEditForm.value);
         if (check) {
           this.submited = true;
-          this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-          this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-          this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-          this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
           this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
           this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+          console.log(this.CreateEditForm.value,'value')
           if (this.CreateEditForm.valid && this.isCreate === true) {
             this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
               this.dialogRef.close(response);
@@ -247,7 +243,7 @@ export class ContainerEditComponent implements OnInit {
   saveTrans() {
     const dialogRef = this.dialog.open(ContainerPopupComponent);
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
-    dialogRef.componentInstance.button = 'Hủy bỏ';
+    dialogRef.componentInstance.button = 'Đóng';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
