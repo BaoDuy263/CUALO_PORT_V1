@@ -86,7 +86,7 @@ export class ContainerIndexComponent implements OnInit {
       height: '800px',
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
-    dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.componentInstance.isCreate = false;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -114,6 +114,7 @@ export class ContainerIndexComponent implements OnInit {
 
   openCreate() {
     const dialogRef = this.dialog.open(ContainerEditComponent);
+    dialogRef.componentInstance.isCreate = true;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {

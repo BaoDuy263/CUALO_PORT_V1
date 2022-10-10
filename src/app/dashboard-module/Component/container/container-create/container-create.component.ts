@@ -61,7 +61,7 @@ export class ContainerCreateComponent implements OnInit {
       book: new FormControl(''),
       bill: new FormControl(''),
       seal: new FormControl(''),
-      type: new FormControl(''),
+      type: new FormControl('Dry'),
       size: new FormControl(''),
       datePlan: new FormControl(''),
       dateCheckIn: new FormControl(),
@@ -86,10 +86,9 @@ export class ContainerCreateComponent implements OnInit {
       modifiedBy: new FormControl(''),
       modifiedOn: new FormControl(''),
       ref: new FormControl(''),
-      typeCont: new FormControl(''),
       ventilation: new FormControl(''),
       iso: new FormControl(''),
-      cargoType: new FormControl(''),
+      cargoType: new FormControl('General'),
       height: new FormControl(''),
       temparature: new FormControl(''),
       oog: new FormControl(''),
@@ -178,7 +177,6 @@ export class ContainerCreateComponent implements OnInit {
         modifiedBy: new FormControl(response.modifiedBy),
         modifiedOn: new FormControl(response.modifiedOn),
         ref: new FormControl(response.ref),
-        typeCont: new FormControl(response.typeCont),
         ventilation: new FormControl(response.ventilation),
         iso: new FormControl(response.iso),
         cargoType: new FormControl(response.cargoType),
@@ -324,10 +322,6 @@ export class ContainerCreateComponent implements OnInit {
     }
   }
 
-  getTypeDelivery() {
-
-  };
-
   changeActivity(e: any) {
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
@@ -354,7 +348,8 @@ export class ContainerCreateComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result.event === 'confirm') {
           this.CreateEditForm.value.step = newStep
-        } else {
+        }
+        if (result.event === 'cancel') {
           this.CreateEditForm.value.step = newStepCancel;
         }
       })
