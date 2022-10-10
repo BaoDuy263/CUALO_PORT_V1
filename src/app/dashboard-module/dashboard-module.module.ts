@@ -108,6 +108,8 @@ import { ContainerPopupComponent } from './Component/container/container-popup/c
 import { ContainerImagesListComponent } from './Component/container/container-images-list/container-images-list.component';
 import { ContainerEditComponent } from './Component/container/container-edit/container-edit.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 
 
 
@@ -194,6 +196,8 @@ import { ReportDailyComponent } from './Component/report-daily/report-daily.comp
     ContainerEditComponent,
     ReportDailyComponent,
     ContainerImagesListComponent,
+    QuanTriHeThongComponent,
+    RolePermissionComponent,
 
   ],
   imports: [

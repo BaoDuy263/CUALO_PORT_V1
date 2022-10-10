@@ -35,6 +35,7 @@ import { ContainerMapsListComponent } from './Component/container/container-maps
 import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component'
 
 const routes: Routes = [
   {
@@ -95,6 +96,7 @@ const routes: Routes = [
       { path: 'container-maps-list', component: ContainerMapsListComponent },
       { path: 'container', component: ContainerIndexComponent},
       { path: 'transaction', component: TransactionIndexComponent},
+      { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
