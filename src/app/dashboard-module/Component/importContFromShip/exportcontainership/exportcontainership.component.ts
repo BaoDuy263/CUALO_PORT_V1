@@ -15,6 +15,7 @@ export class ExportcontainershipComponent implements OnInit {
   constructor(private service : ImportContFromShipService,public dialogRef: MatDialogRef<ExportcontainershipComponent>) { }
 
   ngOnInit(): void {
+    console.log('Location',this.Location);
   }
 
   bulkAction()

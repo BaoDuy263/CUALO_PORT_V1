@@ -33,14 +33,17 @@
           <thead>
             <tr>
               <th style="text-align: center;">STT</th>
-              <th>Tên Khách hàng</th>
-              <th>Bước hiện tại</th>
               <th>Mã container</th>
-              <th>Tên tàu</th>
-              <th>Vị trí trả hàng</th>
-              <th>Ghi chú</th>
-              <th>Ngày tạo</th>
-              <th>Ngày cấp container</th>
+              <th>Bước hiện tại</th>
+              <th>Phương Án</th>
+              <th>Loại cont</th>
+              <th>Tên Khách hàng</th>
+              <th>Hướng</th>
+              <th>Trạng thái E/F</th>
+              <th>Trạng thái</th>
+              <th>Phương thức giao nhận</th>
+              <th>Thời gian checkin</th>
+              <th>Thời gian checkout</th>
               <!-- <th>Trạng thái</th> -->
               <th style="text-align: center;">Hành động</th>
             </tr>
@@ -48,14 +51,17 @@
           <tbody style="border-top: none;">
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
-              <td>{{item.customer}}</td>
-              <td>{{convertHelper.showStep(item.step)}}</td>
               <td>{{item.contNo}}</td>
-              <td>{{item.voyage}}</td>
-              <td>{{item.returnAddress}}</td>
-              <td>{{item.note}}</td>
-              <td>{{item.createdOn | date:'short'}}</td>
-              <td>{{item.outDeliveryDate | date: 'short'}}</td>
+              <td>{{convertHelper.showStep(item.step)}}</td>
+              <td>{{convertHelper.showActivity(item.activity)}}</td>
+              <td>{{item.typeCont}}</td>
+              <td>{{item.customer}}</td>
+              <td>{{convertHelper.showSide(item.side)}}</td>
+              <th>{{convertHelper.showStatus(item.status)}}</th>
+              <td>{{convertHelper.showState(item.state)}}</td>
+              <td>{{convertHelper.showTypeDelivery(item.typeDelivery)}}</td>
+              <td>{{CheckDate(item.dateCheckIn)}}</td>
+              <td>{{CheckDate(item.dateCheckOut)}}</td>
               <td style="text-align: center;">
                 <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.id)">

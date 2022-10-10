@@ -143,6 +143,17 @@ export const ROUTE_DATA: TypeRoute[] = [
       roles: ["Admin"],
       url:'container-maps'
     },
+    {
+        name :'Báo cáo',
+        roles: ["Admin"],
+        children : [
+            {
+                name :'Daily report',
+                url: 'dayilyreport',
+                roles: ["Admin"],
+            },
+        ]
+    },
     // {
     //     name :'Thực hiên xuất nhập tàu',
     //     roles: ["Admin"],
@@ -224,8 +235,8 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
             },
             {
-                name :'Phân quyền người dùng',
-                url:'404-not-found',
+                name :'Phân quyền hệ thống',
+                url:'quan-ly-he-thong',
                 roles: ["Admin"],
             }
         ]

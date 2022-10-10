@@ -137,4 +137,14 @@ export class TransactionIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(dateUpdate == null) {
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
+  }
 }
