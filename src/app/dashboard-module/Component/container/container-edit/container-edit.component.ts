@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
+import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { validateMajor } from 'src/app/utils/constant';
@@ -37,7 +38,10 @@ export class ContainerEditComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   };
+
+  lstLocation :Array<{id: string,positionLabel:string}> = []
   constructor(private containerService: Containerv2Service,
+    private importContFromShipService: ImportContFromShipService,
     public dialogRef: MatDialogRef<ContainerEditComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
     public dialog: MatDialog, public convertHelper: convertHelper) {
@@ -91,7 +95,7 @@ export class ContainerEditComponent implements OnInit {
       customerSeal: new FormControl(''),
       seal1: new FormControl(''),
       seal2: new FormControl(''),
-      returnPlace: new FormControl(''),
+      returnPlace: new FormControl('CLP'),
       landingDate: new FormControl(''),
       transType: new FormControl(''),
       transCom: new FormControl(''),
@@ -119,7 +123,6 @@ export class ContainerEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.isCreate) {
-
       this.containerService.GetDetail(this.containerCode).subscribe(response => {
         response = response.data
         this.transId = response.transaction_eir_id;
@@ -198,9 +201,10 @@ export class ContainerEditComponent implements OnInit {
           phoneNumberDriver: new FormControl(response.phoneNumberDriver),
           noBL: new FormControl(response.noBL)
         })
+        this.loadVehicles();
+        this.GetLocatonFree()
       });
     }
-    this.loadVehicles();
   }
 
   get contNo() { return this.CreateEditForm.get('contNo'); }
@@ -245,6 +249,13 @@ export class ContainerEditComponent implements OnInit {
         this.lstVehicle = data;
       })
     }, 300);
+  }
+
+  GetLocatonFree()
+  {
+    this.importContFromShipService.GetLocationFree().subscribe(data=> {
+      this.lstLocation = data;
+    })
   }
 
   saveTrans() {

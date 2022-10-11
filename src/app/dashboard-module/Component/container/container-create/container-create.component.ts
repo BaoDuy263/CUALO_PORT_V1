@@ -98,7 +98,7 @@ export class ContainerCreateComponent implements OnInit {
       customerSeal: new FormControl(''),
       seal1: new FormControl(''),
       seal2: new FormControl(''),
-      returnPlace: new FormControl(''),
+      returnPlace: new FormControl('CLP'),
       landingDate: new FormControl(''),
       transType: new FormControl('Truck'),
       transCom: new FormControl(''),
