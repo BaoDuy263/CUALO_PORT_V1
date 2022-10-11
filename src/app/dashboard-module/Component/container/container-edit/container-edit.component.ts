@@ -9,7 +9,7 @@ import { validateMajor } from 'src/app/utils/constant';
 import { activitiesData, lstSide, lstState, lstStatusData, lstStep, lstTypeContData, lstTypeDelivery } from '../../../../utils/helper/constant';
 import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ContainerPopupComponent } from '../container-popup/container-popup.component';
-
+import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 @Component({
   selector: 'app-container-edit',
   templateUrl: './container-edit.component.html',
@@ -18,6 +18,7 @@ import { ContainerPopupComponent } from '../container-popup/container-popup.comp
 export class ContainerEditComponent implements OnInit {
   CreateEditForm!: FormGroup;
   submited: boolean = false;
+  lstLocation :Array<{location: string,contNo:string}> = []
   containerCode: string = '';
   isCreate: boolean = true;
   activities = activitiesData;
@@ -114,6 +115,9 @@ export class ContainerEditComponent implements OnInit {
       nameDriver: new FormControl(''),
       licensePlates: new FormControl(''),
       phoneNumberDriver: new FormControl(''),
+      lastImportDate: new FormControl(''),
+      lastExportDate: new FormControl(''),
+      inDeliveryDate: new FormControl(''),
     })
   }
 
@@ -143,7 +147,7 @@ export class ContainerEditComponent implements OnInit {
           dateCheckOut: new FormControl(response.dateCheckOut),
           transaction_eir_no: new FormControl(response.transaction_eir_no),
           transaction_eir_id: new FormControl(response.transaction_eir_id),
-          location: new FormControl(response.location),
+          location: new FormControl(response.location == null ? response.location : response.location + '-' + response.mapType),
           statusContainer: new FormControl(response.statusContainer),
           step: new FormControl(response.step),
           side: new FormControl(response.side),
@@ -196,11 +200,26 @@ export class ContainerEditComponent implements OnInit {
           nameDriver: new FormControl(response.nameDriver),
           licensePlates: new FormControl(response.licensePlates),
           phoneNumberDriver: new FormControl(response.phoneNumberDriver),
-          noBL: new FormControl(response.noBL)
+          noBL: new FormControl(response.noBL),
+          lastImportDate: new FormControl(response.lastImportDate == null || response.lastImportDate.lastIndexOf('.') < 0 ? response.lastImportDate : response.lastImportDate.substring(0,response.lastImportDate.lastIndexOf('.'))),
+          lastExportDate: new FormControl(response.lastExportDate == null || response.lastExportDate.lastIndexOf('.') < 0 ? response.lastExportDate : response.lastExportDate.substring(0,response.lastExportDate.lastIndexOf('.')))
         })
+        console.log('form',this.CreateEditForm.value)
       });
     }
     this.loadVehicles();
+    this.GetLocatonFree();
+  }
+
+  GetLocatonFree()
+  {
+    this.containerService.GetLstContInMap().subscribe(data=> {
+      console.log('data',data);
+      if(data.statusCode == 200)
+      {
+          this.lstLocation = data.data;
+      }
+    })
   }
 
   get contNo() { return this.CreateEditForm.get('contNo'); }

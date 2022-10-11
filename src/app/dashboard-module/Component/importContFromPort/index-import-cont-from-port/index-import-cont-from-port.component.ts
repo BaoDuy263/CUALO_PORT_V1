@@ -206,7 +206,7 @@ export class IndexImportContFromPortComponent implements OnInit {
     dialogRef.componentInstance.isImportKH = false;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (result.statusCode === 200) {
+        if (result.status === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
         }
@@ -237,7 +237,7 @@ export class IndexImportContFromPortComponent implements OnInit {
     const dialogRef = this.dialog.open(ImportContFromPortComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (result.statusCode === 200) {
+        if (result.status === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
         }
@@ -333,10 +333,15 @@ export class IndexImportContFromPortComponent implements OnInit {
     {
       this.loadding = true;
       this.service.UploadPorttoShip(formData).subscribe(data => {
-        if(data.statusCode === 200)
-          {
-            this.PagingBooking();
-          }
+        if(data.status === 200)
+        {
+          this.toastr.showSuccess(data.message)
+          this.PagingBooking();
+        }
+        else
+        {
+          this.toastr.showError(data.message)
+        }
       })
     }
     catch(error)
