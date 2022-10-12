@@ -121,11 +121,12 @@ export class ContainerMapsIndexComponent implements OnInit {
     this.listInfo.pageNumber = 1;
     this.listInfo.pageSize = 1000;
     this.listInfo.contNo = '';
-    //console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
       // //console.log(data.item1);
       this.listContYarn3 = data.item1;
+    console.log('22222222', data);
+
       this.displayListCont(this.listContYarn3);
     });
   }

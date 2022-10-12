@@ -107,6 +107,9 @@ import { TransactionDeleteComponent } from './Component/transaction/transaction-
 import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 import { ContainerImagesListComponent } from './Component/container/container-images-list/container-images-list.component';
 import { ContainerEditComponent } from './Component/container/container-edit/container-edit.component';
+import { ContInfoComponent } from './Component/container/container-detail/cont-info/cont-info.component';
+import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';
+import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
 
 
 
@@ -191,7 +194,10 @@ import { ContainerEditComponent } from './Component/container/container-edit/con
     TransactionDeleteComponent,
     ContainerPopupComponent,
     ContainerImagesListComponent,
-    ContainerEditComponent
+    ContainerEditComponent,
+    ContInfoComponent,
+    ContHistoryComponent,
+    ContImgsComponent
   ],
   imports: [
     CommonModule,

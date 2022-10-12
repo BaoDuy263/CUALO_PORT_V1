@@ -114,7 +114,10 @@ export class ContainerMapsComponent implements OnInit {
     private mContainerService: ContainerService,
     public dialog: MatDialog,
   ) {
+    console.log(111111111111111111);
+
     this.listCont();
+    
   }
 
   ngOnInit(): void {}
@@ -128,6 +131,8 @@ export class ContainerMapsComponent implements OnInit {
     this.mContainerService.MapYar3List().subscribe((data) => {
      // console.log(data.item1);
       this.listContYarn3 = data.item1;
+      console.log(this.listContYarn3);
+      
       this.displayListCont(this.listContYarn3);
     });
   }

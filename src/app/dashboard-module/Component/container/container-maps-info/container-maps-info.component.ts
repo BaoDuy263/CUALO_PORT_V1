@@ -27,19 +27,20 @@ export class ContainerMapsInfoComponent implements OnInit {
 
   ///message:string;
   ngOnInit(): void {
-
-      this.mContainerService.MapYar3getInfo(this.ContNum).subscribe((data) => {
-       // console.log(data.item1);
-        this.contDet = data.item1[0];
-      });
-      this.mContainerService.ContHistoryGetList(this.ContNum).subscribe((data) => {
-      //  console.log(data.item1);
-        this.listHistory = data.item1;
-      });
-      this.mContainerService.ContImagesGetList(this.ContNum).subscribe((data) => {
-        console.log(data.item1);
-        this.listImages = data.item1;
-      });
+      console.log('this.ContNum',this.ContNum);
+      
+      // this.mContainerService.MapYar3getInfo(this.ContNum).subscribe((data) => {
+      //  // console.log(data.item1);
+      //   this.contDet = data.item1[0];
+      // });
+      // this.mContainerService.ContHistoryGetList(this.ContNum).subscribe((data) => {
+      // //  console.log(data.item1);
+      //   this.listHistory = data.item1;
+      // });
+      // this.mContainerService.ContImagesGetList(this.ContNum).subscribe((data) => {
+      //   console.log(data.item1);
+      //   this.listImages = data.item1;
+      // });
   }
 
 

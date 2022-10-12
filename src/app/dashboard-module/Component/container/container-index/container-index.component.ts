@@ -88,6 +88,8 @@ export class ContainerIndexComponent implements OnInit {
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate).subscribe(data => {
       this.loading = false;
       this.lstdata = data;
+      console.log('dddđ', data);
+      
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,

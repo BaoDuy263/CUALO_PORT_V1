@@ -14,10 +14,16 @@ import { AdminService } from './Service/admin.service';
 import { ConfigService } from './Service/config.service';
 import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
 import { MapcontYard3Service } from './Service/map-cont-yard3.service';
+// import { ContInfoComponent } from './cont-info/cont-info.component';
+// import { ContHistoryComponent } from './container/container-detail/cont-history/cont-history.component';
+// import { ContImgsComponent } from './container/container-detail/cont-imgs/cont-imgs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // ContInfoComponent,
+    // ContHistoryComponent,
+    // ContImgsComponent,
   ],
   imports: [
     BrowserModule,

@@ -82,4 +82,10 @@ export class ContainerService {
   }
 
 
+  getContActivity(item: string) {
+    // return this.httpService.getRequest("/MapContYard3/GetContSelected/")
+    return this.httpService.getRequest(`MapContYard3/GetContSelected/${item}`);
+  }
+
+
 }
