@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import  { CommonserviceService } from  '../CommonService/commonservice.service';
 import { BayPlanPaging,BayPlanCreate,BayPlanUpdate, PortToShipPaging, PortToShipCreate, PortToShipUpdate } from '../../Model/BayPlanDetail';
 import { BookingPlanPaging } from 'src/app/Model/BookingPlan';
+import { map } from 'rxjs';
+import { Item } from 'src/app/Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
@@ -115,6 +117,16 @@ export class ImportContFromShipService {
 
   GetLocationFree(){
     return this.httpService.getRequest('MapContYard3/GetLocationFree');
+  }
+
+  GetLocationSelect(){
+    return this.httpService.getRequest('MapContYard3/GetLocationFree')
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name: i.positionLabel
+      } as Item)) as Item[];
+    }))
   }
 
   ImportAndUpdate(data : BayPlanUpdate){

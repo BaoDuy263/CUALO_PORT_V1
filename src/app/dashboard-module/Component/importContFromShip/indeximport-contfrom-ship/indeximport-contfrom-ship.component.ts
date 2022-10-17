@@ -265,10 +265,11 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
-  openEdit(ContNo: string){
+  openEdit(ContNo: string,Location: string){
     this.isCreate = false;
     const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
     dialogRef.componentInstance.Cont = ContNo;
+    dialogRef.componentInstance.Location = Location;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-// import * as _ from 'lodash';
+import { Item } from '../../../../Model/multidropdown';
 import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   isCreate: boolean = true;
   loadding: boolean = false;
   @Input() Cont: string = '';
-
+  @Input() Location:string = '';
   lstContainer = [
     { id: "20'DC", name: 'Container Khô 20 feet (20DC)' },
     { id: "20'OT", name: 'Container Khô 20 feet hở nóc (20Ot)' },
@@ -28,6 +28,12 @@ export class CreateimportContfromShipComponent implements OnInit {
     { id: "40'OT", name: 'Container Khô 40 feet hở nóc(400C)' },
   ];
 
+  showSearch = true;
+  showError = false;
+  showAll = false;
+  showStatus = true;
+  items: Item[] = [];
+  currentSelectedItem!: Item;
   lstDirection = [
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
@@ -100,6 +106,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       });
     }
     this.GetLocatonFree();
+    this.GetLocationSelect();
   }
 
 
@@ -108,6 +115,22 @@ export class CreateimportContfromShipComponent implements OnInit {
     this.importContFromShipService.GetLocationFree().subscribe(data=> {
       this.lstLocation = data;
     })
+  }
+
+  GetLocationSelect(){
+    this.importContFromShipService.GetLocationSelect().subscribe(data=> {
+      this.items = data;
+    })
+  }
+
+  onItemChange(item: Item): void {
+    if(!item.checked){
+      this.CreateEditForm.value.Location = null;
+    }
+    else
+    {
+      this.CreateEditForm.value.Location = item.name;
+    }
   }
 
   onSubmit() {
