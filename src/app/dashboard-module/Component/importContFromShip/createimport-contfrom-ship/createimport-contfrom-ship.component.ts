@@ -77,7 +77,6 @@ export class CreateimportContfromShipComponent implements OnInit {
   get ContNo() {
     return this.CreateEditForm.get('ContNo');
   }
-
   get Activity() {
     return this.CreateEditForm.get('Activity');
   }

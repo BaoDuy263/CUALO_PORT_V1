@@ -91,11 +91,8 @@ export class MultidropdownComponent  {
     //Thay đổi chỉ check được 1 item
     onChange($event: any, item: Item): void {
         const checked = $event.target.checked;
-        console.log('checked',checked);
         const index = this._items.findIndex(i => i.id === item.id);
         const indexPre = this._items.findIndex(i => i.checked === true); //Tìm vị trí của thằng cũ
-        console.log('index',index);
-        console.log('indexPre',indexPre);
         if (item.id === null) {
             this.all.checked = checked;
             for (const iterator of this._items) {
