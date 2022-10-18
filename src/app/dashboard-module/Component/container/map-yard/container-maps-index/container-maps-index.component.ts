@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
+import { BayPlanPaging } from 'src/app/Model/BayPlanDetail';
 import { ContainerService } from 'src/app/Service/container/container.service';
+import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 import { MapcontYard3Service } from 'src/app/Service/map-cont-yard3.service';
 import { MapcontYard3Service_ } from 'src/app/Service/MapcontYard3Service/mapcont-yard3-service.service';
-import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
+import { ContainerMapsInfoComponent } from '../../container-detail/container-maps-info/container-maps-info.component';
+import { ContainerMoveComponent } from '../container-move/container-move.component';
 
 @Component({
   selector: 'app-container-maps-index',
@@ -16,6 +20,7 @@ export class ContainerMapsIndexComponent implements OnInit {
     'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string = '';
   value: string = '';
+  countClickMove: number = 0;
   checkDel: boolean = false;
   listContYarn3: any = [];
   isModalOpen = false;
@@ -23,11 +28,18 @@ export class ContainerMapsIndexComponent implements OnInit {
   listA: any = [];
   arrA: any = [];
   listE: any = [];
+  listPlan: any = [];
   hiddenForm: string = 'false';
   checkEmpty: boolean = true;
   IsChangeLocal: boolean = false;
   textSearch: string = '';
   checkFirst: string = '';
+  infoMoveCont : any = {
+    currentPagecontNo : "",
+    oldLocation: "",
+    newLocaiton : "",
+    mapType : "",
+  }
   zoomProperties = {
     'double-tap': true, // double tap to zoom in and out.
     overflow: 'visible', // Am not sure. But Documentation says, it will not render elements outside the container.
@@ -106,26 +118,57 @@ export class ContainerMapsIndexComponent implements OnInit {
   IdSouce: string = '';
   IdTaget: string = '';
 
+  PageInfo: BayPlanPaging = {
+    Page: 1,
+    PageSize: 100,
+    Voyace: '',
+    ContNo: '',
+    BillNo: '',
+    FromDate: undefined,
+    ToDate: undefined,
+    isThuchien: false
+  }
+
   constructor(
     private MapContYarn3Service_: MapcontYard3Service_,
     private MapContYarn3Service: MapcontYard3Service,
     private mContainerService: ContainerService,
+    private ImportContFromShipService: ImportContFromShipService,
+    private toastr: ToastrcustomService,
+
     public dialog: MatDialog
   ) {
-    this.listCont();
+    this.getListPlan();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+    this.listCont();
+
+  }
 
   listCont() {
     this.listInfo.pageNumber = 1;
     this.listInfo.pageSize = 1000;
     this.listInfo.contNo = '';
-    //console.log(this.listInfo);
 
     this.mContainerService.MapYar3List().subscribe((data) => {
-      // //console.log(data.item1);
-      this.listContYarn3 = data.item1;
+
+      var listposition = data.item1;
+      for (let i = 0; i < listposition.length; i++) {
+        console.log(listposition[i]['positionLabel'], listposition[i]['code'], listposition[i]['idPlan']);
+
+        if (this.listPlan.length > 0) {
+          for (let j = 0; j < this.listPlan.length; j++) {
+            if (listposition[i]['positionLabel'] == this.listPlan[j]['location'] && listposition[i]['code'] == null) {
+              listposition[i]['code'] = this.listPlan[j]['contNo'];
+              listposition[i]['idPlan'] = 1;
+            }
+          }
+        }
+
+      }
+      this.listContYarn3 = listposition;
+
       this.displayListCont(this.listContYarn3);
     });
   }
@@ -299,54 +342,101 @@ export class ContainerMapsIndexComponent implements OnInit {
     return arr2;
   }
 
-  SetChange() {
+  getListPlan() {
+    this.listPlan = [];
+
+
+    this.ImportContFromShipService.Paging(this.PageInfo).subscribe(response => {
+      for (let i = 0; i < response.data.data.length; i++) {
+
+        var test = response.data.data[i]['location'].replace('-YARD3', '');
+        response.data.data[i]['location'] = test;
+        this.listPlan.push(response.data.data[i])
+
+      }
+      console.log('this.listPlan', this.listPlan);
+
+    })
+  }
+
+
+  btnMoveCont() {
     this.IsChangeLocal = true;
+    for (let myChild of this.listContYarn3) {
+
+     
+        myChild.BackgroundColour = "#f4f4f4";
+      // }
+
+      // if (myChild.checkSearch) {
+      //   if (myChild.checkSearch == true) {
+      //     myChild.BackgroundColour = "#00c3e3 !important";
+      //   } else {
+      //     myChild.BackgroundColour = "white";
+      //   }
+      // }
+    }
     //console.log('-----------------');
     // this.listContAfterSearch(event.target.value);
   }
-  SaveChange() {
-    // this.IsChangeLocal = false;
-    // alert(this.NumCont +' : ' +this.IdSouce + '######' + this.IdTaget);
-    // //console.log('-----------------');
-    var _DataInput: any = {};
-    _DataInput.ContNo = this.NumCont;
-    _DataInput.oldLocation = this.IdSouce;
-    _DataInput.newLocaiton = this.IdTaget;
-    var _mDataInput = JSON.stringify(_DataInput);
-    console.log(_mDataInput);
-    this.MapContYarn3Service_.MoveLocalCont(_DataInput).subscribe((data) => {
-      // this.listContYarn3 = data;
-      console.log(data.statusCode);
-      if(data.statusCode=='200')
-      this.mContainerService.MapYar3List().subscribe((data) => {
-        this.listContYarn3 = data.item1;
-        this.displayListCont(this.listContYarn3);
-        console.log(this.listContYarn3);
-        this.Resethange();
-        this.IsChangeLocal = false;
-      });
-    });
-    // this.listContAfterSearch(event.target.value);
-  }
 
-  Resethange() {
-    this.IsChangeLocal = true;
-    this.IdTaget = '';
-    this.IdSouce = '';
-    for (let contInfo_ of this.listContYarn3) {
-      contInfo_.BackgroundColour = '#fff';
+  btnCancelMove(){
+    this.IsChangeLocal = false;
+    for (let myChild of this.listContYarn3) {
+
+     
+        myChild.BackgroundColour = "white";
+      // }
+
+      // if (myChild.checkSearch) {
+      //   if (myChild.checkSearch == true) {
+      //     myChild.BackgroundColour = "#00c3e3 !important";
+      //   } else {
+      //     myChild.BackgroundColour = "white";
+      //   }
+      // }
     }
   }
+  // SaveChange() {
+  //   // this.IsChangeLocal = false;
+  //   // alert(this.NumCont +' : ' +this.IdSouce + '######' + this.IdTaget);
+  //   // //console.log('-----------------');
+  //   var _DataInput: any = {};
+  //   _DataInput.ContNo = this.NumCont;
+  //   _DataInput.oldLocation = this.IdSouce;
+  //   _DataInput.newLocaiton = this.IdTaget;
+  //   var _mDataInput = JSON.stringify(_DataInput);
+  //   console.log(_mDataInput);
+  //   this.MapContYarn3Service_.MoveLocalCont(_DataInput).subscribe((data) => {
+  //     // this.listContYarn3 = data;
+  //     console.log(data.statusCode);
+  //     if (data.statusCode == '200')
+  //       this.mContainerService.MapYar3List().subscribe((data) => {
+  //         this.listContYarn3 = data.item1;
+  //         this.displayListCont(this.listContYarn3);
+  //         console.log(this.listContYarn3);
+  //         this.Resethange();
+  //         this.IsChangeLocal = false;
+  //       });
+  //   });
+  //   // this.listContAfterSearch(event.target.value);
+  // }
+
+  // Resethange() {
+  //   this.IsChangeLocal = true;
+  //   this.IdTaget = '';
+  //   this.IdSouce = '';
+  //   for (let contInfo_ of this.listContYarn3) {
+  //     contInfo_.BackgroundColour = '#fff';
+  //   }
+  // }
 
   onKey(event: any) {
     for (let contInfo_ of this.listContYarn3) {
       contInfo_.BackgroundColour = '#fff';
     }
     this.textSearch = event.target.value;
-    console.log(this.textSearch);
-    // this.listContAfterSearch(event.target.value);
-    if(this.textSearch!="")
-    {
+    if (this.textSearch != "") {
       for (let contInfo_ of this.listContYarn3) {
         if (contInfo_.code != null) {
           if (
@@ -354,7 +444,7 @@ export class ContainerMapsIndexComponent implements OnInit {
               .toLowerCase()
               .includes(event.target.value.toLowerCase()) == true
           ) {
-            contInfo_.BackgroundColour = '#ccc';
+            contInfo_.BackgroundColour = '#00afdd';
           }
         }
       }
@@ -362,12 +452,10 @@ export class ContainerMapsIndexComponent implements OnInit {
 
   }
 
-  setOpen(item: { id: any; code: any }) {
+  setOpen(item: any) {
     // console.log(item);
     this.contInfo = item;
-    this.contInfo.BackgroundColour = '#fff';
-    console.log(this.contInfo);
-    // this.mContainerService.mContNoPass.subscribe(message => this.message = message);
+    console.log('ssssssssssssssssssss',this.contInfo);
     if (!this.IsChangeLocal) {
       if (item.code != null) {
         this.mContainerService.GetConNo(item.code);
@@ -375,51 +463,68 @@ export class ContainerMapsIndexComponent implements OnInit {
         const dialogRef = this.dialog.open(ContainerMapsInfoComponent);
         dialogRef.componentInstance.ContNum = item.code;
         dialogRef.afterClosed().subscribe((result) => {
-          if (result) {
-            // if (result.statusCode === 200) {
-            //   this.toastr.showSuccess(result.message);
-            //   this.Paging();
-            // }
-            // else {
-            //   this.toastr.showError(result.message);
-            // }
-          }
+         
         });
-        this.checkFirst = 'true';
-        if (item.id) {
-          this.checkEmpty = false;
-        } else {
-          this.checkEmpty = true;
-        }
-
-        this.hiddenForm = 'true';
       }
     } else {
-      // Tô đỏ cont được chọn
-      if (this.IdSouce == '') {
-        this.btnSouceChange(this.contInfo, item.code);
-      }
-      // tô xanh vị trí đích nếu nguồn có rồi
-      else if (
-        this.IdSouce != item.code &&
-        item.code == null &&
-        this.IdTaget == ''
-      ) {
-        this.btnTagetChange(this.contInfo, item.code);
-      }
+      this.countClickMove++;
+      this.moveCont();
+      
+        
+        
     }
   }
 
-  btnSouceChange(contInfo: any, code: any) {
-    // Vị trí chuyển
-    this.NumCont = contInfo.code;
-    this.IdSouce = contInfo.positionLabel;
-    this.contInfo.BackgroundColour = 'red';
+  moveCont(){
+    if(this.countClickMove == 1){
+      if(this.contInfo.code != null){
+        this.infoMoveCont.contNo = this.contInfo.code;
+        this.infoMoveCont.oldLocation = this.contInfo.positionLabel;
+        this.infoMoveCont.mapType = 'YARD3';
+        this.contInfo.BackgroundColour = 'red';
+
+      }else{
+        this.countClickMove = 0;
+      }
+    }else{
+      if(this.contInfo.code == null){
+        this.infoMoveCont.newLocaiton = this.contInfo.positionLabel;
+       
+        const dialogRef = this.dialog.open(ContainerMoveComponent);
+        dialogRef.afterClosed().subscribe((result) => {
+          if(result == "Success" ){
+
+            this.mContainerService.moveCont(this.infoMoveCont).subscribe(response => {
+              if (response.message === 'Update Thành công') {
+                this.toastr.showSuccess("Cập nhật vị trí thành công !!!");
+                  // this.saveHistory('Thay đổi vị trí cont, từ ' + this.infoMoveCont.oldLocation + ' tới: ' + this.infoMoveCont.newLocaiton);
+                  this.countClickMove = 0;
+                  this.infoMoveCont = {
+                    currentPagecontNo : "",
+                    oldLocation: "",
+                    newLocaiton : "",
+                    mapType : "",
+                  }
+                  this.IsChangeLocal = false;
+                  this.listCont();
+              }else{
+                this.toastr.showError("Cập nhật thất bại, xin thử lại !!!");
+              }
+        
+            })
+          }
+          
+        });
+       
+      }else{
+        this.toastr.showError("Vị trí đã tồn tại cont !!!");
+      }
+    }
+
+      
   }
 
-  btnTagetChange(contInfo: any, code: any) {
-    // Vị trí chuyển
-    this.IdTaget = contInfo.positionLabel;
-    this.contInfo.BackgroundColour = 'green';
-  }
+  // saveHistory(message: string){
+
+  // }
 }

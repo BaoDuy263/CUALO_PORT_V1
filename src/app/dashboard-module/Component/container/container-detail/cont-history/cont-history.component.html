@@ -1,0 +1,11 @@
+    <div class="timeline">
+        <div *ngFor="let item of listHistory; index as i"  [ngClass]="{ 'left':i%2 == 1, 'right':i%2 == 0 }" class="container">
+          <div class="content">
+            <div>
+               {{item.modifiedOn | date : 'dd/MM, hh:mm' }}
+            </div>
+            <div>- {{item.note}}</div>
+            <div>- Người thực hiện: {{item.modifiedBy}}</div>
+          </div>
+        </div>
+      </div>

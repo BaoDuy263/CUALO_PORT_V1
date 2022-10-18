@@ -82,4 +82,20 @@ export class ContainerService {
   }
 
 
+  getContActivity(item: string) {
+    // return this.httpService.getRequest("/MapContYard3/GetContSelected/")
+    return this.httpService.getRequest(`MapContYard3/GetContSelected/${item}`);
+  }
+
+  getHistory(item: any) {
+    return this.httpService.getRequest(`ContHistory?page=${item.Page}&Keyword=${item.Keyword}&pageSize=${item.pageSize}`);
+  }
+
+  getImages(item: any) {
+    return this.httpService.getRequest(`ContImages?page=${item.Page}&Keyword=${item.Keyword}&pageSize=${item.pageSize}`);
+  }
+
+  moveCont(item: any) {
+    return this.httpService.putRequest("MapContYard3/UpdateMoveCont", item)
+  }
 }

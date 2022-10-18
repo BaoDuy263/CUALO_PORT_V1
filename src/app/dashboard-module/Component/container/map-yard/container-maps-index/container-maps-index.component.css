@@ -36,10 +36,14 @@
 
 .MapItem_Header {
   background-color: yellow;
-  padding: 2px;
+  padding: 10px;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
+}
+
+.bgplan{
+  color: #49da00 !important;
 }
 
 .MapItem {
