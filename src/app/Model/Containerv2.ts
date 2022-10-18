@@ -66,10 +66,11 @@ export interface ContainerV2 {
   domestic : string,  // Hàng nội địa hay hàng ngoại
   packing : string,  //  đóng
   nonPacking : string,  // rút
-  container: ContainerV2,
   nameDriver: string,
   licensePlates: string,
   phoneNumberDriver: string,
+  lastImportDate: Date,
+  lastExportDate: Date
 }
 
 export interface lstContainerV2 {

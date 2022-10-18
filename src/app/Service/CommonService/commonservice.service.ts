@@ -10,8 +10,8 @@ export class CommonserviceService {
 
   _urlApi: string = environment.urlApi + '/api/';
   //  _urlApi: string = 'http://localhost:5000/apiiiiii/';
-  //_urlApi: string = 'http://localhost:7611/api/';
-  
+  // _urlApi: string = 'http://localhost:7611/api/';
+
   constructor(
     private http: HttpClient
   ) {}
@@ -51,6 +51,10 @@ export class CommonserviceService {
 
   DowloadRequest(url: string) : Observable<any> {
     return this.http.get(this._urlApi + url, {reportProgress: true, responseType: 'blob',});
+  }
+
+  DowloadPostRequest(url: string,data: any) : Observable<any> {
+    return this.http.post(this._urlApi + url, data , {reportProgress: true, responseType: 'blob'});
   }
 
   ///

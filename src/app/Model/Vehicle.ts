@@ -8,6 +8,9 @@ export interface Vehicle {
   tonnageDefault: string,
   idCardNumber: string,
   mediumUnladenWeight: string,
+  lastContainer: string,
+  lastContainerDateTime: Date,
+  type: number,
   createdOn: Date,
   modifiedOn: Date,
   createdBy: string,
@@ -47,3 +50,4 @@ export interface VehicleEdit {
   idCardNumber: string,
   mediumUnladenWeight: string,
 }``
+

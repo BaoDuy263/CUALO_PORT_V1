@@ -7,7 +7,7 @@
       <ng-option [value]="caucang2">Cầu cảng 2</ng-option>
       <ng-option [value]="tramcan">Trạm cân</ng-option>
     </ng-select> -->
-    <select (change)="ddlAreaChange($event)" formControlName="AreaCode" class="form-control" style="width: 100%;">
+    <select (change)="ddlAreaChange($event)" class="form-control" style="width: 100%;">
       <option [selected]="true" value="-1">Chọn khu vực</option>
       <option value="caucang1">Cầu cảng 1</option>
       <option value="caucang2">Cầu cảng 2</option>
@@ -29,7 +29,7 @@
   </div>
   <div class="col-sm-2">
     <div class="form-group " style="margin-top: 10px;">
-      <input formControlName="status" type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
+      <input type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
         (change)="checkSelected($event)">
       <label for="txtStatus">Chưa gắn Container</label>
     </div>

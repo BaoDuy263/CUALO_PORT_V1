@@ -34,9 +34,13 @@ import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board
 import { ContainerMapsListComponent } from './Component/container/container-maps-list/container-maps-list.component';
 import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
+
 import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';
 import { ContInfoComponent } from './Component/container/container-detail/cont-info/cont-info.component';
 import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
+import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+
 
 const routes: Routes = [
   {
@@ -83,6 +87,7 @@ const routes: Routes = [
           roles: ["Admin", "ds"]
         }
       },
+      { path: 'dayilyreport', component: ReportDailyComponent },
       { path: 'phuong-tien', component: VehicleIndexComponent },
       { path: 'nhom-san-pham', component: ProductGroupIndexComponent },
       { path: 'san-pham', component: ProductIndexComponent },
@@ -104,10 +109,11 @@ const routes: Routes = [
       { path: 'container-maps-list', component: ContainerMapsListComponent },
       { path: 'container', component: ContainerIndexComponent},
       { path: 'transaction', component: TransactionIndexComponent},
+      { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
-          { path: '', component: BookingCustomerIndexComponent},
+          { path: '', component: PerformIndexComponent},
           { path: 'list', component: BookingCustomerIndexComponent },
           { path: 'template', component: PlanPackingIndexComponent },
           { path: 'perform', component: PerformIndexComponent}

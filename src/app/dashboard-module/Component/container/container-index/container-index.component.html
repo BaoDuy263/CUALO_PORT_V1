@@ -38,10 +38,10 @@
                   <th style="text-align: center;">STT</th>
                   <th>Mã container</th>
                   <th>Step</th>
-                  <th>Tên Khách hàng</th>
-                  <th>Loại container</th>
-                  <th>Tình trạng</th>
                   <th>Phương án</th>
+                  <th>Loại container</th>
+                  <th>Tên Khách hàng</th>
+                  <th>Tình trạng</th>
                   <th>Hướng</th>
                   <th>Trạng thái</th>
                   <th>Ngày cập bến</th>
@@ -55,14 +55,14 @@
                   <td style="text-align: center;">{{i + 1}}</td>
                   <td>{{item.contNo}}</td>
                   <td>{{convertHelper.showStep(item.step)}}</td>
-                  <td>{{item.customer}}</td>
-                  <td>{{item.type}}</td>
-                  <th>{{convertHelper.showStatus(item.status)}}</th>
                   <td>{{convertHelper.showActivity(item.activity)}}</td>
+                  <td>{{item.type}}</td>
+                  <td>{{item.customer}}</td>
+                  <th>{{convertHelper.showStatus(item.status)}}</th>
                   <td>{{convertHelper.showSide(item.side)}}</td>
                   <td>{{convertHelper.showState(item.state)}}</td>
-                  <td>{{item.dateCheckIn}}</td>
-                  <td>{{item.dateCheckOut | date:'short'}}</td>
+                  <td>{{CheckDate(item.lastImportDate)}}</td>
+                  <td>{{CheckDate(item.lastExportDate)}}</td>
                   <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                       (click)="openEdit(item.contNo)"></i></td>
                 </tr>

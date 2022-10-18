@@ -9,12 +9,13 @@ import { map, Observable, startWith } from 'rxjs';
 })
 export class AutocompleteComponent implements OnInit {
   @Input() data: any = [];
+  @Input() valueDefault: string = ''
   myControl = new FormControl('');
-  // options: string[] = ['One', 'Two', 'Three'];
   filteredOptions!: Observable<any[]>;
   @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
+    this.myControl = new FormControl(this.valueDefault);
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),

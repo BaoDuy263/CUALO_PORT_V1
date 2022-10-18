@@ -33,7 +33,19 @@ td {
   display: none !important;
 }
 
-/* .list-button {
-  position: fixed;
+input, select, span {
+  font-weight: bold;
+}
+span {
+  margin-left: 10px;
+}
+
+.form-print {
+  position: relative;
+}
+
+.list-button {
+  position: absolute;
   bottom: -10px;
-} */
+  right: 0px;
+}

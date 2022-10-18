@@ -1,15 +1,16 @@
 import { ContainerPopupComponent } from './../container-popup/container-popup.component';
 import { TransactionService } from './../../../../Service/transaction/transaction.service';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep, lstCheckTD } from '../../../../utils/helper/constant';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { result } from 'lodash';
+import { ContainerEditComponent } from '../container-edit/container-edit.component';
 
 @Component({
   selector: 'app-container-create',
@@ -38,7 +39,10 @@ export class ContainerCreateComponent implements OnInit {
     Keyword: '',
     pageSize: 10
   };
-  displayStyle: string = ''
+  displayStyle: string = '';
+  currentActivity: number = 0;
+  lstCheckTD = lstCheckTD;
+  typeDelivery: string = "";
   constructor(private containerService: Containerv2Service,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
@@ -57,11 +61,11 @@ export class ContainerCreateComponent implements OnInit {
       book: new FormControl(''),
       bill: new FormControl(''),
       seal: new FormControl(''),
-      type: new FormControl(''),
+      type: new FormControl('Dry'),
       size: new FormControl(''),
       datePlan: new FormControl(''),
-      dateCheckIn: new FormControl(''),
-      dateCheckOut: new FormControl(''),
+      dateCheckIn: new FormControl(),
+      dateCheckOut: new FormControl(),
       transaction_eir_no: new FormControl(0),
       transaction_eir_id: new FormControl(0),
       location: new FormControl(''),
@@ -82,10 +86,9 @@ export class ContainerCreateComponent implements OnInit {
       modifiedBy: new FormControl(''),
       modifiedOn: new FormControl(''),
       ref: new FormControl(''),
-      typeCont: new FormControl(''),
       ventilation: new FormControl(''),
       iso: new FormControl(''),
-      cargoType: new FormControl(''),
+      cargoType: new FormControl('General'),
       height: new FormControl(''),
       temparature: new FormControl(''),
       oog: new FormControl(''),
@@ -97,7 +100,7 @@ export class ContainerCreateComponent implements OnInit {
       seal2: new FormControl(''),
       returnPlace: new FormControl(''),
       landingDate: new FormControl(''),
-      transType: new FormControl(''),
+      transType: new FormControl('Truck'),
       transCom: new FormControl(''),
       vehicleNo: new FormControl(''),
       checkIn: new FormControl(''),
@@ -124,20 +127,18 @@ export class ContainerCreateComponent implements OnInit {
   get contNo() { return this.CreateEditForm.get('contNo') }
   get type() { return this.CreateEditForm.get('type') }
   get side() { return this.CreateEditForm.get('side') }
-  get status() { return this.CreateEditForm.get('type') }
-  get dateCheckIn() { return this.CreateEditForm.get('dateCheckIn') }
   get dateCheckOut() { return this.CreateEditForm.get('dateCheckOut') }
   get activity() { return this.CreateEditForm.get('activity') }
-  get typeDelivery() { return this.CreateEditForm.get('typeDelivery') }
   get location() { return this.CreateEditForm.get('location') }
   get state() { return this.CreateEditForm.get('state') }
   get region() { return this.CreateEditForm.get('region') }
-  // get vehicleNo() { return this.CreateEditForm.get('vehicleNo') }
 
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
+      this.getVehicle(response.licensePlates)
       this.transId = response.transaction_eir_id;
+      this.currentActivity = response.activity;
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -176,7 +177,6 @@ export class ContainerCreateComponent implements OnInit {
         modifiedBy: new FormControl(response.modifiedBy),
         modifiedOn: new FormControl(response.modifiedOn),
         ref: new FormControl(response.ref),
-        typeCont: new FormControl(response.typeCont),
         ventilation: new FormControl(response.ventilation),
         iso: new FormControl(response.iso),
         cargoType: new FormControl(response.cargoType),
@@ -191,7 +191,7 @@ export class ContainerCreateComponent implements OnInit {
         seal2: new FormControl(response.seal2),
         returnPlace: new FormControl(response.returnPlace),
         landingDate: new FormControl(response.landingDate),
-        transType: new FormControl(response.transType),
+        transType: new FormControl('Truck'),
         transCom: new FormControl(response.transCom),
         vehicleNo: new FormControl(response.vehicleNo),
         checkIn: new FormControl(response.checkIn),
@@ -213,43 +213,51 @@ export class ContainerCreateComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
     });
+
     this.loadVehicles();
   }
 
-  onSubmit() {
-    const dialogRef = this.dialog.open(ContainerPopupComponent);
-    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
-    dialogRef.componentInstance.button = 'Đóng';
-    dialogRef.componentInstance.buttonConfirm = "Xác nhận";
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.event === 'confirm') {
-        this.submited = true;
-        this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
-        this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
-        this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-        this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
-        this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-        this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
-        if (this.CreateEditForm.valid && this.isCreate === true) {
-          this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          });
-        }
-        if (this.CreateEditForm.valid && this.isCreate === false) {
-          this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
-            this.dialogRef.close(response);
-          })
-        }
-      }
-    })
-  }
+  // onSubmit() {
+  //   const dialogRef = this.dialog.open(ContainerPopupComponent);
+  //   dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+  //   dialogRef.componentInstance.button = 'Đóng';
+  //   dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result.event === 'confirm') {
+  //       this.submited = true;
+  //       this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+  //       this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+  //       this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+  //       this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+  //       this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+  //       this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
+  //       if (this.CreateEditForm.valid && this.isCreate === true) {
+  //         this.containerService.CreateCont(this.CreateEditForm.value).subscribe(response => {
+  //           this.dialogRef.close(response);
+  //         });
+  //       }
+  //       if (this.CreateEditForm.valid && this.isCreate === false) {
+  //         this.containerService.UpdateCont(this.containerCode, this.CreateEditForm.value).subscribe(response => {
+  //           this.dialogRef.close(response);
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 
   loadVehicles() {
     setTimeout(() => {
-      this.vehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-        this.lstVehicle = data.data;
+      this.vehicleService.GetAllEmpty().subscribe(data => {
+        this.lstVehicle = data;
       })
     }, 300);
+  }
+
+  getVehicle(licensePlates: string) {
+    const endCodeUriLP = encodeURI(licensePlates);
+    this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
+      this.vehicleSelected = res;
+    })
   }
 
   saveTrans() {
@@ -257,6 +265,12 @@ export class ContainerCreateComponent implements OnInit {
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
     dialogRef.componentInstance.button = 'Đóng';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
+    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
+    this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
+    this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
+    this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+    this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+    this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'confirm') {
         this.transactionService.SaveTransaction(this.CreateEditForm.value).subscribe(res => {
@@ -291,9 +305,58 @@ export class ContainerCreateComponent implements OnInit {
         dialogRef.componentInstance.button = 'Xác nhận';
       } else {
         this.transNo = res.no;
+        this.CreateEditForm.value.dateCheckIn = res.dateCheckIn;
         this.displayStyle = 'displayStyle';
         setTimeout(() => window.print(), 500);
       }
     });
+  }
+
+  getStatus() {
+    if ([2, 3].includes(this.CreateEditForm.value.activity)) {
+      this.CreateEditForm.value.status = 0;
+      return "E";
+    } else {
+      this.CreateEditForm.value.status = 1;
+      return "F"
+    }
+  }
+
+  changeActivity(e: any) {
+    for (let i = 0; i < lstCheckTD.length; i++) {
+      const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
+        && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
+      if (checkCurrActivity) {
+        this.typeDelivery = lstCheckTD[i].nameType;
+        this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
+        this.openPopup(lstCheckTD[i].alert, lstCheckTD[i].newStep, lstCheckTD[i]?.newStepCancel)
+        if (lstCheckTD[i].newStep !== 0) {
+          this.CreateEditForm.value.step = lstCheckTD[i].newStep
+        }
+        return lstCheckTD[i].nameType
+      }
+    }
+    return ""
+  }
+
+  openPopup(alert: string, newStep: number, newStepCancel: number | undefined) {
+    if (alert !== "") {
+      const dialogRef = this.dialog.open(ContainerPopupComponent)
+      dialogRef.componentInstance.title = alert;
+      dialogRef.componentInstance.button = "Không";
+      dialogRef.componentInstance.buttonConfirm = "Có";
+      dialogRef.afterClosed().subscribe(result => {
+        if (result.event === 'confirm') {
+          this.CreateEditForm.value.step = newStep
+        }
+        if (result.event === 'cancel') {
+          this.CreateEditForm.value.step = newStepCancel;
+        }
+      })
+    }
+  }
+
+  closePopup() {
+    this.dialogRef.close({ event: 'close' })
   }
 }

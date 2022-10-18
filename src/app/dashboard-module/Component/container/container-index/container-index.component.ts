@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { Pagination } from 'src/app/Model/Table';
 import { ContainerService } from 'src/app/Service/container/container.service';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { lstContainerV2 } from 'src/app/Model/Containerv2';
@@ -63,24 +63,7 @@ export class ContainerIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.PageInfo);
-    this.containerService.Paging(1, '', 1200).subscribe((data) => {
-      this.lstCont = data.data;
-    });
-
-
-    // let LastDate = new Date();
-    // LastDate.setDate(LastDate.getDate() - 10);
-    // console.log('-------------------');
-    // const format = 'dd/MM/yyyy';
-    // const locale = 'en-US';
-    // this.ImagesContSeach.FromDate = formatDate(LastDate, format, locale);
-    // this.ImagesContSeach.ToDate = formatDate(new Date(), format, locale);
-    //alert(formatDate(new Date(), format, locale));
-   // this.loadDataImages();
   }
-
-
-
 
   loadData(PageInfo: any) {
     this.loading = true;
@@ -105,7 +88,7 @@ export class ContainerIndexComponent implements OnInit {
       height: '800px',
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
-    dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.componentInstance.isCreate = false;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -133,6 +116,7 @@ export class ContainerIndexComponent implements OnInit {
 
   openCreate() {
     const dialogRef = this.dialog.open(ContainerEditComponent);
+    dialogRef.componentInstance.isCreate = true;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -178,5 +162,16 @@ export class ContainerIndexComponent implements OnInit {
       endDate: ''
     }
     this.loadData(this.PageInfo);
+  }
+
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(dateUpdate == null) {
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
   }
 }

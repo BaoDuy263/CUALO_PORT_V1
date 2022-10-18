@@ -110,6 +110,10 @@ import { ContainerEditComponent } from './Component/container/container-edit/con
 import { ContInfoComponent } from './Component/container/container-detail/cont-info/cont-info.component';
 import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';
 import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
+import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
+
 
 
 
@@ -193,11 +197,16 @@ import { ContImgsComponent } from './Component/container/container-detail/cont-i
     TransactionCreateComponent,
     TransactionDeleteComponent,
     ContainerPopupComponent,
+    ContainerEditComponent,
+    ReportDailyComponent,
     ContainerImagesListComponent,
     ContainerEditComponent,
     ContInfoComponent,
     ContHistoryComponent,
-    ContImgsComponent
+    ContImgsComponent,
+    QuanTriHeThongComponent,
+    RolePermissionComponent,
+
   ],
   imports: [
     CommonModule,

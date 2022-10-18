@@ -40,4 +40,12 @@ export class Containerv2Service {
     return this.httpService.getRequest(`containerv2/getAllProviding?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
   }
 
+  GetAllContEmpt(page: number, searchText: string, numberDis: number, startDate: string, endDate: string) {
+    return this.httpService.getRequest(`containerv2/getallempty?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
+  }
+
+  GetLstContInMap(){
+    return this.httpService.getRequest('MapContYard3/GetlstEdit');
+  }
+
 }

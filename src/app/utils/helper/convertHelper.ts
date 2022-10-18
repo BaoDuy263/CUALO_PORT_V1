@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { activitiesData, lstSide, lstState, lstStatusData, lstStep } from "./constant";
+import { activitiesData, lstSide, lstState, lstStatusData, lstStep,lstTypeDelivery ,lstTypeVehicle} from "./constant";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,8 @@ import { activitiesData, lstSide, lstState, lstStatusData, lstStep } from "./con
 
 export class convertHelper {
   showActivity(value: number) {
-    return activitiesData[value]?.name;
+    const index = activitiesData.findIndex(a => a.value === value);
+    return activitiesData[index]?.name;
   }
 
   showStatus(value: number) {
@@ -24,6 +25,15 @@ export class convertHelper {
 
   showStep(value: number) {
     return lstStep[value]?.name;
+  }
+
+  showTypeDelivery(value: number)
+  {
+    return lstTypeDelivery[value]?.name;
+  }
+  
+  showTypeVehicle(value: number) {
+    return lstTypeVehicle[value]?.name;
   }
 
 }

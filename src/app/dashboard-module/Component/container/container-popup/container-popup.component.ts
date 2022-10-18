@@ -16,7 +16,7 @@ export class ContainerPopupComponent implements OnInit {
   }
 
   onClose() {
-
+    this.dialogRef.close({ event: 'cancel'})
   }
 
   onSubmit() {

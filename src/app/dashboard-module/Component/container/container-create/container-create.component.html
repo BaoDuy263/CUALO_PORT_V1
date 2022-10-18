@@ -8,7 +8,7 @@
 
 </style>
 <div class="container-lg container-create">
-  <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="CreateEditForm" class="form-print">
     <div id="eir">
       <div class="eir-line1">
         <table style="width: 100%;">
@@ -41,7 +41,7 @@
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
             </td>
-            <td style="width: 30%; border: 1px solid black;">
+            <td colspan="2" style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Hãng tàu</b>/operator:
                 <span style="margin-left: 10px">VIETSUN</span>
               </p>
@@ -61,7 +61,7 @@
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
             </td>
-            <td style="width: 30%; border: 1px solid black;">
+            <td colspan="2" style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Vị trí</b>/Location:
                 <input type="text" class="form-control" formControlName="location"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
@@ -69,21 +69,22 @@
             </td>
           </tr>
           <tr>
-            <td style="width: 30%; border: 1px solid black;">
+            <td style="width: 20%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Số tham chiếu</b>/Ref:
                 <input type="text" class="form-control" formControlName="ref"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
             </td>
-            <td style="width: 30%; border: 1px solid black;">
+            <td style="width: 20%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Phương án</b>/Activity:
-                <select class="form-control" formControlName="activity"
+                <select class="form-control" formControlName="activity" (change)="changeActivity($event)"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
                   <option *ngFor="let a of activities" [ngValue]="a.value">{{a.name}}</option>
                 </select>
+                <label>PTGN: </label> <span>{{typeDelivery}}</span>
               </p>
             </td>
-            <td style="width: 30%; border: 1px solid black;">
+            <td style="width: 20%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Cảng đến</b>/POD:
                 <input type="text" class="form-control" formControlName="pod"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
@@ -97,10 +98,7 @@
           <tr>
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Tình trạng</b>/Status:
-                <select class="form-control" formControlName="status"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;">
-                  <option *ngFor="let s of lstStatusData" [ngValue]="s.value">{{s.name}}</option>
-                </select>
+                <span style="margin-left: 10px; font-weight: bold">{{getStatus()}}</span>
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -119,10 +117,8 @@
           <tr>
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Loại Cont</b>/Type:
-                <select class="form-control" formControlName="type"
+                <input type="text" class="form-control" formControlName="type"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
-                  <option *ngFor="let t of lstTypeCont" [ngValue]="t">{{t}}</option>
-                </select>
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -141,8 +137,10 @@
           <tr>
             <td style="width: 30%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Kích cỡ</b>/Size:
-                <input type="text" class="form-control" formControlName="size"
+                <select class="form-control" formControlName="size"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  <option *ngFor="let t of lstTypeCont" [ngValue]="t">{{t}}</option>
+                </select>
               </p>
             </td>
             <td style="width: 30%; border: 1px solid black;">
@@ -230,6 +228,8 @@
               </p>
               <p style="display: flex; align-items: center;"><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator
                   details</b>
+              </p>
+              <p style="display: flex; align-items: center;"><b>Phương tiện vận chuyển</b>/Trans type
                 <input type="text" class="form-control" formControlName="transType"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
               </p>
@@ -238,16 +238,14 @@
               </p>
               <p style="display: flex; align-items: center;"><b>Số xe</b>/Plate:
                 <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle"
-                  (itemSelected)="handleSelect($event)">
+                  [valueDefault]="CreateEditForm.value.licensePlates" (itemSelected)="handleSelect($event)">
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
-                <input type="datetime-local" class="form-control" formControlName="dateCheckIn"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                <span>{{CreateEditForm.value.dateCheckIn | date : 'dd/MM/yyyy hh:mm aa'}}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian ra</b>/Check out:
-                <input type="datetime-local" class="form-control" formControlName="dateCheckOut"
-                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                <span>{{CreateEditForm.value.dateCheckOut | date : 'dd/MM/yyyy hh:mm aa'}}</span>
               </p>
             </td>
           </tr>
@@ -261,25 +259,24 @@
             <td style="width: 30%"><b>NGƯỜI LẬP PHIẾU</b></td>
           </tr>
           <tr>
-            <td style="width: 30%; height: 100px;"><b></b></td>
+            <td style="width: 30%; height: 50px;"><b></b></td>
             <td style="width: 30%"><b></b></td>
             <td style="width: 30%"><b></b></td>
           </tr>
           <tr>
-            <td style="width: 30%;"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
-            <td style="width: 30%"><b></b></td>
-            <td style="width: 30%"><b></b></td>
+            <td style="width: 30%;"><b></b></td>
+            <td style="width: 30%"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+            <td style="width: 30%"><b>{{CreateEditForm.value.createdBy}}</b></td>
           </tr>
         </table>
       </div>
     </div>
-    <div class="d-flex justify-content-end mt-4 mb-4 list-button" [ngClass]="[displayStyle]">
+    <div class="d-flex justify-content-end list-button" [ngClass]="[displayStyle]">
       <div class="group-button" style="margin-right: 10px">
         <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
           dịch</button>
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
-        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
-          bỏ</button>
+        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Đóng</button>
       </div>
     </div>
   </form>

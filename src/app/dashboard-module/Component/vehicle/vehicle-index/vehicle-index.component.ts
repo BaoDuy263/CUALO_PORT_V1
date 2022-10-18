@@ -1,4 +1,3 @@
-
 import { Component, OnInit  } from '@angular/core';
 // import { lstCutomer,productCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
@@ -10,6 +9,7 @@ import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { lstVehicle, VehicleCreate } from 'src/app/Model/Vehicle';
 import { VehicleCreateComponent } from '../vehicle-create/vehicle-create.component';
 import { VehicleDeleteComponent } from '../vehicle-delete/vehicle-delete.component';
+import { convertHelper } from 'src/app/utils/helper/convertHelper';
 
 @Component({
   selector: 'app-vehicle-index',
@@ -40,7 +40,10 @@ export class VehicleIndexComponent implements OnInit {
     Keyword : '',
     pageSize : 10
   }
-  constructor(private VehicleService : VehicleService,public dialog: MatDialog,private toastr : ToastrcustomService) { }
+  constructor(private VehicleService : VehicleService,
+    public dialog: MatDialog,
+    private toastr : ToastrcustomService,
+    public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
@@ -49,6 +52,7 @@ export class VehicleIndexComponent implements OnInit {
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
      this.VehicleService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+      console.log(data,'data')
       this.loadding = false;
       this.lstdata = data;
         this.Pagination.currentPage = data.currentPage,

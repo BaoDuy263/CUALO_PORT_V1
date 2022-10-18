@@ -5,7 +5,7 @@ import { ContainerV2, lstContainerV2 } from 'src/app/Model/Containerv2';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
-import { convertHelper } from '../helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 
 @Component({
   selector: 'app-list-contaner',
@@ -48,7 +48,7 @@ export class ListContanerComponent implements OnInit {
 
   loadData(PageInfo: any) {
     this.loading = true;
-    this.containerService.Paging(this.PageInfo.page, this.PageInfo.Keyword,
+    this.containerService.GetAllContEmpt(this.PageInfo.page, this.PageInfo.Keyword,
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
     .subscribe(data => {
       this.loading = false;
@@ -61,6 +61,9 @@ export class ListContanerComponent implements OnInit {
   }
 
   hanldeClickItem(item: ContainerV2) {
+    if (item.status === 1) {
+      return;
+    }
     if (this.itemSelected.includes(item.contNo)) {
       this.itemSelected = this.itemSelected.filter(i => i != item.contNo);
     }

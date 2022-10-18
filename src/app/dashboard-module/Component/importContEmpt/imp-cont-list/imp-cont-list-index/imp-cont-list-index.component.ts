@@ -6,7 +6,7 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { lstPerform, Perform } from 'src/app/Model/Perform';
 import { Pagination } from 'src/app/Model/Table';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
-import { convertHelper } from '../../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../../utils/helper/convertHelper';
 import { PerformCreateComponent } from '../../../booking-customer/perform-create/perform-create.component';
 import { CreateimportContfromShipComponent } from '../../../importContFromShip/createimport-contfrom-ship/createimport-contfrom-ship.component';
 import { DeleteimportContfromShipComponent } from '../../../importContFromShip/deleteimport-contfrom-ship/deleteimport-contfrom-ship.component';
@@ -115,16 +115,9 @@ export class ImpContListIndexComponent implements OnInit {
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
     dialogRef.componentInstance.isCreate = this.isCreate;
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        } else {
-          this.toastr.showError(result.message);
-        }
-      }
-    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.Pagingdata(this.PageInfo);
+    })
   }
 
   openCreate() {
@@ -140,6 +133,14 @@ export class ImpContListIndexComponent implements OnInit {
         }
       }
     });
+  }
+
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.startDate = this.PageInfo.startDate;
+    pageOfItems.endDate = this.PageInfo.endDate;
+    this.PageInfo = pageOfItems
+    this.Pagingdata(pageOfItems)
   }
 
   onSearch(e: any) {
@@ -160,16 +161,15 @@ export class ImpContListIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  handlePrinter(item: any) {
-    this.itemPrint = item;
-    var divContents = document.getElementById('eir-import')?.innerHTML || '';
-    var printWindow = window.open('', '', 'height=768,width=1366');
-    printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    printWindow?.document.write('</head><body>');
-    printWindow?.document.write(divContents);
-    printWindow?.document.write('</body></html>');
-    printWindow?.document.close();
-    printWindow?.print();
+  resetData() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      startDate: '',
+      endDate: ''
+    }
+    this.Pagingdata(this.PageInfo);
   }
 
   saveTransaction(item: any) {

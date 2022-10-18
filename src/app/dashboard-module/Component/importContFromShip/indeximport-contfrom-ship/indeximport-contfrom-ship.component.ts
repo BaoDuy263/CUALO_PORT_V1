@@ -134,6 +134,7 @@ export class IndeximportContfromShipComponent implements OnInit {
   PagingBooking() {
     this.service.PagingPortShip(this.PageInfoBooking).subscribe(
       data => {
+        console.log('data',data);
         this.loadding = false;
         this.lstdataBooking = data.data;
         this.PaginationBooking.currentPage = data.data.currentPage,
@@ -238,7 +239,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     dialogRef.componentInstance.isImport = false;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (result.statusCode === 200) {
+        if (result.status === 200) {
           this.toastr.showSuccess(result.message);
         }
         else {
@@ -264,10 +265,11 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
-  openEdit(ContNo: string){
+  openEdit(ContNo: string,Location: string){
     this.isCreate = false;
     const dialogRef = this.dialog.open(CreateimportContfromShipComponent);
     dialogRef.componentInstance.Cont = ContNo;
+    dialogRef.componentInstance.Location = Location;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -333,9 +335,14 @@ export class IndeximportContfromShipComponent implements OnInit {
     {
       this.loadding = true;
       this.service.UploadShiptoPort(formData).subscribe(data => {
-        if(data.statusCode === 200)
+        if(data.status === 200)
           {
+            this.toastr.showSuccess(data.message)
             this.PagingBooking();
+          }
+          else
+          {
+            this.toastr.showError(data.message)
           }
       })
     }
@@ -374,7 +381,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     dialogRef.componentInstance.Location = Location;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (result.statusCode === 200) {
+        if (result.status === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
         }

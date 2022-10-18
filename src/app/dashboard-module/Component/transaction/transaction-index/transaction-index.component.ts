@@ -8,7 +8,7 @@ import { lstTransactionEIR, TransactionEIR } from 'src/app/Model/TransactionEIR'
 import { TransactionService } from 'src/app/Service/transaction/transaction.service';
 import { PerformCreateComponent } from '../../booking-customer/perform-create/perform-create.component';
 import { PerformDeleteComponent } from '../../booking-customer/perform-delete/perform-delete.component';
-import { convertHelper } from '../../booking-customer/helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 
 @Component({
   selector: 'app-transaction-index',
@@ -137,4 +137,14 @@ export class TransactionIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
+  CheckDate(dateUpdate: Date) {
+    let DateString = ""
+    if(dateUpdate == null) {
+      DateString = "";
+    }else
+    {
+      DateString = new Date(dateUpdate).toLocaleDateString('en-GB')
+    }
+    return DateString;
+  }
 }

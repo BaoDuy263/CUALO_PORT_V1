@@ -5,7 +5,7 @@ import { TransactionService } from './../../../../Service/transaction/transactio
 import { Vehicle } from './../../../../Model/Vehicle';
 import { PerformDeleteComponent } from './../perform-delete/perform-delete.component';
 import { PerformCreateComponent } from './../perform-create/perform-create.component';
-import { convertHelper } from './../helper/convertHelper';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -54,7 +54,7 @@ export class PerformIndexComponent implements OnInit {
     private toastr: ToastrcustomService,
     public convertHelper: convertHelper,
     private transactionService: TransactionService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo)
@@ -74,24 +74,6 @@ export class PerformIndexComponent implements OnInit {
       })
   }
 
-  onSearch(e: any) {
-    this.PageInfo.Keyword = e;
-    this.PageInfo.page = 1;
-    this.Pagingdata(this.PageInfo);
-  }
-
-  startDate(e: any) {
-    this.PageInfo.startDate = e;
-    this.PageInfo.page = 1;
-    this.Pagingdata(this.PageInfo);
-  }
-
-  endDate(e: any) {
-    this.PageInfo.endDate = e;
-    this.PageInfo.page = 1;
-    this.Pagingdata(this.PageInfo);
-  }
-
   openEdit(contNo: string) {
     this.isCreate = false;
     this.contNo = contNo;
@@ -99,15 +81,7 @@ export class PerformIndexComponent implements OnInit {
     dialogRef.componentInstance.containerCode = this.contNo;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
+      this.Pagingdata(this.PageInfo);
     })
   }
 
@@ -130,22 +104,38 @@ export class PerformIndexComponent implements OnInit {
 
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.startDate = this.PageInfo.startDate;
+    pageOfItems.endDate = this.PageInfo.endDate;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
 
+  onSearch(e: any) {
+    this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
 
-  handlePrinter(item: string) {
-    // this.itemPrint = item;
-    // setTimeout(() => {
-    //   var divContents = document.getElementById('eir')?.innerHTML || '';
-    //   var printWindow = window.open('', '', 'height=768,width=1366');
-    //   printWindow?.document.write('<html><head><title>Phiếu EIR</title>');
-    //   printWindow?.document.write('</head><body>');
-    //   printWindow?.document.write(divContents);
-    //   printWindow?.document.write('</body></html>');
-    //   printWindow?.document.close();
-    //   printWindow?.print();
-    // }, 300);
+  startDate(e: any) {
+    this.PageInfo.startDate = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  endDate(e: any) {
+    this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  resetData() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      startDate: '',
+      endDate: ''
+    }
+    this.Pagingdata(this.PageInfo);
   }
 }

@@ -5,7 +5,7 @@ import { ImportContFromShipService } from 'src/app/Service/importContFromShip/im
 import { Containerv2Service } from 'src/app/Service/containerv2/containerv2.service';
 import { TransactionService } from './../../../../Service/transaction/transaction.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from './../../booking-customer/helper/constant';
+import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep } from '../../../../utils/helper/constant';
 @Component({
   selector: 'app-create-import-cont-from-port',
   templateUrl: './create-import-cont-from-port.component.html',
@@ -45,7 +45,7 @@ export class CreateImportContFromPortComponent implements OnInit {
     pageSize: 10
   };
   constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<CreateImportContFromPortComponent>,private containerService: Containerv2Service,private transactionService: TransactionService, private vehicleService: VehicleService)
-  { 
+  {
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
       vessel: new FormControl(''),
@@ -75,8 +75,8 @@ export class CreateImportContFromPortComponent implements OnInit {
       status: new FormControl(0),
       state: new FormControl(0),
       datePacking: new FormControl(''),
-      inDeliveryDate: new FormControl(''),
-      outDeliveryDate: new FormControl(''),
+      // inDeliveryDate: new FormControl(''),
+      // outDeliveryDate: new FormControl(''),
       returnPlan: new FormControl(''),
       returnAddress: new FormControl(''),
       createdOn: new FormControl(''),
@@ -98,12 +98,12 @@ export class CreateImportContFromPortComponent implements OnInit {
       seal1: new FormControl(''),
       seal2: new FormControl(''),
       returnPlace: new FormControl(''),
-      landingDate: new FormControl(''),
+      arriveDate: new FormControl(''),
       transType: new FormControl(''),
       transCom: new FormControl(''),
       vehicleNo: new FormControl(''),
-      checkIn: new FormControl(''),
-      checkOut: new FormControl(''),
+      lastImportDate: new FormControl(''),
+      lastExportDate: new FormControl(''),
       lastPort: new FormControl(''),
       noBL: new FormControl(''),
       serviceNo: new FormControl(''),
@@ -146,7 +146,7 @@ export class CreateImportContFromPortComponent implements OnInit {
   getDetail() {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
-      console.log(' response.data', response.data);
+      console.log('response',response);
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -176,8 +176,8 @@ export class CreateImportContFromPortComponent implements OnInit {
         status: new FormControl(response.status),
         state: new FormControl(response.state),
         datePacking: new FormControl(response.datePacking),
-        inDeliveryDate: new FormControl(response.inDeliveryDate),
-        outDeliveryDate: new FormControl(response.outDeliveryDate),
+        // inDeliveryDate: new FormControl(response.inDeliveryDate),
+        // outDeliveryDate: new FormControl(response.outDeliveryDate),
         returnPlan: new FormControl(response.returnPlan),
         returnAddress: new FormControl(response.returnAddress),
         createdOn: new FormControl(response.createdOn),
@@ -199,12 +199,12 @@ export class CreateImportContFromPortComponent implements OnInit {
         seal1: new FormControl(response.seal1),
         seal2: new FormControl(response.seal2),
         returnPlace: new FormControl(response.returnPlace),
-        landingDate: new FormControl(response.landingDate),
+        arriveDate: new FormControl(response.arriveDate),
         transType: new FormControl(response.transType),
         transCom: new FormControl(response.transCom),
         vehicleNo: new FormControl(response.vehicleNo),
-        checkIn: new FormControl(response.checkIn),
-        checkOut: new FormControl(response.checkOut),
+        lastImportDate: new FormControl(response.lastImportDate),
+        lastExportDate: new FormControl(response.lastExportDate),
         serviceNo: new FormControl(response.serviceNo),
         sealNo: new FormControl(response.sealNo),
         codePT: new FormControl(response.codePT),
@@ -221,6 +221,7 @@ export class CreateImportContFromPortComponent implements OnInit {
         licensePlates: new FormControl(response.licensePlates),
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
+      console.log('this.CreateEditForm',this.CreateEditForm.value.lastImportDate);
     });
   }
 
