@@ -32,7 +32,7 @@ import { IndexPerformFromShipComponent } from './Component/performContFromShip/i
 import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component'
 import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
 import { ContainerMapsListComponent } from './Component/container/container-maps-list/container-maps-list.component';
-import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component';
+import { ContainerMapsIndexComponent } from './Component/container/map-yard/container-maps-index/container-maps-index.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
 
 import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';

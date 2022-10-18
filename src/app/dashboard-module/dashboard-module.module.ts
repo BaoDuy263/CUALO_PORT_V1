@@ -98,8 +98,8 @@ import { ContainerHistoryIndexComponent } from './Component/container/container-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
-import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
-import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
+import { ContainerMapsIndexComponent } from './Component/container/map-yard/container-maps-index/container-maps-index.component'
+import { ContainerMapsInfoComponent } from './Component/container/container-detail/container-maps-info/container-maps-info.component';
 import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
 import { TransactionCreateComponent } from './Component/transaction/transaction-create/transaction-create.component';

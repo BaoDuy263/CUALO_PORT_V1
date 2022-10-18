@@ -14,6 +14,7 @@ import { AdminService } from './Service/admin.service';
 import { ConfigService } from './Service/config.service';
 import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
 import { MapcontYard3Service } from './Service/map-cont-yard3.service';
+import { ContainerMoveComponent } from './dashboard-module/Component/container/map-yard/container-move/container-move.component';
 // import { ContInfoComponent } from './cont-info/cont-info.component';
 // import { ContHistoryComponent } from './container/container-detail/cont-history/cont-history.component';
 // import { ContImgsComponent } from './container/container-detail/cont-imgs/cont-imgs.component';
@@ -21,6 +22,7 @@ import { MapcontYard3Service } from './Service/map-cont-yard3.service';
 @NgModule({
   declarations: [
     AppComponent,
+    ContainerMoveComponent,
     // ContInfoComponent,
     // ContHistoryComponent,
     // ContImgsComponent,

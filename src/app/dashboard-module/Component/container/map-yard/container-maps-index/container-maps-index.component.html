@@ -2,15 +2,14 @@
   style="height: 100% ;background-color: #fff; padding:10px;">
   <div>
     <div class="row">
-      <div class="col-lg-3">
+      <!-- <div class="col-lg-3">
         <div style="text-align: center; margin: 10px 0px; position: relative ">
           <select class="form-control" formControlName="code">
             <option value="-1">Chọn loại bản đồ Container</option>
-            <!-- <option *ngFor="let item of lstCont; index as i">{{item.code}}</option> -->
           </select>
 
         </div>
-      </div>
+      </div> -->
       <div class="col-lg-6">
         <div style="text-align: center; margin: 10px 0px; position: relative ">
           <input (keyup)="onKey($event)" type="text" name="" id="" placeholder="Tìm kiếm Container" style="border: 1px solid #c9c9c9; padding: 8px 10px;
@@ -23,14 +22,15 @@
       </div>
       <div class="col-lg-3">
         <div style="text-align: center; margin: 10px 0px; "></div>
-        <button (click)="SetChange()" [disabled]="IsChangeLocal" class="btn btn-outline-secondary" style="float: left;"
-          type="submit" id="button-addon3">Đổi vị trí
-          Cont</button>
-        <a class="btn " (click)="Resethange()" style="height: 38px;margin-left: 10px;">
+        <button *ngIf="IsChangeLocal == false" (click)="btnMoveCont()" class="btn btn-outline-secondary" style="float: left;"
+          type="submit" id="button-addon3">Di chuyển Cont</button>
+          <button *ngIf="IsChangeLocal == true" (click)="btnCancelMove()" class="btn " style="float: left; background-color: #ca0d0d; color: white; font-weight: 500;"
+          type="submit" id="button-addon3">Hủy chuyển Cont</button>
+        <!-- <a class="btn " (click)="Resethange()" style="height: 38px;margin-left: 10px;">
           <i class="material-icons">refresh</i>
         </a>
         <button (click)="SaveChange()" [disabled]="!IsChangeLocal" class="btn btn-outline-secondary"
-          style="float: right;" type="submit" id="button-addon3">Lưu thay đổi</button>
+          style="float: right;" type="submit" id="button-addon3">Lưu thay đổi</button> -->
       </div>
     </div>
   </div>
@@ -133,7 +133,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -151,7 +151,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -169,7 +169,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -186,7 +186,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -205,7 +205,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -228,7 +228,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -246,7 +246,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -264,7 +264,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -282,7 +282,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -301,7 +301,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -373,7 +373,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -393,7 +393,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -412,7 +412,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -431,7 +431,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -450,7 +450,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -474,7 +474,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -499,7 +499,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -518,7 +518,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -537,7 +537,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -556,7 +556,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -575,7 +575,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -597,7 +597,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -624,7 +624,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -643,7 +643,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -662,7 +662,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -681,7 +681,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -700,7 +700,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -723,7 +723,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -749,7 +749,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -775,7 +775,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -794,7 +794,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -813,7 +813,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -832,7 +832,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -854,7 +854,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -881,7 +881,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -897,7 +897,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -917,7 +917,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -936,7 +936,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -955,7 +955,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -975,7 +975,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1002,7 +1002,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1021,7 +1021,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1040,7 +1040,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1059,7 +1059,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1077,7 +1077,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1099,7 +1099,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1173,7 +1173,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1192,7 +1192,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1210,7 +1210,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1240,7 +1240,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1261,7 +1261,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1286,7 +1286,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1306,7 +1306,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1324,7 +1324,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>
@@ -1354,7 +1354,7 @@
         </div>
 
         <ng-template #thenBlock>
-          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour">
+          <div class="MapItem" (click)="setOpen(item)" [style.background-color]="item.BackgroundColour" [class.bgplan]="item.idPlan">
 
             <span class="InfoCont"> {{item.code}} </span>
           </div>

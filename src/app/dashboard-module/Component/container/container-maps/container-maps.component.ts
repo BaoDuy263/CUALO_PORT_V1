@@ -7,7 +7,7 @@ import { ContainerService } from 'src/app/Service/container/container.service';
 import { BookingContEmptyCreateComponent } from '../../booking-cont-empty/booking-cont-empty-create/booking-cont-empty-create.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ContainerMapsListComponent } from '../container-maps-list/container-maps-list.component';
-import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
+import { ContainerMapsInfoComponent } from '../container-detail/container-maps-info/container-maps-info.component';
 
 @Component({
   selector: 'app-container-maps',
