@@ -134,7 +134,6 @@ export class IndeximportContfromShipComponent implements OnInit {
   PagingBooking() {
     this.service.PagingPortShip(this.PageInfoBooking).subscribe(
       data => {
-        console.log('data',data);
         this.loadding = false;
         this.lstdataBooking = data.data;
         this.PaginationBooking.currentPage = data.data.currentPage,
@@ -381,7 +380,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     dialogRef.componentInstance.Location = Location;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (result.status === 200) {
+        if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Paging();
         }
