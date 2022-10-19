@@ -176,7 +176,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         children : [
             {
                 name :'Ra vào của cont',
-                url:'404-not-found',
+                url:'quan-ly-vao-ra',
                 roles: ["Admin"],
             },
             {

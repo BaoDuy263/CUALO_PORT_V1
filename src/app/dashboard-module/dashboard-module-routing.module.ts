@@ -40,6 +40,7 @@ import { ContInfoComponent } from './Component/container/container-detail/cont-i
 import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { ContainerInoutIndexComponent } from './Component/container-inout/container-inout-index/container-inout-index.component';
 
 
 const routes: Routes = [
@@ -97,6 +98,7 @@ const routes: Routes = [
       { path: '404-not-found', component: NotfoundComponent },
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
+      { path: 'quan-ly-vao-ra', component: ContainerInoutIndexComponent },
       { path: 'container-maps', component: ContainerMapsIndexComponent,
         children: [
           { path: 'cont-history', component: ContHistoryComponent},
