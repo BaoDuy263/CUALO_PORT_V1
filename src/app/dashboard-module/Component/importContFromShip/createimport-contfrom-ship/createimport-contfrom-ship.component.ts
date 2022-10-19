@@ -19,6 +19,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   submited: boolean = false;
   isCreate: boolean = true;
   loadding: boolean = false;
+  LocationSelect: string = "";
   @Input() Cont: string = '';
   @Input() Location:string = '';
   lstContainer = [
@@ -55,7 +56,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       SealNo: new FormControl(),
       Commodity: new FormControl(),
       ReturnPlan: new FormControl(null),
-      Location: new FormControl(),
+      Location: new FormControl(''),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
       StatusContainer: new FormControl(),
@@ -123,12 +124,13 @@ export class CreateimportContfromShipComponent implements OnInit {
   }
 
   onItemChange(item: Item): void {
+    console.log('item',item)
     if(!item.checked){
       this.CreateEditForm.value.Location = null;
     }
     else
     {
-      this.CreateEditForm.value.Location = item.name;
+      this.LocationSelect = item.name;
     }
   }
 
@@ -137,6 +139,7 @@ export class CreateimportContfromShipComponent implements OnInit {
     this.CreateEditForm.value.Activity = parseInt(
       this.CreateEditForm.value.Activity
     );
+    this.CreateEditForm.value.Location = this.LocationSelect; 
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.importContFromShipService
         .Insert(this.CreateEditForm.value)
