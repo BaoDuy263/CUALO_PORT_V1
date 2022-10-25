@@ -152,6 +152,11 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url: 'dayilyreport',
                 roles: ["Admin"],
             },
+            {
+                name :'Báo cáo hàng tồn',
+                url: 'hangtonreport',
+                roles: ["Admin"],
+            },
         ]
     },
     // {

@@ -3,7 +3,6 @@ import { ReportServiceService } from '../../../Service/Report/report-service.ser
 import { TransactionEIR } from '../../../Model/TransactionEIR';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-report-daily',
@@ -14,7 +13,7 @@ export class ReportDailyComponent implements OnInit {
 
   lstdata: TransactionEIR[] = [];
   loadding : Boolean = true;
-  FromDate?: Date = undefined
+  FromDate?: Date = undefined;
   ToDate? : Date = undefined;
   constructor(private ReportServiceService: ReportServiceService,private toastr: ToastrcustomService, public convertHelper: convertHelper) { }
 

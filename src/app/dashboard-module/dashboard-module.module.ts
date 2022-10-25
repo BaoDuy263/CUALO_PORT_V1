@@ -113,6 +113,7 @@ import { ContImgsComponent } from './Component/container/container-detail/cont-i
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
+import { ReportHangtonComponent } from './Component/report-hangton/report-hangton.component';
 
 
 
@@ -206,6 +207,7 @@ import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-perm
     ContImgsComponent,
     QuanTriHeThongComponent,
     RolePermissionComponent,
+    ReportHangtonComponent,
 
   ],
   imports: [

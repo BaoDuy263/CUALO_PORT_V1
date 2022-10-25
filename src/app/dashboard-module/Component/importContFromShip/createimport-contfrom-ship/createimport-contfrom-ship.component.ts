@@ -124,7 +124,6 @@ export class CreateimportContfromShipComponent implements OnInit {
   }
 
   onItemChange(item: Item): void {
-    console.log('item',item)
     if(!item.checked){
       this.CreateEditForm.value.Location = null;
     }

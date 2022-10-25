@@ -1,0 +1,68 @@
+<div style="position: absolute; top: 40%; left: 40%;">
+    <mat-spinner *ngIf="loadding == true"></mat-spinner>
+  </div>
+  <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+  
+    <div class="row">
+      <h2 style="font-weight: 500;">Báo Cáo Daily Report</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="row"> 
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Từ ngày"  onfocus="(this.type='date')" [(ngModel)]="FromDate">
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')" [(ngModel)]="ToDate">
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-3">
+          <div class="row"> 
+            <div class="col-sm-6">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="GetReport()">Xem báo cáo</button>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="DowloadFile()">Xuất báo cáo</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style="text-align: center;">STT</th>
+              <th>Chuyến Nhập/Xuất</th>
+              <th>Mã container</th>
+              <th>Ngày cập bến</th>
+              <th>Tên Khách hàng</th>
+              <th>Hàng hóa</th>
+              <th>Loại container</th>
+              <th>Ngày trả hàng</th>
+              <th>Ngày trả vỏ</th>
+              <th>Tổng ngày</th>
+              <th>Tổng ngày Tồn</th>
+            </tr>
+          </thead>
+          <tbody style="border-top: none;">
+            <tr *ngFor="let item of lstdata; index as i" class="align-middle">
+              <td style="text-align: center;">{{i + 1}}</td>
+              <td>{{item.voyage}}</td>
+              <td>{{item.contNo}}</td>
+              <td>{{item.lastImportDate | date: 'dd/MM/yyyy' }}</td>
+              <td>{{item.consignee}}</td>
+              <td>{{item.commodity}}</td>
+              <td>{{item.type}}</td>
+              <td>{{item.dateCheckOut | date: 'dd/MM/yyyy'  }}</td>
+              <td>{{item.dateCheckIn | date: 'dd/MM/yyyy'  }}</td>
+              <td>{{CaculateTotalDay(item.dateCheckOut,item.lastImportDate)}}</td>
+              <td>{{CaculateTotalDayExit(item.dateCheckOut,item.lastImportDate)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>

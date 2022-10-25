@@ -40,7 +40,7 @@ import { ContInfoComponent } from './Component/container/container-detail/cont-i
 import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
-
+import { ReportHangtonComponent } from './Component/report-hangton/report-hangton.component';
 
 const routes: Routes = [
   {
@@ -88,6 +88,7 @@ const routes: Routes = [
         }
       },
       { path: 'dayilyreport', component: ReportDailyComponent },
+      { path: 'hangtonreport', component: ReportHangtonComponent },
       { path: 'phuong-tien', component: VehicleIndexComponent },
       { path: 'nhom-san-pham', component: ProductGroupIndexComponent },
       { path: 'san-pham', component: ProductIndexComponent },

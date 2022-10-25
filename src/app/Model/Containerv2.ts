@@ -1,3 +1,5 @@
+import { StringMappingType } from "typescript"
+
 export interface ContainerV2 {
   contNo: string,
   vessel: string,  //Tên tàu.
@@ -126,4 +128,18 @@ export enum Side {
   Import = 1,
   Export = 2,
   StorageEmpty = 3
+}
+
+
+export interface Baocaohangton {
+  voyage :string,
+  contNo : string,
+  lastImportDate? : Date,
+  consignee: string,
+  commodity: string,
+  type: string,
+  dateCheckIn? : Date,
+  dateCheckOut? : Date,
+  totalDay: string,
+  totalDayExit: string
 }
