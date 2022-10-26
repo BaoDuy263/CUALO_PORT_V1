@@ -41,6 +41,7 @@ import { ContImgsComponent } from './Component/container/container-detail/cont-i
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { ContainerInoutIndexComponent } from './Component/container-inout/container-inout-index/container-inout-index.component';
+import { WeighingIndexComponent } from './Component/weighing/weighing-index/weighing-index.component';
 
 
 const routes: Routes = [
@@ -99,6 +100,7 @@ const routes: Routes = [
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-vao-ra', component: ContainerInoutIndexComponent },
+      { path: 'quan-ly-tram-can', component: WeighingIndexComponent },
       { path: 'container-maps', component: ContainerMapsIndexComponent,
         children: [
           { path: 'cont-history', component: ContHistoryComponent},

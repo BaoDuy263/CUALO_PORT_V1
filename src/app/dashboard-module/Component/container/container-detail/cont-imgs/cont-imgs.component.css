@@ -1,0 +1,30 @@
+.date-form{
+    font-size: large; 
+    display: table; 
+    padding: 14px 10px; 
+    font-size: initial;
+}
+
+.cols-img{
+    width: 25%; 
+    float: left; 
+    padding-right: 6px;
+}
+
+.list-imgs{
+    height: 62px; 
+    overflow: hidden; 
+    width: 100%; 
+    border: 1px solid #746f6f; 
+}
+
+@media (min-width: 640px) { 
+    .list-imgs{
+        height: 110px; 
+        
+    }
+    .cols-img{
+       
+        padding: 0px 15px 15px 0px;
+    }
+ }

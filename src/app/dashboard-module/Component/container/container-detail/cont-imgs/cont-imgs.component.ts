@@ -31,8 +31,27 @@ export class ContImgsComponent implements OnInit {
         "Keyword": this.ContNum
       }
       this.ContainerService.getImages(body).subscribe(response => {
-        console.log('response',response);
-        this.listImgs = response.data;
+        // this.listImgs = response.data;
+        // console.log('response', this.listImgs);
+
+        const groups = response.data.reduce((groups: any, item: any) => {
+  
+          var convString = JSON.stringify(item.createdOn);
+          const date = convString.slice(1, 11);
+          if (!groups[date]) {
+            groups[date] = [];
+          }
+          groups[date].push(item);
+          return groups;
+        }, {});
+  
+        const groupArrays = Object.keys(groups).map((date) => {
+          return {
+            date,
+            items: groups[date]
+          };
+        });
+        this.listImgs = groupArrays;
         
       })
     }

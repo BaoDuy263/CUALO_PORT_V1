@@ -186,6 +186,11 @@ export const ROUTE_DATA: TypeRoute[] = [
             }
         ]
     },
+    {
+        name :'Quản lý trạm cân',
+        roles: ["Admin"],
+        url:'quan-ly-tram-can'
+      },
     // {
     //     name :'Quản lý công nợ',
     //     url:'404-not-found',

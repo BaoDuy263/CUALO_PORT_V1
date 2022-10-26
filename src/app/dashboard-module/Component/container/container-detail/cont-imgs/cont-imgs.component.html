@@ -1,0 +1,16 @@
+<div>
+    <div *ngFor="let item of listImgs; index as i">
+        <div style="float: left; width: 100%;">
+            <div class="w-full date-form">
+                {{item.date | date : 'dd/MM/YYYY' }}
+            </div>
+            <div>
+                <div *ngFor="let a of item.items; index as idx" class="cols-img">
+                    <a [href]="'https://cclo.phanmem.one'+a.urlImage" target="_blank">
+                        <img *ngIf="a.urlImage" [src]="'https://cclo.phanmem.one'+a.urlImage" class="list-imgs">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
