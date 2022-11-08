@@ -82,6 +82,14 @@ export const lstCheckTD = [
     alert: "",
     newStep: 3,
   },
+  { // đổi step từ trả rỗng sang cấp rỗng.
+    activityPrev: 3,
+    activityNext: 2,
+    typeDelivery: 5,
+    nameType: "X-B",
+    alert: "",
+    newStep: 4,
+  },
   {
     activityPrev: 6,
     activityNext: 3,
