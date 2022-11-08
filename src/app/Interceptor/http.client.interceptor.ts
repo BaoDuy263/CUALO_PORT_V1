@@ -3,19 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-import {AccountService } from '../Service/Account/account.service'
-
+import { AccountService } from '../Service/Account/account.service'
+import { ToastrcustomService } from './toastrcustom'
 
 @Injectable()
 
 
 export class HttpClientInterceptor implements HttpInterceptor {
 
-    constructor(private accountService: AccountService,private router: Router) {}
+    constructor(private accountService: AccountService,private router: Router,private toast: ToastrcustomService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!request.headers.has('Content-Type') && request.url.search('Upload') < 0) {
+        if (!request.headers.has('Content-Type') && request.url.search('Upload') < 0 && request.url.search('Import') < 0) {
             request = request.clone({
               headers: request.headers.set('Content-Type', 'application/json')
             });
@@ -23,6 +22,8 @@ export class HttpClientInterceptor implements HttpInterceptor {
         request = this.addAccessToken(request);
         return next.handle(request).pipe(
           catchError((error) => {
+            console.log('error',error);
+            const isFobiden = error.status === 403;
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
             if (isUnauthorizedError) {
@@ -36,13 +37,19 @@ export class HttpClientInterceptor implements HttpInterceptor {
                   }
                   localStorage.removeItem('UserInfo');
                   this.accountService.refreshToken(obj).subscribe(res => {
-
                     if(res.errorCode == "00") {
                       localStorage.setItem('UserInfo', JSON.stringify(res));
                       location.reload();
                     }
                   })
               }
+            }
+            if(isFobiden){
+              this.toast.showError("Bạn không có quyền truy cập !");
+            }
+
+            if(isUnknownError){
+              this.toast.showError("Lỗi hệ thống !");
             }
             return throwError(error);
           })

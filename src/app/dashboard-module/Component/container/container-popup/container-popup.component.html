@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="row" style="padding-top: 20px;">
+    <div class="d-flex justify-content-center">
+      <button *ngIf="buttonConfirm" type="button" class="btn btn-primary" (click)="onSubmit()">{{buttonConfirm}}</button>
+      <button type="button" class="btn btn-secondary" style="margin-left: 10px;" (click)="onClose()">{{button}}</button>
+    </div>
+  </div>
+</div>

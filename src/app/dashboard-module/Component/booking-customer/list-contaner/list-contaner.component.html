@@ -1,0 +1,40 @@
+<div style="position: absolute; top: 40%; left: 40%;">
+  <mat-spinner *ngIf="loading == true"></mat-spinner>
+</div>
+<h2 class="text-center">Chọn container</h2>
+<div class="list-container">
+  <div>
+    <h3>Container đang sử dụng: <p class="label-container">
+      <span *ngFor="let item of itemSelected">{{item}}<i *ngIf="!planDetail.isPrinted" class="bi bi-x" (click)="removeAssigneContainer(item)"></i></span></p></h3>
+      <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
+        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Mã Container</th>
+          <th scope="col">Tình trạng</th>
+          <th scope="col">Ngày nhập container</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="item-cont" [ngClass]="{'activate' : itemSelected.includes(item.contNo)}"
+          [ngClass]="{'classFull' : item.status === 1}"
+          *ngFor="let item of lstData.data; index as i" (click)="hanldeClickItem(item)">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.contNo}}</td>
+          <th>{{convertHelper.showStatus(item.status)}}</th>
+          <th>{{item.createdOn | date:'dd/mm/yyyy, hh:ss aa'}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
+  </div>
+
+  <div class="d-flex justify-content-end" style="margin-top: 20px">
+    <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Đóng</button>
+    <button class="btn btn-success" (click)="handleSubmit()" [disabled]="planDetail.isPrinted ? 'disabled' : null" >Xác nhận</button>
+  </div>
+</div>

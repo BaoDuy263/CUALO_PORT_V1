@@ -10,43 +10,39 @@ export interface TypeRoute {
 export const ROUTE_DATA: TypeRoute[] = [
     {
         name :'Quản lý danh mục',
-        roles: ["Admin"],
+        roles: ["Admin","Deport1","Deport2","Deport3"],
         children : [
 
-            {
-                name :'Nhóm hàng hóa',
-                url:'nhom-san-pham',
-                roles: ["Admin"],
+            // {
+            //     name :'Nhóm hàng hóa',
+            //     url:'nhom-san-pham',
+            //     roles: ["Admin"],
 
-            },
-            {
-                name :'Hàng hóa',
-                url:'san-pham',
-                roles: ["Admin"],
+            // },
+            // {
+            //     name :'Hàng hóa',
+            //     url:'san-pham',
+            //     roles: ["Admin"],
 
-            },
-            {
-                name :'Khách hàng',
-                url:'khachhang',
-                roles: ["Admin"],
+            // },
+            // {
+            //     name :'Khách hàng',
+            //     url:'khachhang',
+            //     roles: ["Admin"],
 
-            },
-
+            // },
             {
                 name :'Đơn vị',
                 url:'don-vi',
-                roles: ["Admin"],
+                roles: ["Admin","Deport1","Deport2","Deport3"],
 
             },
             {
                 name :'Phương tiện',
                 url:'phuong-tien',
-                roles: ["Admin"],
+                roles: ["Admin","Deport1","Deport2","Deport3"],
 
             },
-
-
-
         ]
     },
     // {
@@ -57,83 +53,128 @@ export const ROUTE_DATA: TypeRoute[] = [
     // {
     //     name :'Quản lý khách hàng',
     //     children : [
-
     //         {
     //             name :'Booking',
     //             url:'khachhang'
     //         }
     //     ]
     // },
-    {
-        name :'Quản lý booking',
-        roles: ["Admin", "ds"],
 
+    // {
+    //     name :'Quản lý khách hàng',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Khách hàng',
+    //             url:'khachhang',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Booking',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý giao nhận cont',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Thời gian nhập, xuất',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Danh sách, bản đồ cont',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý vị trí cont',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
+    {
+      name :'Nghiệp vụ tại cảng',
+      roles: ["Admin", "ds","Deport1","Deport2","Deport3"],
+      children : [
+          {
+              name :'Nhập cont từ tàu',
+              url: 'nhapcont',
+              roles: ["Admin","Deport1","Deport2","Deport3"],
+          },
+          {
+              name :'Lấy nguyên/rút ruột-Trả rỗng',
+              url:'import-container',
+              roles: ["Admin", "ds","Deport1","Deport2","Deport3"],
+          },
+          {
+              name : 'Cấp rỗng/đóng hàng-Hạ bãi',
+              url: 'plan-packing',
+              roles: ["Admin", "ds","Deport1","Deport2","Deport3"],
+          },
+          {
+            name :'Xuất cont lên tàu',
+            url: 'xuatcont',
+            roles: ["Admin","Deport1","Deport2","Deport3"],
+          },
+          {
+            name :'Quản lý lịch tàu',
+            roles: ["Admin","Deport1","Deport2","Deport3"],
+            url:'quanlylichtau'
+          },
+          {
+            name: "Quản lý transaction",
+            roles: ["Admin","Deport1","Deport2","Deport3"],
+            url: 'transaction'
+          },
+      ]
+    },
+    {
+      name :'Quản lý container',
+      roles: ["Admin","Deport1","Deport2","Deport3"],
+      url:'container'
+    },
+    {
+      name :'Bản đồ container',
+      roles: ["Admin","Deport1","Deport2","Deport3"],
+      url:'container-maps'
+    },
+    {
+        name :'Báo cáo',
+        roles: ["Admin","Deport1","Deport2","Deport3"],
         children : [
             {
-                name :'Đóng/rút hàng',
-                url:'booking-customer',
-                roles: ["Admin", "ds"],
-
+                name :'Daily report',
+                url: 'dayilyreport',
+                roles: ["Admin","Deport1","Deport2","Deport3"],
             },
             {
-                name :'Booking Cont E rỗng',
-                url:'booking-cont-rong',
-                roles: ["Admin", "ds"],
-
-            },
-            {
-                name :'Booking nhập Cont',
-                url:'booking-nhap-cont',
-                roles: ["Admin", "ds"],
-
+                name :'Báo cáo hàng tồn',
+                url: 'hangtonreport',
+                roles: ["Admin","Deport1","Deport2","Deport3"],
             },
         ]
     },
-    {
-        name :'Quản lý khách hàng',
-        roles: ["Admin"],
-
-        children : [
-            {
-                name :'Khách hàng',
-                url:'khachhang',
-                roles: ["Admin"],
-
-            },
-            {
-                name :'Booking',
-                url:'404-not-found',
-                roles: ["Admin"],
-
-            }
-        ]
-    },
-    {
-        name :'Quản lý giao nhận cont',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Thời gian nhập, xuất',
-                url:'404-not-found',
-                roles: ["Admin"],
-            },
-            {
-                name :'Danh sách, bản đồ cont',
-                url:'404-not-found',
-                roles: ["Admin"],
-            }
-        ]
-    },
-    {
-        name :'Quản lý vị trí cont',
-        url:'404-not-found',
-        roles: ["Admin"],
-    },
-    {
-        name :'Nhập cont từ tàu',
-        url: 'nhapcont',
-        roles: ["Admin"],
-    },
+    // {
+    //     name :'Thực hiên xuất nhập tàu',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Nhập cont từ tàu',
+    //             url: 'thuchiennhapcont',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Xuất cont lên tàu',
+    //             url: 'thuchienxuatcont',
+    //             roles: ["Admin"],
+    //         },
+    //     ]
+    // },
     {
         name :'Quản lý ra vào',
         roles: ["Admin"],
@@ -141,26 +182,48 @@ export const ROUTE_DATA: TypeRoute[] = [
             {
                 name :'Ra vào của cont',
                 url:'404-not-found',
-                roles: ["Admin"],
+                roles: ["Admin","Deport1","Deport2","Deport3"],
             },
             {
                 name :'Ra vào của các shipper theo booking',
                 url:'404-not-found',
-                roles: ["Admin"],
+                roles: ["Admin","Deport1","Deport2","Deport3"],
             }
         ]
     },
-    {
-        name :'Quản lý công nợ',
-        url:'404-not-found',
-        roles: ["Admin"],
-    },
-    {
-        name :'Quản lý lịch tàu',
+    // {
+    //     name :'Quản lý công nợ',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
 
-        roles: ["Admin"],
-        url:'404-not-found'
-    },
+
+    //     name :'Quản lý ra vào',
+    //     roles: ["Admin"],
+    //     children : [
+    //         {
+    //             name :'Ra vào của cont',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         },
+    //         {
+    //             name :'Ra vào của các shipper theo booking',
+    //             url:'404-not-found',
+    //             roles: ["Admin"],
+    //         }
+    //     ]
+    // },
+    // {
+    //     name :'Quản lý công nợ',
+    //     url:'404-not-found',
+    //     roles: ["Admin"],
+    // },
+    // {
+    //     name :'Quản lý lịch tàu',
+
+    //     roles: ["Admin"],
+    //     url:'quanlylichtau'
+    // },
 
     {
         name :'Quản trị hệ thống',
@@ -175,6 +238,11 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name :'Thống kê truy cập',
                 url:'404-not-found',
                 roles: ["Admin"],
+            },
+            {
+                name :'Phân quyền hệ thống',
+                url:'quan-ly-he-thong',
+                roles: ["Admin"],
             }
         ]
     },
@@ -183,4 +251,4 @@ export const ROUTE_DATA: TypeRoute[] = [
         url:'setting',
         roles: ["Admin"],
     },
-  ]
+]

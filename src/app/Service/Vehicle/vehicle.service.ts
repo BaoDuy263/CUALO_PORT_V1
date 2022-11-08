@@ -47,4 +47,15 @@ export class VehicleService {
       }))
   }
 
+  GetAllEmpty() {
+    return this.httpService.getRequest('Vehicle/getAllEmpty')
+      .pipe(map((data : lstVehicle) => {
+          return data;
+      }))
+  }
+
+  GetByLicensePlates(licensePlates: string) {
+    return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
+  }
+
 }

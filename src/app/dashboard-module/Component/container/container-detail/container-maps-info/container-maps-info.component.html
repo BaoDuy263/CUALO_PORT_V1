@@ -1,0 +1,28 @@
+<div class="container-lg" style="width: 800px; height: 500px;">
+
+  <a class="close" mat-dialog-close>
+    <i class="bi bi-x"></i>
+  </a>
+  <div class="row" style="width: 100%;">
+    <mat-tab-group>
+      <mat-tab label="Thông tin">
+        <ng-template  matTabContent>
+        
+          <app-cont-info [ContNum]="ContNum"></app-cont-info>
+        </ng-template>
+      </mat-tab>
+      <mat-tab  label="Lịch sử">
+        <ng-template  matTabContent>
+          <app-cont-history [ContNum]="ContNum"></app-cont-history>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Hình ảnh" >
+        <ng-template matTabContent>
+
+          <app-cont-imgs [ContNum]="ContNum"></app-cont-imgs>
+
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

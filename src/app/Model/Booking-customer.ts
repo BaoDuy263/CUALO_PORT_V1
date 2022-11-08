@@ -8,12 +8,16 @@ export interface BookingCustomer
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : number,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
+    listContainer: string,
+    countContainer: number,
+    isPrinted: boolean,
     dateCheckOut: Date,
-
+    createdOn: Date
 }
 
 
@@ -37,12 +41,13 @@ export interface BookingCustomerCreate
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
+    listContainer: string,
     dateCheckOut: Date,
-
 }
 
 
@@ -56,10 +61,36 @@ export interface BookingCustomerEdit
     shipperName : string,
     shipName : string,
     company : string,
-    formality : string,
+    activity : string,
     positionReturn : string,
+    time: string,
     note : string,
     status : string,
+    listContainer: string,
     dateCheckOut: Date,
-
 }
+
+export interface BookingTemplate
+{
+  id: number,
+  pathFile: string,
+  createdOn: Date,
+  createdBy: string
+}
+
+export interface BookingTemplateCreate
+{
+  id: number,
+  pathFile: string
+}
+
+export interface lstBookingTemplate
+{
+    currentPage: number,
+    pageSize : number,
+    totalRecord : number,
+    totalPage: number
+    data : BookingTemplate[]
+}
+
+

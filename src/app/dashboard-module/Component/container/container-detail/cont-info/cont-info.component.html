@@ -1,0 +1,40 @@
+<div style="padding: 10px">
+    
+
+    <table id="customers">
+      <tr>
+        <td> Mã Container </td>
+        <td> {{contDet.contNo}} </td>
+      </tr>
+      <tr>
+        <td>Phương án</td>
+        <td> {{changeActivity(contDet.activity)}} </td>
+      </tr>
+      <tr>
+        <td>Hướng</td>
+        <td> {{changeSide(contDet.side)}} </td>
+      </tr>
+   
+      <tr>
+        <td>Trạng thái cont</td>
+        <td> {{changeStatus(contDet.status)}} </td>
+      </tr>
+      
+      <tr>
+        <td>Trạng thái hiện tại</td>
+        <!-- <td> {{changeStep(contDet.step,contDet.activity)}} </td> -->
+      </tr>
+     
+      
+    </table>
+    <!-- <ion-item class="ion-no-padding" style="padding-left: 6px; ">
+      <ion-label position="stacked" style=" font-size: 21px !important;"> Trạng thái vỏ</ion-label>
+      <div style="margin: 15px 0px;">
+        <span *ngFor="let item of lstStatusCont" (click)="chooseStatus(item.value)">
+          {{item.value}}
+        </span>
+      </div>
+
+        <ion-textarea [(ngModel)]="status" [value]="newStatus"></ion-textarea>
+    </ion-item> -->
+  </div>

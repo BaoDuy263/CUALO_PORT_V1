@@ -1,0 +1,36 @@
+<!-- <div style="position: absolute; top: 40%; left: 40%;">
+  <mat-spinner *ngIf="loading == true"></mat-spinner>
+</div> -->
+<h2 class="text-center">Chọn container</h2>
+<div class="list-container">
+  <div>
+    <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
+      aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Mã Container</th>
+          <th scope="col">Tình trạng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.code}"
+          [ngClass]="{'classFull' : item.status === 1}" *ngFor="let item of lstData; index as i"
+          (click)="hanldeClickItem(item.code)">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.code}}</td>
+          <th>{{convertHelper.showStatus(item.status)}}</th>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Đóng</button>
+      <button class="btn btn-success" (click)="handleSubmit()">Xác nhận</button>
+    </div>
+  </div>
+</div>

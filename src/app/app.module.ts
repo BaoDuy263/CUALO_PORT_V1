@@ -1,4 +1,4 @@
-import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +10,22 @@ import { HttpClientInterceptor } from './Interceptor/http.client.interceptor';
 import { RoleGuardService } from './Interceptor/rolo.guard.service'
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule  } from '@angular/forms';
+import { AdminService } from './Service/admin.service';
+import { ConfigService } from './Service/config.service';
+import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
+import { MapcontYard3Service } from './Service/map-cont-yard3.service';
+import { ContainerMoveComponent } from './dashboard-module/Component/container/map-yard/container-move/container-move.component';
+// import { ContInfoComponent } from './cont-info/cont-info.component';
+// import { ContHistoryComponent } from './container/container-detail/cont-history/cont-history.component';
+// import { ContImgsComponent } from './container/container-detail/cont-imgs/cont-imgs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContainerMoveComponent,
+    // ContInfoComponent,
+    // ContHistoryComponent,
+    // ContImgsComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +37,13 @@ import { FormsModule  } from '@angular/forms';
     ToastrModule.forRoot()
   ],
   providers: [
+    AdminService,
+    ConfigService,
+    OAuthService,
+    UrlHelperService,
     RoleGuardService,
+    MapcontYard3Service,
+    // OAuthLogger,
     AsyncPipe,
     {
       provide: HTTP_INTERCEPTORS,

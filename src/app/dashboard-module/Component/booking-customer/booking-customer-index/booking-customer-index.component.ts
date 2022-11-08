@@ -1,6 +1,7 @@
+import { ListContanerComponent } from './../list-contaner/list-contaner.component';
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
-import { lstBookingCustomer } from '../../../../Model/Booking-customer'
+import { BookingCustomer, lstBookingCustomer } from '../../../../Model/Booking-customer'
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
@@ -8,7 +9,7 @@ import { CustomerService } from 'src/app/Service/Customer/customer.service';
 import { ProductService } from 'src/app/Service/Product/product.service';
 import { BookingCustomerCreateComponent } from '../booking-customer-create/booking-customer-create.component'
 import { BookingCustomerDeleteComponent } from '../booking-customer-delete/booking-customer-delete.component'
-import * as XLSX from 'xlsx';
+import { convertHelper } from '../../../../utils/helper/convertHelper';
 @Component({
   selector: 'app-booking-customer-index',
   templateUrl: './booking-customer-index.component.html',
@@ -41,16 +42,17 @@ export class BookingCustomerIndexComponent implements OnInit {
   PageInfo = {
     page: 1,
     Keyword: '',
-    pageSize: 10
+    pageSize: 10,
+    Date: ''
   }
 
 
-  constructor(private bookingServiceService: BookingServiceService, public dialog: MatDialog, private toastr: ToastrcustomService, private customerService: CustomerService, private productService: ProductService) { }
+  constructor(private bookingServiceService: BookingServiceService,
+    public dialog: MatDialog, private toastr: ToastrcustomService,
+    private customerService: CustomerService, private productService: ProductService, public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
-    this.GetListSelectCustomer();
-    this.GetListSelectProduct();
   }
 
 
@@ -71,31 +73,25 @@ export class BookingCustomerIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-      this.loadding = false;
-      this.lstdata = data;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+    this.bookingServiceService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.Date?.slice(0, 10))
+      .subscribe(data => {
+        this.loadding = false;
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      })
   }
-
-  GetListSelectCustomer() {
-    // this.customerService.GetSelectList().subscribe(data => {
-    //   this.lstCustomer = data.data;
-    // })
-  }
-
-  GetListSelectProduct() {
-    // this.productService.GetSelectList().subscribe(data => {
-    //   this.lstProduct = data.data;
-    // })
-  }
-
 
   onSearch(e: any) {
     this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  onSearchDate(e: any) {
+    this.PageInfo.Date = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
   }
@@ -143,7 +139,6 @@ export class BookingCustomerIndexComponent implements OnInit {
         if (result.statusCode === 200) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
-
         }
         else {
           this.toastr.showError(result.message);
@@ -164,11 +159,41 @@ export class BookingCustomerIndexComponent implements OnInit {
     formData.append("file", selectedFile);
     try {
       this.loadding = true;
-      this.bookingServiceService.CreateBookings(formData).subscribe(res => this.Pagingdata(this.PageInfo))
-      this.loadding = false;
+      this.bookingServiceService.CreateBookings(formData).subscribe(res => {
+        if (res.statusCode === 200) {
+          this.Pagingdata(this.PageInfo)
+        }
+      })
     } catch (error) {
       this.loadding = false;
       throw new Error("error 500");
     }
   }
+
+  openListCont(item: any) {
+    const dialogRef = this.dialog.open(ListContanerComponent, { width: '40%' });
+    dialogRef.componentInstance.planDetail = item
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
+
+  downloadTemp() {
+    return this.bookingServiceService.DownloadExport()
+      .subscribe((result: Blob) => {
+        const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+        console.log("Success");
+      });
+  }
+
 }

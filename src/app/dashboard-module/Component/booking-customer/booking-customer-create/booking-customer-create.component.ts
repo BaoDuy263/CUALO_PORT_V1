@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CustomerSelect } from 'src/app/Model/Customer';
-import { ProductSelect } from 'src/app/Model/Product';
 import { BookingServiceService } from 'src/app/Service/booking-customer/booking-service.service';
+import { activitiesPacking } from '../../../../utils/helper/constant';
 
 
 @Component({
@@ -18,6 +17,7 @@ export class BookingCustomerCreateComponent implements OnInit {
   submited: boolean = false;
   bookCutomerId : number = 0;
   isCreate : boolean = true;
+  activities = activitiesPacking;
 
   constructor(private bookingService : BookingServiceService,public dialogRef: MatDialogRef<BookingCustomerCreateComponent> ) {
     this.CreateEditForm = new FormGroup({
@@ -27,11 +27,12 @@ export class BookingCustomerCreateComponent implements OnInit {
       shipperName: new FormControl(''),
       shipName: new FormControl(),
       company: new FormControl(),
-      formality: new FormControl(),
+      activity: new FormControl(),
       positionReturn : new FormControl(),
       status : new FormControl(),
       note : new FormControl(),
-      dateCheckOut : new FormControl(),
+      time : new FormControl(),
+      dateCheckOut: new FormControl()
     })
   }
 
@@ -45,21 +46,22 @@ export class BookingCustomerCreateComponent implements OnInit {
           id: new FormControl(response.id),
           customer: new FormControl(response.customer),
           typeContainer: new FormControl(response.typeContainer),
-          typeMerchandise: new FormControl(response.typeContainer),
           shipperName: new FormControl(response.shipperName),
           shipName: new FormControl(response.shipName),
           company: new FormControl(response.company),
-          formality: new FormControl(response.formality),
+          activity: new FormControl(response.activity),
           positionReturn: new FormControl(response.positionReturn),
           status: new FormControl(response.status),
           note : new FormControl(response.note),
-          dateCheckOut : new FormControl(response.dateCheckOut),
+          time : new FormControl(response.time),
+          dateCheckOut: new FormControl(response.dateCheckOut)
         })
       })
   }
 
   onSubmit() {
     this.submited = true;
+    this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
     if(this.CreateEditForm.valid && this.isCreate === true){
       this.bookingService.Insert(this.CreateEditForm.value).subscribe(response => {
           this.dialogRef.close(response);

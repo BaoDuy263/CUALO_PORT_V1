@@ -1,0 +1,40 @@
+table {
+  text-align: center;
+}
+.list-contaner {
+  width: 50%;
+}
+.item-cont {
+  cursor: pointer;
+}
+.item-cont:hover {
+  background-color: rgb(221, 221, 221);
+}
+.activate {
+  background-color: rgb(221, 221, 221);
+}
+.classFull {
+  color: #fb8787;
+}
+.label-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.label-container span {
+  border: 1px solid rgb(68, 68, 68);
+  border-radius: 5px;
+  display: block;
+  background-color: #dbdbdb;
+  padding: 0px 5px;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+}
+.label-container span i {
+  cursor: pointer;
+  padding-left: 5px;
+  font-size: 17px;
+}

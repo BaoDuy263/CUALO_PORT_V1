@@ -3,6 +3,9 @@ export interface UserLogin {
     password : string
 }
 
+
+
+
 export interface UserReponse {
     listRole: [],
     jwt : string,
@@ -13,4 +16,3 @@ export interface UserReponse {
     message: string,
     userId :string
 }
-  

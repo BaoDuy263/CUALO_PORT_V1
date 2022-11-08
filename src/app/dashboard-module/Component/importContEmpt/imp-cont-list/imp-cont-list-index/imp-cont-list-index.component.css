@@ -1,0 +1,44 @@
+
+.file-input__input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input__label {
+  min-width: 150px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.file-input__label i {
+  margin-right: 8px;
+}
+
+.file-input__label svg {
+  height: 16px;
+  margin-right: 4px;
+}
+
+.file-input {
+  padding-right: 10px;
+}
+
+.input-search {
+  margin-right: 20px;
+}
+.btn-transparent {
+  text-align: left;
+  border: none;
+}
+.btn-transparent:hover {
+  border: none;
+  background-color: #e9ecef;
+}
+.mr-20 {
+  margin-right: 20px;
+}
