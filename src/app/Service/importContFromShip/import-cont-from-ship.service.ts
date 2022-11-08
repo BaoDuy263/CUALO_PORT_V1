@@ -26,6 +26,10 @@ export class ImportContFromShipService {
     return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DowloadTemplate');
   }
 
+  DowloadTemplatePortTH() {
+    return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DowloadTemplateTH');
+  }
+
   DownLoadFileShiptoPort(path: string) {
     return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DownLoadFile/' + path);
   }
@@ -40,6 +44,10 @@ export class ImportContFromShipService {
 
   ImportFromShiptoPort(BayPlan: any) {
     return this.httpService.uploadRequest('PlanImportFromShiptoPort/ImportFromShoptoPort',BayPlan)
+  }
+
+  ImportFromShiptoPortTH(BayPlan: any) {
+    return this.httpService.uploadRequest('PlanImportFromShiptoPort/ImportFromShoptoPortTH',BayPlan)
   }
 
 
@@ -63,8 +71,12 @@ export class ImportContFromShipService {
     return this.httpService.getRequest('PlanImportFromShiptoPort/GetDetail/' + contNo);
   }
 
-  Delete(id: number){
-    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?Id=' + id);
+  Delete(contNo: string){
+    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?contNo=' + contNo);
+  }
+
+  DeleteMany(ContNo: string){
+    return this.httpService.deleteRequest('PlanImportFromShiptoPort/DeleteMany?ContNo=' + ContNo);
   }
 
   //From port to ship
@@ -79,11 +91,9 @@ export class ImportContFromShipService {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/UploadPorttoShip', file);
   }
 
-  
   ImportPorttoShip(file: any) {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShip',file);
   }
-
   
   ImportPorttoShipTH(file: any) {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShipTH',file);
@@ -96,8 +106,6 @@ export class ImportContFromShipService {
   PagingPorttoShip(data : PortToShipPaging) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/Paging', data);
   }
-
-  
 
   InsertPorttoShip(data: PortToShipCreate) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/CreatePortToShip',data);

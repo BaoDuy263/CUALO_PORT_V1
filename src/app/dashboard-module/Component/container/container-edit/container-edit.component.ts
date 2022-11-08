@@ -214,7 +214,6 @@ export class ContainerEditComponent implements OnInit {
   GetLocatonFree()
   {
     this.containerService.GetLstContInMap().subscribe(data=> {
-      console.log('data',data);
       if(data.statusCode == 200)
       {
           this.lstLocation = data.data;

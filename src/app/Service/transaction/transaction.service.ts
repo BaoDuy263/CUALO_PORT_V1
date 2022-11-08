@@ -34,6 +34,7 @@ export class TransactionService {
   }
 
   SaveTransaction(data: any) {
+    console.log('data',data);
     return this.httpService.postRequest(`transactioneir/saveTransaction`, data)
   }
 }

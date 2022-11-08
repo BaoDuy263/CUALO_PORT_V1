@@ -260,6 +260,7 @@ export class ContainerCreateComponent implements OnInit {
     })
   }
 
+
   saveTrans() {
     const dialogRef = this.dialog.open(ContainerPopupComponent);
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
@@ -323,6 +324,9 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   changeActivity(e: any) {
+    if(this.CreateEditForm.value.activity === 2 || this.CreateEditForm.value.activity === 3){
+        this.removeInfomation();
+    }
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
         && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
@@ -339,6 +343,10 @@ export class ContainerCreateComponent implements OnInit {
     return ""
   }
 
+
+  removeInfomation(){
+    this.CreateEditForm.patchValue({commodity: null, seal1: null,customer: null,weight : this.CreateEditForm.value.type == "20'DC" ? 2.3 : 4.0,voyage: null});
+  }
   openPopup(alert: string, newStep: number, newStepCancel: number | undefined) {
     if (alert !== "") {
       const dialogRef = this.dialog.open(ContainerPopupComponent)

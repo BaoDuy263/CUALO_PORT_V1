@@ -22,6 +22,7 @@ export class IndeximportContfromShipComponent implements OnInit {
   loadding: boolean = false;
   isCreate: boolean = true;
   Id: number = 0;
+  isCheckAll :boolean = false;
   //Tab Booking
   PageInfoBooking : BookingPlanPaging = {
     Page: 1,
@@ -108,7 +109,7 @@ export class IndeximportContfromShipComponent implements OnInit {
     data : []
   }
   
-  lstCheckAction : Array<number> = [];
+  lstCheckAction : Array<string> = [];
   constructor(public dialog: MatDialog,private service: ImportContFromShipService,private toastr: ToastrcustomService,private servicePerform : PerformService) { }
 
   ngOnInit(): void {
@@ -233,6 +234,22 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
+  openImportTH() {
+    const dialogRef = this.dialog.open(ImportContComponent);
+    dialogRef.componentInstance.isImportTH = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.status === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
+
   openUpload() {
     const dialogRef =this.dialog.open(ImportContComponent);
     dialogRef.componentInstance.isImport = false;
@@ -283,9 +300,26 @@ export class IndeximportContfromShipComponent implements OnInit {
      });
   }
 
-  openDelete(id: number) {
+  openDelete(ContNo: string) {
     const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
-    dialogRef.componentInstance.Id = id;
+    dialogRef.componentInstance.ContNo = ContNo;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Paging();
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
+  }
+
+  openDeleteMany() {
+    const dialogRef = this.dialog.open(DeleteimportContfromShipComponent);
+    dialogRef.componentInstance.ContNo = this.lstCheckAction.toString();
+    dialogRef.componentInstance.IsDeleteMany = true;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.statusCode === 200) {
@@ -307,6 +341,14 @@ export class IndeximportContfromShipComponent implements OnInit {
     });
   }
 
+  DowloadTemplateTH() {
+    this.service.DowloadTemplatePortTH().subscribe(data => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url= window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
+
   DowloadFile(path: string){
     this.service.DownLoadFileShiptoPort(path).subscribe(data => {
       const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -315,13 +357,24 @@ export class IndeximportContfromShipComponent implements OnInit {
     })
   }
 
-  addAction(id: number){
-    var index = this.lstCheckAction.indexOf(id);
+  addAction(ContNo: string){
+    var index = this.lstCheckAction.indexOf(ContNo);
     if(index > -1){
       this.lstCheckAction.splice(index,1);
     }else
     {
-      this.lstCheckAction.push(id);
+      this.lstCheckAction.push(ContNo);
+    }
+  }
+
+  checkAll()
+  {
+    this.isCheckAll = !this.isCheckAll;
+    if(this.isCheckAll === true){
+      this.lstCheckAction = this.lstdata.data.map(x => x.contNo);
+    }
+    else{
+      this.lstCheckAction = [];
     }
   }
 
@@ -401,4 +454,6 @@ export class IndeximportContfromShipComponent implements OnInit {
     }
     return DateString;
   }
+
+
 }

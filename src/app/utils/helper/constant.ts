@@ -74,6 +74,14 @@ export const lstCheckTD = [
     alert: "",
     newStep: 4,
   },
+  {  // đang đi lấy nguyên đưa cont về trả bãi
+    activityPrev: 5,
+    activityNext: 3,
+    typeDelivery: 4,
+    nameType: "X-B",
+    alert: "",
+    newStep: 3,
+  },
   {
     activityPrev: 6,
     activityNext: 3,

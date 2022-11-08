@@ -10,7 +10,8 @@ import { ImportContFromShipService } from '../../../../Service/importContFromShi
 export class DeleteimportContfromShipComponent implements OnInit {
 
 
-  @Input() Id : number = 0;
+  @Input() ContNo : string = '';
+  @Input() IsDeleteMany : boolean = false;
   constructor(private service: ImportContFromShipService,public dialogRef: MatDialogRef<DeleteimportContfromShipComponent>) { }
 
   ngOnInit(): void {
@@ -18,8 +19,16 @@ export class DeleteimportContfromShipComponent implements OnInit {
 
   onDelete()
   {
-      this.service.DeletePorttoShip(this.Id).subscribe(response => {
-          this.dialogRef.close(response);
+    if(!this.IsDeleteMany){
+      this.service.Delete(this.ContNo).subscribe(response => {
+        this.dialogRef.close(response);
       })
+    }
+    else
+    {
+      this.service.DeleteMany(this.ContNo).subscribe(response => {
+        this.dialogRef.close(response);
+      })
+    }
   }
 }

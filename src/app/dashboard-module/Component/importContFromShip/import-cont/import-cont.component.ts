@@ -12,6 +12,7 @@ export class ImportContComponent implements OnInit {
 
   file : any;
   @Input() isImport: boolean = true;
+  @Input() isImportTH: boolean = false;
   constructor(private importContFromShipService: ImportContFromShipService,public dialogRef: MatDialogRef<ImportContComponent>) { }
 
   ngOnInit(): void {
@@ -24,8 +25,8 @@ export class ImportContComponent implements OnInit {
     if(this.isImport){
       this.importContFromShipService.ImportFromShiptoPort(formData).subscribe(data => this.dialogRef.close(data));
     }
-    else{
-      this.importContFromShipService.UploadShiptoPort(formData).subscribe(data => this.dialogRef.close(data));
+    if(this.isImportTH){
+      this.importContFromShipService.ImportFromShiptoPortTH(formData).subscribe(data => this.dialogRef.close(data));
     }
   }
 

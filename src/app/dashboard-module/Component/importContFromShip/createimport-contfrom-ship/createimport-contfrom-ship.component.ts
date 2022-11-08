@@ -124,6 +124,7 @@ export class CreateimportContfromShipComponent implements OnInit {
   }
 
   onItemChange(item: Item): void {
+    console.log('item',item);
     if(!item.checked){
       this.CreateEditForm.value.Location = null;
     }
@@ -159,6 +160,7 @@ export class CreateimportContfromShipComponent implements OnInit {
     this.CreateEditForm.value.Activity = parseInt(
       this.CreateEditForm.value.Activity
     );
+    this.CreateEditForm.value.Location = this.LocationSelect; 
     this.importContFromShipService
     .ImportAndUpdate(this.CreateEditForm.value)
     .subscribe((response) => {
