@@ -108,8 +108,6 @@ export class ContainerMapsIndexComponent implements OnInit {
         if (this.listPlan.length > 0) {
           for (let j = 0; j < this.listPlan.length; j++) {
             if (listposition[i]['positionLabel'] == this.listPlan[j]['location'] && listposition[i]['code'] == null) {
-              console.log('aaaaaaaaaaaaaaaaaaaa', listposition[i]);
-              
               //   listposition[i]['code'] = this.listPlan[j]['contNo'];
               //   listposition[i]['idPlan'] = 1;
               // }
@@ -133,8 +131,6 @@ export class ContainerMapsIndexComponent implements OnInit {
 
       }
       this.listContYarn3 = listposition;
-      console.log('this.listContYarn3 ', this.listContYarn3 );
-      
       this.displayListCont(this.listContYarn3);
     });
   }
@@ -193,7 +189,6 @@ export class ContainerMapsIndexComponent implements OnInit {
 
     }
     //console.log('------------------------');
-    console.log('listD1', arrD);
 
     var listA1 = this.sortList(arrA, 1);
     var listA2 = this.sortList(arrA, 2);
