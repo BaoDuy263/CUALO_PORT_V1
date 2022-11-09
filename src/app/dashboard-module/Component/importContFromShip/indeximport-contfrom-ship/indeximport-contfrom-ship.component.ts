@@ -237,6 +237,7 @@ export class IndeximportContfromShipComponent implements OnInit {
   openImportTH() {
     const dialogRef = this.dialog.open(ImportContComponent);
     dialogRef.componentInstance.isImportTH = true;
+    dialogRef.componentInstance.isImport = false;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.status === 200) {

@@ -86,9 +86,17 @@ export const lstCheckTD = [
     activityPrev: 3,
     activityNext: 2,
     typeDelivery: 5,
-    nameType: "X-B",
+    nameType: "B-X",
     alert: "",
     newStep: 4,
+  },
+  { // đổi step từ cấp rỗng sang hạ bãi.
+    activityPrev: 2,
+    activityNext: 1,
+    typeDelivery: 5,
+    nameType: "X-B",
+    alert: "",
+    newStep: 5,
   },
   {
     activityPrev: 6,
@@ -107,14 +115,14 @@ export const lstCheckTD = [
     alert: "",
     newStep: 0
   },
-  {
-    activityPrev: 2,
-    activityNext: 1,
-    typeDelivery: 4,
-    nameType: "Shipside X-T",
-    alert: "",
-    newStep: 6
-  },
+  // {
+  //   activityPrev: 2,
+  //   activityNext: 1,
+  //   typeDelivery: 4,
+  //   nameType: "Shipside X-T",
+  //   alert: "",
+  //   newStep: 6
+  // },
   {
     activityPrev: 9,
     activityNext: 1,

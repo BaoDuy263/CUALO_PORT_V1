@@ -269,7 +269,7 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
     this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
     this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-    this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+    // this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe(result => {
@@ -335,7 +335,7 @@ export class ContainerCreateComponent implements OnInit {
         this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
         this.openPopup(lstCheckTD[i].alert, lstCheckTD[i].newStep, lstCheckTD[i]?.newStepCancel)
         if (lstCheckTD[i].newStep !== 0) {
-          this.CreateEditForm.value.step = lstCheckTD[i].newStep
+          this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep); 
         }
         return lstCheckTD[i].nameType
       }
