@@ -19,6 +19,13 @@
         <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
           [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)">
       </div>
+      <div class="col-sm-3 mr-20">
+        <!-- <input type="text" class="form-control" placeholder="Đến ngày" onfocus="(this.type='date')"
+          [(ngModel)]="PageInfo.endDate" (ngModelChange)="endDate($event)"> -->
+          <select class="form-control"  [(ngModel)]="PageInfo.step" (ngModelChange)="fillStep($event)" placeholder="Bước thực hiện">
+            <option *ngFor="let a of lstStep" [ngValue]="a.value">{{a.name}}</option>
+        </select>
+      </div>
       <div class="col-sm-3">
         <button type="button" class="btn btn-primary" (click)="resetData()"><i class="bi bi-arrow-clockwise"></i></button>
       </div>
