@@ -264,8 +264,8 @@
             <td style="width: 30%"><b></b></td>
           </tr>
           <tr>
-            <td style="width: 30%;"><b></b></td>
-            <td style="width: 30%"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+            <td style="width: 30%" ><b>{{vehicleSelected && !isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
+            <td style="width: 30%" ><b>{{vehicleSelected && isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
             <td style="width: 30%"><b>{{CreateEditForm.value.createdBy}}</b></td>
           </tr>
         </table>

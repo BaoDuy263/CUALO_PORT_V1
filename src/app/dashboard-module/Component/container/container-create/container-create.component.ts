@@ -33,6 +33,7 @@ export class ContainerCreateComponent implements OnInit {
   itemPrint: any = null;
   lstVehicle: any = [];
   vehicleSelected: any = null;
+  isReceiver: boolean = true;
   transNo: string = '';
   PageInfo = {
     page: 1,
@@ -291,6 +292,13 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   handleSelect(value: any) {
+    if(this.CreateEditForm.value.activity === 3 || this.CreateEditForm.value.activity === 1){
+      this.isReceiver = false;
+    }else
+    {
+      this.isReceiver = true;
+    }
+
     const index = this.lstVehicle.findIndex((item: any) => item.licensePlates === value);
     if (index < 0) {
       return;
@@ -327,6 +335,7 @@ export class ContainerCreateComponent implements OnInit {
     if(this.CreateEditForm.value.activity === 2 || this.CreateEditForm.value.activity === 3){
         this.removeInfomation();
     }
+
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
         && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
@@ -337,9 +346,16 @@ export class ContainerCreateComponent implements OnInit {
         if (lstCheckTD[i].newStep !== 0) {
           this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep); 
         }
+        if(this.CreateEditForm.value.activity === 3 || this.CreateEditForm.value.activity === 1){
+          this.isReceiver = false;
+        }else
+        {
+          this.isReceiver = true;
+        }
         return lstCheckTD[i].nameType
       }
     }
+    
     return ""
   }
 
