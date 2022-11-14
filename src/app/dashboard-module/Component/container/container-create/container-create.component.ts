@@ -137,6 +137,7 @@ export class ContainerCreateComponent implements OnInit {
   ngOnInit(): void {
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
+      
       this.getVehicle(response.licensePlates)
       this.transId = response.transaction_eir_id;
       this.currentActivity = response.activity;
@@ -156,7 +157,7 @@ export class ContainerCreateComponent implements OnInit {
         type: new FormControl(response.type),
         size: new FormControl(response.size),
         datePlan: new FormControl(response.datePlan),
-        dateCheckIn: new FormControl(response.dateCheckIn),
+        dateCheckIn: new FormControl(new Date()),
         dateCheckOut: new FormControl(response.dateCheckOut),
         transaction_eir_no: new FormControl(response.transaction_eir_no),
         transaction_eir_id: new FormControl(response.transaction_eir_id),
@@ -361,7 +362,7 @@ export class ContainerCreateComponent implements OnInit {
 
 
   removeInfomation(){
-    this.CreateEditForm.patchValue({commodity: null, seal1: null,customer: null,weight : this.CreateEditForm.value.type == "20'DC" ? 2.3 : 4.0,voyage: null});
+    this.CreateEditForm.patchValue({commodity: null, seal1: null,customer: null,weight : this.CreateEditForm.value.type.substring(0, 2) == "20" ? 2.3 : 4.0,voyage: null});
   }
   openPopup(alert: string, newStep: number, newStepCancel: number | undefined) {
     if (alert !== "") {
