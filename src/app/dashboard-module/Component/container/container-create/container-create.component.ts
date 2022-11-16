@@ -158,7 +158,7 @@ export class ContainerCreateComponent implements OnInit {
         size: new FormControl(response.size),
         datePlan: new FormControl(response.datePlan),
         dateCheckIn: new FormControl(new Date()),
-        dateCheckOut: new FormControl(response.dateCheckOut),
+        dateCheckOut: new FormControl(new Date()),
         transaction_eir_no: new FormControl(response.transaction_eir_no),
         transaction_eir_id: new FormControl(response.transaction_eir_id),
         location: new FormControl(response.location),
@@ -315,7 +315,9 @@ export class ContainerCreateComponent implements OnInit {
         dialogRef.componentInstance.button = 'Xác nhận';
       } else {
         this.transNo = res.no;
-        this.CreateEditForm.value.dateCheckIn = res.dateCheckIn;
+        // this.CreateEditForm.value.dateCheckIn = res.dateCheckIn;
+        this.CreateEditForm.controls['dateCheckIn'].setValue(new Date());
+        this.CreateEditForm.controls['dateCheckOut'].setValue(new Date());
         this.displayStyle = 'displayStyle';
         setTimeout(() => window.print(), 500);
       }
