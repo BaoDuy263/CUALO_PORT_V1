@@ -266,14 +266,14 @@
           <tr>
             <td style="width: 30%" ><b>{{vehicleSelected && !isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
             <td style="width: 30%" ><b>{{vehicleSelected && isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
-            <td style="width: 30%"><b>{{CreateEditForm.value.createdBy}}</b></td>
+            <td style="width: 30%"><b>{{userCreate}}</b></td>
           </tr>
         </table>
       </div>
     </div>
     <div class="d-flex justify-content-end list-button" [ngClass]="[displayStyle]">
       <div class="group-button" style="margin-right: 10px">
-        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
+        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()" [disabled]="isSave == true">Lưu giao
           dịch</button>
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
         <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Đóng</button>

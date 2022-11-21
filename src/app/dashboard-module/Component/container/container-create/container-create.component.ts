@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
 import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
+import { AccountService } from 'src/app/Service/Account/account.service';
 import { result } from 'lodash';
 import { ContainerEditComponent } from '../container-edit/container-edit.component';
 
@@ -35,6 +36,8 @@ export class ContainerCreateComponent implements OnInit {
   vehicleSelected: any = null;
   isReceiver: boolean = true;
   transNo: string = '';
+  userCreate: string = '';
+  isSave : boolean = false;
   PageInfo = {
     page: 1,
     Keyword: '',
@@ -45,6 +48,7 @@ export class ContainerCreateComponent implements OnInit {
   lstCheckTD = lstCheckTD;
   typeDelivery: string = "";
   constructor(private containerService: Containerv2Service,
+    private accountService: AccountService,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
     private transactionService: TransactionService, private vehicleService: VehicleService,
     public dialog: MatDialog, public convertHelper: convertHelper) {
@@ -135,6 +139,8 @@ export class ContainerCreateComponent implements OnInit {
   get region() { return this.CreateEditForm.get('region') }
 
   ngOnInit(): void {
+    const userInfo = this.accountService.getUserInfo();
+    this.userCreate = userInfo.fullName;
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
       
@@ -215,7 +221,6 @@ export class ContainerCreateComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
     });
-
     this.loadVehicles();
   }
 
@@ -264,6 +269,7 @@ export class ContainerCreateComponent implements OnInit {
 
 
   saveTrans() {
+    this.isSave = true;
     const dialogRef = this.dialog.open(ContainerPopupComponent);
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
     dialogRef.componentInstance.button = 'Đóng';
@@ -338,7 +344,12 @@ export class ContainerCreateComponent implements OnInit {
     if(this.CreateEditForm.value.activity === 2 || this.CreateEditForm.value.activity === 3){
         this.removeInfomation();
     }
-
+    if(this.CreateEditForm.value.activity === 3 || this.CreateEditForm.value.activity === 1){
+      this.isReceiver = false;
+    }else
+    {
+      this.isReceiver = true;
+    }
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
         && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
@@ -349,12 +360,8 @@ export class ContainerCreateComponent implements OnInit {
         if (lstCheckTD[i].newStep !== 0) {
           this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep); 
         }
-        if(this.CreateEditForm.value.activity === 3 || this.CreateEditForm.value.activity === 1){
-          this.isReceiver = false;
-        }else
-        {
-          this.isReceiver = true;
-        }
+        
+       
         return lstCheckTD[i].nameType
       }
     }
