@@ -36,5 +36,17 @@ export class convertHelper {
     return lstTypeVehicle[value]?.name;
   }
 
+
+  Chang24Hour(date: Date){
+     if(date){
+      return  date.toLocaleString('en-US', {
+        hour12: false,
+      })
+     }else
+     {
+      return null;
+     }
+    
+  };
 }
 

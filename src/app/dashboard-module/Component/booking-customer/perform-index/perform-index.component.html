@@ -54,9 +54,9 @@
               <th>{{convertHelper.showStatus(item.status)}}</th>
               <td>{{convertHelper.showSide(item.side)}}</td>
               <td>{{convertHelper.showState(item.state)}}</td>
-              <td>{{item.dateCheckIn | date: 'dd/MM/yyyy hh:ss aa' }}</td>
-              <td>{{item.dateCheckOut | date: 'dd/MM/yyyy hh:ss aa' }}</td>
-              <td>{{item.landingDate | date: 'dd/MM/yyyy hh:ss aa' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.dateCheckIn) | date:  'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.dateCheckOut) |  date:  'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.landingDate) |  date:  'dd/MM/yyyy HH:mm' }}</td>
               <td style="text-align: center;">
                 <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer;" data-toggle="tooltip"
                   data-placement="top" title="Sửa" (click)="openEdit(item.contNo)">
