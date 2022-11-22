@@ -242,10 +242,10 @@
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
-                <span>{{CreateEditForm.value.dateCheckIn | date : 'dd/MM/yyyy hh:mm aa'}}</span>
+                <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckIn) | date:  'dd/MM/yyyy HH:mm' }}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian ra</b>/Check out:
-                <span>{{CreateEditForm.value.dateCheckOut | date : 'dd/MM/yyyy hh:mm aa'}}</span>
+                <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckOut) | date:  'dd/MM/yyyy HH:mm' }}</span>
               </p>
             </td>
           </tr>
