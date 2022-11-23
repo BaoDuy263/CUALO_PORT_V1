@@ -355,14 +355,13 @@ export class ContainerCreateComponent implements OnInit {
       const checkCurrActivity = this.currentActivity === lstCheckTD[i].activityPrev
         && this.CreateEditForm.value.activity === lstCheckTD[i].activityNext
       if (checkCurrActivity) {
+        this.CreateEditForm.controls['note'].setValue(lstCheckTD[i].nameType);
         this.typeDelivery = lstCheckTD[i].nameType;
         this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
         this.openPopup(lstCheckTD[i].alert, lstCheckTD[i].newStep, lstCheckTD[i]?.newStepCancel)
         if (lstCheckTD[i].newStep !== 0) {
           this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep); 
         }
-        
-       
         return lstCheckTD[i].nameType
       }
     }

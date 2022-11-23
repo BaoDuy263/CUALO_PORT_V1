@@ -71,8 +71,8 @@ export const lstCheckTD = [
     activityNext: 1,
     typeDelivery: 4,
     nameType: "Đóng kết hợp",
-    alert: "",
-    newStep: 4,
+    alert: "Bạn có đang muốn đóng kết hợp cho Container này không ?",
+    newStep: 5,
   },
   {  // đang đi lấy nguyên đưa cont về trả bãi
     activityPrev: 5,
