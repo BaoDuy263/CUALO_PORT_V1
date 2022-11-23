@@ -10,6 +10,7 @@ import { PerformCreateComponent } from '../../booking-customer/perform-create/pe
 import { PerformDeleteComponent } from '../../booking-customer/perform-delete/perform-delete.component';
 import { convertHelper } from '../../../../utils/helper/convertHelper';
 import { lstStep } from '../../../../utils/helper/constant';
+import { TransactionPrintfComponent } from '../transaction-printf/transaction-printf.component'
 @Component({
   selector: 'app-transaction-index',
   templateUrl: './transaction-index.component.html',
@@ -124,6 +125,22 @@ export class TransactionIndexComponent implements OnInit {
         }
       }
     });
+  }
+
+  openPrint(id: number) {
+    const dialogRef = this.dialog.open(TransactionPrintfComponent, { width: '100%' });
+    dialogRef.componentInstance.transId = id;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    })
   }
 
   onChangePage(pageOfItems: any) {
