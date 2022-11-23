@@ -43,7 +43,7 @@ export class TransactionPrintfComponent implements OnInit {
       book: new FormControl(''),
       bill: new FormControl(''),
       seal: new FormControl(''),
-      type: new FormControl('Dry'),
+      typeCont: new FormControl(''),
       size: new FormControl(''),
       datePlan: new FormControl(''),
       dateCheckIn: new FormControl(),
@@ -111,16 +111,14 @@ export class TransactionPrintfComponent implements OnInit {
   ngOnInit(): void {
     this.transactionService.GetDetailTrans(this.transId).subscribe(response => {
       this.getVehicle(response.licensePlates);
-
       if(response.activity === 3 || response.activity === 1){
         this.isReceiver = false;
       }else
       {
         this.isReceiver = true;
       }
-
+      console.log('response',response.typeCont);
       this.CreateEditForm = new FormGroup({
-
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
         voyage: new FormControl(response.voyage),
@@ -193,6 +191,7 @@ export class TransactionPrintfComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
         createby : new FormControl(response.createdBy)
       })
+      console.log('CreateEditForm',this.CreateEditForm.value.typeCont);
     });
   }
 
