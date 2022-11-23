@@ -23,6 +23,7 @@ export const lstStatusData = [
 ]
 
 export const lstTypeDelivery = [
+  { value: 0, name: "" },
   { value: 1, name: "Tàu xe" },
   { value: 2, name: "Xe tàu" },
   { value: 3, name: "Bãi tàu", },

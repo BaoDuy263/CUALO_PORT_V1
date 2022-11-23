@@ -127,6 +127,8 @@ export class ContainerCreateComponent implements OnInit {
       nameDriver: new FormControl(''),
       licensePlates: new FormControl(''),
       phoneNumberDriver: new FormControl(''),
+      receiver : new FormControl(''),
+      deliver : new FormControl(''),
     })
   }
 
@@ -220,6 +222,8 @@ export class ContainerCreateComponent implements OnInit {
         nameDriver: new FormControl(response.nameDriver),
         licensePlates: new FormControl(response.licensePlates),
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
+        receiver : new FormControl(''),
+      deliver : new FormControl(''),
       })
     });
     this.loadVehicles();
