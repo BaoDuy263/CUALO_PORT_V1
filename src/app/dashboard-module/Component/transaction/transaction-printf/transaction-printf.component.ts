@@ -113,11 +113,11 @@ export class TransactionPrintfComponent implements OnInit {
       this.getVehicle(response.licensePlates);
       if(response.activity === 3 || response.activity === 1){
         this.isReceiver = false;
-      }else
+      }
+      else
       {
         this.isReceiver = true;
       }
-      console.log('response',response.typeCont);
       this.CreateEditForm = new FormGroup({
         contNo: new FormControl(response.contNo),
         vessel: new FormControl(response.vessel),
@@ -191,7 +191,6 @@ export class TransactionPrintfComponent implements OnInit {
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
         createby : new FormControl(response.createdBy)
       })
-      console.log('CreateEditForm',this.CreateEditForm.value.typeCont);
     });
   }
 
@@ -219,7 +218,6 @@ export class TransactionPrintfComponent implements OnInit {
 
   getTypeDelivery(typeDelivery: number){
     let eDelivery = this.lstTypeDelivery.find(x => x.value == typeDelivery);
-
     return eDelivery!.name
 }
 
@@ -230,5 +228,4 @@ export class TransactionPrintfComponent implements OnInit {
       this.vehicleSelected = res;
     })
   }
-
 }

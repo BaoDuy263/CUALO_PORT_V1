@@ -9,6 +9,7 @@ import { map, Observable, startWith } from 'rxjs';
 })
 export class AutocompleteComponent implements OnInit {
   @Input() data: any = [];
+  @Input() isUser: boolean = false
   @Input() valueDefault: string = ''
   myControl = new FormControl('');
   filteredOptions!: Observable<any[]>;
@@ -26,8 +27,14 @@ export class AutocompleteComponent implements OnInit {
     this.itemSelected.emit(value);
 
     const filterValue = value.toLowerCase();
-
-    return this.data.filter((option: any) => option.licensePlates.toLowerCase().includes(filterValue));
+    if(this.isUser){
+      
+      return this.data.filter((option: any) => option.fullName.toLowerCase().includes(filterValue));
+    }
+    else
+    {
+      return this.data.filter((option: any) => option.licensePlates.toLowerCase().includes(filterValue));
+    }
   }
 
 }

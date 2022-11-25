@@ -48,6 +48,8 @@ export class ContainerCreateComponent implements OnInit {
   currentActivity: number = 0;
   lstCheckTD = lstCheckTD;
   typeDelivery: string = "";
+  lstUserDeport3: any = [];
+  userReciver : any = {};
   constructor(private containerService: Containerv2Service,
     private accountService: AccountService,
     public dialogRef: MatDialogRef<ContainerCreateComponent>, private toastr: ToastrcustomService,
@@ -146,7 +148,6 @@ export class ContainerCreateComponent implements OnInit {
     this.userCreate = userInfo.fullName;
     this.containerService.GetDetail(this.containerCode).subscribe(response => {
       response = response.data
-      
       this.getVehicle(response.licensePlates)
       this.transId = response.transaction_eir_id;
       this.currentActivity = response.activity;
@@ -222,11 +223,12 @@ export class ContainerCreateComponent implements OnInit {
         nameDriver: new FormControl(response.nameDriver),
         licensePlates: new FormControl(response.licensePlates),
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
-        receiver : new FormControl(''),
-      deliver : new FormControl(''),
+        receiver : new FormControl(response.receiver),
+        deliver : new FormControl(response.deliver),
       })
     });
     this.loadVehicles();
+    this.loadUserDeport3();
   }
 
   // onSubmit() {
@@ -265,6 +267,12 @@ export class ContainerCreateComponent implements OnInit {
     }, 300);
   }
 
+  loadUserDeport3(){
+    this.accountService.GetUserDeport3().subscribe(data => {
+      this.lstUserDeport3 = data;
+    })
+  }
+
   getVehicle(licensePlates: string) {
     const endCodeUriLP = encodeURI(licensePlates);
     this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
@@ -276,13 +284,20 @@ export class ContainerCreateComponent implements OnInit {
   saveTrans() {
     this.isSave = true;
     const dialogRef = this.dialog.open(ContainerPopupComponent);
-    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?'
+    dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?';
     dialogRef.componentInstance.button = 'Đóng';
     dialogRef.componentInstance.buttonConfirm = "Xác nhận";
     this.CreateEditForm.value.activity = parseInt(this.CreateEditForm.value.activity)
     this.CreateEditForm.value.typeDelivery = parseInt(this.CreateEditForm.value.typeDelivery)
     this.CreateEditForm.value.status = parseInt(this.CreateEditForm.value.status)
-    // this.CreateEditForm.value.weight = parseInt(this.CreateEditForm.value.weight)
+    if(this.isReceiver === true){
+      this.CreateEditForm.controls['deliver'].setValue(this.userReciver.userName);
+      this.CreateEditForm.controls['receiver'].setValue(this.vehicleSelected.nameDriver);
+    }else
+    {
+      this.CreateEditForm.controls['deliver'].setValue(this.vehicleSelected.nameDriver);
+      this.CreateEditForm.controls['receiver'].setValue(this.userReciver.userName);
+    }
     this.CreateEditForm.value.nameDriver = this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     this.CreateEditForm.value.licensePlates = this.vehicleSelected?.licensePlates || this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe(result => {
@@ -315,7 +330,33 @@ export class ContainerCreateComponent implements OnInit {
     if (index < 0) {
       return;
     }
+    if(this.isReceiver === true){
+      this.userReciver = this.lstVehicle[index].nameDriver;
+    }else
+    {
+      this.userReciver = this.lstVehicle[index].nameDriver;
+    }
     this.vehicleSelected = this.lstVehicle[index];
+  }
+
+  handleSelectUser(value: any) {
+    if(this.CreateEditForm.value.activity === 3 || this.CreateEditForm.value.activity === 1){
+      this.isReceiver = false;
+    }else
+    {
+      this.isReceiver = true;
+    }
+    const index = this.lstUserDeport3.findIndex((item: any) => item.fullName === value);
+    if (index < 0) {
+      return;
+    }
+    if(this.isReceiver === true){
+      this.userReciver = this.lstUserDeport3[index];
+    }else
+    {
+      this.userReciver = this.lstUserDeport3[index];
+    }
+    
   }
 
   printE() {
@@ -369,7 +410,6 @@ export class ContainerCreateComponent implements OnInit {
         return lstCheckTD[i].nameType
       }
     }
-    
     return ""
   }
 

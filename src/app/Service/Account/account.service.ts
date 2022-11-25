@@ -33,7 +33,6 @@ export class AccountService {
     return this.httpService.postRequest('Account/VerifyCode',data);
   }
 
-
   getAccountInfo(){
     return this.httpService.getRequest('Account/GetUserProfile');
   }
@@ -42,14 +41,13 @@ export class AccountService {
     return this.httpService.postRequest('Account/updateAvatar',data);
   }
 
-
   getUserInfo() {
     const UserInfo =  JSON.parse(localStorage.getItem('UserInfo')|| 'null');
     return UserInfo;
   }
 
   updateUser(data : any) {
-    return this.httpService.postRequest('Account/UpdateUserProfile', data)
+    return this.httpService.postRequest('Account/UpdateUserProfile', data);
   }
 
   changPassword(data : any){
@@ -71,10 +69,12 @@ export class AccountService {
   }
 
   refreshToken(data : any){
-    return this.httpService.postRequest('Account/RefreshToken',data)
+    return this.httpService.postRequest('Account/RefreshToken',data);
   }
 
-
+  GetUserDeport3(){
+    return this.httpService.getRequest('Account/GetUserDeport3');
+  }
   
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('admin/ManageAccount' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)

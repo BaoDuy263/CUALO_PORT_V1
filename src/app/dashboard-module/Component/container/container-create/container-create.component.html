@@ -263,9 +263,18 @@
             <td style="width: 30%"><b></b></td>
             <td style="width: 30%"><b></b></td>
           </tr>
-          <tr>
-            <td style="width: 30%" ><b>{{vehicleSelected && !isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
-            <td style="width: 30%" ><b>{{vehicleSelected && isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
+          <tr *ngIf="isReceiver === true">
+            <td style="width: 30%"><app-autocomplete *ngIf="lstUserDeport3.length > 0" [data]="lstUserDeport3" [isUser]="true"
+              [valueDefault]="userReciver.fullName" (itemSelected)="handleSelectUser($event)">
+            </app-autocomplete></td>
+            <td style="width: 30%"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+            <td style="width: 30%"><b>{{userCreate}}</b></td>
+          </tr>
+          <tr *ngIf="isReceiver === false">
+            <td style="width: 30%" ><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+             <td style="width: 30%" ><app-autocomplete *ngIf="lstUserDeport3.length > 0" [data]="lstUserDeport3" [isUser]="true"
+              [valueDefault]="userReciver.fullName" (itemSelected)="handleSelectUser($event)">
+            </app-autocomplete></td>
             <td style="width: 30%"><b>{{userCreate}}</b></td>
           </tr>
         </table>

@@ -131,15 +131,7 @@ export class TransactionIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(TransactionPrintfComponent, { width: '100%' });
     dialogRef.componentInstance.transId = id;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (result.statusCode === 200) {
-          this.toastr.showSuccess(result.message);
-          this.Pagingdata(this.PageInfo);
-        }
-        else {
-          this.toastr.showError(result.message);
-        }
-      }
+        this.Pagingdata(this.PageInfo);
     })
   }
 
