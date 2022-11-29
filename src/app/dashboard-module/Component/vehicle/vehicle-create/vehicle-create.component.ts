@@ -5,6 +5,7 @@ import { ProductGroupService } from 'src/app/Service/Product-group/product-group
 import { ProductService } from 'src/app/Service/Product/product.service';
 import { UnitService } from 'src/app/Service/Unit/unit.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { CustomerService } from '../../../../Service/Customer/customer.service'
 
 @Component({
@@ -26,6 +27,10 @@ export class VehicleCreateComponent implements OnInit {
       tonnageDefault: new FormControl('', Validators.required),
       idCardNumber: new FormControl('', Validators.required),
       mediumUnladenWeight: new FormControl('',Validators.required),
+
+      Phone: new FormControl('',Validators.required),
+      customer: new FormControl('',Validators.required),
+      Type: new FormControl('',Validators.required),
     })
   }
 
@@ -41,10 +46,14 @@ export class VehicleCreateComponent implements OnInit {
           tonnageDefault: new FormControl(response.tonnageDefault),
           idCardNumber: new FormControl(response.idCardNumber),
           mediumUnladenWeight: new FormControl(response.mediumUnladenWeight),
+
+          Phone: new FormControl(response.phoneNumber),
+          customer: new FormControl(response.customer),
+          Type: new FormControl(response.type.toString().replace("0","Xe ngoài").replace("1","Nội bộ") ),
         })
       })
     }
-  
+
   }
 
 
@@ -63,9 +72,13 @@ export class VehicleCreateComponent implements OnInit {
   get idCardNumber() { return this.CreateEditForm.get('idCardNumber') }
   get mediumUnladenWeight() { return this.CreateEditForm.get('mediumUnladenWeight') }
 
+  get Phone() { return this.CreateEditForm.get('Phone') }
+  get customer() { return this.CreateEditForm.get('customer') }
+  get Type() { return this.CreateEditForm.get('Type') }
+
   onSubmit() {
     this.submited = true;
-    // console.log(this.CreateEditForm.value)
+     console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.VehicleService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
