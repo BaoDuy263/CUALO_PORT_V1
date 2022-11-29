@@ -91,6 +91,8 @@ export class VehicleIndexComponent implements OnInit {
     tonnageDefault: '',
     idCardNumber: '',
     mediumUnladenWeight: '',
+    Phone:'',
+    Type:'',
   };
 
   openEdit(id: number) {

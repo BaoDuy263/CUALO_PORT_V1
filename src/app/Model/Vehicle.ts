@@ -35,6 +35,8 @@ export interface VehicleCreate {
   tonnageDefault: string,
   idCardNumber: string,
   mediumUnladenWeight: string,
+  Phone: string,
+  Type: string,
 }
 
 
@@ -44,10 +46,11 @@ export interface VehicleEdit {
   licensePlates: string,
   rfidcode: string,
   nameDriver: string,
-  phoneNumber: string,
+  Phone: string,
   customer: string,
   tonnageDefault: string,
   idCardNumber: string,
   mediumUnladenWeight: string,
-}``
+  Type: string,
+}
 

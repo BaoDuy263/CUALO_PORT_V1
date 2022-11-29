@@ -17,6 +17,10 @@ export class VehicleCreateComponent implements OnInit {
   submited: boolean = false;
   listProductGroup: any=[];
   listUnit: any=[];
+  listType: any=[
+    {Id:0, Name:'Xe ngoài'},
+    {Id:1, Name:'Nội bộ'},
+  ]
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
   constructor(private VehicleService: VehicleService, public dialogRef: MatDialogRef<VehicleCreateComponent>) {
@@ -36,8 +40,13 @@ export class VehicleCreateComponent implements OnInit {
 
   ngOnInit(): void {
     //Edit
+
+    // this.CreateEditForm = new FormGroup({
+    //   Type: new FormControl(0 )
+    // });
     if (this.customerId && this.isCreate === false) {
       this.VehicleService.GetDetail(this.customerId).subscribe(response => {
+        console.log(response);
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
           licensePlates: new FormControl(response.licensePlates),
@@ -49,7 +58,8 @@ export class VehicleCreateComponent implements OnInit {
 
           Phone: new FormControl(response.phoneNumber),
           customer: new FormControl(response.customer),
-          Type: new FormControl(response.type.toString().replace("0","Xe ngoài").replace("1","Nội bộ") ),
+          //Type: new FormControl(response.type.toString().replace("0","Xe ngoài").replace("1","Nội bộ") ),
+          Type: new FormControl(response.type ),
         })
       })
     }
@@ -78,8 +88,7 @@ export class VehicleCreateComponent implements OnInit {
 
   onSubmit() {
     this.submited = true;
-     console.log(this.CreateEditForm.value)
-    if (this.CreateEditForm.valid && this.isCreate === true) {
+    if ( this.isCreate === true) {
       this.VehicleService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       });
