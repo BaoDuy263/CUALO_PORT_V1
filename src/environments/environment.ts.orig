@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
   // urlApi : 'https://45.124.94.191:8019/api/'
   appCode: 'CCLO',
   clientId: 'CCLO',
@@ -12,9 +11,7 @@ export const environment = {
   // apiLocal: 'https://localhost:5802',
   apiUrl: 'https://45.124.94.191:5001',
   CCLOApi: 'https://cclo.phanmem.one'
-=======
   urlApi : 'https://seaportwebapi.phanmem.one'
->>>>>>> f45a13be4b1b0cd693fab04290e58482d1d2f45b
 
 };
 
