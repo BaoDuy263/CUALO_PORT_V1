@@ -275,9 +275,13 @@ export class ContainerCreateComponent implements OnInit {
 
   getVehicle(licensePlates: string) {
     const endCodeUriLP = encodeURI(licensePlates);
-    this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
-      this.vehicleSelected = res;
-    })
+
+    setTimeout(() => {
+      this.vehicleService.GetByLicensePlates(endCodeUriLP).subscribe(res => {
+        this.vehicleSelected = res;
+      })
+    }, 300);
+    
   }
 
 
