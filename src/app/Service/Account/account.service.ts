@@ -97,6 +97,10 @@ export class AccountService {
       }))
   }
 
+  GetUserByUserName(username: String) {
+    return this.httpService.getRequest('Account/GetUserByUserName/'+username);
+  }
+
   Update(AccountEdit : AccountEdit)
   {
     return this.httpService.putRequest('admin/ManageAccount',AccountEdit)

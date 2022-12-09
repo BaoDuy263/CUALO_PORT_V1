@@ -5,6 +5,7 @@ import { TransactionService } from '../../../../Service/transaction/transaction.
 import { activitiesData, lstSide, lstStatusData, lstTypeContData, lstTypeDelivery, lstState, lstStep, lstCheckTD } from '../../../../utils/helper/constant';
 import { convertHelper } from '../../../../utils/helper/convertHelper'
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { AccountService } from 'src/app/Service/Account/account.service'
 @Component({
   selector: 'app-transaction-printf',
   templateUrl: './transaction-printf.component.html',
@@ -25,9 +26,11 @@ export class TransactionPrintfComponent implements OnInit {
   vehicleSelected: any = null;
   displayStyle: string = '';
   isReceiver : boolean =  false;
+  userCreate: string = '';
   constructor(private transactionService: TransactionService,
     public dialogRef: MatDialogRef<TransactionPrintfComponent>,
     public convertHelper: convertHelper,
+    private accountService: AccountService,
     private vehicleService: VehicleService) { 
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
@@ -111,6 +114,7 @@ export class TransactionPrintfComponent implements OnInit {
   ngOnInit(): void {
     this.transactionService.GetDetailTrans(this.transId).subscribe(response => {
       this.getVehicle(response.licensePlates);
+      this.getUserCreate(response.createdBy);
       if(response.activity === 3 || response.activity === 1){
         this.isReceiver = false;
       }
@@ -200,6 +204,18 @@ export class TransactionPrintfComponent implements OnInit {
     } else {
       return "F"
     }
+  }
+
+  getUserCreate(userName: string){
+      this.accountService.GetUserByUserName(userName).subscribe(data => {
+          if(data){
+             this.userCreate = data.fullName
+          }
+          else
+          {
+            this.userCreate = userName;
+          }
+      })
   }
 
   printE() {
