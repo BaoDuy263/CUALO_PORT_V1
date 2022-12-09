@@ -9,6 +9,7 @@
         </div>
       </ng-template>
     </div>
+    
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="mb-3">
@@ -54,7 +55,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Kích thước container</label>
-          <input type="number" class="form-control" formControlName="size">
+          <input type="text" class="form-control" formControlName="size">
         </div>
       </div>
       <div class="col-lg-4">
@@ -189,7 +190,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày cập bến</label>
-          <input type="text" class="form-control" formControlName="landingDate">
+          <input type="datetime-local" class="form-control" formControlName="landingDate">
         </div>
       </div>
     </div>
@@ -214,18 +215,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Thời gian vào</label>
-          <input type="datetime-local" class="form-control" formControlName="checkIn">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Thời gian ra</label>
-          <input type="datetime-local" class="form-control" formControlName="checkOut">
-        </div>
-      </div>
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Bước hiện tại</label>
@@ -421,7 +410,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-4">
         <div class="mb-3">
           <app-autocomplete *ngIf="lstVehicle.length > 0" [data]="lstVehicle" (itemSelected)="handleSelect($event)">
@@ -436,7 +425,7 @@
         <label for="exampleFormControlInput1" class="form-label">Tên công ty</label>
         <input type="text" class="form-control" [value]="vehicleSelected ? vehicleSelected.customer : ''">
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="col-lg-12">
         <div class="mb-3">
@@ -445,9 +434,11 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-end mt-4">
-      <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
-      <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+    <div class="row" style="padding-bottom: 100px;">
+      <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-primary" type="submit">Ghi nhận</button>
+        <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+      </div>
     </div>
   </form>
 </div>
