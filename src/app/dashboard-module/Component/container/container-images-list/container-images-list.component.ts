@@ -58,17 +58,39 @@ export class ContainerImagesListComponent implements OnInit {
       });
   }
 
+  btnDowLoad_Click() {
+    var strImages = '';
+    this.listImages.forEach((item: any) => {
+      strImages +=
+        item.urlImage.replace('/Upload/ImagesContService/', '') + ';';
+    });
+    var strImagesInput = strImages.slice(0, -1);
+
+    // ContImagesDowload dataInput : ContImagesDowload;
+    // dataInput.trListImages = strImagesInput;
+    strImagesInput = "caucang1_828540575.jpeg;caucang1_1511236866.jpeg;caucang1_1886125861.jpeg";
+    this.containerService.ImagesDowload({ListImages: strImagesInput}).subscribe((data) => {
+      //console.log(data);
+      if(data.statusCode==200)
+        window.open(data.urlPublic, "_blank");
+    //  this.listImages = data.data;
+     // this.loadDataImages();
+    });
+  }
+
+
   btnSeach_Click() {
     this.loadDataImages();
   }
   onSearchFromDate(e: any) {
     this.ImagesContSeach.FromDate = e;
-    this.loadDataImages();
+   // this.loadDataImages();
   }
 
   onSearchToDate(e: any) {
+
     this.ImagesContSeach.ToDate = e;
-    this.loadDataImages();
+   // this.loadDataImages();
   }
 
   ddlContChange(e: any) {
@@ -76,6 +98,7 @@ export class ContainerImagesListComponent implements OnInit {
   }
 
   ddlAreaChange(e: any) {
+    this.AreaCode = e.target.value;
     this.loadDataImages();
   }
 

@@ -26,6 +26,11 @@ export class ContainerService {
     return this.httpService.postRequest("Container", data);
   }
 
+  ImagesDowload(data: any) {
+    return this.httpService.postRequest(`ContImages/CreateZip`, data);
+  }
+
+
   Update(data: ContainerCreate) {
     return this.httpService.postRequest("Container/Update", data);
   }
