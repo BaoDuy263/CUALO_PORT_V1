@@ -49,6 +49,7 @@ export interface VehicleEdit {
   Phone: string,
   customer: string,
   tonnageDefault: string,
+  phoneNumber: string,
   idCardNumber: string,
   mediumUnladenWeight: string,
   Type: string,
