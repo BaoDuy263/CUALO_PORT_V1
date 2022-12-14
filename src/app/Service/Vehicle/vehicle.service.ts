@@ -35,18 +35,25 @@ export class VehicleService {
 
   Insert(mVehicleCreate: VehicleCreate) {
     var _Input = {
-        "licensePlates": mVehicleCreate.licensePlates,
-        "rfidcode": mVehicleCreate.rfidcode == null ? '' : mVehicleCreate.rfidcode,
-        "nameDriver": mVehicleCreate.nameDriver == null ? '' : mVehicleCreate.nameDriver,
-        "customer": mVehicleCreate.customer == null ? '' : mVehicleCreate.customer,
-        "phoneNumber": mVehicleCreate.phoneNumber == null ? '' : mVehicleCreate.phoneNumber,
-        "tonnageDefault": mVehicleCreate.tonnageDefault == "" ? 0 : mVehicleCreate.tonnageDefault,
-        "idCardNumber": mVehicleCreate.idCardNumber == null ? '' : mVehicleCreate.idCardNumber,
-        "mediumUnladenWeight": mVehicleCreate.mediumUnladenWeight == "" ? 0 : mVehicleCreate.mediumUnladenWeight,
-        "lastContainer": '',
-        "type": mVehicleCreate.Type == null ? '0' : mVehicleCreate.Type,
+      licensePlates: mVehicleCreate.licensePlates,
+      rfidcode: mVehicleCreate.rfidcode == null ? '' : mVehicleCreate.rfidcode,
+      nameDriver:
+        mVehicleCreate.nameDriver == null ? '' : mVehicleCreate.nameDriver,
+      customer: mVehicleCreate.customer == null ? '' : mVehicleCreate.customer,
+      phoneNumber:
+        mVehicleCreate.phoneNumber == null ? '' : mVehicleCreate.phoneNumber,
+      tonnageDefault:
+        mVehicleCreate.tonnageDefault == '' ? 0 : mVehicleCreate.tonnageDefault,
+      idCardNumber:
+        mVehicleCreate.idCardNumber == null ? '' : mVehicleCreate.idCardNumber,
+      mediumUnladenWeight:
+        mVehicleCreate.mediumUnladenWeight == ''
+          ? 0
+          : mVehicleCreate.mediumUnladenWeight,
+      lastContainer: '',
+      type: mVehicleCreate.Type == null ? '0' : mVehicleCreate.Type,
     };
-  //  console.log(JSON.stringify(_Input));
+    //  console.log(JSON.stringify(_Input));
     // alert(JSON.stringify(_Input));
     return this.httpService.postRequest('Vehicle/Create', _Input).pipe(
       map((data: any) => {
@@ -63,24 +70,19 @@ export class VehicleService {
     );
   }
 
-  Update(VehicleEdit: VehicleEdit) {
+  Update(mVehicleCreate: VehicleEdit) {
     var _Input = {
-      id: VehicleEdit.id,
-      licensePlates:
-        VehicleEdit.licensePlates == null ? '' : VehicleEdit.licensePlates,
-      rfidcode: VehicleEdit.rfidcode == null ? '' : VehicleEdit.rfidcode,
-      nameDriver: VehicleEdit.nameDriver == null ? '' : VehicleEdit.nameDriver,
-      tonnageDefault:
-        VehicleEdit.tonnageDefault == null ? '0' : VehicleEdit.tonnageDefault,
-      idCardNumber:
-        VehicleEdit.idCardNumber == null ? '' : VehicleEdit.idCardNumber,
-      mediumUnladenWeight:
-        VehicleEdit.mediumUnladenWeight == null
-          ? ''
-          : VehicleEdit.mediumUnladenWeight,
-      Cusstomer: VehicleEdit.customer == null ? '' : VehicleEdit.customer,
-      Phone: VehicleEdit.Phone == null ? '' : VehicleEdit.Phone,
-      Type: VehicleEdit.Type == null ? '' : VehicleEdit.Type,
+      Id: mVehicleCreate.id,
+      licensePlates: mVehicleCreate.licensePlates,
+      rfidcode: mVehicleCreate.rfidcode == null ? '' : mVehicleCreate.rfidcode,
+      nameDriver:  mVehicleCreate.nameDriver == null ? '' : mVehicleCreate.nameDriver,
+      Cusstomer: mVehicleCreate.customer == null ? '' : mVehicleCreate.customer,
+      Phone: mVehicleCreate.Phone == null ? '' : mVehicleCreate.Phone,
+       tonnageDefault:mVehicleCreate.tonnageDefault == "" ? 0 : mVehicleCreate.tonnageDefault,
+       idCardNumber:mVehicleCreate.idCardNumber == null ? '' : mVehicleCreate.idCardNumber,
+       mediumUnladenWeight: mVehicleCreate.mediumUnladenWeight == "" ? 0 : mVehicleCreate.mediumUnladenWeight,
+       lastContainer: '',
+       type:  mVehicleCreate.Type == null ? '0' : mVehicleCreate.Type.toString(),
     };
     console.log(JSON.stringify(_Input));
     return this.httpService.putRequest('Vehicle/Update', _Input).pipe(
