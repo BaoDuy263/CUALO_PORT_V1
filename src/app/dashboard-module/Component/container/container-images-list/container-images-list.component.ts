@@ -59,6 +59,13 @@ export class ContainerImagesListComponent implements OnInit {
   }
 
   btnDowLoad_Click() {
+
+    if(this.listImages.length == 0)
+      {
+        alert ('Chưa có ảnh để tải, vui lòng chọn tìm kiếm !');
+        return;
+      }
+
     var strImages = '';
     this.listImages.forEach((item: any) => {
       strImages +=
@@ -68,7 +75,7 @@ export class ContainerImagesListComponent implements OnInit {
 
     // ContImagesDowload dataInput : ContImagesDowload;
     // dataInput.trListImages = strImagesInput;
-    strImagesInput = "caucang1_828540575.jpeg;caucang1_1511236866.jpeg;caucang1_1886125861.jpeg";
+   // strImagesInput = "caucang1_828540575.jpeg;caucang1_1511236866.jpeg;caucang1_1886125861.jpeg";
     this.containerService.ImagesDowload({ListImages: strImagesInput}).subscribe((data) => {
       //console.log(data);
       if(data.statusCode==200)
