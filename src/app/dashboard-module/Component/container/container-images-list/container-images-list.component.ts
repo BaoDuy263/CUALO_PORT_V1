@@ -59,6 +59,13 @@ export class ContainerImagesListComponent implements OnInit {
   }
 
   btnDowLoad_Click() {
+
+    if(this.listImages.length == 0)
+      {
+        alert ('Chưa có ảnh để tải, vui lòng chọn tìm kiếm !');
+        return;
+      }
+
     var strImages = '';
     this.listImages.forEach((item: any) => {
       strImages +=
