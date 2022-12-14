@@ -52,6 +52,10 @@ export interface ContainerActive {
   note: string
 }
 
+export interface ContImagesDowload {
+  trListImages: string
+}
+
 export interface ContainerCreate{
     code: string,
     type: string,
@@ -112,6 +116,8 @@ export interface ContImage {
   note: string,
   createdOn: Date,
 }
+
+
 
 export interface lstContainer {
   currentPage: number,

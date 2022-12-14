@@ -1,4 +1,4 @@
-import { Container, ContainerActive, ContainerCreate, ContImage } from './../../Model/Container';
+import { Container, ContainerActive, ContainerCreate, ContImage, ContImagesDowload } from './../../Model/Container';
 import { Injectable } from '@angular/core';
 import { CommonserviceService } from '../CommonService/commonservice.service';
 import { BehaviorSubject } from 'rxjs';
@@ -79,6 +79,10 @@ export class ContainerService {
   ContainerImageEdit(data: ContainerActive) {
     console.log(data);
     return this.httpService.postRequest("Container/containers-images-edit", data)
+  }
+
+  ImagesDowload(data: any) {
+    return this.httpService.postRequest(`ContImages/CreateZip`, data);
   }
 
 

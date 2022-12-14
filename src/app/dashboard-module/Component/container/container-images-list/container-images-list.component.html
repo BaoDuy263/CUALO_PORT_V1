@@ -14,34 +14,37 @@
       <option value="tramcan">Trạm cân</option>
     </select>
   </div>
-  <div class="col-sm-3" style="display: table-cell;">
+  <div class="col-sm-4" style="display: table-cell;">
     <input class="col-sm-5" type="text" style="width: 45%;float: left;margin-right: 15px;" class="form-control"
       placeholder="Từ ngày" onfocus="(this.type='date')" [ngModel]="ImagesContSeach.FromDate"
       (ngModelChange)="onSearchFromDate($event)">
-    <input class="col-sm-5" type="text" style="width: 45%;float: right;" class="form-control"
-      placeholder="Đến ngày" onfocus="(this.type='date')" [ngModel]="ImagesContSeach.ToDate"
-      (ngModelChange)="onSearchToDate($event)">
+    <input class="col-sm-5" type="text" style="width: 45%;float: right;" class="form-control" placeholder="Đến ngày"
+      onfocus="(this.type='date')" [ngModel]="ImagesContSeach.ToDate" (ngModelChange)="onSearchToDate($event)">
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="display: none;">
     <ng-select [disabled]="CheckedImagesEmtry" [(ngModel)]="selectedCont" (click)="ddlContChange($event)">
       <ng-option *ngFor="let item of lstCont" [value]="item.contNo">{{item.contNo}}</ng-option>
     </ng-select>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <div class="form-group " style="margin-top: 10px;">
-      <input type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
-        (change)="checkSelected($event)">
+      <input type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;" (change)="checkSelected($event)">
       <label for="txtStatus">Chưa gắn Container</label>
     </div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <button style="float: right;" class="btn btn-outline-secondary" type="button" id="button-addon3"
+      (click)="btnDowLoad_Click()">Tải ảnh</button>
+    <button style="float: right;margin-right: 10px;" class="btn  btn-success" type="button" id="button-addon3"
       (click)="btnSeach_Click()">Tìm
       kiếm</button>
   </div>
 </div>
 <hr>
 <div style="height: 524px; overflow-y: scroll;    overflow-x: hidden;">
+  <div *ngIf="listImages.length == 0" style="text-align: center; line-height: 50px;">
+    Chưa có dữ liệu !
+  </div>
   <div *ngFor="let item of listImages; index as i">
     <div style="float: left;width: 25%;;">
       <div

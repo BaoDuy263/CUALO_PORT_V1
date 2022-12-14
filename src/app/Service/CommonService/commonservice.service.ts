@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CommonserviceService {
 
-  _urlApi: string = environment.urlApi + '/api/'; 
+  _urlApi: string = environment.urlApi + '/api/';
   //  _urlApi: string = 'http://localhost:5000/apiiiiii/';
   //_urlApi: string = 'http://localhost:7611/api/';
 
