@@ -71,6 +71,8 @@ export class ContainerIndexComponent implements OnInit {
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate).subscribe(data => {
       this.loading = false;
       this.lstdata = data;
+      console.log('dddđ', data);
+      
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
@@ -86,7 +88,7 @@ export class ContainerIndexComponent implements OnInit {
       height: '800px',
     });
     dialogRef.componentInstance.containerCode = this.containerCode;
-    dialogRef.componentInstance.isCreate = this.isCreate;
+    dialogRef.componentInstance.isCreate = false;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {
@@ -114,6 +116,7 @@ export class ContainerIndexComponent implements OnInit {
 
   openCreate() {
     const dialogRef = this.dialog.open(ContainerEditComponent);
+    dialogRef.componentInstance.isCreate = true;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.statusCode === 200) {

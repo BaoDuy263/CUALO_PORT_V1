@@ -9,7 +9,8 @@ import { TransactionService } from 'src/app/Service/transaction/transaction.serv
 import { PerformCreateComponent } from '../../booking-customer/perform-create/perform-create.component';
 import { PerformDeleteComponent } from '../../booking-customer/perform-delete/perform-delete.component';
 import { convertHelper } from '../../../../utils/helper/convertHelper';
-
+import { lstStep } from '../../../../utils/helper/constant';
+import { TransactionPrintfComponent } from '../transaction-printf/transaction-printf.component'
 @Component({
   selector: 'app-transaction-index',
   templateUrl: './transaction-index.component.html',
@@ -20,6 +21,7 @@ export class TransactionIndexComponent implements OnInit {
   transId: number = 0;
   loading: boolean = false;
   itemPrint: TransactionEIR | null = null;
+  lstStep = lstStep;
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -40,7 +42,8 @@ export class TransactionIndexComponent implements OnInit {
     Keyword: '',
     pageSize: 10,
     startDate: '',
-    endDate: ''
+    endDate: '',
+    step : ''
   }
   constructor(private transactionService: TransactionService, public dialog: MatDialog,
     private toastr: ToastrcustomService,
@@ -53,7 +56,7 @@ export class TransactionIndexComponent implements OnInit {
   Pagingdata(PageInfo: any) {
     this.loading = true;
     this.transactionService.GetAllTrans(this.PageInfo.page, this.PageInfo.Keyword,
-      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
+      this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate,this.PageInfo.step)
       .subscribe(data => {
         this.loading = false;
         this.lstdata = data;
@@ -78,6 +81,12 @@ export class TransactionIndexComponent implements OnInit {
 
   endDate(e: any) {
     this.PageInfo.endDate = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
+
+  fillStep(e: any) {
+    this.PageInfo.step = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
   }
@@ -118,10 +127,19 @@ export class TransactionIndexComponent implements OnInit {
     });
   }
 
+  openPrint(id: number) {
+    const dialogRef = this.dialog.open(TransactionPrintfComponent, { width: '100%' });
+    dialogRef.componentInstance.transId = id;
+    dialogRef.afterClosed().subscribe(result => {
+        this.Pagingdata(this.PageInfo);
+    })
+  }
+
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     pageOfItems.startDate = this.PageInfo.startDate;
     pageOfItems.endDate = this.PageInfo.endDate;
+    pageOfItems.step = this.PageInfo.step;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
@@ -132,7 +150,8 @@ export class TransactionIndexComponent implements OnInit {
       Keyword: '',
       pageSize: 10,
       startDate: '',
-      endDate: ''
+      endDate: '',
+      step: ''
     }
     this.Pagingdata(this.PageInfo);
   }

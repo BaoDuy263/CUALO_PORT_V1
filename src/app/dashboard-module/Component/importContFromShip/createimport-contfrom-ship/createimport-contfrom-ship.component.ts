@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-// import * as _ from 'lodash';
+import { Item } from '../../../../Model/multidropdown';
 import { ImportContFromShipService } from 'src/app/Service/importContFromShip/import-cont-from-ship.service';
 
 @Component({
@@ -19,8 +19,9 @@ export class CreateimportContfromShipComponent implements OnInit {
   submited: boolean = false;
   isCreate: boolean = true;
   loadding: boolean = false;
+  LocationSelect: string = "";
   @Input() Cont: string = '';
-
+  @Input() Location:string = '';
   lstContainer = [
     { id: "20'DC", name: 'Container Khô 20 feet (20DC)' },
     { id: "20'OT", name: 'Container Khô 20 feet hở nóc (20Ot)' },
@@ -28,6 +29,12 @@ export class CreateimportContfromShipComponent implements OnInit {
     { id: "40'OT", name: 'Container Khô 40 feet hở nóc(400C)' },
   ];
 
+  showSearch = true;
+  showError = false;
+  showAll = false;
+  showStatus = true;
+  items: Item[] = [];
+  currentSelectedItem!: Item;
   lstDirection = [
     { id: 5, name: 'Lấy Nguyên' },
     { id: 6, name: 'Rút Ruột' },
@@ -49,7 +56,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       SealNo: new FormControl(),
       Commodity: new FormControl(),
       ReturnPlan: new FormControl(null),
-      Location: new FormControl(),
+      Location: new FormControl(''),
       Book: new FormControl(),
       ReturnAddress: new FormControl(),
       StatusContainer: new FormControl(),
@@ -71,7 +78,6 @@ export class CreateimportContfromShipComponent implements OnInit {
   get ContNo() {
     return this.CreateEditForm.get('ContNo');
   }
-
   get Activity() {
     return this.CreateEditForm.get('Activity');
   }
@@ -100,6 +106,7 @@ export class CreateimportContfromShipComponent implements OnInit {
       });
     }
     this.GetLocatonFree();
+    this.GetLocationSelect();
   }
 
 
@@ -110,11 +117,29 @@ export class CreateimportContfromShipComponent implements OnInit {
     })
   }
 
+  GetLocationSelect(){
+    this.importContFromShipService.GetLocationSelect().subscribe(data=> {
+      this.items = data;
+    })
+  }
+
+  onItemChange(item: Item): void {
+
+    if(!item.checked){
+      this.CreateEditForm.value.Location = null;
+    }
+    else
+    {
+      this.LocationSelect = item.name;
+    }
+  }
+
   onSubmit() {
     this.submited = true;
     this.CreateEditForm.value.Activity = parseInt(
       this.CreateEditForm.value.Activity
     );
+    this.CreateEditForm.value.Location = this.LocationSelect === "" ? this.CreateEditForm.value.Location : this.LocationSelect; 
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.importContFromShipService
         .Insert(this.CreateEditForm.value)
@@ -135,6 +160,7 @@ export class CreateimportContfromShipComponent implements OnInit {
     this.CreateEditForm.value.Activity = parseInt(
       this.CreateEditForm.value.Activity
     );
+    this.CreateEditForm.value.Location = this.LocationSelect; 
     this.importContFromShipService
     .ImportAndUpdate(this.CreateEditForm.value)
     .subscribe((response) => {

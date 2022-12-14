@@ -221,7 +221,6 @@ export class CreateImportContFromPortComponent implements OnInit {
         licensePlates: new FormControl(response.licensePlates),
         phoneNumberDriver: new FormControl(response.phoneNumberDriver),
       })
-      console.log('this.CreateEditForm',this.CreateEditForm.value.lastImportDate);
     });
   }
 

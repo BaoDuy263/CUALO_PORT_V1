@@ -7,7 +7,7 @@ import { ContainerService } from 'src/app/Service/container/container.service';
 import { BookingContEmptyCreateComponent } from '../../booking-cont-empty/booking-cont-empty-create/booking-cont-empty-create.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ContainerMapsListComponent } from '../container-maps-list/container-maps-list.component';
-import { ContainerMapsInfoComponent } from '../container-maps-info/container-maps-info.component';
+import { ContainerMapsInfoComponent } from '../container-detail/container-maps-info/container-maps-info.component';
 
 @Component({
   selector: 'app-container-maps',
@@ -114,7 +114,10 @@ export class ContainerMapsComponent implements OnInit {
     private mContainerService: ContainerService,
     public dialog: MatDialog,
   ) {
+    console.log(111111111111111111);
+
     this.listCont();
+    
   }
 
   ngOnInit(): void {}
@@ -128,6 +131,8 @@ export class ContainerMapsComponent implements OnInit {
     this.mContainerService.MapYar3List().subscribe((data) => {
      // console.log(data.item1);
       this.listContYarn3 = data.item1;
+      console.log(this.listContYarn3);
+      
       this.displayListCont(this.listContYarn3);
     });
   }

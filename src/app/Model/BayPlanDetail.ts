@@ -119,7 +119,7 @@ export interface PortToShipRecord
     loaiCont : number,
     contNo : string,
     dateCheckOut: Date,
-    dateUpdate: Date,
+    lastExportDate: Date,
     step : number,
     activity : number
 }

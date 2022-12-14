@@ -1,0 +1,279 @@
+<style type="text/css" media="print">
+    @page {
+      size: auto;
+      /* auto is the initial value */
+      margin: 0;
+      /* this affects the margin in the printer settings */
+    }
+  
+  </style>
+  <div class="container-lg container-create">
+    <form [formGroup]="CreateEditForm" class="form-print">
+      <div id="eir">
+        <div class="eir-line1">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 30%">
+                <img src="../../../../../assets/img/logo-cualo-3.jpg" alt="" width="100px">
+              </td>
+              <td style="width: 30%;text-align: center;">
+                <p><b>PHIẾU GIAO NHẬN CONTAINER</b></p>
+                <p>EQUIPMENT INTERCHANGE RECEIPT</p>
+              </td>
+              <td style="width: 30%">
+                <p style="display: flex; align-items: center;">Số/No:
+                  <!-- <span style="margin-left: 10px">{{transNo}}</span> -->
+                </p>
+                <p style="display: flex; align-items: center;">Vận đơn/Bill No:
+                  <input type="text" class="form-control input-eir" formControlName="bill"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="eir-line2 eir-table">
+          <table style="width: 100%; border: 1px solid black;">
+            <tr>
+              <td colspan="2" style="border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Chủ hàng</b>/Customer:
+                  <input type="text" class="form-control" formControlName="customer"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td colspan="2" style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Hãng tàu</b>/operator:
+                  <span style="margin-left: 10px">VIETSUN</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Số Container</b>/Cont. No:
+                  <input type="text" class="form-control" formControlName="contNo"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................"
+                    readonly>
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Loại hàng</b>/Commodity:
+                  <input type="text" class="form-control" formControlName="commodity"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td colspan="2" style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Vị trí</b>/Location:
+                  <input type="text" class="form-control" formControlName="location"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 20%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Số tham chiếu</b>/Ref:
+                  <input type="text" class="form-control" formControlName="ref"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 20%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Phương án</b>/Activity:
+                  <input type="text" class="form-control" formControlName="activity"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  <label>PTGN: </label> <span>{{this.CreateEditForm.value.typeDelivery}}</span>
+                </p>
+              </td>
+              <td style="width: 20%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Cảng đến</b>/POD:
+                  <input type="text" class="form-control" formControlName="pod"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="eir-line3 eir-table" style="margin-top:10px;">
+          <table style="width: 100%; border: 1px solid black;">
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Tình trạng</b>/Status:
+                  <span style="margin-left: 10px; font-weight: bold">{{this.CreateEditForm.value.status}}</span>
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Mã cont</b>/Iso:
+                  <input type="text" class="form-control" formControlName="iso"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Mã nguy hiểm</b>/IMDG:
+                  <input type="text" class="form-control" formControlName="imdg"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Loại Cont</b>/Type:
+                  <input type="text" class="form-control" formControlName="typeCont"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Nhóm hàng</b>/Cargo type:
+                  <input type="text" class="form-control" formControlName="cargoType"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Niêm chì hải quan</b>/Custom seal:
+                  <input type="text" class="form-control" formControlName="seal"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Kích cỡ</b>/Size:
+                  <select class="form-control" formControlName="size"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                    <option *ngFor="let t of lstTypeCont" [ngValue]="t">{{t}}</option>
+                  </select>
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Chiều cao</b>/Height:
+                  <input type="text" class="form-control" formControlName="height"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Niêm chì 1</b>/Seal 1:
+                  <input type="text" class="form-control" formControlName="seal1"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Trọng lượng</b>/Weight:
+                  <input type="number" class="form-control" formControlName="weight"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Nhiệt độ</b>/Temperature:
+                  <input type="text" class="form-control" formControlName="temparature"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Niêm chì 2</b>/Seal 2:
+                  <input type="text" class="form-control" formControlName="seal2"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Độ thông gió</b>/Ventilation:
+                  <input type="text" class="form-control" formControlName="ventilation"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Cont. Đặc biệt</b>/OOG:
+                  <input type="text" class="form-control" formControlName="oog"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+              <td style="width: 30%; border: 1px solid black;">
+                <p style="display: flex; align-items: center; margin: 0;"><b>Nơi trả rỗng</b>/Emp. Return place:
+                  <input type="text" class="form-control" formControlName="returnPlace"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <p>* Nếu không ghi chú, Container được coi giao nhận trong tình trạng tốt (if there is no remark, Container is
+          considered to be in good condition)</p>
+        <div class="eir-line4">
+          <table style="width: 100%">
+            <tr>
+              <td style="width: 90%" class="d-flex flex-column">
+                <p><b>Tình trạng cont</b>/Container Status:
+                  <textarea type="text" class="form-control" formControlName="statusContainer"
+                    style="border: none; padding: 0; width: 100%; margin-left: 10px;" rows="10"
+                    placeholder="................"></textarea>
+                </p>
+              </td>
+              <td style="width: 50%">
+                <p><b>THÔNG TIN TÀU-Vessel details:</b></p>
+                <div style="display: flex;">
+                  <div style="display: flex; align-items: center;"><b>Tên tàu</b>/Vessel:
+                    <input type="text" class="form-control" formControlName="vessel"
+                      style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  </div>
+                  <div style="display: flex; align-items: center;"><b>Chuyến</b>/Voyage:
+                    <input type="text" class="form-control" formControlName="voyage"
+                      style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                  </div>
+                </div>
+                <p style="display: flex; align-items: center;"><b>Cập bến ngày</b>/Arrival:
+                  <input type="datetime-local" class="form-control" formControlName="landingDate"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+                <p style="display: flex; align-items: center;"><b>THÔNG TIN PHƯƠNG TIỆN VẬN CHUYỂN - Transportator
+                    details</b>
+                </p>
+                <p style="display: flex; align-items: center;"><b>Phương tiện vận chuyển</b>/Trans type
+                  <input type="text" class="form-control" formControlName="transType"
+                    style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+                <p style="display: flex; align-items: center;"><b>Công ty vận chuyển</b>/Trans com:
+                  <span style="padding-left: 10px;">{{vehicleSelected ? vehicleSelected.customer : ''}}</span>
+                </p>
+                <p style="display: flex; align-items: center;"><b>Số xe</b>/Plate:
+                  <input type="text" class="form-control" formControlName="licensePlates"
+                  style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
+                </p>
+                <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
+                  <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckIn) | date:  'dd/MM/yyyy HH:mm' }}</span>
+                </p>
+                <p style="display: flex; align-items: center;"><b>Thời gian ra</b>/Check out:
+                  <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckOut) | date:  'dd/MM/yyyy HH:mm' }}</span>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="eir-line5">
+          <table style="width: 100%; text-align: center;">
+            <tr>
+              <td style="width: 30%;"><b>BÊN GIAO (Deliver)</b></td>
+              <td style="width: 30%"><b>BÊN NHẬN (Receiver)</b></td>
+              <td style="width: 30%"><b>NGƯỜI LẬP PHIẾU</b></td>
+            </tr>
+            <tr>
+              <td style="width: 30%; height: 50px;"><b></b></td>
+              <td style="width: 30%"><b></b></td>
+              <td style="width: 30%"><b></b></td>
+            </tr>
+            <tr>
+              <td style="width: 30%" ><b>{{vehicleSelected && !isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
+              <td style="width: 30%" ><b>{{vehicleSelected && isReceiver ? vehicleSelected.nameDriver : ''}}</b></td>
+              <td style="width: 30%"><b>{{userCreate}}</b></td> 
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end list-button" [ngClass]="[displayStyle]">
+        <div class="group-button" style="margin-right: 10px">
+          <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
+          <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Đóng</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -1,11 +1,23 @@
-<form class="example-form">
+<form class="example-form" *ngIf="isUser === false"> 
   <mat-form-field class="example-full-width" appearance="fill">
     <input type="text" aria-label="Number" matInput [formControl]="myControl"
       [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" >
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option.licensePlates">
         {{option.licensePlates}} - {{option.nameDriver}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </form>
+<form class="example-form" *ngIf="isUser === true" > 
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input type="text" style="text-align: center;font-weight: bold;font-size: 12px;background-color: #e2e1e1;" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.fullName">
+        {{option.fullName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+

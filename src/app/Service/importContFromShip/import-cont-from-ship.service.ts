@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import  { CommonserviceService } from  '../CommonService/commonservice.service';
 import { BayPlanPaging,BayPlanCreate,BayPlanUpdate, PortToShipPaging, PortToShipCreate, PortToShipUpdate } from '../../Model/BayPlanDetail';
 import { BookingPlanPaging } from 'src/app/Model/BookingPlan';
+import { map } from 'rxjs';
+import { Item } from 'src/app/Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,10 @@ export class ImportContFromShipService {
     return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DowloadTemplate');
   }
 
+  DowloadTemplatePortTH() {
+    return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DowloadTemplateTH');
+  }
+
   DownLoadFileShiptoPort(path: string) {
     return this.httpService.DowloadRequest('PlanImportFromShiptoPort/DownLoadFile/' + path);
   }
@@ -38,6 +44,10 @@ export class ImportContFromShipService {
 
   ImportFromShiptoPort(BayPlan: any) {
     return this.httpService.uploadRequest('PlanImportFromShiptoPort/ImportFromShoptoPort',BayPlan)
+  }
+
+  ImportFromShiptoPortTH(BayPlan: any) {
+    return this.httpService.uploadRequest('PlanImportFromShiptoPort/ImportFromShoptoPortTH',BayPlan)
   }
 
 
@@ -61,8 +71,12 @@ export class ImportContFromShipService {
     return this.httpService.getRequest('PlanImportFromShiptoPort/GetDetail/' + contNo);
   }
 
-  Delete(id: number){
-    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?Id=' + id);
+  Delete(contNo: string){
+    return this.httpService.deleteRequest('PlanImportFromShiptoPort/Delete?contNo=' + contNo);
+  }
+
+  DeleteMany(ContNo: string){
+    return this.httpService.deleteRequest('PlanImportFromShiptoPort/DeleteMany?ContNo=' + ContNo);
   }
 
   //From port to ship
@@ -77,11 +91,9 @@ export class ImportContFromShipService {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/UploadPorttoShip', file);
   }
 
-  
   ImportPorttoShip(file: any) {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShip',file);
   }
-
   
   ImportPorttoShipTH(file: any) {
     return this.httpService.uploadRequest('PlanExportFromPorttoShip/ImportPorttoShipTH',file);
@@ -94,8 +106,6 @@ export class ImportContFromShipService {
   PagingPorttoShip(data : PortToShipPaging) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/Paging', data);
   }
-
-  
 
   InsertPorttoShip(data: PortToShipCreate) {
     return this.httpService.postRequest('PlanExportFromPorttoShip/CreatePortToShip',data);
@@ -115,6 +125,16 @@ export class ImportContFromShipService {
 
   GetLocationFree(){
     return this.httpService.getRequest('MapContYard3/GetLocationFree');
+  }
+
+  GetLocationSelect(){
+    return this.httpService.getRequest('MapContYard3/GetLocationFree')
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name: i.positionLabel
+      } as Item)) as Item[];
+    }))
   }
 
   ImportAndUpdate(data : BayPlanUpdate){

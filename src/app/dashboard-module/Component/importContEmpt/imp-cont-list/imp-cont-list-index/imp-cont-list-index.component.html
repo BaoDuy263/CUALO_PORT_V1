@@ -54,9 +54,9 @@
               <th>Tình trạng</th>
               <th>Hướng</th>
               <th>Trạng thái</th>
-              <th>Thời gian checkin</th>
-              <th>Thời gian checkout</th>
               <th>Ngày cập bến</th>
+              <th>Thời gian dateCheckInnnn</th>
+              <th>Thời gian checkout</th>
               <th style="text-align: center;">Hành động</th>
             </tr>
           </thead>
@@ -69,11 +69,11 @@
               <td>{{item.type}}</td>
               <td>{{item.customer}}</td>
               <th>{{convertHelper.showStatus(item.status)}}</th>
-              <td>{{convertHelper.showSide(item.side)}}</td>
+              <td>{{convertHelper.showSide(item.side)}}</td> 
               <td>{{convertHelper.showState(item.state)}}</td>
-              <td>{{item.dateCheckIn | date: 'dd/MM/yyyy hh:ss aa' }}</td>
-              <td>{{item.dateCheckOut | date: 'dd/MM/yyyy hh:ss aa' }}</td>
-              <td>{{item.landingDate | date: 'dd/MM/yyyy hh:ss aa' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.landingDate) | date: 'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.dateCheckIn) | date: 'dd/MM/yyyy hh:mm' }}</td>
+              <td>{{convertHelper.Chang24Hour(item.dateCheckOut) | date: 'dd/MM/yyyy hh:mm' }}</td>
               <td style="text-align: center;">
                 <!-- <i class="bi bi-printer-fill" style="cursor: pointer;" (click)="saveTransaction(item)"></i> -->
                 <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer; margin-left: 5px;"

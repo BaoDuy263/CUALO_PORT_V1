@@ -41,7 +41,7 @@ export class TransactionCreateComponent implements OnInit {
       ref: new FormControl(''),
       status: new FormControl(''),
       typeCont: new FormControl(''),
-      size: new FormControl(),
+      size: new FormControl(''),
       activity: new FormControl(''),
       weight: new FormControl(),
       ventilation: new FormControl(''),

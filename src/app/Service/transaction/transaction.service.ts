@@ -13,8 +13,8 @@ export class TransactionService {
     return this.httpService.getRequest(`transactioneir?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
   }
 
-  GetAllTrans(page: number, searchText: string, numberDis: number, startDate: string, endDate: string) {
-    return this.httpService.getRequest(`transactioneir/getall?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}`)
+  GetAllTrans(page: number, searchText: string, numberDis: number, startDate: string, endDate: string,step: string) {
+    return this.httpService.getRequest(`transactioneir/getall?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&startDate=${startDate}&endDate=${endDate}&step=${step}`)
   }
 
   GetDetailTrans(id: number) {
@@ -34,6 +34,7 @@ export class TransactionService {
   }
 
   SaveTransaction(data: any) {
+    console.log('data',data);
     return this.httpService.postRequest(`transactioneir/saveTransaction`, data)
   }
 }

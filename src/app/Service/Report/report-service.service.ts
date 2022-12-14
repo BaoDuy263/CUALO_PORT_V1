@@ -17,4 +17,13 @@ export class ReportServiceService {
     return this.httpService.DowloadPostRequest(`Report/DayliReport`,data);
   }
 
+  GetIndexBaocaoHangTon(data: any){
+    return this.httpService.postRequest(`Report/BaocaoHangTonIndex`,data);
+  }
+
+
+  ExportBaoCaoTon(data: any) {
+    return this.httpService.DowloadPostRequest(`Report/BaoCaoHangTon`,data);
+  }
+
 }

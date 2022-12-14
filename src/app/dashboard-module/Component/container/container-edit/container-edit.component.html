@@ -191,7 +191,10 @@
               <div class="col-lg-4">
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Vị trí</label>
-                  <input type="text" class="form-control" formControlName="location">
+                  <!-- <input type="text" class="form-control" formControlName="location"> -->
+                  <select formControlName="location" class="form-control" style="width: 100%;" data-live-search="true">
+                    <option *ngFor="let item of lstLocation" [value]="item.location"  [ngStyle]="{'color':item.contNo == '' ? 'black' : 'red' }">{{item.location}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-lg-4">
@@ -394,7 +397,11 @@
       <div class="col-lg-4 col-md-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Mã container</label>
-          <input type="text" class="form-control" formControlName="contNo">
+          <input *ngIf="!isCreate" type="text" class="form-control" formControlName="contNo" readonly>
+          <input *ngIf="isCreate" type="text" class="form-control" formControlName="contNo" required>
+          <div *ngIf="submited && contNo?.errors?.['required']">
+            <span *ngIf="contNo?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
@@ -426,7 +433,7 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Loại container</label>
-          <input type="text" class="form-control" formControlName="typeCont">
+          <input type="text" class="form-control" formControlName="type">
         </div>
       </div>
     </div>
@@ -448,7 +455,10 @@
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Cân nặng</label>
-          <input type="number" class="form-control" formControlName="weight">
+          <input type="number" class="form-control" formControlName="weight" required>
+          <div *ngIf="submited && weight?.errors?.['required']">
+            <span *ngIf="weight?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+          </div>
         </div>
       </div>
     </div>
@@ -501,14 +511,17 @@
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">operator</label>
-          <input type="text" class="form-control" formControlName="operator">
+          <label for="exampleFormControlInput1" class="form-label">Vị trí</label>
+          <input type="text" class="form-control" formControlName="location">
         </div>
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Vị trí</label>
-          <input type="text" class="form-control" formControlName="location">
+          <label for="exampleFormControlInput1" class="form-label">Nweight</label>
+          <input type="number" class="form-control" formControlName="nWeight" required>
+          <div *ngIf="submited && nWeight?.errors?.['required']">
+            <span *ngIf="nWeight?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+          </div>
         </div>
       </div>
     </div>
@@ -643,18 +656,6 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày cấp con, trả khách</label>
-          <input type="datetime-local" class="form-control" formControlName="outDeliveryDate">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ngày nhận vỏ</label>
-          <input type="datetime-local" class="form-control" formControlName="inDeliveryDate">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Ngày nhận bãi</label>
           <input type="datetime-local" class="form-control" formControlName="dateCheckIn">
         </div>
@@ -772,12 +773,6 @@
             <input type="text" class="form-control" formControlName="phoneNumberDriver">
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
-            <input type="text" class="form-control" formControlName="createdBy">
-          </div>
-        </div>
       </div>
       <div class="row">
         <div class="col-lg-4">
@@ -811,8 +806,7 @@
         </div>
         <div class="group-button">
           <button type="button" class="btn btn-primary" (click)="onSubmit()">Ghi nhận</button>
-          <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Hủy
-            bỏ</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
         </div>
       </div>
     </div> -->

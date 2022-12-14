@@ -116,6 +116,7 @@
                         <th>Mã Container</th>
                         <th>Phương Án</th>
                         <th>Loại hàng hóa</th>
+                        <th>Kế hoạch Ngày Xuất Cảng</th>
                         <th>Ngày Xuất Cảng</th>
                         <th>Cân nặng</th>
                         <!-- <th>Trạng thái</th> -->
@@ -130,6 +131,7 @@
                         <td>{{GetDirecttion(item.activity)}}</td>
                         <td>{{item.hangHoa}}</td>
                         <td>{{item.dateCheckOut | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{item.lastExportDate | date: 'dd/MM/yyyy' }}</td>
                         <td>{{item.gw}}</td>
                         <!-- <td>{{GetStatus(item.step)}}</td> -->
                         <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"

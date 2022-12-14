@@ -5,3 +5,9 @@ export interface Item {
     checked?: boolean;
     visible?: boolean;
 }
+
+
+export interface LocationFree {
+    Id : string,
+    PositionLabel: string
+}

@@ -98,8 +98,8 @@ import { ContainerHistoryIndexComponent } from './Component/container/container-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ContainerDialogComponent } from './Component/container/container-dialog/container-dialog.component';
-import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component'
-import { ContainerMapsInfoComponent } from './Component/container/container-maps-info/container-maps-info.component';
+import { ContainerMapsIndexComponent } from './Component/container/map-yard/container-maps-index/container-maps-index.component'
+import { ContainerMapsInfoComponent } from './Component/container/container-detail/container-maps-info/container-maps-info.component';
 import { ContainerImagesEditComponent } from './Component/container/container-images-edit/container-images-edit.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
 import { TransactionCreateComponent } from './Component/transaction/transaction-create/transaction-create.component';
@@ -107,7 +107,15 @@ import { TransactionDeleteComponent } from './Component/transaction/transaction-
 import { ContainerPopupComponent } from './Component/container/container-popup/container-popup.component';
 import { ContainerImagesListComponent } from './Component/container/container-images-list/container-images-list.component';
 import { ContainerEditComponent } from './Component/container/container-edit/container-edit.component';
+import { ContInfoComponent } from './Component/container/container-detail/cont-info/cont-info.component';
+import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';
+import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
+import { ReportHangtonComponent } from './Component/report-hangton/report-hangton.component';
+import { TransactionPrintfComponent } from './Component/transaction/transaction-printf/transaction-printf.component';
+
 
 
 
@@ -194,6 +202,14 @@ import { ReportDailyComponent } from './Component/report-daily/report-daily.comp
     ContainerEditComponent,
     ReportDailyComponent,
     ContainerImagesListComponent,
+    ContainerEditComponent,
+    ContInfoComponent,
+    ContHistoryComponent,
+    ContImgsComponent,
+    QuanTriHeThongComponent,
+    RolePermissionComponent,
+    ReportHangtonComponent,
+    TransactionPrintfComponent,
 
   ],
   imports: [

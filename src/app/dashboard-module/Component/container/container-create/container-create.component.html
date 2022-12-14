@@ -77,11 +77,11 @@
             </td>
             <td style="width: 20%; border: 1px solid black;">
               <p style="display: flex; align-items: center; margin: 0;"><b>Phương án</b>/Activity:
-                <select class="form-control" formControlName="activity"
+                <select class="form-control" formControlName="activity" (change)="changeActivity($event)"
                   style="border: none; padding: 0; width: 50%; margin-left: 10px;" placeholder="................">
                   <option *ngFor="let a of activities" [ngValue]="a.value">{{a.name}}</option>
                 </select>
-                <label>PTGN: </label> <span>{{getTypeDelivery()}}</span>
+                <label>PTGN: </label> <span>{{typeDelivery}}</span>
               </p>
             </td>
             <td style="width: 20%; border: 1px solid black;">
@@ -242,10 +242,10 @@
                 </app-autocomplete>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian vào</b>/Check in:
-                <span>{{CreateEditForm.value.dateCheckIn | date : 'dd/MM/yyyy hh:mm aa'}}</span>
+                <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckIn) | date:  'dd/MM/yyyy HH:mm' }}</span>
               </p>
               <p style="display: flex; align-items: center;"><b>Thời gian ra</b>/Check out:
-                <span>{{CreateEditForm.value.dateCheckOut | date : 'dd/MM/yyyy hh:mm aa'}}</span>
+                <span>{{convertHelper.Chang24Hour(CreateEditForm.value.dateCheckOut) | date:  'dd/MM/yyyy HH:mm' }}</span>
               </p>
             </td>
           </tr>
@@ -259,25 +259,33 @@
             <td style="width: 30%"><b>NGƯỜI LẬP PHIẾU</b></td>
           </tr>
           <tr>
-            <td style="width: 30%; height: 100px;"><b></b></td>
+            <td style="width: 30%; height: 50px;"><b></b></td>
             <td style="width: 30%"><b></b></td>
             <td style="width: 30%"><b></b></td>
           </tr>
-          <tr>
-            <td style="width: 30%;"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
-            <td style="width: 30%"><b></b></td>
-            <td style="width: 30%"><b></b></td>
+          <tr *ngIf="isReceiver === true">
+            <td style="width: 30%"><app-autocomplete *ngIf="lstUserDeport3.length > 0" [data]="lstUserDeport3" [isUser]="true"
+              [valueDefault]="userReciver.fullName" (itemSelected)="handleSelectUser($event)">
+            </app-autocomplete></td>
+            <td style="width: 30%"><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+            <td style="width: 30%"><b>{{userCreate}}</b></td>
+          </tr>
+          <tr *ngIf="isReceiver === false">
+            <td style="width: 30%" ><b>{{vehicleSelected ? vehicleSelected.nameDriver : ''}}</b></td>
+             <td style="width: 30%" ><app-autocomplete *ngIf="lstUserDeport3.length > 0" [data]="lstUserDeport3" [isUser]="true"
+              [valueDefault]="userReciver.fullName" (itemSelected)="handleSelectUser($event)">
+            </app-autocomplete></td>
+            <td style="width: 30%"><b>{{userCreate}}</b></td>
           </tr>
         </table>
       </div>
     </div>
-    <div class="d-flex justify-content-end mt-4 mb-4 list-button" [ngClass]="[displayStyle]">
+    <div class="d-flex justify-content-end list-button" [ngClass]="[displayStyle]">
       <div class="group-button" style="margin-right: 10px">
-        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()">Lưu giao
+        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="saveTrans()" [disabled]="isSave == true">Lưu giao
           dịch</button>
         <button type="button" class="btn btn-success" (click)="printE()">In giao dịch</button>
-        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Hủy
-          bỏ</button>
+        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button (click)="closePopup()">Đóng</button>
       </div>
     </div>
   </form>

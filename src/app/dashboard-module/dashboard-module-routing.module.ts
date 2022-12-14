@@ -32,9 +32,15 @@ import { IndexPerformFromShipComponent } from './Component/performContFromShip/i
 import { IndexbayplanComponent } from './Component/bayPlan/indexbayplan/indexbayplan.component'
 import { ImpContBoardComponent } from './Component/importContEmpt/imp-cont-board/imp-cont-board.component';
 import { ContainerMapsListComponent } from './Component/container/container-maps-list/container-maps-list.component';
-import { ContainerMapsIndexComponent } from './Component/container/container-maps-index/container-maps-index.component';
+import { ContainerMapsIndexComponent } from './Component/container/map-yard/container-maps-index/container-maps-index.component';
 import { TransactionIndexComponent } from './Component/transaction/transaction-index/transaction-index.component';
+
+import { ContHistoryComponent } from './Component/container/container-detail/cont-history/cont-history.component';
+import { ContInfoComponent } from './Component/container/container-detail/cont-info/cont-info.component';
+import { ContImgsComponent } from './Component/container/container-detail/cont-imgs/cont-imgs.component';
 import { ReportDailyComponent } from './Component/report-daily/report-daily.component';
+import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { ReportHangtonComponent } from './Component/report-hangton/report-hangton.component';
 
 const routes: Routes = [
   {
@@ -82,6 +88,7 @@ const routes: Routes = [
         }
       },
       { path: 'dayilyreport', component: ReportDailyComponent },
+      { path: 'hangtonreport', component: ReportHangtonComponent },
       { path: 'phuong-tien', component: VehicleIndexComponent },
       { path: 'nhom-san-pham', component: ProductGroupIndexComponent },
       { path: 'san-pham', component: ProductIndexComponent },
@@ -91,10 +98,19 @@ const routes: Routes = [
       { path: '404-not-found', component: NotfoundComponent },
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
-      { path: 'container-maps', component: ContainerMapsIndexComponent },
+      { path: 'container-maps', component: ContainerMapsIndexComponent,
+        children: [
+          { path: 'cont-history', component: ContHistoryComponent},
+          { path: 'cont-info', component: ContInfoComponent},
+          { path: 'cont-imgs', component: ContImgsComponent},
+          // { path: 'list', component: ImpContListIndexComponent },
+          // { path: 'template', component: PlanPackingIndexComponent },
+        ]
+      },
       { path: 'container-maps-list', component: ContainerMapsListComponent },
       { path: 'container', component: ContainerIndexComponent},
       { path: 'transaction', component: TransactionIndexComponent},
+      { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
       {
         path: 'plan-packing', component: PackingBoardComponent,
         children: [
