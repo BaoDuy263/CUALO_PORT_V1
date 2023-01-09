@@ -12,6 +12,7 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { AccountService } from 'src/app/Service/Account/account.service';
 import { result } from 'lodash';
 import { ContainerEditComponent } from '../container-edit/container-edit.component';
+import { json } from 'express';
 
 
 @Component({
@@ -281,11 +282,17 @@ export class ContainerCreateComponent implements OnInit {
         this.vehicleSelected = res;
       })
     }, 300);
-    
+
   }
 
 
   saveTrans() {
+    if(this.CreateEditForm.value.weight >10 &&this.CreateEditForm.value.activity ==2 )
+    {
+      alert("Sai phương án, vui lòng kiểm tra lại");
+      return;
+    }
+
     this.isSave = true;
     const dialogRef = this.dialog.open(ContainerPopupComponent);
     dialogRef.componentInstance.title = 'Bạn có chắc chắn muốn thay đổi trạng thái hiện tại không?';
@@ -360,7 +367,7 @@ export class ContainerCreateComponent implements OnInit {
     {
       this.userReciver = this.lstUserDeport3[index];
     }
-    
+
   }
 
   printE() {
@@ -409,7 +416,7 @@ export class ContainerCreateComponent implements OnInit {
         this.CreateEditForm.value.typeDelivery = lstCheckTD[i].typeDelivery;
         this.openPopup(lstCheckTD[i].alert, lstCheckTD[i].newStep, lstCheckTD[i]?.newStepCancel)
         if (lstCheckTD[i].newStep !== 0) {
-          this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep); 
+          this.CreateEditForm.controls['step'].setValue(lstCheckTD[i].newStep);
         }
         return lstCheckTD[i].nameType
       }
