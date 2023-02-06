@@ -31,7 +31,7 @@ export class TransactionPrintfComponent implements OnInit {
     public dialogRef: MatDialogRef<TransactionPrintfComponent>,
     public convertHelper: convertHelper,
     private accountService: AccountService,
-    private vehicleService: VehicleService) { 
+    private vehicleService: VehicleService) {
     this.CreateEditForm = new FormGroup({
       contNo: new FormControl(''),
       no: new FormControl(''),
@@ -113,6 +113,7 @@ export class TransactionPrintfComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactionService.GetDetailTrans(this.transId).subscribe(response => {
+
       this.getVehicle(response.licensePlates);
       this.getUserCreate(response.createdBy);
       if(response.activity === 3 || response.activity === 1){

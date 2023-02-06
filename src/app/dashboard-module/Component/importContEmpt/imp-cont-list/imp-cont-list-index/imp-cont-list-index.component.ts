@@ -52,6 +52,7 @@ export class ImpContListIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo: any) {
+    console.log(PageInfo);
     this.loadding = true;
     this.containverService.GetAllContImp(this.PageInfo.page, this.PageInfo.Keyword,
       this.PageInfo.pageSize, this.PageInfo.startDate, this.PageInfo.endDate)
