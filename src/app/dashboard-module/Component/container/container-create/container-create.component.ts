@@ -316,24 +316,26 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   saveTrans() {
-    // Check phương án tiếp theo
-    if (this.currentActivity == 5 && this.CreateEditForm.value.activity != 3) {
-      alert('Sai phương án, Phương án tiếp theo là TRẢ RỖNG !');
-      return;
-    }
+    //// Check phương án tiếp theo
+    // if (this.currentActivity == 5 && this.CreateEditForm.value.activity != 3) {
+    //   alert('Sai phương án, Phương án tiếp theo là TRẢ RỖNG !');
+    //   return;
+    // }
 
-    if (this.currentActivity == 3 && this.CreateEditForm.value.activity != 2) {
-      alert('Sai phương án, Phương án tiếp theo là CẤP RỖNG !');
-      return;
-    }
+    // if (this.currentActivity == 3 && this.CreateEditForm.value.activity != 2) {
+    //   alert('Sai phương án, Phương án tiếp theo là CẤP RỖNG !');
+    //   return;
+    // }
 
-    if (this.currentActivity == 2 && this.CreateEditForm.value.activity != 1) {
-      alert('Sai phương án, Phương án tiếp theo là HẠ BÃI CHỜ XUẤT !');
-      return;
-    }
+    // if (this.currentActivity == 2 && this.CreateEditForm.value.activity != 1) {
+    //   alert('Sai phương án, Phương án tiếp theo là HẠ BÃI CHỜ XUẤT !');
+    //   return;
+    // }
 
-
-    if (this.CreateEditForm.value.activity == 1 && this.CreateEditForm.value.weight == 2.3) {
+    if (
+      this.CreateEditForm.value.activity == 1 &&
+      this.CreateEditForm.value.weight == 2.3
+    ) {
       alert('Sai trọng lượng !');
       return;
     }
