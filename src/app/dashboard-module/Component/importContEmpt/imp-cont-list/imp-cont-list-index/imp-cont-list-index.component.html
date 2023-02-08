@@ -65,7 +65,7 @@
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.contNo}}</td>
               <td>
-                {{item.step}} # {{item.activity}} -
+                <!-- {{item.step}} # {{item.activity}} - -->
                 {{convertHelper.showStep(item.step)}} </td>
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{item.type}}</td>
@@ -79,7 +79,8 @@
               <td style="text-align: center;">
                 <!-- <i class="bi bi-printer-fill" style="cursor: pointer;" (click)="saveTransaction(item)"></i> -->
                 <i class="bi bi-printer-fill" style="font-size:15px;cursor: pointer; margin-left: 5px;"
-                  (click)="openEdit(item.contNo)"></i></td>
+                  (click)="openEdit(item.contNo)"></i>
+              </td>
             </tr>
           </tbody>
         </table>
