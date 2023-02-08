@@ -59,7 +59,8 @@
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.contNo}}</td>
-              <td>{{convertHelper.showStep(item.step)}}</td>
+              <td>
+                {{convertHelper.showStep(item.step)}}</td>
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{item.typeCont}}</td>
               <td>{{item.customer}}</td>

@@ -64,12 +64,14 @@
             <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.contNo}}</td>
-              <td>{{convertHelper.showStep(item.step)}}</td>
+              <td>
+                {{item.step}} # {{item.activity}} -
+                {{convertHelper.showStep(item.step)}} </td>
               <td>{{convertHelper.showActivity(item.activity)}}</td>
               <td>{{item.type}}</td>
               <td>{{item.customer}}</td>
               <th>{{convertHelper.showStatus(item.status)}}</th>
-              <td>{{convertHelper.showSide(item.side)}}</td> 
+              <td>{{convertHelper.showSide(item.side)}}</td>
               <td>{{convertHelper.showState(item.state)}}</td>
               <td>{{convertHelper.Chang24Hour(item.landingDate) | date: 'dd/MM/yyyy HH:mm' }}</td>
               <td>{{convertHelper.Chang24Hour(item.dateCheckIn) | date: 'dd/MM/yyyy hh:mm' }}</td>

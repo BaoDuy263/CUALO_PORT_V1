@@ -316,21 +316,34 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   saveTrans() {
-    //// Check phương án tiếp theo
-    // if (this.currentActivity == 5 && this.CreateEditForm.value.activity != 3) {
-    //   alert('Sai phương án, Phương án tiếp theo là TRẢ RỖNG !');
-    //   return;
-    // }
+    // alert(
+    //   this.CreateEditForm.value.step +
+    //     '###' +
+    //     this.CreateEditForm.value.activity
+    // );
 
-    // if (this.currentActivity == 3 && this.CreateEditForm.value.activity != 2) {
-    //   alert('Sai phương án, Phương án tiếp theo là CẤP RỖNG !');
-    //   return;
-    // }
+    // if (this.vehicleSelected?.nameDriver == undefined)
+    //   alert(this.vehicleSelected?.nameDriver);
+    // return;
 
-    // if (this.currentActivity == 2 && this.CreateEditForm.value.activity != 1) {
-    //   alert('Sai phương án, Phương án tiếp theo là HẠ BÃI CHỜ XUẤT !');
-    //   return;
-    // }
+    if (this.CreateEditForm.value.step == 2) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 5 ||
+          this.CreateEditForm.value.activity == 2
+        )
+      )
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+    } else if (this.CreateEditForm.value.step == 1) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 5 ||
+          this.CreateEditForm.value.activity == 2 ||
+          this.CreateEditForm.value.activity == 6
+        )
+      )
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+    }
 
     if (
       this.CreateEditForm.value.activity == 1 &&
@@ -377,7 +390,10 @@ export class ContainerCreateComponent implements OnInit {
         this.userReciver.userName
       );
       this.CreateEditForm.controls['receiver'].setValue(
-        this.vehicleSelected.nameDriver
+        //btt
+        this.vehicleSelected?.nameDriver == undefined
+          ? ''
+          : this.vehicleSelected?.nameDriver
       );
     } else {
       this.CreateEditForm.controls['deliver'].setValue(
@@ -393,6 +409,14 @@ export class ContainerCreateComponent implements OnInit {
       this.vehicleSelected?.licensePlates ||
       this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe((result) => {
+
+      if(this.vehicleSelected?.nameDriver == undefined)
+      {
+        //btt Nếu ko nhập biển số xe thì cho vào cấp rỗng ngay
+        this.CreateEditForm.value.activity = 2;
+        this.CreateEditForm.value.step=4; // step cấp
+      }
+
       if (result.event === 'confirm') {
         this.transactionService
           .SaveTransaction(this.CreateEditForm.value)
