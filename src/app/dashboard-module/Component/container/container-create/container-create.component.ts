@@ -410,12 +410,17 @@ export class ContainerCreateComponent implements OnInit {
       this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe((result) => {
 
-      if(this.vehicleSelected?.nameDriver == undefined)
-      {
-        //btt Nếu ko nhập biển số xe thì cho vào cấp rỗng ngay
-        this.CreateEditForm.value.activity = 2;
-        this.CreateEditForm.value.step=4; // step cấp
+      //console.log(this.CreateEditForm.value.activity +'####'+this.CreateEditForm.value.step);
+      
+
+      if (this.CreateEditForm.value.activity==6 && this.CreateEditForm.value.step==1) {
+        this.CreateEditForm.value.activity = 6; // RÚt ruột
+        this.CreateEditForm.value.step = 3; // Lưu võ
+        this.CreateEditForm.value.DateCheckIn = null; 
+        this.CreateEditForm.value.dateCheckOut = null; 
       }
+     // console.log(this.CreateEditForm.value.activity +'$$$$$$'+this.CreateEditForm.value.step);
+      //return;
 
       if (result.event === 'confirm') {
         this.transactionService
