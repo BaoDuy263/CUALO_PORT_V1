@@ -137,7 +137,7 @@ export class TransactionCreateComponent implements OnInit {
         landingDate: new FormControl(res.landingDate),
         transType: new FormControl(res.transType),
         transCom: new FormControl(res.transCom),
-        vehicleNo: new FormControl(res.vehicleNo),
+        vehicleNo: new FormControl(res.vehicleNo==null?'': res.vehicleNo),
         checkIn: new FormControl(res.checkIn),
         checkOut: new FormControl(res.checkOut),
         step: new FormControl(res.step),
