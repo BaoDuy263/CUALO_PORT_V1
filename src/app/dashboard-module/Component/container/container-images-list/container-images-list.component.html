@@ -29,7 +29,7 @@
   </div>
   <div class="col-sm-3">
     <div class="form-group " style="margin-top: 10px;">
-      <input type="checkbox" checked="checked" class="mr-2" style="margin-right: 5px;"
+      <input type="checkbox" class="mr-2" style="margin-right: 5px;"
         (change)="checkSelected($event)">
       <label for="txtStatus">Chưa gắn Container</label>
     </div>
@@ -50,12 +50,13 @@
   <div *ngFor="let item of listImages; index as i">
     <div style="float: left;width: 25%;;">
       <div
-        style=" font-size: large; width: 100% !important; max-width: 100% !important; display: table; padding: 14px 10px; font-size: initial;">
+        style="  width: 100% !important; max-width: 100% !important; display: table; padding: 14px 10px; ">
         {{item.createdOn | date : 'dd/MM/yyyy' }}
         <span style="font-size: 12px;">
-          {{item.createdOn | date : 'hh:mm' }}
+          {{item.createdOn | date : 'HH:mm:ss' }}
         </span>
-        ({{item.createdBy}})
+        <span style="font-size: 14px;color: red; font-weight: bold;">({{item.contNo}})</span>
+
       </div>
       <div style="padding: 0px 10px;">
         <a (click)="setOpen(item)" style="cursor: pointer;">

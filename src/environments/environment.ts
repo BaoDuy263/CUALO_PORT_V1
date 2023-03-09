@@ -4,15 +4,14 @@
 
 export const environment = {
   production: false,
-//  urlApi : 'http://localhost:7611',
- urlApi : 'https://seaportwebapi.phanmem.one',
+  urlApi : 'http://localhost:7611',
+  //urlApi: 'https://seaportwebapi.phanmem.one',
   appCode: 'CCLO',
   clientId: 'CCLO',
   authority: 'https://tvssso.phanmem.one',
   // apiLocal: 'https://localhost:5802',
   apiUrl: 'https://45.124.94.191:5001',
-  CCLOApi: 'https://cclo.phanmem.one'
-
+  CCLOApi: 'https://cclo.phanmem.one',
 };
 
 /*

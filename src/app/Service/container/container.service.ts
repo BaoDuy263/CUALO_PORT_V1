@@ -53,7 +53,7 @@ export class ContainerService {
     return this.httpService.getRequest("Container/images-get-list?ContNo="+code)
   }
   ContImagesEmptryGetList(code: string, AreaCode: string, dateFrom: string, dateTo: string , status: number) {
-    console.log(AreaCode +'----------------');
+   // console.log(AreaCode +'----------------');
     let dateFrom_= dateFrom;
     let dateTo_= dateTo;
     // console.log(dateFrom_);

@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContainerService } from 'src/app/Service/container/container.service';
 import { ContainerImagesEditComponent } from '../container-images-edit/container-images-edit.component';
+
 
 @Component({
   selector: 'app-container-images-list',
@@ -13,9 +15,10 @@ export class ContainerImagesListComponent implements OnInit {
     private containerService: ContainerService,
     public dialog: MatDialog,
   ) {}
+  currentDate = new Date();
   UrlRoot: string = 'https://cclo.phanmem.one';
   listImages: any = [];
-  CheckedImagesEmtry: boolean = true;
+  CheckedImagesEmtry: boolean = false;
   AreaCode: string = "-1";
   selectedCont: any;
   selectedArea: any;
@@ -24,7 +27,7 @@ export class ContainerImagesListComponent implements OnInit {
     Page: 1,
     PageSize: 1000,
     ContNo: '',
-    FromDate: '',
+    FromDate:  '',
     ToDate: '',
     Status: -1,
   };
@@ -42,7 +45,7 @@ export class ContainerImagesListComponent implements OnInit {
       dateFrom = '',
       dateTo = '',
       status = 1;
-    console.log(this.selectedCont);
+   // console.log(this.selectedCont);
     if (this.selectedCont != undefined) code = this.selectedCont;
     this.containerService
       .ContImagesEmptryGetList(

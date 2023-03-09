@@ -258,9 +258,12 @@ export class ContainerCreateComponent implements OnInit {
           receiver: new FormControl(response.receiver),
           deliver: new FormControl(response.deliver),
         });
+
+        this.checkShowBtn();
       });
     this.loadVehicles();
     this.loadUserDeport3();
+
   }
 
   // onSubmit() {
@@ -315,39 +318,85 @@ export class ContainerCreateComponent implements OnInit {
     }, 300);
   }
 
-  saveTrans() {
-    // alert(
-    //   this.CreateEditForm.value.step +
-    //     '###' +
-    //     this.CreateEditForm.value.activity
-    // );
+  checkShowBtn ()
+  {
+   // alert(this.CreateEditForm.value.step +'###'+ this.CreateEditForm.value.activity);
 
-    // if (this.vehicleSelected?.nameDriver == undefined)
-    //   alert(this.vehicleSelected?.nameDriver);
-    // return;
+    this.isSave=false;
+    if((this.CreateEditForm.value.step ==3 && this.CreateEditForm.value.activity==5)
+    || (this.CreateEditForm.value.step ==5 && this.CreateEditForm.value.activity==2)
+    || (this.CreateEditForm.value.step ==4 && this.CreateEditForm.value.activity==2)
+    || (this.CreateEditForm.value.step ==2 && this.CreateEditForm.value.activity==5)
+    )
+      this.isSave=true;
 
-    if (this.CreateEditForm.value.step == 2) {
+  }
+
+  CheckProdure ()
+  {
+    if (this.CreateEditForm.value.step == 2) { //
       if (
         !(
-          this.CreateEditForm.value.activity == 5 ||
-          this.CreateEditForm.value.activity == 2
+          this.CreateEditForm.value.activity == 1 ||
+          this.CreateEditForm.value.activity == 3 ||
+          this.CreateEditForm.value.activity == 2 || // trả rỗng
+          this.CreateEditForm.value.activity == 6  // Rút ruột
         )
       )
+      {
         alert('Sai phương án, vui lòng kiểm tra lại !');
-    } else if (this.CreateEditForm.value.step == 1) {
-      if (
-        !(
-          this.CreateEditForm.value.activity == 5 ||
-          this.CreateEditForm.value.activity == 2 ||
-          this.CreateEditForm.value.activity == 6
-        )
-      )
-        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+
     }
+    else if (this.CreateEditForm.value.step == 1) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 5 ||
+          this.CreateEditForm.value.activity == 1
+        )
+      )
+      {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    }
+    else if (this.CreateEditForm.value.step == 4) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 1
+        )
+      )
+      {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    }
+    else if (this.CreateEditForm.value.step == 3) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 2 ||
+          this.CreateEditForm.value.activity == 3
+        )
+      )
+      {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    }
+  }
+
+  saveTrans() {
+
+    // QUy trình
+   // alert(this.CreateEditForm.value.step +'####'+this.CreateEditForm.value.activity);
+
+   //this.CheckProdure ();
+    // Reset dữ liệu
 
     if (
       this.CreateEditForm.value.activity == 1 &&
-      this.CreateEditForm.value.weight == 2.3
+      (this.CreateEditForm.value.weight == 2.3 || this.CreateEditForm.value.weight == 4)
     ) {
       alert('Sai trọng lượng !');
       return;
@@ -362,13 +411,8 @@ export class ContainerCreateComponent implements OnInit {
       return;
     }
 
-    if (
-      this.CreateEditForm.value.weight > 10 &&
-      this.CreateEditForm.value.activity == 2
-    ) {
-      alert('Sai phương án, vui lòng kiểm tra lại');
-      return;
-    }
+
+
 
     this.isSave = true;
     const dialogRef = this.dialog.open(ContainerPopupComponent);
@@ -385,43 +429,47 @@ export class ContainerCreateComponent implements OnInit {
     this.CreateEditForm.value.status = parseInt(
       this.CreateEditForm.value.status
     );
-    if (this.isReceiver === true) {
-      this.CreateEditForm.controls['deliver'].setValue(
-        this.userReciver.userName
-      );
-      this.CreateEditForm.controls['receiver'].setValue(
-        //btt
-        this.vehicleSelected?.nameDriver == undefined
-          ? ''
-          : this.vehicleSelected?.nameDriver
-      );
-    } else {
-      this.CreateEditForm.controls['deliver'].setValue(
-        this.vehicleSelected.nameDriver
-      );
-      this.CreateEditForm.controls['receiver'].setValue(
-        this.userReciver.userName
-      );
+
+    console.log(this.CreateEditForm.value);
+    try
+    {
+      if (this.isReceiver === true) {
+        this.CreateEditForm.controls['deliver'].setValue(
+          this.userReciver.userName
+        );
+        this.CreateEditForm.controls['receiver'].setValue(
+          //btt
+          this.vehicleSelected?.nameDriver == undefined
+            ? ''
+            : this.vehicleSelected?.nameDriver
+        );
+      } else {
+        this.CreateEditForm.controls['deliver'].setValue(
+          this.vehicleSelected.nameDriver
+        );
+        this.CreateEditForm.controls['receiver'].setValue(
+          this.userReciver.userName
+        );
+      }
+      this.CreateEditForm.value.nameDriver =
+        this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
     }
-    this.CreateEditForm.value.nameDriver =
-      this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
+    catch{
+
+    }
+
+
     this.CreateEditForm.value.licensePlates =
       this.vehicleSelected?.licensePlates ||
       this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe((result) => {
 
-      //console.log(this.CreateEditForm.value.activity +'####'+this.CreateEditForm.value.step);
-      
+      // Activity Lấy nguyên (5) => Step Đang lấy nguyên (2)
+      // if (this.CreateEditForm.value.activity==5 && this.CreateEditForm.value.step==1) {
+      //   this.CreateEditForm.value.step = 2; // Lưu võ
+      // }
 
-      if (this.CreateEditForm.value.activity==6 && this.CreateEditForm.value.step==1) {
-        this.CreateEditForm.value.activity = 6; // RÚt ruột
-        this.CreateEditForm.value.step = 3; // Lưu võ
-        this.CreateEditForm.value.DateCheckIn = null; 
-        this.CreateEditForm.value.dateCheckOut = null; 
-      }
-     // console.log(this.CreateEditForm.value.activity +'$$$$$$'+this.CreateEditForm.value.step);
-      //return;
-
+      console.log(this.CreateEditForm.value);
       if (result.event === 'confirm') {
         this.transactionService
           .SaveTransaction(this.CreateEditForm.value)
@@ -444,6 +492,7 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   handleSelect(value: any) {
+
     if (
       this.CreateEditForm.value.activity === 3 ||
       this.CreateEditForm.value.activity === 1
@@ -518,6 +567,9 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   changeActivity(e: any) {
+
+    this.checkShowBtn ();
+
     if (
       this.CreateEditForm.value.activity === 2 ||
       this.CreateEditForm.value.activity === 3
@@ -532,6 +584,35 @@ export class ContainerCreateComponent implements OnInit {
     } else {
       this.isReceiver = true;
     }
+    // Reset toàn bộ DL trừ cont, loại cont, biển số xe
+    if(this.CreateEditForm.value.activity==1)
+    {
+      this.CreateEditForm.patchValue({
+        commodity: null,
+        seal1: null,
+        customer: null,
+        weight:
+          this.CreateEditForm.value.type.substring(0, 2) == '20' ? 2.3 : 4.0,
+        voyage: null,
+        lstVehicle:null,
+        //btt
+      });
+    }
+
+    if(this.CreateEditForm.value.activity==2)
+    {
+      this.CreateEditForm.value.licensePlates.value('');
+      this.CreateEditForm.patchValue({
+        lstVehicle:null,
+        vehicleNo:null,
+        vehicleSelected:null,
+      });
+
+      console.log(this.CreateEditForm);
+
+    }
+
+
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity =
         this.currentActivity === lstCheckTD[i].activityPrev &&
@@ -562,6 +643,8 @@ export class ContainerCreateComponent implements OnInit {
       weight:
         this.CreateEditForm.value.type.substring(0, 2) == '20' ? 2.3 : 4.0,
       voyage: null,
+      lstVehicle:null,
+      //btt
     });
   }
   openPopup(alert: string, newStep: number, newStepCancel: number | undefined) {

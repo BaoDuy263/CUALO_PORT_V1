@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SettingService } from 'src/app/Service/Setting/setting.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
+
 
 // C:\Users\VINH PC\Documents\baitap\CUALO_PORT_V1\src\app\Interceptor\Interceptor.ts
 @Component({
@@ -15,7 +17,7 @@ export class SettingIndexComponent implements OnInit {
   listUnit: any = [];
   lockOrOpen: boolean = false;
   loadding: boolean = false;
-  
+
   constructor(private SettingService: SettingService, private toastr: ToastrcustomService) {
     this.CreateEditForm = new FormGroup({
       emailSupport: new FormControl(),
@@ -56,7 +58,7 @@ export class SettingIndexComponent implements OnInit {
       })
     })
     this.loadding = false;
-    
+
   }
 
   checkEdit() {

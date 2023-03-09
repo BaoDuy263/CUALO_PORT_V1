@@ -27,9 +27,9 @@ export class HttpClientInterceptor implements HttpInterceptor {
             const isUnauthorizedError = error.status === 401;
             const isUnknownError = error.statusText === 'Unknown Error' || error.status === 0 || error.status === 500 || error.status === 504;
             if (isUnauthorizedError) {
-              
+
               let UserInfo = this.accountService.getUserInfo();
-            
+
               if(UserInfo.refreshToken && UserInfo.jwt){
                   let obj = {
                     accessToken: UserInfo.jwt,
@@ -49,7 +49,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
             }
 
             if(isUnknownError){
-              this.toast.showError("Lỗi hệ thống !");
+             // this.toast.showError("Lỗi hệ thống !");
             }
             return throwError(error);
           })
@@ -58,7 +58,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
 
       private addAccessToken(request: HttpRequest<any>): HttpRequest<any> {
         const userInfo = this.accountService.getUserInfo();
-        
+
         if (!userInfo) {
           return request;
         }
