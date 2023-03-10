@@ -23,7 +23,11 @@ export interface lstSetting
     data : Setting[]
 }
 
-
+export interface StatusCameraUpdate
+{
+    code: string,
+    value: string,
+}
 export interface SettingEdit
 {
     id: number,

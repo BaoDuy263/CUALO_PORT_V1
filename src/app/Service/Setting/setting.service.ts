@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import  { CommonserviceService } from  '../CommonService/commonservice.service';
 import { map } from 'rxjs';
-import { Setting, SettingEdit } from 'src/app/Model/Setting';
+import { Setting, SettingEdit, StatusCameraUpdate } from 'src/app/Model/Setting';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,12 @@ export class SettingService {
   // }
 
 
+  GetInfo(code:string) {
+    return this.httpService.getRequest('Setting/GetConfig?code='+ code)
+      .pipe(map((data:StatusCameraUpdate ) => {
+          return data;
+      }))
+  }
 
   GetDetail() {
     return this.httpService.getRequest('Setting')
@@ -30,6 +36,14 @@ export class SettingService {
   Update(SettingEdit : SettingEdit)
   {
     return this.httpService.putRequest('Setting/Update',SettingEdit)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  ChangeStatusCamera(StatusCameraUpdate:StatusCameraUpdate)
+  {
+    return this.httpService.putRequest('Setting/UpdateStatussCamera',StatusCameraUpdate)
       .pipe(map((data: any) => {
         return data;
       }))
