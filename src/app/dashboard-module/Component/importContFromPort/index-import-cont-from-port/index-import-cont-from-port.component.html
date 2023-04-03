@@ -136,9 +136,9 @@
                         <!-- <td>{{GetStatus(item.step)}}</td> -->
                         <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                           (click)="openEdit(item.contNo)"></i>
-                          <i class="bi bi-trash3" 
+                          <i class="bi bi-trash3"
                           style="font-size:15px;padding-left: 5px;cursor: pointer;" (click)="openDelete(item.id)"></i>
-                          <i *ngIf="item.step == 5" class="bi bi-arrow-right-square" (click)="ExportCont(item.contNo)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
+                          <i *ngIf="item.step == 5 || item.step == 7" class="bi bi-arrow-right-square" (click)="ExportCont(item.contNo)" style="font-size:15px;padding-left: 5px;cursor: pointer;" title="Xuất Cont"></i>
                         </td>
                       </tr>
                     </tbody>

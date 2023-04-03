@@ -263,7 +263,6 @@ export class ContainerCreateComponent implements OnInit {
       });
     this.loadVehicles();
     this.loadUserDeport3();
-
   }
 
   // onSubmit() {
@@ -318,68 +317,63 @@ export class ContainerCreateComponent implements OnInit {
     }, 300);
   }
 
-  checkShowBtn ()
-  {
-   // alert(this.CreateEditForm.value.step +'###'+ this.CreateEditForm.value.activity);
+  checkShowBtn() {
+    // alert(this.CreateEditForm.value.step +'###'+ this.CreateEditForm.value.activity);
 
-    this.isSave=false;
-    if((this.CreateEditForm.value.step ==3 && this.CreateEditForm.value.activity==5)
-    || (this.CreateEditForm.value.step ==5 && this.CreateEditForm.value.activity==2)
-    || (this.CreateEditForm.value.step ==4 && this.CreateEditForm.value.activity==2)
-    || (this.CreateEditForm.value.step ==2 && this.CreateEditForm.value.activity==5)
+    this.isSave = false;
+    if (
+      (this.CreateEditForm.value.step == 3 &&
+        this.CreateEditForm.value.activity == 5) ||
+      (this.CreateEditForm.value.step == 5 &&
+        this.CreateEditForm.value.activity == 2) ||
+      (this.CreateEditForm.value.step == 4 &&
+        this.CreateEditForm.value.activity == 2) ||
+      (this.CreateEditForm.value.step == 2 &&
+        this.CreateEditForm.value.activity == 5)
     )
-      this.isSave=true;
-
+      this.isSave = true;
+    this.isSave = false;
   }
 
-  CheckProdure ()
-  {
-    if (this.CreateEditForm.value.step == 2) { //
+  CheckProdure() {
+    if (this.CreateEditForm.value.step == 2) {
+      //
       if (
         !(
-          this.CreateEditForm.value.activity == 1 ||
-          this.CreateEditForm.value.activity == 3 ||
-          this.CreateEditForm.value.activity == 2 || // trả rỗng
-          this.CreateEditForm.value.activity == 6  // Rút ruột
+          (
+            this.CreateEditForm.value.activity == 1 ||
+            this.CreateEditForm.value.activity == 3 ||
+            this.CreateEditForm.value.activity == 2 || // trả rỗng
+            this.CreateEditForm.value.activity == 6 ||
+            this.CreateEditForm.value.activity == 9 // Đóng hàng
+          ) // Rút ruột
         )
-      )
-      {
+      ) {
         alert('Sai phương án, vui lòng kiểm tra lại !');
         return;
       }
-
-    }
-    else if (this.CreateEditForm.value.step == 1) {
+    } else if (this.CreateEditForm.value.step == 1) {
       if (
         !(
           this.CreateEditForm.value.activity == 5 ||
           this.CreateEditForm.value.activity == 1
         )
-      )
-      {
+      ) {
         alert('Sai phương án, vui lòng kiểm tra lại !');
         return;
       }
-    }
-    else if (this.CreateEditForm.value.step == 4) {
-      if (
-        !(
-          this.CreateEditForm.value.activity == 1
-        )
-      )
-      {
+    } else if (this.CreateEditForm.value.step == 4) {
+      if (!(this.CreateEditForm.value.activity == 1)) {
         alert('Sai phương án, vui lòng kiểm tra lại !');
         return;
       }
-    }
-    else if (this.CreateEditForm.value.step == 3) {
+    } else if (this.CreateEditForm.value.step == 3) {
       if (
         !(
           this.CreateEditForm.value.activity == 2 ||
           this.CreateEditForm.value.activity == 3
         )
-      )
-      {
+      ) {
         alert('Sai phương án, vui lòng kiểm tra lại !');
         return;
       }
@@ -387,16 +381,64 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   saveTrans() {
-
     // QUy trình
-   // alert(this.CreateEditForm.value.step +'####'+this.CreateEditForm.value.activity);
-
-   //this.CheckProdure ();
+    // console.log(
+    //   this.CreateEditForm.value
+    // );
+    // return;
+    //this.CheckProdure ();
+    console.log(this.CreateEditForm.value.step +'###'+this.CreateEditForm.value.activity);
+    if (this.CreateEditForm.value.step == 2) {
+      //
+      if (
+        !(
+          (
+            this.CreateEditForm.value.activity == 1 ||
+            this.CreateEditForm.value.activity == 3 ||
+            this.CreateEditForm.value.activity == 2 || // trả rỗng
+            this.CreateEditForm.value.activity == 6
+          ) // Rút ruột
+        )
+      ) {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    } else if (this.CreateEditForm.value.step == 1) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 5 ||
+          this.CreateEditForm.value.activity == 1
+        )
+      ) {
+        //Kiểm tra status Rút ruột
+        if (!(this.CreateEditForm.value.status == 1)) {
+          // trạng thái F => status==1
+          alert('Sai phương án, vui lòng kiểm tra lại !');
+          return;
+        }
+      }
+    } else if (this.CreateEditForm.value.step == 4) {
+      if (!(this.CreateEditForm.value.activity == 1|| this.CreateEditForm.value.activity == 2)) {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    } else if (this.CreateEditForm.value.step == 3) {
+      if (
+        !(
+          this.CreateEditForm.value.activity == 2 ||
+          this.CreateEditForm.value.activity == 3
+        )
+      ) {
+        alert('Sai phương án, vui lòng kiểm tra lại !');
+        return;
+      }
+    }
     // Reset dữ liệu
 
     if (
       this.CreateEditForm.value.activity == 1 &&
-      (this.CreateEditForm.value.weight == 2.3 || this.CreateEditForm.value.weight == 4)
+      (this.CreateEditForm.value.weight == 2.3 ||
+        this.CreateEditForm.value.weight == 4)
     ) {
       alert('Sai trọng lượng !');
       return;
@@ -410,9 +452,6 @@ export class ContainerCreateComponent implements OnInit {
       alert('Sai phương án, vui lòng kiểm tra lại');
       return;
     }
-
-
-
 
     this.isSave = true;
     const dialogRef = this.dialog.open(ContainerPopupComponent);
@@ -430,9 +469,8 @@ export class ContainerCreateComponent implements OnInit {
       this.CreateEditForm.value.status
     );
 
-    console.log(this.CreateEditForm.value);
-    try
-    {
+    // console.log(this.CreateEditForm.value);
+    try {
       if (this.isReceiver === true) {
         this.CreateEditForm.controls['deliver'].setValue(
           this.userReciver.userName
@@ -452,18 +490,14 @@ export class ContainerCreateComponent implements OnInit {
         );
       }
       this.CreateEditForm.value.nameDriver =
-        this.vehicleSelected?.nameDriver || this.CreateEditForm.value.nameDriver;
-    }
-    catch{
-
-    }
-
+        this.vehicleSelected?.nameDriver ||
+        this.CreateEditForm.value.nameDriver;
+    } catch {}
 
     this.CreateEditForm.value.licensePlates =
       this.vehicleSelected?.licensePlates ||
       this.CreateEditForm.value.licensePlates;
     dialogRef.afterClosed().subscribe((result) => {
-
       // Activity Lấy nguyên (5) => Step Đang lấy nguyên (2)
       // if (this.CreateEditForm.value.activity==5 && this.CreateEditForm.value.step==1) {
       //   this.CreateEditForm.value.step = 2; // Lưu võ
@@ -492,7 +526,6 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   handleSelect(value: any) {
-
     if (
       this.CreateEditForm.value.activity === 3 ||
       this.CreateEditForm.value.activity === 1
@@ -567,8 +600,22 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   changeActivity(e: any) {
+    this.checkShowBtn();
+   // alert(this.currentActivity +'#####'+ this.CreateEditForm.value.activity);
 
-    this.checkShowBtn ();
+    // Reset biển số xe nếu phương án hiện tại là trả rỗng sang cấp rỗng
+    //alert(this.CreateEditForm.value.licensePlates);
+
+    // if (this.currentActivity == 3 && this.CreateEditForm.value.activity == 2)
+    // {
+    //   this.CreateEditForm.patchValue({
+    //     vehicleNo: '',
+    //     licensePlates: '',
+    //   });
+    //   this.lstVehicle=null;
+    //   console.log(this.CreateEditForm.value);
+
+    // }
 
     if (
       this.CreateEditForm.value.activity === 2 ||
@@ -585,8 +632,7 @@ export class ContainerCreateComponent implements OnInit {
       this.isReceiver = true;
     }
     // Reset toàn bộ DL trừ cont, loại cont, biển số xe
-    if(this.CreateEditForm.value.activity==1)
-    {
+    if (this.CreateEditForm.value.activity == 1) {
       this.CreateEditForm.patchValue({
         commodity: null,
         seal1: null,
@@ -594,24 +640,21 @@ export class ContainerCreateComponent implements OnInit {
         weight:
           this.CreateEditForm.value.type.substring(0, 2) == '20' ? 2.3 : 4.0,
         voyage: null,
-        lstVehicle:null,
+        lstVehicle: null,
         //btt
       });
     }
 
-    if(this.CreateEditForm.value.activity==2)
-    {
-      this.CreateEditForm.value.licensePlates.value('');
-      this.CreateEditForm.patchValue({
-        lstVehicle:null,
-        vehicleNo:null,
-        vehicleSelected:null,
-      });
+    // if (this.CreateEditForm.value.activity == 2) {
+    //   this.CreateEditForm.value.licensePlates='';
+    //   this.CreateEditForm.patchValue({
+    //     lstVehicle: null,
+    //     vehicleNo: null,
+    //     vehicleSelected: null,
+    //   });
 
-      console.log(this.CreateEditForm);
-
-    }
-
+    //   console.log(this.CreateEditForm);
+    // }
 
     for (let i = 0; i < lstCheckTD.length; i++) {
       const checkCurrActivity =
@@ -636,14 +679,15 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   removeInfomation() {
+    var mType =  this.CreateEditForm.value.type ;
     this.CreateEditForm.patchValue({
       commodity: null,
       seal1: null,
       customer: null,
-      weight:
-        this.CreateEditForm.value.type.substring(0, 2) == '20' ? 2.3 : 4.0,
       voyage: null,
-      lstVehicle:null,
+      lstVehicle: null,
+      weight:
+        mType!=null? (this.CreateEditForm.value.type.substring(0, 2) == '20' ? 2.3 : 4.0):0,
       //btt
     });
   }

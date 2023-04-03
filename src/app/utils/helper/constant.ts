@@ -61,6 +61,7 @@ export const lstStep = [
   { value: 4, name: "Đang cấp rỗng" },
   { value: 5, name: "Hạ Bãi" },
   { value: 6, name: "Đã xuất" },
+  { value: 7, name: "Chờ xuất" },
 ]
 
 export const lstTypeVehicle = [
