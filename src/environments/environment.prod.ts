@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  urlApi : 'https://seaportwebapi.phanmem.one',
+  urlApi0 : 'https://seaportwebapi.phanmem.one',
+  urlApi: 'http://103.107.182.150:92',
    // urlApi : 'https://45.124.94.191:8019/api/',
    //urlApi : 'https://seaportwebapi.phanmem.one',
    appCode: 'CCLO',

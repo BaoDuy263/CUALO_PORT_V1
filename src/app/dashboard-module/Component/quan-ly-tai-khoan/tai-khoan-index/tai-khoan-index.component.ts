@@ -19,7 +19,13 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   customerId: number = 0;
   loadding: boolean = false;
 
-  
+  Pagination: Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+  };
+
   lstdata: any = [];
 
   PageInfo = {
@@ -44,6 +50,12 @@ export class QLTaiKhoanIndexComponent implements OnInit {
       .subscribe((data) => {
         this.loadding = false;
         this.lstdata = data;
+        console.log(data);
+        // phân trang
+        this.Pagination.currentPage = data.currentPage,
+        this.Pagination.pageSize = data.pageSize,
+        this.Pagination.totalPage = data.totalPage,
+        this.Pagination.totalRecord = data.totalRecord
       });
   }
 

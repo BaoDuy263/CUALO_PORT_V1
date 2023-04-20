@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AccountService } from 'src/app/Service/Account/account.service';
+import { Permission } from 'src/app/Model/Account';
 
 @Component({
   selector: 'app-tai-khoan-create',
@@ -13,6 +14,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   listProductGroup: any=[];
   listUnit: any=[];
   lockOrOpen: boolean = false;
+  lstAllClaim : Permission[] = []
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
@@ -23,13 +25,13 @@ export class QLTaiKhoanCreateComponent implements OnInit {
       email: new FormControl('', Validators.required),
       phoneNumber: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      
+
     })
   }
 
   ngOnInit(): void {
+    this.GetAllClaim();
     //Edit
-
     if (this.customerId && this.isCreate === false) {
       this.lockOrOpen = true;
 
@@ -41,7 +43,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
           email: new FormControl(response.email),
           phoneNumber: new FormControl(response.phoneNumber),
           password: new FormControl(response.password),
-         
+
         })
       })
     }
@@ -53,12 +55,16 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   get phoneNumber() { return this.CreateEditForm.get('phoneNumber') }
   get password() { return this.CreateEditForm.get('password') }
 
-
+  GetAllClaim(){
+    this.AccountService.GetAllClaim("").subscribe(data => {
+      this.lstAllClaim = data;
+    })
+  }
 
   onSubmit() {
     this.submited = true;
-   
-    
+
+
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.AccountService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);

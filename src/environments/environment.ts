@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
- // urlApi : 'http://localhost:7611',
-  urlApi: 'https://seaportwebapi.phanmem.one',
+  // urlApi: 'http://localhost:7611',
+  urlApi: 'http://103.107.182.150:92',
+  //urlApi: 'https://seaportwebapi.phanmem.one',
   appCode: 'CCLO',
   clientId: 'CCLO',
   authority: 'https://tvssso.phanmem.one',

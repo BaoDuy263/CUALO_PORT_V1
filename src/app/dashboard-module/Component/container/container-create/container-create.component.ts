@@ -336,6 +336,7 @@ export class ContainerCreateComponent implements OnInit {
   }
 
   CheckProdure() {
+
     if (this.CreateEditForm.value.step == 2) {
       //
       if (
@@ -388,6 +389,7 @@ export class ContainerCreateComponent implements OnInit {
     // return;
     //this.CheckProdure ();
     console.log(this.CreateEditForm.value.step +'###'+this.CreateEditForm.value.activity);
+    //alert(this.CreateEditForm.value.activity);
     if (this.CreateEditForm.value.step == 2) {
       //
       if (
@@ -397,6 +399,7 @@ export class ContainerCreateComponent implements OnInit {
             this.CreateEditForm.value.activity == 3 ||
             this.CreateEditForm.value.activity == 2 || // trả rỗng
             this.CreateEditForm.value.activity == 6
+
           ) // Rút ruột
         )
       ) {
@@ -418,7 +421,7 @@ export class ContainerCreateComponent implements OnInit {
         }
       }
     } else if (this.CreateEditForm.value.step == 4) {
-      if (!(this.CreateEditForm.value.activity == 1|| this.CreateEditForm.value.activity == 2)) {
+      if (!(this.CreateEditForm.value.activity == 1|| this.CreateEditForm.value.activity == 2 || this.CreateEditForm.value.activity == 9)) {
         alert('Sai phương án, vui lòng kiểm tra lại !');
         return;
       }
@@ -426,7 +429,8 @@ export class ContainerCreateComponent implements OnInit {
       if (
         !(
           this.CreateEditForm.value.activity == 2 ||
-          this.CreateEditForm.value.activity == 3
+          this.CreateEditForm.value.activity == 3 ||
+          this.CreateEditForm.value.activity == 9
         )
       ) {
         alert('Sai phương án, vui lòng kiểm tra lại !');

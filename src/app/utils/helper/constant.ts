@@ -15,6 +15,7 @@ export const activitiesData = [
   // { value: 7, name: "Trả bãi", hidden: true },
   // { value: 8, name: "Kẹp chì", hidden: true },
   { value: 9, name: "Đóng hàng" },
+  { value: 10, name: "Xuất tàu" },
 ]
 
 
